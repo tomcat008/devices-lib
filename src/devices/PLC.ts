@@ -48,18 +48,18 @@ export abstract class PLC extends SdcSoftDevice {
 
 
 
-    public handleByteField(field: ByteField, bytes: Buffer) {
+    public handleByteField(field: ByteField, bytes: Uint8Array) {
         //let view = new DataView(bytes);
         switch (field.getBytesLength()) {
             case 0:
             case 2:
                 //if (field.haveValue(bytes[field.getStartIndex() + 1], bytes[field.getStartIndex()])) {
-                if (field.haveValue(bytes.readUInt8(field.getStartIndex()), bytes.readUInt8(field.getStartIndex() + 1))) {
+                if (field.haveValue(bytes[field.getStartIndex()], bytes[field.getStartIndex() + 1])) {
                     this.addField(field);
                 }
                 break;
             case 4:
-                if (field.haveValue(bytes.readUInt8(field.getStartIndex()), bytes.readUInt8(field.getStartIndex() + 1), bytes.readUInt8(field.getStartIndex() + 2), bytes.readUInt8(field.getStartIndex() + 3))) {
+                if (field.haveValue(bytes[field.getStartIndex()], bytes[field.getStartIndex() + 1], bytes[field.getStartIndex() + 2], bytes[field.getStartIndex() + 3])) {
                     this.addField(field);
                 }
                 break;

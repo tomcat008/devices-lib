@@ -1,27 +1,24 @@
-declare function require(moduleName: string): any;
+//declare function require(moduleName: string): any;
 type Language = 'zh-cn' | 'en-us';
 import { SdcSoftDevice } from "../devices/SdcSoftDevice";
 import { map as PointMap } from '../map/map'
 
+class DeviceAdapter {
+    private createDeviceFunc: (type: string) => SdcSoftDevice;
+    private createMapFunc: (type: string, lang: Language) => PointMap;
 
-export class DeviceAdapterUtil {
-    private static createDeviceInstance(type: string): SdcSoftDevice {
-        let deviceType = require("../devices/" + type);
-        let d = new deviceType();
-        return d;
+    constructor(createDeviceFunc: (type: string) => SdcSoftDevice, createMapFunc: (type: string, lang: Language) => PointMap) {
+        this.createDeviceFunc = createDeviceFunc;
+        this.createMapFunc = createMapFunc;
     }
-    private static createMapInstance(type: string, lang: Language = 'zh-cn'): PointMap {
-        let mapType = require("../map/" + lang + '/' + type);
-        let d = new mapType();
-        return d;
-    }
+
     /**
      * 获取子类别设备对象
      */
-    private static getSubDevice(type: string,sub:string, data: Buffer,lang: Language = 'zh-cn'):SdcSoftDevice|null{
-        DeviceAdapterUtil.createDeviceInstance(type+'_'+sub);
-        let device = DeviceAdapterUtil.createDeviceInstance(type);
-        let map = DeviceAdapterUtil.createMapInstance(type+'/'+sub, lang);
+    private getSubDevice(type: string, sub: string, data: Uint8Array, lang: Language = 'zh-cn'): SdcSoftDevice | null {
+        let t:string = type + '/' + sub;
+        let device =  this.createDeviceFunc(t);
+        let map = this.createMapFunc(t, lang);
         if (device.validateFalse(data.byteLength)) {
             return null;
         }
@@ -32,24 +29,25 @@ export class DeviceAdapterUtil {
         return device;
 
     }
-    static getSdcSoftDevice(type: string, data: Buffer, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, lang: Language = 'zh-cn'): SdcSoftDevice|null {
-        let device = DeviceAdapterUtil.createDeviceInstance(type);
-        let map = DeviceAdapterUtil.createMapInstance(type, lang);
+    getSdcSoftDevice(type: string, data: Uint8Array, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, lang: Language = 'zh-cn'): SdcSoftDevice | null {
+        let device = this.createDeviceFunc(type);
+        let map = this.createMapFunc(type, lang);
 
         if (device.validateFalse(data.byteLength)) {
             return null;
         }
 
         map.getPointMap().each((key, value) => {
-            if(key == SdcSoftDevice.KEY_POINT_RUN_DAYS){
+            /*
+            if (key == SdcSoftDevice.KEY_POINT_RUN_DAYS) {
                 console.log('hhhhhhh');
-            }
+            }*/
             device.handleByteField(value, data);
         });
         //需要进行子类型确认
-        if(device.getSubDeviceType()>SdcSoftDevice.NO_SUB_DEVICE_TYPE){
-           let subDevice:SdcSoftDevice|null = DeviceAdapterUtil.getSubDevice(type,device.getSubDeviceType.toString(),data,lang);
-           if(null == subDevice)
+        if (device.getSubDeviceType() > SdcSoftDevice.NO_SUB_DEVICE_TYPE) {
+            let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType.toString(), data, lang);
+            if (null == subDevice)
                 return null;
             device = subDevice;
         }
@@ -72,5 +70,39 @@ export class DeviceAdapterUtil {
             device.setMedia(mediaUI.getValue());
         }
         return device;
+    }
+}
+/*
+
+export class Ts_DeviceAdapterUtil {
+    private static adapter: DeviceAdapter = new DeviceAdapter((type) => {
+        let deviceType = require("../devices/" + type);
+        let d = new deviceType();
+        return d;
+    }, (type, lang) => {
+        let mapType = require("../map/" + lang + '/' + type);
+        let d = new mapType();
+        return d;
+    });
+
+
+    static getSdcSoftDevice(type: string, data: Buffer, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, lang: Language = 'zh-cn'): SdcSoftDevice | null {
+        return this.adapter.getSdcSoftDevice(type, data, power, media, lang);
+    }
+}
+*/
+export class Js_DeviceAdapterUtil {
+    private static adapter: DeviceAdapter | null;
+
+    static InjectFunc(createDeviceFunc: (type: string) => SdcSoftDevice, createMapFunc: (type: string, lang: Language) => PointMap) {
+        this.adapter = new DeviceAdapter(createDeviceFunc, createMapFunc);
+    }
+
+
+    static getSdcSoftDevice(type: string, data: Uint8Array, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, lang: Language = 'zh-cn'): SdcSoftDevice | null {
+        if (null != this.adapter) {
+            return this.adapter.getSdcSoftDevice(type, data, power, media, lang);
+        }
+        return null;
     }
 }

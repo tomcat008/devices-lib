@@ -1,7 +1,7 @@
 {
-  "name": "devices-lib",
-  "version": "1.0.0",
-  "description": "js devices lib",
+  "name": "@tomcat008/devices-lib",
+  "version": "1.1.4",
+  "description": "devices lib,适配Js环境，清理Ts Require内容",
   "main": "dist/index.js",
   "module": "dist/es6/index.js",
   "scripts": {
@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/tomcat008/devices-lib#readme",
   "dependencies": {
-    "@types/node": "^11.12.0",
-    "browserify": "^16.2.3"
+    
+  },
+  "devDependencies": {
   }
 }

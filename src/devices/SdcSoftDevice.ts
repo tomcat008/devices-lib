@@ -195,7 +195,10 @@ export abstract class SdcSoftDevice {
         });
         return this.commandMap;
     }
-    
+    getDeviceType():string{
+        return '';
+    }
+
     getSubDeviceType():number{
         return SdcSoftDevice.NO_SUB_DEVICE_TYPE;
     }
@@ -213,6 +216,6 @@ export abstract class SdcSoftDevice {
      */
     abstract getFan(): AElement[];
 
-    abstract handleByteField(field: ByteField, bytes: Buffer): void;
+    abstract handleByteField(field: ByteField, bytes: Uint8Array): void;
     abstract getDeviceFocusFields(): DeviceFieldForUI[];
 }

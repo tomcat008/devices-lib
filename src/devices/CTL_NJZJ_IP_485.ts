@@ -8,11 +8,11 @@ export abstract class IP_485 extends IP {
         return '';
     }
 
-    public handleByteField(field: ByteField, bytes: Buffer) {
+    public handleByteField(field: ByteField, bytes: Uint8Array) {
         //let view = new DataView(bytes);
         if (field.haveValue(
-            bytes.readUInt8(field.getStartIndex()),
-            bytes.readUInt8(field.getStartIndex() + 1))
+            bytes[field.getStartIndex()],
+            bytes[field.getStartIndex() + 1])
         ) {
             this.addField(field);
         }
