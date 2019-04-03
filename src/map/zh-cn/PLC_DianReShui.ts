@@ -1,21 +1,21 @@
 import { PLC as PLC_Map} from "./PLC";
 import { PLC } from "../../devices/PLC";
 import { CountField } from "../../meta/CountField";
-import { BaseInfoField, MockField, SettingField, DeviceField, ExceptionField, OpenCloseField } from "../../meta/PLC/meta";
-import { SdcSoftDevice } from "../../devices/SdcSoftDevice";
-import { FixedValueField } from "../../meta/FixedValueField";
+import { MockField, SettingField, DeviceField, ExceptionField, OpenCloseField, BaseInfoField } from "../../meta/PLC/meta";
 import { ZH_CN } from "./ZH_CN";
+import { SdcSoftDevice } from "../..";
+import { FixedValueField } from "../../meta/FixedValueField";
 
 
 export = class PLC_DianReShui extends PLC_Map {
-    static readonly Key = "PLC_DianReShui";
-    static readonly Commands_Key_Parameters_Setting = "参数设置";
-    static readonly Commands_Key_System_Ctl = "系统控制";
+    //static readonly Key = "PLC_DianReShui";
+    //static readonly Commands_Key_Parameters_Setting = "参数设置";
+    //static readonly Commands_Key_System_Ctl = "系统控制";
    
     constructor() {
         super();
-        this.addCommandGroup(PLC_Map.Commands_Key_Parameters_Setting);
-        this.addCommandGroup(PLC_Map.Commands_Key_System_Ctl);
+        //this.addCommandGroup(PLC_Map.Commands_Key_Parameters_Setting);
+        //this.addCommandGroup(PLC_Map.Commands_Key_System_Ctl);
         /**
          * 计算属性（不显示）
          */

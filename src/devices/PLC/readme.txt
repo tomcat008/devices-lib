@@ -1,0 +1,3 @@
+为新的PLC类型做准备
+新的PLC类型由主类型PLC及子类型SubType决定
+子类型存储在PLC内部，类型CTL_RT_X1

@@ -1,5 +1,9 @@
 import { ZH_CN as ParentClass } from './ZH_CN'
 
+import { BaseInfoField } from "../../meta/PLC/meta";
+import { SdcSoftDevice } from "../../devices/SdcSoftDevice";
+import { FixedValueField } from "../../meta/FixedValueField";
+
 export abstract class PLC extends ParentClass {
     static readonly Commands_Key_Parameters_Setting = "参数设置";
     static readonly Commands_Key_System_Ctl = "系统控制";
@@ -18,4 +22,16 @@ export abstract class PLC extends ParentClass {
         1: "运行",
         2: "大火"
     };
+    constructor() {
+        super();
+        this.addCommandGroup(PLC.Commands_Key_Parameters_Setting);
+        this.addCommandGroup(PLC.Commands_Key_System_Ctl);
+        /*
+                this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 9, 2, "运行小时数", "时"));
+                this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 11, 2, "运行天数", "天"));
+                this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 13, 2, "系统状态", '', PLC.coms_status));
+                this.addPoint(new BaseInfoField("ba_shuiweizhuangtai", 19, 2, "水位状态", '', ParentClass.coms_level));
+                this.addPoint(new BaseInfoField("ba_ranshaoqizhuangtai", 21, 2, "燃烧器状态", '', PLC.coms_ranshaoqi_status));
+            */
+    }
 }

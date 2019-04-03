@@ -1,14 +1,15 @@
 declare function require(moduleName: string): any;
 
-import { Js_DeviceAdapterUtil, SdcSoftDevice } from '../src';
-import { map as PointMap } from '../src/map/map'
+import { Js_DeviceAdapterUtil } from '../utils/DeviceAdapterUtil';
+import { SdcSoftDevice } from '../devices/SdcSoftDevice'
+import { map as PointMap } from '../map/map'
 import * as Request from 'supertest'
 Js_DeviceAdapterUtil.InjectFunc(function(type:string):SdcSoftDevice{
-    let deviceType = require("../src/devices/" + type);
+    let deviceType = require("../devices/" + type);
     let d = new deviceType();
     return d;
 },function(type:string,lang:string='zh-cn'):PointMap{
-    let deviceType = require('../src/map/'+lang +'/'+ type);
+    let deviceType = require('../map/'+lang +'/'+ type);
     let d = new deviceType();
     return d;
 });
@@ -52,6 +53,7 @@ function printDevice(device:SdcSoftDevice){
     }
     
 }
+/*
 let request = Request('http://output.sdcsoft.com.cn/device2').post('/get2');
 
 function checkDevice(deviceNo:string,type:string,done:any)
@@ -64,11 +66,10 @@ function checkDevice(deviceNo:string,type:string,done:any)
                 printDevice(device);
 
             } else {
-                console.log('empty!!!!');
+                console.log('empty!');
             }
             done();
         });
 }
-
-
+*/
 export {Js_DeviceAdapterUtil,checkDevice,request as request};

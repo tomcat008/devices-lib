@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/es6/index.js",
   "scripts": {
-    "test": "mocha -t 5000 -r ts-node/register tests/*.test.ts",
+    "test": "mocha -t 60000 -r ts-node/register tests/*.test.ts",
     "build:cmjs": "tsc -P tsconfig.json",
     "build:es6": "tsc -P tsconfig.json --module ES6 --outDir dist/es6",
     "build:web": "browserify dist/index.js --standalone devices-lib -o dist/web/bundle.js",
@@ -25,8 +25,10 @@
   "devDependencies": {
     "@types/mocha": "^5.2.6",
     "@types/should": "^13.0.0",
+    "@types/supertest": "^2.0.7",
     "mocha": "^6.0.2",
     "should": "^13.2.3",
+    "supertest": "^4.0.2",
     "ts-node": "^8.0.3",
     "typescript": "^3.4.1"
   }

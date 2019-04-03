@@ -53,7 +53,7 @@ export class DeviceField extends BParentClass {
     }
 }
 export class ExceptionField extends CParentClass {
-    constructor(name: string, startIndex: number, bytesLength: number, title: string,bit:number) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, bit: number) {
         super();
         this.name = name;
         this.startIndex = startIndex;
@@ -88,7 +88,12 @@ export class MockField extends DParentClass {
         }
     }
     public haveValue(...bytes: number[]): boolean {
-        let i = bytes[0] << 24 + bytes[1] << 16 + bytes[2] << 8 + bytes[3];
+        /*
+        if (this.getTitle() == '软水箱液位') {
+            console.log('软水箱液位');
+        }
+        */
+        let i = bytes[0] << 24 | bytes[1] << 16 | bytes[2] << 8 | bytes[3];
         if (0x7FFFFFFF == i)
             return false;
         let data = new ArrayBuffer(4);
@@ -106,7 +111,7 @@ export class MockField extends DParentClass {
 
 export class OpenCloseField extends EParentClass {
 
-    constructor(name: string, startIndex: number, bytesLength: number, title: string,bit:number) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, bit: number) {
         super();
         this.name = name;
         this.startIndex = startIndex;
@@ -114,7 +119,7 @@ export class OpenCloseField extends EParentClass {
         this.title = title;
         this.bit = bit;
     }
-    
+
     public haveValue(...bytes: number[]): boolean {
         this.value = (bytes[0] & 0xFF) << 8 | bytes[1] & 0xFF;
 
@@ -141,18 +146,18 @@ export class SettingField extends MockField {
         }
         if (cmdGroupKey) {
             this.commandGroupKey = cmdGroupKey;
-            if(address){
+            if (address) {
                 this.address = address;
             }
-            if(minValue){
+            if (minValue) {
                 this.minValue = minValue;
             }
-            if(maxValue){
+            if (maxValue) {
                 this.maxValue = maxValue;
             }
         }
     }
-    
+
     public setDeviceFieldForUIKey(fieldForUI: DeviceFieldForUI) {
         fieldForUI.setKey(map.KEY_SETTING);
     }
