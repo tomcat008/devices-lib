@@ -50,7 +50,14 @@ function printDevice(device:SdcSoftDevice){
     for(let i in elements){
         console.log(elements[i].getTitle()+':='+elements[i].getElementPrefixAndValuesString());
     }
-    
+    console.log('--------------------控制命令--------------------');
+    let cmds = device.getCommands();
+    cmds.each(function(key,cmds){
+        console.log(key);
+        for(let i in cmds ){
+            console.log('\t'+cmds[i].getTitle());
+        }
+    });
 }
 let request = Request('http://output.sdcsoft.com.cn/device2').post('/get2');
 

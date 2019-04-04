@@ -5,7 +5,7 @@ import { MockField, SettingField, DeviceField, ExceptionField, OpenCloseField } 
 import { ZH_CN } from "./ZH_CN";
 import { BaseInfoField } from "../../meta/CTL_NJZJ_485/meta";
 import { FixedValueField } from "../../meta/FixedValueField";
-import { SdcSoftDevice } from "../..";
+import { SdcSoftDevice } from "../../devices/SdcSoftDevice";
 
 
 export = class PLC_DianZhengQi extends PLC_Map {

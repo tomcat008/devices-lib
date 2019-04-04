@@ -51,9 +51,16 @@ function printDevice(device:SdcSoftDevice){
     for(let i in elements){
         console.log(elements[i].getTitle()+':='+elements[i].getElementPrefixAndValuesString());
     }
-    
+    console.log('--------------------控制命令--------------------');
+    let cmds = device.getCommands();
+    cmds.each(function(key,cmds){
+        console.log(key);
+        for(let i in cmds ){
+            console.log('\t'+cmds[i].getTitle());
+        }
+    });
 }
-/*
+
 let request = Request('http://output.sdcsoft.com.cn/device2').post('/get2');
 
 function checkDevice(deviceNo:string,type:string,done:any)
@@ -71,5 +78,5 @@ function checkDevice(deviceNo:string,type:string,done:any)
             done();
         });
 }
-*/
+
 export {Js_DeviceAdapterUtil,checkDevice,request as request};

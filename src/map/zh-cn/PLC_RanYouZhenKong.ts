@@ -4,7 +4,7 @@ import { CountField } from "../../meta/CountField";
 import { MockField, SettingField, DeviceField, ExceptionField } from "../../meta/PLC/meta";
 import { ZH_CN } from "./ZH_CN";
 import { BaseInfoField } from "../../meta/CTL_NJZJ_485/meta";
-import { SdcSoftDevice } from "../..";
+import { SdcSoftDevice } from "../../devices/SdcSoftDevice";
 import { FixedValueField } from "../../meta/FixedValueField";
 
 export = class PLC_RanYouZhenKong extends PLC_Map {

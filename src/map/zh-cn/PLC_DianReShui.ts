@@ -3,7 +3,7 @@ import { PLC } from "../../devices/PLC";
 import { CountField } from "../../meta/CountField";
 import { MockField, SettingField, DeviceField, ExceptionField, OpenCloseField, BaseInfoField } from "../../meta/PLC/meta";
 import { ZH_CN } from "./ZH_CN";
-import { SdcSoftDevice } from "../..";
+import { SdcSoftDevice } from "../../devices/SdcSoftDevice";
 import { FixedValueField } from "../../meta/FixedValueField";
 
 

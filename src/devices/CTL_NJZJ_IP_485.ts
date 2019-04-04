@@ -14,6 +14,10 @@ export abstract class IP_485 extends IP {
             bytes[field.getStartIndex()],
             bytes[field.getStartIndex() + 1])
         ) {
+            /*
+            if(field.getName()=='se_baojingwendu'){
+                console.log('aaaaaaaa');
+            }*/
             this.addField(field);
         }
     }
