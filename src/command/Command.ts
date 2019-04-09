@@ -137,15 +137,15 @@ export abstract class Command {
         return "";
     }
 
-    static toBytes(str: string): ArrayBuffer|null {
+    static hexStringToBytes(str: string): Uint8Array|null {
         if (null != str && str.length != 0) {
             let len = str.length / 2;
             let bytes = new ArrayBuffer(len);
             let v = new Uint8Array(bytes);
             for (let i = 0; i < len; i++) {
-                v[i] = (new Number(str.substr(i * 2, i * 2 + 2))).valueOf();// as number;
+                v[i] = (parseInt(str.substr(i * 2, 2),16));
             }
-            return bytes;
+            return v;
         }
         return null;
     }
@@ -155,7 +155,7 @@ export abstract class Command {
             let len = str.length / 2;
             for (let i = 0; i < len; i++) {
                 //console.log(str.substr(i * 2, 2));
-                numbers.push((new Number(str.substr(i * 2, 2))).valueOf());
+                numbers.push(parseInt(str.substr(i * 2, 2),16));
             }
         }
         return numbers;
@@ -205,7 +205,7 @@ export class IntCommand extends Command {
     }
 
     convertToString(): string {
-        let no = NumberUtil.NumberToString(this.getModbusNo(), 16, 4);//Command.intToHexString(this.getModbusNo());
+        let no = NumberUtil.NumberToString(this.getModbusNo(), 16, 2);//Command.intToHexString(this.getModbusNo());
         let baseStr = no + this.action + this.address + this.value;
         let data = Command.toNumbers(baseStr);
         return baseStr + CRC16Util.getCrc(CRC16Util.calcCrc16(data, 0, data.length)) + "0000000000";

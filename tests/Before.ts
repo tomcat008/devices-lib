@@ -3,6 +3,7 @@ declare function require(moduleName: string): any;
 import { Js_DeviceAdapterUtil, SdcSoftDevice } from '../src';
 import { map as PointMap } from '../src/map/map'
 import * as Request from 'supertest'
+import { Command } from '../src/command/Command';
 Js_DeviceAdapterUtil.InjectFunc(function(type:string):SdcSoftDevice{
     let deviceType = require("../src/devices/" + type);
     let d = new deviceType();
@@ -59,6 +60,32 @@ function printDevice(device:SdcSoftDevice){
         }
     });
 }
+function getCommands(device:SdcSoftDevice){
+    console.log('commands:');
+    let cmds = device.getCommands();
+    cmds.each((k,v)=>{
+        v.forEach(element => {
+            if(element.getTitle()=='系统控制')
+            element.setValue(10);
+        });
+    });
+    let str:string ='';
+    cmds.each((k,v)=>{
+        v.forEach(e=>{
+            str+=e.getCommandString();
+        });
+    });
+    console.log(str);
+    str ='';
+    let data = Command.hexStringToBytes(str);
+    if(data){
+        for(let i = 0;i <data.length;i++){
+            str+=data[i].valueOf();
+            str+=' ';
+        }
+    }
+    console.log(str);
+}
 let request = Request('http://output.sdcsoft.com.cn/device2').post('/get2');
 
 function checkDevice(deviceNo:string,type:string,done:any)
@@ -69,6 +96,7 @@ function checkDevice(deviceNo:string,type:string,done:any)
             let device: SdcSoftDevice | null = Js_DeviceAdapterUtil.getSdcSoftDevice(type, data);
             if (device) {
                 printDevice(device);
+                getCommands(device);
 
             } else {
                 console.log('empty!!!!');
