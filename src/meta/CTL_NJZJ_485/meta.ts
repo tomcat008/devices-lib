@@ -101,7 +101,7 @@ import { MockField as DParentClass } from '../MockField'
 
 export class MockField extends DParentClass {
 
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string, baseNumber?: number) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string='', baseNumber?: number) {
         super();
         this.name = name;
         this.startIndex = startIndex;
@@ -166,10 +166,10 @@ import { DeviceFieldForUI } from '../DeviceFieldForUI'
 import { map } from '../../map/map';
 export class SettingField extends MockField {
 
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string);
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string, baseNumber: number);
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string, baseNumber: number, cmdGroupKey?: string, address?: string, minValue?: number, maxValue?: number);
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string, baseNumber?: number, cmdGroupKey?: string, address?: string, minValue?: number, maxValue?: number) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit?: string);
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit?: string, baseNumber?: number);
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit?: string, baseNumber?: number, cmdGroupKey?: string, address?: string, minValue?: number, maxValue?: number);
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string='', baseNumber?: number, cmdGroupKey?: string, address?: string, minValue?: number, maxValue?: number) {
         super(name, startIndex, bytesLength, title, unit, 0);
         if (baseNumber) {
             this.baseNumber = baseNumber;

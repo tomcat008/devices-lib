@@ -16,8 +16,8 @@ class DeviceAdapter {
      * 获取子类别设备对象
      */
     private getSubDevice(type: string, sub: string, data: Uint8Array, lang: Language = 'zh-cn'): SdcSoftDevice | null {
-        let t:string = type + '/' + sub;
-        let device =  this.createDeviceFunc(t);
+        let t: string = type + '/' + sub;
+        let device = this.createDeviceFunc(t);
         let map = this.createMapFunc(t, lang);
         if (device.validateFalse(data.byteLength)) {
             return null;
@@ -72,15 +72,17 @@ class DeviceAdapter {
         return device;
     }
 }
-/*
-
-export class Ts_DeviceAdapterUtil {
+export class Web_DeviceAdapterUtil {
     private static adapter: DeviceAdapter = new DeviceAdapter((type) => {
-        let deviceType = require("../devices/" + type);
+        let strs = type.split('-')
+        let path = '../devices/' + strs.join('/');
+        let deviceType = require(path);
         let d = new deviceType();
         return d;
     }, (type, lang) => {
-        let mapType = require("../map/" + lang + '/' + type);
+        let strs = type.split('-')
+        let path = '../map/' + lang + '/' + strs.join('/');
+        let mapType = require(path);
         let d = new mapType();
         return d;
     });
@@ -90,8 +92,8 @@ export class Ts_DeviceAdapterUtil {
         return this.adapter.getSdcSoftDevice(type, data, power, media, lang);
     }
 }
-*/
-export class Js_DeviceAdapterUtil {
+
+export class Wx_DeviceAdapterUtil {
     private static adapter: DeviceAdapter | null;
 
     static InjectFunc(createDeviceFunc: (type: string) => SdcSoftDevice, createMapFunc: (type: string, lang: Language) => PointMap) {
