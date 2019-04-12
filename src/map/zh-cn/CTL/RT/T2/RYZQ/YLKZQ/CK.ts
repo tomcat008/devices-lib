@@ -1,8 +1,8 @@
 import { CTL_RT_T2_RYZQ_YLKZQ } from "./BaseMap";
-import { ExceptionField, SettingField } from "../../../../../../../meta/CTL_RT/meta";
+import { ExceptionField, SettingField } from "../../../../../../../meta/RT/meta";
 
 
-export class CTL_RT_T2_RYZQ_YLKZQ_CK extends CTL_RT_T2_RYZQ_YLKZQ{
+export = class CTL_RT_T2_RYZQ_YLKZQ_CK extends CTL_RT_T2_RYZQ_YLKZQ{
     constructor(){
         super();
         

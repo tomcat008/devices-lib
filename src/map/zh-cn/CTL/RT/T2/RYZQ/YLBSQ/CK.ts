@@ -1,10 +1,10 @@
 import { CTL_RT_T2_RYZQ_YLBSQ } from "./BaseMap";
-import { ExceptionField, OpenCloseField, SettingField } from "../../../../../../../meta/CTL_RT/meta";
+import { ExceptionField, OpenCloseField, SettingField } from "../../../../../../../meta/RT/meta";
 import { ZH_CN } from "../../../../../ZH_CN";
 
 
 
-export class CTL_RT_T2_RYZQ_YLBSQ_CK extends CTL_RT_T2_RYZQ_YLBSQ{
+export = class CTL_RT_T2_RYZQ_YLBSQ_CK extends CTL_RT_T2_RYZQ_YLBSQ{
     constructor(){
         super();
         this.addPoint(new OpenCloseField("oc_queshuidianji2", 5, 2, "缺水电极2",7,ZH_CN.coms_open_close));

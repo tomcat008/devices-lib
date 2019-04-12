@@ -1,9 +1,9 @@
 import { CTL_RT_T2_RYZQ_YLKZQ } from "./BaseMap";
-import { ExceptionField } from "../../../../../../../meta/CTL_RT/meta";
+import { ExceptionField } from "../../../../../../../meta/RT/meta";
 
 
 
-export class CTL_RT_T2_RYZQ_YLKZQ_2018 extends CTL_RT_T2_RYZQ_YLKZQ{
+export = class CTL_RT_T2_RYZQ_YLKZQ_2018 extends CTL_RT_T2_RYZQ_YLKZQ{
     constructor(){
         super();
         this.addPoint(new ExceptionField("ex_ranqiyaligaobaojing", 45, 2, "燃气压力高报警", 15));

@@ -1,6 +1,6 @@
 import { CTL_NJZJ } from "../CTL/NJZJ/CTL_NJZJ";
 import { SdcSoftDevice } from "../../../devices/SdcSoftDevice";
-import { BaseInfoField, RunDaysField, ExceptionField, DeviceField, MockField, RanShaoQiField, SettingField, StartStopField, } from "../../../meta/CTL_NJZJ_485/meta";
+import { BaseInfoField, RunDaysField, ExceptionField, DeviceField, MockField, RanShaoQiField, SettingField, StartStopField, } from "../../../meta/NJZJ/485";
 import { ZH_CN } from "../ZH_CN";
 
 export class CTL_NJZJ_IP extends CTL_NJZJ {

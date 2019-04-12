@@ -1,7 +1,7 @@
 import { ZH_CN as ParentClass, ZH_CN } from '../../ZH_CN'
 import { INumberIndex } from '../../../../entities/IIndex';
 import { FixedValueField } from '../../../../meta/FixedValueField';
-import { BaseInfoField, OpenCloseField, ExceptionField, DemandField, SettingField, MockField, DeviceField } from '../../../../meta/CTL_HNWE/meta';
+import { BaseInfoField, OpenCloseField, ExceptionField, DemandField, SettingField, MockField, DeviceField } from '../../../../meta/HNWE/meta';
 import { SdcSoftDevice } from '../../../..';
 
 export = class CTL_HNWR_485 extends ParentClass {

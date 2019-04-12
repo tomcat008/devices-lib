@@ -1,9 +1,9 @@
-import { CTL_RT_T2_RYZQ_YLBSQ } from "./BaseMap";
-import { OpenCloseField, ExceptionField } from "../../../../../../../meta/CTL_RT/meta";
+import { OpenCloseField, ExceptionField } from "../../../../../../../meta/RT/meta";
 import { ZH_CN } from "../../../../../ZH_CN";
+import { CTL_RT_T2_RYZQ_YLBSQ } from "./BaseMap";
 
 
-export class CTL_RT_T2_RYZQ_YLBSQ_2019 extends CTL_RT_T2_RYZQ_YLBSQ{
+export = class CTL_RT_T2_RYZQ_YLBSQ_2019 extends CTL_RT_T2_RYZQ_YLBSQ{
     constructor(){
         super();
         this.addPoint(new OpenCloseField("oc_yalikongzhiqi1", 5, 2, "压力控制器（一段火）", 7, ZH_CN.coms_open_close));

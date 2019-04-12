@@ -16,7 +16,7 @@ class DeviceAdapter {
      * 获取子类别设备对象
      */
     private getSubDevice(type: string, sub: string, data: Uint8Array, lang: Language = 'zh-cn'): SdcSoftDevice | null {
-        let t: string = type + '/' + sub;
+        let t: string = type + '_' + sub;
         let device = this.createDeviceFunc(t);
         let map = this.createMapFunc(t, lang);
         if (device.validateFalse(data.byteLength)) {

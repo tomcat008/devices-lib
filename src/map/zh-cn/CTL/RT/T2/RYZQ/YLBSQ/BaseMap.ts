@@ -1,9 +1,9 @@
-import { CTL_RT_T2_RYZQ } from "../RYZQ";
 import { ZH_CN } from "../../../../../ZH_CN";
-import { OpenCloseField,MockField,ExceptionField } from "../../../../../../../meta/CTL_RT/meta";
+import { OpenCloseField,MockField,ExceptionField } from "../../../../../../../meta/RT/meta";
 import { CTL_RT_T2_RYZQ_YLBSQ as Device } from '../../../../../../../devices/CTL/RT/T2/RYZQ/YLBSQ/BaseDevice'
+import { CTL_RT_T2_RYZQ_Ts } from "../../RYZQ_Ts";
 
-export class CTL_RT_T2_RYZQ_YLBSQ extends CTL_RT_T2_RYZQ{
+export class CTL_RT_T2_RYZQ_YLBSQ extends CTL_RT_T2_RYZQ_Ts{
     constructor(){
         super();
         this.addPoint(new OpenCloseField(Device.KEY_POINT_RAN_SHAO_QI_STATUS, 9, 2, "燃烧器负荷增大调节", 1, ZH_CN.coms_open_close));

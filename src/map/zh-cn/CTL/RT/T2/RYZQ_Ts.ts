@@ -1,33 +1,16 @@
-import { ZH_CN } from "../../../../ZH_CN";
-import { INumberIndex } from "../../../../../../entities/IIndex";
+import { CTL_RT_T2 } from "../../RT/T2/T2";
+import { BaseInfoField, OpenCloseField, DeviceField, MockField, ExceptionField } from "../../../../../meta/RT/meta";
+import { CountShowField } from "../../../../../meta/CountShowField";
+import { FixedValueField } from "../../../../../meta/FixedValueField";
+import { CountField } from "../../../../../meta/CountField";
+import { CTL_RT_T2_RY } from "../../../../../devices/CTL/RT/T2/RY";
+import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice";
+import { ZH_CN } from "../../../ZH_CN";
 
-import { BaseInfoField, OpenCloseField, DeviceField, MockField, ExceptionField } from "../../../../../../meta/CTL_RT/meta";
-import { CountShowField } from "../../../../../../meta/CountShowField";
-import { FixedValueField } from "../../../../../../meta/FixedValueField";
-import { CountField } from "../../../../../../meta/CountField";
-import { CTL_RT_T2_RY } from "../../../../../../devices/CTL/RT/T2/RY";
-import { SdcSoftDevice } from "../../../../../../devices/SdcSoftDevice";
 
+export abstract class CTL_RT_T2_RYZQ_Ts extends CTL_RT_T2 {
 
-export abstract class CTL_RT_T2_RYZQ extends ZH_CN {
-
-    static coms_status: INumberIndex = {
-        0: "待命",
-        1: "报警",
-        2: "运行"
-    }
-    static coms_ranshaoqi_status: INumberIndex = {
-        0: "小火",
-        1: "大火"
-    }
-    static coms_masters: INumberIndex = {
-        0: "主",
-        1: "备"
-    }
-    static coms_atuo: INumberIndex = {
-        0: "自",
-        1: "手"
-    }
+    
 
     constructor() {
         super();
@@ -35,7 +18,7 @@ export abstract class CTL_RT_T2_RYZQ extends ZH_CN {
         this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_Add_SHUI_BENG, "给水泵"));
         this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_LENG_NING_BENG, "节能循环泵"));
 
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 3, 2, "系统状态", '', CTL_RT_T2_RYZQ.coms_status));
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 3, 2, "系统状态", '', CTL_RT_T2_RYZQ_Ts.coms_status));
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_LIFE, 53, 2, "运行时间", "时"));
         this.addPoint(new CountShowField(SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"));
         this.addPoint(new CountShowField(SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"));
@@ -70,9 +53,9 @@ export abstract class CTL_RT_T2_RYZQ extends ZH_CN {
         this.addPoint(new MockField("mo_paiyanwendu", 21, 2, "排烟温度", "℃"));
         this.addPoint(new MockField("mo_jienengqiyanwen", 23, 2, "节能器烟温", "℃"));
 
-        this.addPoint(new DeviceField("de_jishuibeng_zhu/bei_", 49, 2, "给水泵", 0, CTL_RT_T2_RYZQ.coms_masters));
-        this.addPoint(new DeviceField("de_jishuibeng_shoudong/zidong_", 49, 2, "给水泵", 1, CTL_RT_T2_RYZQ.coms_atuo));
-        this.addPoint(new DeviceField("de_lengningxunhuanbeng_zidong/shoudong_", 49, 2, "节能循环泵", 3, CTL_RT_T2_RYZQ.coms_atuo));
+        this.addPoint(new DeviceField("de_jishuibeng_zhu/bei_", 49, 2, "给水泵", 0, CTL_RT_T2_RYZQ_Ts.coms_master));
+        this.addPoint(new DeviceField("de_jishuibeng_shoudong/zidong_", 49, 2, "给水泵", 1, CTL_RT_T2_RYZQ_Ts.coms_atuo));
+        this.addPoint(new DeviceField("de_lengningxunhuanbeng_zidong/shoudong_", 49, 2, "节能循环泵", 3, CTL_RT_T2_RYZQ_Ts.coms_atuo));
 
 
         this.addPoint(new ExceptionField("ex_chaoyabaojing_biansongqi_", 45, 2, "超压报警（变送器）", 2));

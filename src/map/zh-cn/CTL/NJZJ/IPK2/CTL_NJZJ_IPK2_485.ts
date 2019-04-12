@@ -1,5 +1,5 @@
 import { CTL_NJZJ_IP_485 } from "../CTL_NJZJ_IP_485";
-import { SettingField } from "../../../../../meta/CTL_NJZJ_485/meta";
+import { SettingField } from "../../../../../meta/NJZJ/485";
 
 
 export = class CTL_NJZJ_IPK2_485 extends CTL_NJZJ_IP_485 {

@@ -1,11 +1,11 @@
-import { CTL_RT_T2_RYZQ } from "../RYZQ";
-import { ExceptionField, OpenCloseField } from "../../../../../../../meta/CTL_RT/meta";
+import { ExceptionField, OpenCloseField } from "../../../../../../../meta/RT/meta";
 import { ZH_CN } from "../../../../../ZH_CN";
 import { CTL_RT_T2_RYZQ_YLKZQ2 as Device } from '../../../../../../../devices/CTL/RT/T2/RYZQ/YLKZQ/BaseDevice2'
+import { CTL_RT_T2_RYZQ_Ts } from "../../RYZQ_Ts";
 
 
 
-export class CTL_RT_T2_RYZQ_YLKZQ_2019 extends CTL_RT_T2_RYZQ{
+export = class CTL_RT_T2_RYZQ_YLKZQ_2019 extends CTL_RT_T2_RYZQ_Ts{
 
     constructor(){
         super();
