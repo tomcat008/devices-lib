@@ -6,7 +6,7 @@ import { CTL_RT_T3_RYZQ_Ts } from "../RYZQ_Ts";
 export = class CTL_RT_T3_RYZQ_YLBSQ extends CTL_RT_T3_RYZQ_Ts {
     constructor() {
         super();
-       
+        this.warningMsg='';
         this.addPoint(new OpenCloseField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, "燃烧器启停控制",0,ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_ranshaoqifuhediaojie/zengdadiaojie", 9, 2, "燃烧器负荷增大调节",1,ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_jianxiaodiaojie", 9, 2, "减小调节",2,ZH_CN.coms_open_close));

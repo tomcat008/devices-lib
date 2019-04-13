@@ -36,6 +36,13 @@ export class StringHashMap<TValue>{
     get count(): number {
         return map.length;
     }
+    get Keys(): string[]{
+        let keys:string[] = [];
+        this.each((k,v)=>{
+            keys.push(k)
+        });
+        return keys;
+    }
     each(func: (key: string, value: TValue) => void) {
         for (const key in this.map) {
             func(key, this.map[key]);
@@ -43,6 +50,9 @@ export class StringHashMap<TValue>{
     }
     containsKey(key: string): boolean {
         return this.map[key] ? true : false;
+    }
+    clear():void{
+        this.map={};
     }
 }
 

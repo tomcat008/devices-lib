@@ -1,5 +1,4 @@
 import { INumberIndex } from "../../../../../entities/IIndex";
-import { CTL_RT } from "../RT";
 import { CountField } from "../../../../../meta/CountField";
 import { BaseInfoField, OpenCloseField, ExceptionField, MockField, DeviceField, SettingField } from "../../../../../meta/RT/meta";
 import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice";
@@ -7,8 +6,9 @@ import { FixedValueField } from "../../../../../meta/FixedValueField";
 import { CTL_RT_RY } from "../../../../../devices/CTL/RT/RY";
 import { CountShowField } from "../../../../../meta/CountShowField";
 import { ZH_CN } from "../../../ZH_CN";
+import { CTL_RT_H1_Ts } from "../H1_Ts";
 
-export = class CTL_RT_H1_RYRS extends CTL_RT {
+export = class CTL_RT_H1_RYRS extends CTL_RT_H1_Ts {
 
     static coms_status: INumberIndex = {
         0: "待命",
@@ -32,10 +32,11 @@ export = class CTL_RT_H1_RYRS extends CTL_RT {
     }
     constructor() {
         super();
+        this.warningMsg='';
         /*计算属性（不显示）*/
         this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG, "补水泵"));
         this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_LENG_NING_BENG, "循环泵"));
-        this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
+        //this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
 
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 3, 2, "工作状态", '', CTL_RT_H1_RYRS.coms_status));

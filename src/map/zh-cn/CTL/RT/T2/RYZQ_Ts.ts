@@ -1,4 +1,4 @@
-import { CTL_RT_T2 } from "../../RT/T2/T2";
+import { CTL_RT_T2_Ts } from "../T2_Ts";
 import { BaseInfoField, OpenCloseField, DeviceField, MockField, ExceptionField } from "../../../../../meta/RT/meta";
 import { CountShowField } from "../../../../../meta/CountShowField";
 import { FixedValueField } from "../../../../../meta/FixedValueField";
@@ -8,12 +8,25 @@ import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice";
 import { ZH_CN } from "../../../ZH_CN";
 
 
-export abstract class CTL_RT_T2_RYZQ_Ts extends CTL_RT_T2 {
+export class CTL_RT_T2_RYZQ_Ts extends CTL_RT_T2_Ts {
 
     
 
     constructor() {
         super();
+        this.warningMsg='长按修改类型';
+        this.subTypes.clear();
+
+        this.subTypes.addItem('压力变送器18','CTL_RT_T2_RYZQ_YLBSQ_18');
+        this.subTypes.addItem('压力变送器19','CTL_RT_T2_RYZQ_YLBSQ_19');
+        this.subTypes.addItem('压力变送器出口','CTL_RT_T2_RYZQ_YLBSQ_CK');
+
+        this.subTypes.addItem('压力控制器18','CTL_RT_T2_RYZQ_YLBSQ_18');
+        this.subTypes.addItem('压力控制器19','CTL_RT_T2_RYZQ_YLBSQ_19');
+        this.subTypes.addItem('压力控制器出口','CTL_RT_T2_RYZQ_YLBSQ_CK');
+        this.subTypes.addItem('燃油热水','CTL_RT_T2_RYRS');
+
+
         this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
         this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_Add_SHUI_BENG, "给水泵"));
         this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_LENG_NING_BENG, "节能循环泵"));
@@ -58,7 +71,7 @@ export abstract class CTL_RT_T2_RYZQ_Ts extends CTL_RT_T2 {
         this.addPoint(new DeviceField("de_lengningxunhuanbeng_zidong/shoudong_", 49, 2, "节能循环泵", 3, CTL_RT_T2_RYZQ_Ts.coms_atuo));
 
 
-        this.addPoint(new ExceptionField("ex_chaoyabaojing_biansongqi_", 45, 2, "超压报警（变送器）", 2));
+        //this.addPoint(new ExceptionField("ex_chaoyabaojing_biansongqi_", 45, 2, "超压报警（变送器）", 2));
         this.addPoint(new ExceptionField("ex_shuiweichuanganqiduanlu1", 45, 2, "水位传感器断路", 3));
         this.addPoint(new ExceptionField("ex_shuiweichuanganqiduanlu", 45, 2, "水位传感器短路", 4));
         this.addPoint(new ExceptionField("ex_jixiandishuiweibaojing_dianliu_", 45, 2, "极限低水位报警（电流）", 5));
@@ -69,7 +82,7 @@ export abstract class CTL_RT_T2_RYZQ_Ts extends CTL_RT_T2 {
         this.addPoint(new ExceptionField("ex_dishuiweibaojing", 45, 2, "低水位报警", 10));
         this.addPoint(new ExceptionField("ex_gaoshuiweibaojing", 45, 2, "高水位报警", 11));
         this.addPoint(new ExceptionField("ex_bianpinqiguzhang", 45, 2, "变频器故障", 12));
-        this.addPoint(new ExceptionField("ex_chaoyabaojing_kongzhiqi_", 45, 2, "超压报警（控制器）", 13));
+        //this.addPoint(new ExceptionField("ex_chaoyabaojing_kongzhiqi_", 45, 2, "超压报警（控制器）", 13));
         this.addPoint(new ExceptionField("ex_ranqiyalidibaojing", 45, 2, "燃气压力低报警", 14));
         
     }

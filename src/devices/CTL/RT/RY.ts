@@ -4,7 +4,7 @@ import { Element as AElement } from "../../../entities/Element";
 import { DeviceFieldForUI } from "../../../meta/DeviceFieldForUI";
 import { List } from "../../../entities/Collections";
 
-export abstract class CTL_RT_RY extends SdcSoftDevice {
+export  class CTL_RT_RY extends SdcSoftDevice {
 
     static readonly KEY_POINT_RAN_SHAO_QI = "_ranshaoqi";
     static readonly KEY_POINT_RAN_SHAO_QI_KONGZHI = "oc_ranshaoqiqitingkongzhi";
@@ -15,7 +15,10 @@ export abstract class CTL_RT_RY extends SdcSoftDevice {
     static readonly KEY_POINT_LENG_NING_BENG_1 = "oc_1_lengningxunhuanbeng_start_stop"
     static readonly KEY_POINT_LENG_NING_BENG_2 = "oc_2_lengningxunhuanbeng_start_stop"
     
-
+    protected getPowerInfo() {
+       
+        return 0;
+    }
     public handleByteField(field: ByteField, bytes: ArrayBuffer) {
         let view = new DataView(bytes);
         switch (field.getBytesLength()) {

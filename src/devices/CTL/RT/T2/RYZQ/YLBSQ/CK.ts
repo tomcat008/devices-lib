@@ -1,6 +1,5 @@
-import { CTL_RT_T2_RYZQ_YLBSQ } from "./BaseDevice";
+import { CTL_RT_T2_RYZQ_YLBSQ_Ts } from "./AScropt/YLBSQ";
 
-
-export = class CTL_RT_T2_RYZQ_YLBSQ_CK extends CTL_RT_T2_RYZQ_YLBSQ {
-   
+export = class CTL_RT_T2_RYZQ_YLBSQ_CK extends CTL_RT_T2_RYZQ_YLBSQ_Ts {
+    
 }

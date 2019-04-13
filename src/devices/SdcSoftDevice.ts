@@ -38,6 +38,11 @@ export abstract class SdcSoftDevice {
 
     private fieldMap = new StringHashMap<DeviceFieldForUI[]>();
     private commandMap = new StringHashMap<Command[]>();
+    /**
+     * 子类型映射map
+     */
+    private subTypes = new StringHashMap<string>();
+
     constructor() {
         this.fieldMap.addItem(map.KEY_BASE, []);
         this.fieldMap.addItem(map.KEY_EXCEPTION, []);
@@ -54,6 +59,9 @@ export abstract class SdcSoftDevice {
     protected power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL;
     protected media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL;
     protected deviceNo: string = '';
+    protected warningMsg:string ='';
+
+
 
     initCommandsMapKeys(map: StringHashMap<Command[]>) {
         this.commandMap = map;
@@ -74,7 +82,7 @@ export abstract class SdcSoftDevice {
         let map = new StringHashMap<DeviceFieldForUI>();
         let list = this.fieldMap.getItem(fieldsGroupKey);
         for (let e in list) {
-            map.addItem(list[e].getName(),list[e]);
+            map.addItem(list[e].getName(), list[e]);
         }
         return map;
     }
@@ -195,14 +203,39 @@ export abstract class SdcSoftDevice {
         });
         return this.commandMap;
     }
-    getDeviceType():string{
+    getDeviceType(): string {
         return '';
     }
-
-    getSubDeviceType():number{
-        return SdcSoftDevice.NO_SUB_DEVICE_TYPE;
+ 
+    setSubTypes(map:StringHashMap<string>):void{
+        this.subTypes = map;
     }
-
+    
+    /**
+     * 根据子类型展示名称获取子类型名称
+     * @param key 子类型展示名称
+     */
+    getSubDeviceType(key: string): string {
+        return this.subTypes.getItem(key);
+    }
+    /**
+     * 获取子类型展示名称列表
+     */
+    getSubTypesNameArray() {
+        this.subTypes.Keys;
+    }
+    /**
+     * 获取设备的警告信息
+     */
+    getWarningMsg(){
+        return this.warningMsg;
+    }
+    /**
+     * 设置设备的警告信息
+     */
+    setWarningMsg(msg:string){
+        this.warningMsg = msg;
+    }
     abstract handleDeviceNo(bytes: number[]): void;
 
     protected abstract getPowerInfo(): number;

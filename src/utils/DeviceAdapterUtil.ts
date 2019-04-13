@@ -12,9 +12,8 @@ class DeviceAdapter {
         this.createMapFunc = createMapFunc;
     }
 
-    /**
-     * 获取子类别设备对象
-     */
+    /*
+    * 获取子类别设备对象,将子类型获取交由用户执行
     private getSubDevice(type: string, sub: string, data: Uint8Array, lang: Language = 'zh-cn'): SdcSoftDevice | null {
         let t: string = type + '_' + sub;
         let device = this.createDeviceFunc(t);
@@ -27,8 +26,8 @@ class DeviceAdapter {
             device.handleByteField(value, data);
         });
         return device;
-
     }
+    */
     getSdcSoftDevice(type: string, data: Uint8Array, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, lang: Language = 'zh-cn'): SdcSoftDevice | null {
         let device = this.createDeviceFunc(type);
         let map = this.createMapFunc(type, lang);
@@ -36,7 +35,10 @@ class DeviceAdapter {
         if (device.validateFalse(data.byteLength)) {
             return null;
         }
-
+        //设置设备警告信息
+        device.setWarningMsg(map.getwarningMsg());
+        //设置子类设备信息
+        device.setSubTypes(map.getSubTypes());
         map.getPointMap().each((key, value) => {
             /*
             if (key == SdcSoftDevice.KEY_POINT_RUN_DAYS) {
@@ -45,12 +47,14 @@ class DeviceAdapter {
             device.handleByteField(value, data);
         });
         //需要进行子类型确认
+        /* 将子类型确认的任务移交由用户决定
         if (device.getSubDeviceType() > SdcSoftDevice.NO_SUB_DEVICE_TYPE) {
             let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType.toString(), data, lang);
             if (null == subDevice)
                 return null;
             device = subDevice;
         }
+         */
         let powerUI = device.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_POWER);
         let mediaUI = device.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_MEDIA);
 

@@ -1,4 +1,101 @@
-import { CTL_RT_T2_RYRS_Ts } from "./RYRS_Ts";
+import { ZH_CN } from "../../../ZH_CN";
+import { INumberIndex } from "../../../../../entities/IIndex";
+import { CountField } from "../../../../../meta/CountField";
+import { BaseInfoField, OpenCloseField, DeviceField, MockField, ExceptionField, SettingField } from "../../../../../meta/RT/meta";
+import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice";
+import { CountShowField } from "../../../../../meta/CountShowField";
+import { FixedValueField } from "../../../../../meta/FixedValueField";
+import { CTL_RT_T2_Ts } from "../T2_Ts";
+import { CTL_RT_T2_RY } from "../../../../../devices/CTL/RT/T2/RY";
 
-export = class CTL_RT_T2_RYRS extends CTL_RT_T2_RYRS_Ts {
+export = class CTL_RT_T2_RYRS extends CTL_RT_T2_Ts {
+    static coms_guolu: INumberIndex = {
+        0: "常压",
+        1: "承压",
+    }
+    static coms_ranshaoqi: INumberIndex = {
+        0: "内置比调",
+        1: "两段火力",
+    }
+    static coms_bushuibeng: INumberIndex = {
+        0: "4电极",
+        1: "电接点压力表",
+    }
+    static coms_xunhuanbeng: INumberIndex = {
+        0: "出水温度",
+        1: "回水温度",
+        2: "燃烧器",
+    }
+    constructor() {
+        super();
+        this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_Add_SHUI_BENG, "补水泵"));
+        this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_LENG_NING_BENG, "循环泵"));
+        this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
+
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 3, 2, "工作状态", '', CTL_RT_T2_RYRS.coms_status));
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_LIFE, 53, 2, "累计燃烧时间", "时"));
+        this.addPoint(new CountShowField(SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"));
+        this.addPoint(new CountShowField(SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"));
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 0, ZH_CN.coms_power));
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 0, ZH_CN.coms_media));
+
+        this.addPoint(new OpenCloseField("oc_queshuidianji", 5, 2, "缺水电极", 0, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_dishuiweidianji", 5, 2, "低水位电极", 1, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_gaoshuiweidianji", 5, 2, "高水位电极", 2, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_gaoshuiweibaojingdianji", 5, 2, "高水位报警电极", 3, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_dianjiedianyalibiaodizhen", 5, 2, "电接点压力表低针", 4, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_dianjiedianyalibiaogaozhen", 5, 2, "电接点压力表高针", 5, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_chaoyabaojingxinhao", 5, 2, "超压报警", 9, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_ranshaoqiguzhangxinhao", 5, 2, "燃烧器故障信号", 10, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_ranqiyalidibaojingxinhao", 5, 2, "燃气压力低报警信号", 12, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_ranqixieloubaojingxinhao", 5, 2, "燃气泄漏报警信号", 11, ZH_CN.coms_open_close));
+
+        this.addPoint(new DeviceField(CTL_RT_T2_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, "燃烧器启停控制", 0, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_ranshaoqifuhediaojie/zengdadiaojie", 9, 2, "燃烧器负荷增大调节", 1, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_ranshaoqibilijianxiao", 9, 2, "燃烧器比例减小", 2, ZH_CN.coms_open_close));
+
+        this.addPoint(new DeviceField(CTL_RT_T2_RY.KEY_POINT_Add_SHUI_BENG_1, 9, 2, "补水泵主控制", 3, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT_T2_RY.KEY_POINT_Add_SHUI_BENG_2, 9, 2, "补水泵备控制", 4, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT_T2_RY.KEY_POINT_LENG_NING_BENG_1, 9, 2, "循环泵主控制", 5, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT_T2_RY.KEY_POINT_LENG_NING_BENG_2, 9, 2, "循环泵备控制", 6, ZH_CN.coms_open_close));
+
+        this.addPoint(new MockField("mo_chushuiwendu", 13, 2, "出水温度", "℃"));
+        this.addPoint(new MockField("mo_huishuiwendu", 15, 2, "回水温度", "℃"));
+        this.addPoint(new MockField("mo_paiyanwendu", 21, 2, "排烟温度", "℃"));
+
+        this.addPoint(new DeviceField("de_bushuibengzhubei", 49, 2, "补水泵", 0, CTL_RT_T2_RYRS.coms_master));
+        this.addPoint(new DeviceField("de_bushuibengshoudongzidong", 49, 2, "补水泵", 1, CTL_RT_T2_RYRS.coms_atuo));
+        this.addPoint(new DeviceField("de_xunhuanbengzhubei", 49, 2, "循环泵", 2, CTL_RT_T2_RYRS.coms_master));
+        this.addPoint(new DeviceField("de_xunhuanbengshoudongzidong", 49, 2, "循环泵", 3, CTL_RT_T2_RYRS.coms_atuo));
+
+        this.addPoint(new ExceptionField("ex_chushuiwenduchuanganqiduanlu1", 45, 2, "出水温度传感器断路", 0));
+        this.addPoint(new ExceptionField("ex_chushuiwenduchuanganqiduanlu", 45, 2, "出水温度传感器短路", 1));
+        this.addPoint(new ExceptionField("ex_chushuiwendugaobaojing_", 45, 2, "出水温度高报警", 2));
+        this.addPoint(new ExceptionField("ex_huishuiwenduchuanganqiduanlu1", 45, 2, "回水温度传感器断路", 3));
+        this.addPoint(new ExceptionField("ex_paiyanwendugaobaojing", 45, 2, "排烟温度高报警", 4));
+        this.addPoint(new ExceptionField("ex_jixiandishuiweibaojing", 45, 2, "极限低水位报警", 5));
+        this.addPoint(new ExceptionField("ex_shuiweidianjiluojicuo", 45, 2, "水位电极逻辑错", 6));
+        this.addPoint(new ExceptionField("ex_gaoshuiweibaojing", 45, 2, "高水位报警", 7));
+        this.addPoint(new ExceptionField("ex_dianjiedianyalibiaoduanlu", 45, 2, "电接点压力表短路", 8));
+        this.addPoint(new ExceptionField("ex_chaoyabaojing_kongzhiqi_", 45, 2, "超压报警（控制器）", 9));
+        this.addPoint(new ExceptionField("ex_ranqiyalidibaojing", 45, 2, "燃气压力低报警", 10));
+        this.addPoint(new ExceptionField("ex_ranqixieloubaojing", 47, 2, "燃气泄漏报警", 11));
+        this.addPoint(new ExceptionField("ex_ranshaoqiguzhang", 47, 2, "燃烧器故障", 12));
+
+        this.addPoint(new SettingField("se_paiyanchaowen", 67, 2, "排烟超温", "℃"));
+        this.addPoint(new SettingField("se_lushuichaowen", 69, 2, "炉水超温", "℃"));
+        this.addPoint(new SettingField("se_kaibengwendu", 71, 2, "开泵温度", "℃"));
+        this.addPoint(new SettingField("se_guanbengwendu", 73, 2, "关泵温度", "℃"));
+        this.addPoint(new SettingField("se_xunhuanbenghouyanshi", 75, 2, "循环泵后延时", "分钟"));
+        this.addPoint(new SettingField("se_ranshaozhouqi", 77, 2, "燃烧  周期"));
+        this.addPoint(new SettingField("se_ranshaoP", 79, 2, "燃烧  P"));
+        this.addPoint(new SettingField("se_ranshaoI", 81, 2, "燃烧  I"));
+        this.addPoint(new SettingField("se_ranshaoD", 83, 2, "燃烧  D"));
+        this.addPoint(new SettingField("se_xingcheng", 85, 2, "行程"));
+        this.addPoint(new BaseInfoField("o_guoluleixing", 87, 2, "锅炉类型", '', CTL_RT_T2_RYRS.coms_guolu));
+        this.addPoint(new BaseInfoField("o_ranshaoqigongzuofangshi", 89, 2, "燃烧器工作方式", '', CTL_RT_T2_RYRS.coms_ranshaoqi));
+        this.addPoint(new BaseInfoField("o_bushuibengkongzhifangshi", 91, 2, "补水泵控制方式", '', CTL_RT_T2_RYRS.coms_bushuibeng));
+        this.addPoint(new BaseInfoField("o_xunhuanbengkongzhifangshi", 93, 2, "循环泵控制方式", '', CTL_RT_T2_RYRS.coms_xunhuanbeng));
+
+    }
 }

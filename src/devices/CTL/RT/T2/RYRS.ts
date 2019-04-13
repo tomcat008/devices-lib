@@ -1,8 +1,8 @@
-import { CTL_RT_T2_RY } from "../RY";
-import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI";
-import { List } from "../../../../../entities/Collections";
+import { DeviceFieldForUI } from "../../../../meta/DeviceFieldForUI";
+import { List } from "../../../../entities/Collections";
+import { CTL_RT_RY } from "../RY";
 
-export = class CTL_RT_T2_RYRS_2018 extends CTL_RT_T2_RY {
+export = class CTL_RT_T2_RYRS extends CTL_RT_RY {
     static readonly KEY_POINT_RAN_SHAO_QI_STATUS = "oc_ranshaoqifuhediaojie/zengdadiaojie";
 
     protected addFocusFields(list:List<DeviceFieldForUI>){
@@ -14,9 +14,9 @@ export = class CTL_RT_T2_RYRS_2018 extends CTL_RT_T2_RY {
     
     protected getPowerInfo() {
         let map = this.getOpenCloseFields();
-        let i = map.getItem(CTL_RT_T2_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue();
+        let i = map.getItem(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue();
         if (i > 0) {
-            return map.getItem(CTL_RT_T2_RYRS_2018.KEY_POINT_RAN_SHAO_QI_STATUS).getValue() > 0 ? 1 : 0;
+            return map.getItem(CTL_RT_T2_RYRS.KEY_POINT_RAN_SHAO_QI_STATUS).getValue() > 0 ? 1 : 0;
         }
         return 0;
     }

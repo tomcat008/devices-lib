@@ -1,6 +1,7 @@
 import { CTL_RT_RY } from '../../RY'
+import { CTL_RT_T3_RYZQ_Ts } from '../AScript/RYZQ';
 
-export = class CTL_RT_T3_RYZQ_YLKZQ extends CTL_RT_RY {
+export = class CTL_RT_T3_RYZQ_YLKZQ extends CTL_RT_T3_RYZQ_Ts {
     static readonly KEY_POINT_RAN_SHAO_QI_STATUS = "oc_ranshaoqifuhetiaojie";
     
     protected getPowerInfo() {

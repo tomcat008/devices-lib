@@ -5,11 +5,17 @@ import { CountShowField } from "../../../../../meta/CountShowField";
 import { FixedValueField } from "../../../../../meta/FixedValueField";
 import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice";
 import { CTL_RT_RY } from "../../../../../devices/CTL/RT/RY";
-import { CTL_RT_T3 } from "./T3";
+import { CTL_RT_T3_Ts } from "../T3_Ts";
 
-export class CTL_RT_T3_RYZQ_Ts extends CTL_RT_T3 {
+export class CTL_RT_T3_RYZQ_Ts extends CTL_RT_T3_Ts {
     constructor() {
         super();
+        this.warningMsg='长按修改类型';
+        this.subTypes.clear();
+        this.subTypes.addItem('压力变送器','CTL_RT_T3_RYZQ_YLBSQ');
+        this.subTypes.addItem('压力控制器','CTL_RT_T3_RYZQ_YLKZQ');
+
+
         this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG,  "补水泵"));
         this.addPoint(new CountField( CTL_RT_RY.KEY_POINT_LENG_NING_BENG,   "冷凝泵"));
         this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI,   "燃烧器"));
