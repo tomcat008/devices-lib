@@ -3,14 +3,12 @@ import { DeviceFieldForUI } from './DeviceFieldForUI'
 //namespace DevicesLib.meta {
 export class CountShowField extends ByteField {
 
-    constructor(name:string,title:string,unit:string){
+    constructor(groupKey:string,name:string,title:string,unit:string){
         super();
+        this.groupKey = groupKey;
         this.name = name;
         this.title = title;
         this.unit = unit;
-    }
-    setGroupKey(groupKey: string) {
-        this.groupKey = groupKey;
     }
 
     /**

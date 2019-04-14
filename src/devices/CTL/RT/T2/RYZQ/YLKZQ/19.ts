@@ -3,6 +3,10 @@ import { CTL_RT_T2_RYZQ_Ts } from "../../AScript/RYZQ";
 export = class CTL_RT_T2_RYZQ_YLKZQ_19 extends CTL_RT_T2_RYZQ_Ts {
     
     static readonly KEY_POINT_RAN_SHAO_QI_STATUS = "oc_ranshaoqifuhediaojie/zengdadiaojie";
+    constructor(){
+        super();
+        this.BYTE_ARRAY_LENGTH=109;
+    }
     
     protected getPowerInfo() {
         let map = this.getOpenCloseFields();

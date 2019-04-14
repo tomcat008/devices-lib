@@ -57,34 +57,39 @@ class DeviceAdapter {
          */
         let powerUI = device.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_POWER);
         let mediaUI = device.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_MEDIA);
+        if (powerUI && mediaUI) {
+            if (power != SdcSoftDevice.POWER_MEDIA_VALUE_NULL &&
+                media != SdcSoftDevice.POWER_MEDIA_VALUE_NULL) {
+                //设备中需要显示的点位都必须出现在点位表中，即使同过header传递的点位也必需在点位表中设置。
+                //只有出现在点位表中的点位才能进行多语言转换，如燃料。如果“燃料”不在点位表中添加，则“燃料”
+                // 的多语言翻译无法在程序中确认。
+                powerUI.setValue(power);
+                powerUI.setValueString(map.getPowerString(power));
+                mediaUI.setValue(media);
+                mediaUI.setValueString(map.getMediaString(media));
 
-
-        if (power != SdcSoftDevice.POWER_MEDIA_VALUE_NULL &&
-            media != SdcSoftDevice.POWER_MEDIA_VALUE_NULL) {
-            //设备中需要显示的点位都必须出现在点位表中，即使同过header传递的点位也必需在点位表中设置。
-            //只有出现在点位表中的点位才能进行多语言转换，如燃料。如果“燃料”不在点位表中添加，则“燃料”
-            // 的多语言翻译无法在程序中确认。
-            powerUI.setValue(power);
-            powerUI.setValueString(map.getPowerString(power));
-            mediaUI.setValue(media);
-            mediaUI.setValueString(map.getMediaString(media));
-
-        } else {
-            device.setPower(powerUI.getValue());
-            device.setMedia(mediaUI.getValue());
+            } else {
+                device.setPower(powerUI.getValue());
+                device.setMedia(mediaUI.getValue());
+            }
         }
+        else {
+            device.setPower(0);
+            device.setMedia(0);
+        }
+
         return device;
     }
 }
 export class Web_DeviceAdapterUtil {
     private static adapter: DeviceAdapter = new DeviceAdapter((type) => {
-        let strs = type.split('-')
+        let strs = type.split('_')
         let path = '../devices/' + strs.join('/');
         let deviceType = require(path);
         let d = new deviceType();
         return d;
     }, (type, lang) => {
-        let strs = type.split('-')
+        let strs = type.split('_')
         let path = '../map/' + lang + '/' + strs.join('/');
         let mapType = require(path);
         let d = new mapType();

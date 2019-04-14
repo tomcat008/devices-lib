@@ -1,11 +1,11 @@
-import { CTL_RT_T2_Ts } from "../T2_Ts";
-import { BaseInfoField, OpenCloseField, DeviceField, MockField, ExceptionField } from "../../../../../meta/RT/meta";
-import { CountShowField } from "../../../../../meta/CountShowField";
-import { FixedValueField } from "../../../../../meta/FixedValueField";
-import { CountField } from "../../../../../meta/CountField";
-import { CTL_RT_T2_RY } from "../../../../../devices/CTL/RT/T2/RY";
-import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice";
-import { ZH_CN } from "../../../ZH_CN";
+import { CTL_RT_T2_Ts } from "../../AScript/T2";
+import { BaseInfoField, OpenCloseField, DeviceField, MockField, ExceptionField } from "../../../../../../meta/RT/meta";
+import { CountShowField } from "../../../../../../meta/CountShowField";
+import { FixedValueField } from "../../../../../../meta/FixedValueField";
+import { CountField } from "../../../../../../meta/CountField";
+import { CTL_RT_RY } from "../../../../../../devices/CTL/RT/RY";
+import { SdcSoftDevice } from "../../../../../../devices/SdcSoftDevice";
+import { ZH_CN } from "../../../../ZH_CN";
 
 
 export class CTL_RT_T2_RYZQ_Ts extends CTL_RT_T2_Ts {
@@ -27,14 +27,14 @@ export class CTL_RT_T2_RYZQ_Ts extends CTL_RT_T2_Ts {
         this.subTypes.addItem('燃油热水','CTL_RT_T2_RYRS');
 
 
-        this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
-        this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_Add_SHUI_BENG, "给水泵"));
-        this.addPoint(new CountField(CTL_RT_T2_RY.KEY_POINT_LENG_NING_BENG, "节能循环泵"));
+        this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
+        this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG, "给水泵"));
+        this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_LENG_NING_BENG, "节能循环泵"));
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 3, 2, "系统状态", '', CTL_RT_T2_RYZQ_Ts.coms_status));
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_LIFE, 53, 2, "运行时间", "时"));
-        this.addPoint(new CountShowField(SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"));
-        this.addPoint(new CountShowField(SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"));
+        this.addPoint(new CountShowField(CTL_RT_T2_RYZQ_Ts.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"));
+        this.addPoint(new CountShowField(CTL_RT_T2_RYZQ_Ts.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"));
 
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 0, ZH_CN.coms_power));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 1, ZH_CN.coms_media));
@@ -53,11 +53,11 @@ export class CTL_RT_T2_RYZQ_Ts extends CTL_RT_T2_Ts {
         this.addPoint(new OpenCloseField("oc_ranqixieloubaojing", 5, 2, "燃气泄漏报警", 11, ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_ranqiyalidibaojing", 5, 2, "燃气压力低报警", 12, ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_ranqiyaligaobaojing", 5, 2, "燃气压力高报警", 13, ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField(CTL_RT_T2_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, "燃烧器启停控制", 0, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, "燃烧器启停控制", 0, ZH_CN.coms_open_close));
         
-        this.addPoint(new DeviceField(CTL_RT_T2_RY.KEY_POINT_Add_SHUI_BENG_1, 9, 2, "给水泵控制（主）", 3, ZH_CN.coms_open_close));
-        this.addPoint(new DeviceField(CTL_RT_T2_RY.KEY_POINT_Add_SHUI_BENG_2, 9, 2, "给水泵控制（备）", 4, ZH_CN.coms_open_close));
-        this.addPoint(new DeviceField(CTL_RT_T2_RY.KEY_POINT_LENG_NING_BENG_1, 9, 2, "节能循环泵控制", 5, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_1, 9, 2, "给水泵控制（主）", 3, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_2, 9, 2, "给水泵控制（备）", 4, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_LENG_NING_BENG_1, 9, 2, "节能循环泵控制", 5, ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_baojingzhuangtaishuchu", 9, 2, "报警状态输出", 6, ZH_CN.coms_open_close));
 
         this.addPoint(new MockField("mo_lengningqiyanwen", 13, 2, "冷凝器烟温", "℃"));

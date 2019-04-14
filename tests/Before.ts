@@ -1,16 +1,22 @@
 declare function require(moduleName: string): any;
 
-import { Js_DeviceAdapterUtil, SdcSoftDevice } from '../src';
+import { Wx_DeviceAdapterUtil, SdcSoftDevice } from '../src';
 import { map as PointMap } from '../src/map/map'
 import * as Request from 'supertest'
 import { Command } from '../src/command/Command';
-Js_DeviceAdapterUtil.InjectFunc(function(type:string):SdcSoftDevice{
-    let deviceType = require("../src/devices/" + type);
+
+Wx_DeviceAdapterUtil.InjectFunc(function(type:string):SdcSoftDevice{
+    let strs = type.split('_')
+    console.log(strs.join('/'));
+    let path = '../src/devices/' + strs.join('/');
+    let deviceType = require(path);
     let d = new deviceType();
     return d;
 },function(type:string,lang:string='zh-cn'):PointMap{
-    let deviceType = require('../src/map/'+lang +'/'+ type);
-    let d = new deviceType();
+    let strs = type.split('_')
+    let path = '../src/map/' + lang + '/' + strs.join('/');
+    let mapType = require(path);
+    let d = new mapType();
     return d;
 });
 
@@ -86,6 +92,25 @@ function getCommands(device:SdcSoftDevice){
     }
     console.log(str);
 }
+function getDeviceInfo(device:SdcSoftDevice){
+    let fields = device.getDeviceFocusFields();
+    console.log('--------------------关注信息--------------------');
+    for(let i in fields){
+        console.log('title:='+fields[i].getTitle()+' value:='+fields[i].getValueString());
+    }
+    console.log('--------------------动画信息--------------------');
+    let element = device.getStoveElement();
+    console.log('锅炉动画:='+element.getElementPrefixAndValuesString());
+}
+function getSubTypes(device:SdcSoftDevice){
+    let names = device.getSubTypesNameArray();
+    for(let n in names){
+        console.log(names[n] +':='+device.getSubDeviceType(names[n]));
+    }
+}
+function getWarningMsg(device:SdcSoftDevice){
+    console.log('waring msg:='+device.getWarningMsg());
+}
 let request = Request('http://output.sdcsoft.com.cn/device2').post('/get2');
 
 function checkDevice(deviceNo:string,type:string,done:any)
@@ -93,7 +118,7 @@ function checkDevice(deviceNo:string,type:string,done:any)
     request.send('id='+deviceNo)
         .expect(200).then(response => {
             let data = new Uint8Array(response.body);
-            let device: SdcSoftDevice | null = Js_DeviceAdapterUtil.getSdcSoftDevice(type, data);
+            let device: SdcSoftDevice | null = Wx_DeviceAdapterUtil.getSdcSoftDevice(type, data);
             if (device) {
                 printDevice(device);
                 getCommands(device);
@@ -105,5 +130,22 @@ function checkDevice(deviceNo:string,type:string,done:any)
         });
 }
 
+function checkDeviceSubInfo(deviceNo:string,type:string,done:any)
+{
+    request.send('id='+deviceNo)
+        .expect(200).then(response => {
+            let data = new Uint8Array(500);
+            let device: SdcSoftDevice | null = Wx_DeviceAdapterUtil.getSdcSoftDevice(type, data);
+            if (device) {
+                getWarningMsg(device);
+                getSubTypes(device);
+                getDeviceInfo(device)
 
-export {Js_DeviceAdapterUtil,checkDevice,request as request};
+            } else {
+                console.log('empty!!!!');
+            }
+            done();
+        });
+}
+
+export {Wx_DeviceAdapterUtil,checkDevice,checkDeviceSubInfo,request as request};

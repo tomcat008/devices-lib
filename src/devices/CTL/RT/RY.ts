@@ -14,16 +14,20 @@ export  class CTL_RT_RY extends SdcSoftDevice {
     static readonly KEY_POINT_LENG_NING_BENG = "_lengningbeng";
     static readonly KEY_POINT_LENG_NING_BENG_1 = "oc_1_lengningxunhuanbeng_start_stop"
     static readonly KEY_POINT_LENG_NING_BENG_2 = "oc_2_lengningxunhuanbeng_start_stop"
-    
+    constructor(){
+        super();
+        this.BYTE_ARRAY_LENGTH=54;
+    }
     protected getPowerInfo() {
        
         return 0;
     }
-    public handleByteField(field: ByteField, bytes: ArrayBuffer) {
-        let view = new DataView(bytes);
+    public handleByteField(field: ByteField, bytes: Uint8Array) {
+        //let view = new DataView(bytes);
         switch (field.getBytesLength()) {
+            case 0:
             case 2:
-                if (field.haveValue(view.getUint8(field.getStartIndex()), view.getUint8(field.getStartIndex() + 1))) {
+                if (field.haveValue(bytes[field.getStartIndex()], bytes[field.getStartIndex() + 1])) {
                     this.addField(field);
                 }
                 break;
@@ -38,8 +42,11 @@ export  class CTL_RT_RY extends SdcSoftDevice {
     
     public getDeviceFocusFields(): DeviceFieldForUI[] {
         let map = this.getBaseInfoFields();
-        //let map2 = this.getMockFields();
+
         let list = new List<DeviceFieldForUI>();
+        map.each((k,v)=>{
+            console.log(k)
+        });
         let i = map.getItem(SdcSoftDevice.KEY_POINT_RUN_LIFE).getValue();
         let field = map.getItem(SdcSoftDevice.KEY_POINT_RUN_DAYS);
         field.setValue(i / 24);

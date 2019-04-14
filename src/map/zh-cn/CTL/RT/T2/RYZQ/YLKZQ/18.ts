@@ -1,5 +1,5 @@
 import { ExceptionField,OpenCloseField } from "../../../../../../../meta/RT/meta";
-import { CTL_RT_T2_RYZQ_Ts } from "../../RYZQ_Ts";
+import { CTL_RT_T2_RYZQ_Ts } from "../../AScript/RYZQ";
 import { ZH_CN } from "../../../../../ZH_CN";
 
 

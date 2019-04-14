@@ -29,8 +29,8 @@ export abstract class CTL_RT extends ZH_CN {
         this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
        
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_LIFE, 53, 2, "累计燃烧时间", "时"));
-        this.addPoint(new CountShowField(SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"));
-        this.addPoint(new CountShowField(SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"));
+        this.addPoint(new CountShowField(CTL_RT.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"));
+        this.addPoint(new CountShowField(CTL_RT.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 0, ZH_CN.coms_power));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 0, ZH_CN.coms_media));
     

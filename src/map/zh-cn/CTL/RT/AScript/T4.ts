@@ -1,5 +1,5 @@
-import { INumberIndex } from "../../../../entities/IIndex";
-import { CTL_RT } from "./RT";
+import { INumberIndex } from "../../../../../entities/IIndex";
+import { CTL_RT } from "../RT";
 
 export class CTL_RT_T4_Ts extends CTL_RT {
 

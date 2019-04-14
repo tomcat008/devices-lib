@@ -4,6 +4,10 @@ import { DeviceFieldForUI } from "../../../../meta/DeviceFieldForUI";
 
 export = class CTL_RT_H1_RYRS extends CTL_RT_RY {
 
+    constructor(){
+        super();
+        this.BYTE_ARRAY_LENGTH=358;
+    }
     static readonly KEY_POINT_RAN_SHAO_QI_STATUS = "oc_ranshaoqibilijianda";
 
 

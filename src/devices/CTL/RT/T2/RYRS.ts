@@ -5,6 +5,10 @@ import { CTL_RT_RY } from "../RY";
 export = class CTL_RT_T2_RYRS extends CTL_RT_RY {
     static readonly KEY_POINT_RAN_SHAO_QI_STATUS = "oc_ranshaoqifuhediaojie/zengdadiaojie";
 
+    constructor(){
+        super();
+        this.BYTE_ARRAY_LENGTH=99;
+    }
     protected addFocusFields(list:List<DeviceFieldForUI>){
         let map = this.getMockFields();
         list.push(map.getItem("mo_chushuiwendu"));

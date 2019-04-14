@@ -1,7 +1,7 @@
 import { ZH_CN } from "../../../../ZH_CN";
 import { OpenCloseField } from "../../../../../../meta/RT/meta";
 import { CTL_RT_RY } from "../../../../../../devices/CTL/RT/RY";
-import { CTL_RT_T3_RYZQ_Ts } from "../RYZQ_Ts";
+import { CTL_RT_T3_RYZQ_Ts } from "../AScript/RYZQ";
 
 export = class CTL_RT_T3_RYZQ_YLKZQ extends CTL_RT_T3_RYZQ_Ts {
 

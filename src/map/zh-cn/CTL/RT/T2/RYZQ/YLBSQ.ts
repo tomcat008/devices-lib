@@ -1,7 +1,7 @@
 import { ZH_CN } from "../../../../ZH_CN";
 import { OpenCloseField,MockField,ExceptionField } from "../../../../../../meta/RT/meta";
 import { CTL_RT_T2_RYZQ_YLBSQ_Ts as Device } from '../../../../../../devices/CTL/RT/T2/RYZQ/YLBSQ/AScropt/YLBSQ'
-import { CTL_RT_T2_RYZQ_Ts } from "../RYZQ_Ts";
+import { CTL_RT_T2_RYZQ_Ts } from "../AScript/RYZQ";
 
 export class CTL_RT_T2_RYZQ_YLBSQ extends CTL_RT_T2_RYZQ_Ts{
     constructor(){

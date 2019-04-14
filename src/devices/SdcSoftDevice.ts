@@ -142,6 +142,7 @@ export abstract class SdcSoftDevice {
     }
 
     private addUIField(field: DeviceFieldForUI) {
+       
         if (null == field)
             return;
         if (this.fieldMap.containsKey(field.getKey()))
@@ -153,6 +154,7 @@ export abstract class SdcSoftDevice {
     protected addField(field: DeviceFieldForUI): void;
 
     protected addField(field: ByteField | CommandField | DeviceFieldForUI): void {
+        
         if (field instanceof ByteField) {
             //需要剔除纯控制程序点位
             let ui = field.getDeviceFieldForUI();
@@ -222,7 +224,7 @@ export abstract class SdcSoftDevice {
      * 获取子类型展示名称列表
      */
     getSubTypesNameArray() {
-        this.subTypes.Keys;
+        return this.subTypes.Keys;
     }
     /**
      * 获取设备的警告信息

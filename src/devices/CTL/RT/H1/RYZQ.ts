@@ -4,8 +4,13 @@ import { DeviceFieldForUI } from "../../../../meta/DeviceFieldForUI";
 
 export = class CTL_RT_H1_RYZQ extends CTL_RT_RY {
 
+
     static readonly KEY_POINT_RAN_SHAO_QI_STATUS = "oc_ranshaoqifuhediaojie/zengdadiaojie";
 
+    constructor(){
+        super();
+        this.BYTE_ARRAY_LENGTH=151;
+    }
 
     protected addFocusFields(list:List<DeviceFieldForUI>){
         let map = this.getMockFields();
@@ -13,11 +18,6 @@ export = class CTL_RT_H1_RYZQ extends CTL_RT_RY {
     }
 
     protected getPowerInfo() {
-        let map = this.getOpenCloseFields();
-        let i = map.getItem(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue();
-        if (i > 0) {
-            return map.getItem(CTL_RT_H1_RYZQ.KEY_POINT_RAN_SHAO_QI_STATUS).getValue() > 0 ? 1 : 0;
-        }
         return 0;
     }
 }
