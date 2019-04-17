@@ -1,11 +1,11 @@
 import { ZH_CN as ParentClass } from '../../ZH_CN'
 export abstract class CTL_NJZJ extends ParentClass {
     static coms_status = {
-            0: "关机",
-            1: "待机",
-            2: "运行",
-            3: "报警",
-        };
+        0: "关机",
+        1: "待机",
+        2: "运行",
+        3: "报警",
+    };
 
     static coms_ranshaoqi_status = {
         0: "停",
