@@ -24,7 +24,7 @@ export abstract class CTL_RT extends ZH_CN {
 
     constructor(){
         super();
-        this.warningMsg='长按修改类型';
+        // this.warningMsg='长按修改类型';
         /*计算属性（不显示）*/
         this.addPoint(new CountField(Device.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
        

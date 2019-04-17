@@ -28,8 +28,8 @@ export abstract class map {
 
     protected pointMap: StringHashMap<ByteField> = new StringHashMap<ByteField>();
     protected commandMap: StringHashMap<Command[]|null> = new StringHashMap<Command[]|null>();
-    protected subTypes: StringHashMap<string> = new StringHashMap<string>();
-    protected warningMsg:string = '';
+    //protected subTypes: StringHashMap<string> = new StringHashMap<string>();
+    //protected warningMsg:string = '';
 
     getPointMap(): StringHashMap<ByteField> {
         return this.pointMap;
@@ -37,12 +37,12 @@ export abstract class map {
     getCommandsMap(): StringHashMap<Command[]|null> {
         return this.commandMap;
     }
-    getSubTypes(){
-        return this.subTypes;
-    }
-    getwarningMsg(){
-        return this.warningMsg;
-    }
+    // getSubTypes(){
+    //     return this.subTypes;
+    // }
+    // getwarningMsg(){
+    //     return this.warningMsg;
+    // }
     protected addCommandGroup(groupKey:string){
         this.commandMap.addItem(groupKey, null);
     }

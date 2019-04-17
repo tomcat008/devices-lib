@@ -11,7 +11,7 @@ export class CTL_RT_T2_Ts extends CTL_RT {
 
     constructor(){
         super();
-        this.subTypes.addItem('燃油气蒸汽','CTL_RT_T2_RYZQ');
-        this.subTypes.addItem('燃油气热水','CTL_RT_T2_RYRS');
+        // this.subTypes.addItem('燃油气蒸汽','CTL_RT_T2_RYZQ');
+        // this.subTypes.addItem('燃油气热水','CTL_RT_T2_RYRS');
     }
 }

@@ -12,10 +12,12 @@ class DeviceAdapter {
         this.createMapFunc = createMapFunc;
     }
 
-    /*
-    * 获取子类别设备对象,将子类型获取交由用户执行
+    /**
+     * 获取子类别设备对象
+     */
     private getSubDevice(type: string, sub: string, data: Uint8Array, lang: Language = 'zh-cn'): SdcSoftDevice | null {
         let t: string = type + '_' + sub;
+        console.log('t:='+t)
         let device = this.createDeviceFunc(t);
         let map = this.createMapFunc(t, lang);
         if (device.validateFalse(data.byteLength)) {
@@ -26,8 +28,9 @@ class DeviceAdapter {
             device.handleByteField(value, data);
         });
         return device;
+
     }
-    */
+
     getSdcSoftDevice(type: string, data: Uint8Array, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, lang: Language = 'zh-cn'): SdcSoftDevice | null {
         let device = this.createDeviceFunc(type);
         let map = this.createMapFunc(type, lang);
@@ -35,11 +38,11 @@ class DeviceAdapter {
         if (device.validateFalse(data.byteLength)) {
             return null;
         }
-        /**用户确认设备类型时的逻辑
-        //设置设备警告信息
-        //device.setWarningMsg(map.getwarningMsg());
-        //设置子类设备信息
-        //device.setSubTypes(map.getSubTypes());
+        /*用户确认设备类型时的逻辑
+        *设置设备警告信息
+        device.setWarningMsg(map.getwarningMsg());
+        *设置子类设备信息
+        device.setSubTypes(map.getSubTypes());
          */
         map.getPointMap().each((key, value) => {
             /*
@@ -49,19 +52,19 @@ class DeviceAdapter {
             device.handleByteField(value, data);
         });
         //自动进行子类型确认
-        if (device.getSubDeviceType() > SdcSoftDevice.NO_SUB_DEVICE_TYPE) {
-            let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType.toString(), data, lang);
+        if (device.getSubDeviceType() != SdcSoftDevice.NO_SUB_DEVICE_TYPE) {
+            let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType(), data, lang);
             if (null == subDevice)
                 return null;
             device = subDevice;
         }
-         
+
         let powerUI = device.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_POWER);
         let mediaUI = device.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_MEDIA);
         if (powerUI && mediaUI) {
             if (power != SdcSoftDevice.POWER_MEDIA_VALUE_NULL &&
                 media != SdcSoftDevice.POWER_MEDIA_VALUE_NULL) {
-                //设备中需要显示的点位都必须出现在点位表中，即使同过header传递的点位也必需在点位表中设置。
+                //设备中需要显示的点位都必须出现在点位表中，即使通过header传递的点位也必需在点位表中设置。
                 //只有出现在点位表中的点位才能进行多语言转换，如燃料。如果“燃料”不在点位表中添加，则“燃料”
                 // 的多语言翻译无法在程序中确认。
                 powerUI.setValue(power);

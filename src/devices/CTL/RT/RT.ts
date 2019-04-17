@@ -17,7 +17,7 @@ export class CTL_RT extends SdcSoftDevice {
     
     constructor(){
         super();
-        this.BYTE_ARRAY_LENGTH=54;
+        this.BYTE_ARRAY_LENGTH=55;
     }
     protected getPowerInfo() {
         return 0;

@@ -35,68 +35,74 @@ export abstract class IP extends SdcSoftDevice {
     public getDeviceFocusFields(): DeviceFieldForUI[] {
         let map = this.getBaseInfoFields();
         let list = new List<DeviceFieldForUI>();
-        list.push(this.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_RUN_DAYS));
-        list.push(this.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_RUN_HOURS));
+        list.push(map.getItem(SdcSoftDevice.KEY_POINT_RUN_DAYS));
+        list.push(map.getItem(SdcSoftDevice.KEY_POINT_RUN_HOURS));
 
         if (this.power == Power.Dian) {
-            list.push(this.getSettingFields().getItem("se_jiarezushu"));
+            list.push(this.getDeviceFields().getItem("de_jiarezu"));
             if (this.media == Media.ReShui) {
-                list.push(this.getMockFields().getItem("mo_chukouwendu"));
-                list.push(this.getMockFields().getItem("mo_rukouwendu"));
-                list.push(this.getBaseInfoFields().getItem("ba_shuixiangshuiweizhuangtai"));
-                list.push(this.getBaseInfoFields().getItem("ba_guolushuiweizhuangtai"));
+                let map2 = this.getMockFields();
+                list.push(map2.getItem("mo_chukouwendu"));
+                list.push(map2.getItem("mo_rukouwendu"));
+                list.push(map.getItem("ba_shuixiangshuiweizhuangtai"));
+                list.push(map.getItem("ba_guolushuiweizhuangtai"));
             } else if (this.media == Media.DaoReYou) {
 
             } else if (this.media == Media.ReFeng) {
 
             } else if (this.media == Media.ZhengQi) {
-                list.push(this.getBaseInfoFields().getItem("ba_guolushuiweizhuangtai"));
-                let item = this.getBaseInfoFields().getItem("ba_guoluyalizhuangtai");
+                list.push(map.getItem("ba_guolushuiweizhuangtai"));
+                let item = map.getItem("ba_guoluyalizhuangtai");
                 if (item) {
                     list.push(item);
                 }
                 else {
-                    list.push(this.getMockFields().getItem("mo_zhengqiyali"));
+                    let map2 = this.getMockFields();
+                    list.push(map2.getItem("mo_zhengqiyali"));
                 }
             } else if (this.media == Media.ZhenKong) {
 
             }
         } else if (this.power == Power.Mei) {
             if (this.media == Media.ReShui) {
-                list.push(this.getMockFields().getItem("mo_paiyanwendu"));
-                list.push(this.getMockFields().getItem("mo_chukouwendu"));
-                list.push(this.getMockFields().getItem("mo_rukouwendu"));
-                let item = this.getBaseInfoFields().getItem("ba_guoluyalizhuangtai");
+                let map2 = this.getMockFields();
+                list.push(map2.getItem("mo_paiyanwendu"));
+                list.push(map2.getItem("mo_chukouwendu"));
+                list.push(map2.getItem("mo_rukouwendu"));
+                let item = map.getItem("ba_guoluyalizhuangtai");
                 if (item) {
                     list.push(item);
                 }
                 else {
-                    list.push(this.getMockFields().getItem("mo_zhengqiyali"));
+                    list.push(map2.getItem("mo_zhengqiyali"));
                 }
 
             } else if (this.media == Media.DaoReYou) {
-                list.push(this.getMockFields().getItem("mo_paiyanwendu"));
-                list.push(this.getMockFields().getItem("mo_chukouwendu"));
-                list.push(this.getMockFields().getItem("mo_rukouwendu"));
-                let item = this.getBaseInfoFields().getItem("ba_guoluyalizhuangtai");
+                let map2 = this.getMockFields();
+                list.push(map2.getItem("mo_paiyanwendu"));
+                list.push(map2.getItem("mo_chukouwendu"));
+                list.push(map2.getItem("mo_rukouwendu"));
+                let item = map.getItem("ba_guoluyalizhuangtai");
                 if (item) {
                     list.push(item);
                 }
                 else {
-                    list.push(this.getMockFields().getItem("mo_zhengqiyali"));
+                    list.push(map2.getItem("mo_zhengqiyali"));
                 }
             } else if (this.media == Media.ReFeng) {
 
             } else if (this.media == Media.ZhengQi) {
-                let item = this.getBaseInfoFields().getItem("ba_guoluyalizhuangtai");
+                let map2 = this.getMockFields();
+                let item = map.getItem("ba_guoluyalizhuangtai");
                 if (item) {
                     list.push(item);
                 }
                 else {
-                    list.push(this.getMockFields().getItem("mo_zhengqiyali"));
+
+                    list.push(map2.getItem("mo_zhengqiyali"));
                 }
-                list.push(this.getMockFields().getItem("mo_paiyanwendu"));
-                list.push(this.getBaseInfoFields().getItem("ba_guolushuiweizhuangtai"));
+                list.push(map2.getItem("mo_paiyanwendu"));
+                list.push(map.getItem("ba_guolushuiweizhuangtai"));
 
             } else if (this.media == Media.ZhenKong) {
 
@@ -114,44 +120,46 @@ export abstract class IP extends SdcSoftDevice {
 
             }
         } else if (this.power == Power.YouQi) {
+            let map2 = this.getMockFields();
             if (this.media == Media.ReShui) {
-                list.push(this.getMockFields().getItem("mo_paiyanwendu"));
-                list.push(this.getMockFields().getItem("mo_chukouwendu"));
-                list.push(this.getMockFields().getItem("mo_jinkouwendu"));
-                list.push(this.getBaseInfoFields().getItem("ba_guolushuiweizhuangtai"));
-                                                            
-                list.push(this.getBaseInfoFields().getItem("ba_shuixiangshuiweizhuangtai"));
-            } else if (this.media == Media.DaoReYou) {
-                list.push(this.getMockFields().getItem("mo_paiyanwendu"));
-                list.push(this.getMockFields().getItem("mo_chukouwendu"));
-                list.push(this.getMockFields().getItem("mo_rukouwendu"));
-            } else if (this.media == Media.ReFeng) {
-                list.push(this.getMockFields().getItem("mo_chukouwendu"));
-                list.push(this.getDeviceFields().getItem("de_ranshaoqi"));
-                list.push(this.getDeviceFields().getItem("de_yinfengji"));
-            } else if (this.media == Media.ZhengQi) {
-                list.push(this.getBaseInfoFields().getItem("ba_guolushuiweizhuangtai"));
-                list.push(this.getMockFields().getItem("mo_paiyanwendu"));
+                list.push(map2.getItem("mo_paiyanwendu"));
+                list.push(map2.getItem("mo_chukouwendu"));
+                list.push(map2.getItem("mo_jinkouwendu"));
+                list.push(map.getItem("ba_guolushuiweizhuangtai"));
 
-                let item = this.getBaseInfoFields().getItem("ba_guoluyalizhuangtai");
+                list.push(map.getItem("ba_shuixiangshuiweizhuangtai"));
+            } else if (this.media == Media.DaoReYou) {
+                list.push(map2.getItem("mo_paiyanwendu"));
+                list.push(map2.getItem("mo_chukouwendu"));
+                list.push(map2.getItem("mo_rukouwendu"));
+            } else if (this.media == Media.ReFeng) {
+                let map3 = this.getDeviceFields();
+                list.push(map2.getItem("mo_chukouwendu"));
+                list.push(map3.getItem("de_ranshaoqi"));
+                list.push(map3.getItem("de_yinfengji"));
+            } else if (this.media == Media.ZhengQi) {
+                list.push(map.getItem("ba_guolushuiweizhuangtai"));
+                list.push(map2.getItem("mo_paiyanwendu"));
+
+                let item = map.getItem("ba_guoluyalizhuangtai");
                 if (item) {
                     list.push(item);
                 }
                 else {
-                    list.push(this.getMockFields().getItem("mo_zhengqiyali"));
+                    list.push(map2.getItem("mo_zhengqiyali"));
                 }
 
             } else if (this.media == Media.ZhenKong) {
-                list.push(this.getMockFields().getItem("mo_paiyanwendu"));
-                list.push(this.getMockFields().getItem("mo_chukouwendu"));
-                list.push(this.getMockFields().getItem("mo_meishuiwendu"));
-                list.push(this.getBaseInfoFields().getItem("ba_guolushuiweizhuangtai"));
-                let item = this.getBaseInfoFields().getItem("ba_guoluyalizhuangtai");
+                list.push(map2.getItem("mo_paiyanwendu"));
+                list.push(map2.getItem("mo_chukouwendu"));
+                list.push(map2.getItem("mo_meishuiwendu"));
+                list.push(map.getItem("ba_guolushuiweizhuangtai"));
+                let item = map.getItem("ba_guoluyalizhuangtai");
                 if (item) {
                     list.push(item);
                 }
                 else {
-                    list.push(this.getMockFields().getItem("mo_zhengqiyali"));
+                    list.push(map2.getItem("mo_zhengqiyali"));
                 }
 
             }

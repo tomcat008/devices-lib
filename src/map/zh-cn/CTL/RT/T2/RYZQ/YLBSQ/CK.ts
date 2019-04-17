@@ -7,7 +7,7 @@ import { ZH_CN } from "../../../../../ZH_CN";
 export = class CTL_RT_T2_RYZQ_YLBSQ_CK extends CTL_RT_T2_RYZQ_YLBSQ{
     constructor(){
         super();
-        this.warningMsg='';
+        // this.warningMsg='';
         this.addPoint(new OpenCloseField("oc_queshuidianji2", 5, 2, "缺水电极2",7,ZH_CN.coms_open_close));
         this.addPoint(new ExceptionField("ex_ranqiyaligaobaojing", 45, 2, "燃气压力高报警", 15));
         this.addPoint(new ExceptionField("ex_ranqixieloubaojing", 47, 2, "燃气泄漏报警", 0));

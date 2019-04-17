@@ -1,5 +1,5 @@
 import * as mocha from 'mocha'
-import { checkDevice, request } from './Before';
+import { checkDeviceByGet, request } from './Before';
 
 /*
 mocha.describe('PLC 设备测试',function(){
@@ -12,7 +12,7 @@ mocha.describe('PLC 设备测试',function(){
     });
     
     it('PLC_RanYouZhengQi',function(done){
-        checkDevice('0100200011','PLC_RanYouZhengQi',done);
+        checkDeviceByGet('0100200011','PLC_RanYouZhengQi',done);
     });
 });
 */

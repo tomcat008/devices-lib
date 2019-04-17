@@ -39,6 +39,6 @@ export = class CTL_RT_X1_DZQ extends CTL_RT_X1_Ts {
         this.addPoint(new OpenCloseField("oc_jiarezu2kongzhi", 9, 2, "加热组2控制",1,ZH_CN.coms_open_close));
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_1, 9, 2, "给水泵控制",2,ZH_CN.coms_open_close));
 
-       // this.addPoint(new SettingField("se_dangqianmoshi", 55, 2, "当前模式"));
+       this.addPoint(new SettingField("se_dangqianmoshi", 55, 2, "当前模式"));
     }
 }

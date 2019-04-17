@@ -96,7 +96,7 @@ export class MockField extends DParentClass {
     }
     haveValue(...bytes: number[]): boolean {
         let i = bytes[0] << 8 | bytes[1];
-
+        //console.log(this.title+' basenumber:='+this.getBaseNumber() )
         this.value = i;
         if (this.getBaseNumber()) {
             this.value = i / this.getBaseNumber();

@@ -11,6 +11,6 @@ export class CTL_RT_T4_Ts extends CTL_RT {
     }
     constructor(){
         super();
-        this.subTypes.addItem('燃油气蒸汽','CTL_RT_T4_RYZQ');
+        // this.subTypes.addItem('燃油气蒸汽','CTL_RT_T4_RYZQ');
     }
 }

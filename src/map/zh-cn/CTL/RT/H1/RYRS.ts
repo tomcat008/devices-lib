@@ -32,7 +32,7 @@ export = class CTL_RT_H1_RYRS extends CTL_RT_H1_Ts {
     }
     constructor() {
         super();
-        this.warningMsg='';
+        //this.warningMsg='';
         /*计算属性（不显示）*/
         this.addPoint(new CountField(CTL_RT.KEY_POINT_Add_SHUI_BENG, "补水泵"));
         this.addPoint(new CountField(CTL_RT.KEY_POINT_LENG_NING_BENG, "循环泵"));

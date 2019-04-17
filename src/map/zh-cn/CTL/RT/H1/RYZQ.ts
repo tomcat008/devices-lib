@@ -17,7 +17,7 @@ export = class CTL_RT_H1_RYRS extends CTL_RT_H1_Ts {
     }
     constructor() {
         super();
-        this.warningMsg='';
+        // this.warningMsg='';
         this.addPoint(new CountField(CTL_RT.KEY_POINT_Add_SHUI_BENG,  "给水泵"));
         this.addPoint(new CountField(CTL_RT.KEY_POINT_RAN_SHAO_QI,   "燃烧器"));
 

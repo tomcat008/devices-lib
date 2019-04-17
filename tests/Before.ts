@@ -103,19 +103,37 @@ function getDeviceInfo(device:SdcSoftDevice){
     console.log('锅炉动画:='+element.getElementPrefixAndValuesString());
 }
 function getSubTypes(device:SdcSoftDevice){
-    let names = device.getSubTypesNameArray();
-    for(let n in names){
-        console.log(names[n] +':='+device.getSubDeviceType(names[n]));
-    }
+    // let names = device.getSubTypesNameArray();
+    // for(let n in names){
+    //     console.log(names[n] +':='+device.getSubDeviceType(names[n]));
+    // }
 }
 function getWarningMsg(device:SdcSoftDevice){
-    console.log('waring msg:='+device.getWarningMsg());
+    // console.log('waring msg:='+device.getWarningMsg());
 }
-let request = Request('http://output.sdcsoft.com.cn/device2').post('/get2');
+//let request = Request('http://output.sdcsoft.com.cn/device2').post('/get2');
+let request = Request('http://localhost:8080');//.get('/home/output');
 
-function checkDevice(deviceNo:string,type:string,done:any)
+function checkDeviceByGet(deviceNo:string,type:string,done:any)
 {
-    request.send('id='+deviceNo)
+    request.get('/home/output?id='+deviceNo)
+        .expect(200).then(response => {
+            let data = new Uint8Array(response.body);
+            console.log(type+' data:'+data.length)
+            let device: SdcSoftDevice | null = Wx_DeviceAdapterUtil.getSdcSoftDevice(type, data);
+            if (device) {
+                printDevice(device);
+                getCommands(device);
+
+            } else {
+                console.log('empty!!!!');
+            }
+            done();
+        });
+}
+function checkDeviceByPost(deviceNo:string,type:string,done:any)
+{
+    request.post('/home/output').send('id='+deviceNo)
         .expect(200).then(response => {
             let data = new Uint8Array(response.body);
             let device: SdcSoftDevice | null = Wx_DeviceAdapterUtil.getSdcSoftDevice(type, data);
@@ -129,12 +147,13 @@ function checkDevice(deviceNo:string,type:string,done:any)
             done();
         });
 }
-
+/*
 function checkDeviceSubInfo(deviceNo:string,type:string,done:any)
 {
     request.send('id='+deviceNo)
         .expect(200).then(response => {
-            let data = new Uint8Array(500);
+            //let data = new Uint8Array(500);
+            let data = new Uint8Array(response.body);
             let device: SdcSoftDevice | null = Wx_DeviceAdapterUtil.getSdcSoftDevice(type, data);
             if (device) {
                 getWarningMsg(device);
@@ -146,6 +165,6 @@ function checkDeviceSubInfo(deviceNo:string,type:string,done:any)
             }
             done();
         });
-}
+}*/
 
-export {Wx_DeviceAdapterUtil,checkDevice,checkDeviceSubInfo,request as request};
+export {Wx_DeviceAdapterUtil,checkDeviceByGet,checkDeviceByPost,request as request};

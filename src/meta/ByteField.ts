@@ -100,6 +100,8 @@ import { NumberHashMap } from '../entities/Collections';
             fieldForUI.setUnit(this.getUnit());
             if (value) {
                 fieldForUI.setValue(value);
+            }else{
+                fieldForUI.setValue(this.value);
             }
             return fieldForUI;
         }

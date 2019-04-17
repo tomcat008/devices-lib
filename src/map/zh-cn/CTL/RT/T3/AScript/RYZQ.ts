@@ -10,10 +10,10 @@ import { CTL_RT_T3_Ts } from "../../AScript/T3";
 export class CTL_RT_T3_RYZQ_Ts extends CTL_RT_T3_Ts {
     constructor() {
         super();
-        this.warningMsg='长按修改类型';
-        this.subTypes.clear();
-        this.subTypes.addItem('压力变送器','CTL_RT_T3_RYZQ_YLBSQ');
-        this.subTypes.addItem('压力控制器','CTL_RT_T3_RYZQ_YLKZQ');
+        // this.warningMsg='长按修改类型';
+        // this.subTypes.clear();
+        // this.subTypes.addItem('压力变送器','CTL_RT_T3_RYZQ_YLBSQ');
+        // this.subTypes.addItem('压力控制器','CTL_RT_T3_RYZQ_YLKZQ');
 
 
         this.addPoint(new CountField(CTL_RT.KEY_POINT_Add_SHUI_BENG,  "补水泵"));

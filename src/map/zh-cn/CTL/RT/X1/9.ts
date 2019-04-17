@@ -36,7 +36,7 @@ export = class CTL_RT_X1_RYCYRS2 extends CTL_RT_X1_Ts {
         this.addPoint(new OpenCloseField('oc_ranshaoqifuhetiaojie', 9, 2, "燃烧器负荷调节",1,ZH_CN.coms_open_close));
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_LENG_NING_BENG_1, 9, 2, "循环泵控制",2,ZH_CN.coms_open_close));
 
-        //this.addPoint(new SettingField("se_dangqianmoshi", 55, 2, "当前模式"));
+        this.addPoint(new SettingField("se_dangqianmoshi", 55, 2, "当前模式"));
         this.addPoint(new SettingField("se_baojingwendu", 57, 2, "报警温度","℃"));
         this.addPoint(new SettingField("se_shangxianwendu", 59, 2, "上限温度","℃"));
         this.addPoint(new SettingField("se_xiaxianwendu", 61, 2, "下限温度","℃"));

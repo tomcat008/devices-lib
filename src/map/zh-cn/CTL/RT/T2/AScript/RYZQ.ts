@@ -14,17 +14,17 @@ export class CTL_RT_T2_RYZQ_Ts extends CTL_RT_T2_Ts {
 
     constructor() {
         super();
-        this.warningMsg='长按修改类型';
-        this.subTypes.clear();
+        // this.warningMsg='长按修改类型';
+        // this.subTypes.clear();
 
-        this.subTypes.addItem('压力变送器18','CTL_RT_T2_RYZQ_YLBSQ_18');
-        this.subTypes.addItem('压力变送器19','CTL_RT_T2_RYZQ_YLBSQ_19');
-        this.subTypes.addItem('压力变送器出口','CTL_RT_T2_RYZQ_YLBSQ_CK');
+        // this.subTypes.addItem('压力变送器18','CTL_RT_T2_RYZQ_YLBSQ_18');
+        // this.subTypes.addItem('压力变送器19','CTL_RT_T2_RYZQ_YLBSQ_19');
+        // this.subTypes.addItem('压力变送器出口','CTL_RT_T2_RYZQ_YLBSQ_CK');
 
-        this.subTypes.addItem('压力控制器18','CTL_RT_T2_RYZQ_YLBSQ_18');
-        this.subTypes.addItem('压力控制器19','CTL_RT_T2_RYZQ_YLBSQ_19');
-        this.subTypes.addItem('压力控制器出口','CTL_RT_T2_RYZQ_YLBSQ_CK');
-        this.subTypes.addItem('燃油热水','CTL_RT_T2_RYRS');
+        // this.subTypes.addItem('压力控制器18','CTL_RT_T2_RYZQ_YLBSQ_18');
+        // this.subTypes.addItem('压力控制器19','CTL_RT_T2_RYZQ_YLBSQ_19');
+        // this.subTypes.addItem('压力控制器出口','CTL_RT_T2_RYZQ_YLBSQ_CK');
+        // this.subTypes.addItem('燃油热水','CTL_RT_T2_RYRS');
 
 
         this.addPoint(new CountField(CTL_RT.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
