@@ -4,7 +4,7 @@ import { CountField } from "../../../../meta/CountField";
 import { BaseInfoField } from "../../../../meta/RT/meta";
 import { SdcSoftDevice } from "../../../../devices/SdcSoftDevice";
 import { FixedValueField } from "../../../../meta/FixedValueField";
-import { CTL_RT_RY } from "../../../../devices/CTL/RT/RY";
+import { CTL_RT as Device } from "../../../../devices/CTL/RT/RT";
 import { CountShowField } from "../../../../meta/CountShowField";
 
 export abstract class CTL_RT extends ZH_CN {
@@ -17,7 +17,7 @@ export abstract class CTL_RT extends ZH_CN {
         0: "主",
         1: "备"
     }
-    static coms_atuo: INumberIndex = {
+    static coms_auto: INumberIndex = {
         0: "自",
         1: "手"
     }
@@ -26,7 +26,7 @@ export abstract class CTL_RT extends ZH_CN {
         super();
         this.warningMsg='长按修改类型';
         /*计算属性（不显示）*/
-        this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
+        this.addPoint(new CountField(Device.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
        
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_LIFE, 53, 2, "累计燃烧时间", "时"));
         this.addPoint(new CountShowField(CTL_RT.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"));

@@ -3,7 +3,7 @@ import { CountField } from "../../../../../meta/CountField";
 import { BaseInfoField, OpenCloseField, ExceptionField, MockField, DeviceField, SettingField } from "../../../../../meta/RT/meta";
 import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice";
 import { FixedValueField } from "../../../../../meta/FixedValueField";
-import { CTL_RT_RY } from "../../../../../devices/CTL/RT/RY";
+import { CTL_RT } from "../../../../../devices/CTL/RT/RT";
 import { CountShowField } from "../../../../../meta/CountShowField";
 import { ZH_CN } from "../../../ZH_CN";
 import { CTL_RT_H1_Ts } from "../AScript/H1";
@@ -34,8 +34,8 @@ export = class CTL_RT_H1_RYRS extends CTL_RT_H1_Ts {
         super();
         this.warningMsg='';
         /*计算属性（不显示）*/
-        this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG, "补水泵"));
-        this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_LENG_NING_BENG, "循环泵"));
+        this.addPoint(new CountField(CTL_RT.KEY_POINT_Add_SHUI_BENG, "补水泵"));
+        this.addPoint(new CountField(CTL_RT.KEY_POINT_LENG_NING_BENG, "循环泵"));
         //this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI, "燃烧器"));
 
 
@@ -57,14 +57,14 @@ export = class CTL_RT_H1_RYRS extends CTL_RT_H1_Ts {
         this.addPoint(new OpenCloseField("oc_ranqiyalidibaojingxinhao", 5, 2, "燃气压力低报警信号", 11, ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_ranqixieloubaojingxinhao", 5, 2, "燃气泄漏报警信号", 12, ZH_CN.coms_open_close));
 
-        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, "燃烧器启停控制", 0, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, "燃烧器启停控制", 0, ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_ranshaoqibilijianda", 9, 2, "燃烧器比例增加", 1, ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_ranshaoqibilijianxiao", 9, 2, "燃烧器比例减小", 2, ZH_CN.coms_open_close));
 
-        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_1, 9, 2, "补水泵主控制", 3, ZH_CN.coms_open_close));
-        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_2, 9, 2, "补水泵备控制", 4, ZH_CN.coms_open_close));
-        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_LENG_NING_BENG_1, 9, 2, "循环泵主控制", 5, ZH_CN.coms_open_close));
-        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_LENG_NING_BENG_2, 9, 2, "循环泵备控制", 6, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_1, 9, 2, "补水泵主控制", 3, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_2, 9, 2, "补水泵备控制", 4, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT.KEY_POINT_LENG_NING_BENG_1, 9, 2, "循环泵主控制", 5, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT.KEY_POINT_LENG_NING_BENG_2, 9, 2, "循环泵备控制", 6, ZH_CN.coms_open_close));
 
         this.addPoint(new MockField("mo_chushuiwendu", 13, 2, "出水温度", "℃"));
         this.addPoint(new MockField("mo_huishuiwendu", 15, 2, "回水温度", "℃"));
@@ -86,9 +86,9 @@ export = class CTL_RT_H1_RYRS extends CTL_RT_H1_Ts {
         this.addPoint(new ExceptionField("ex_xunhuanbengguzhang", 45, 2, "循环泵故障", 14));
 
         this.addPoint(new DeviceField("de_bushuibengzhubei", 49, 2, "补水泵", 0, CTL_RT_H1_RYRS.coms_master));
-        this.addPoint(new DeviceField("de_bushuibengshoudongzidong", 49, 2, "补水泵", 1, CTL_RT_H1_RYRS.coms_atuo));
+        this.addPoint(new DeviceField("de_bushuibengshoudongzidong", 49, 2, "补水泵", 1, CTL_RT_H1_RYRS.coms_auto));
         this.addPoint(new DeviceField("de_xunhuanbengzhubei", 49, 2, "循环泵", 2, CTL_RT_H1_RYRS.coms_master));
-        this.addPoint(new DeviceField("de_xunhuanbengshoudongzidong", 49, 2, "循环泵", 3, CTL_RT_H1_RYRS.coms_atuo));
+        this.addPoint(new DeviceField("de_xunhuanbengshoudongzidong", 49, 2, "循环泵", 3, CTL_RT_H1_RYRS.coms_auto));
 
         this.addPoint(new SettingField("se_moshiyishiduan1qidongshi", 61, 2, "模式一时段1启动时", "时"));
         this.addPoint(new SettingField("se_moshiyishiduan1qidongfen", 63, 2, "模式一时段1启动分", "分"));

@@ -21,10 +21,6 @@ export enum Power {
     YuRe = 30,
 }
 export abstract class SdcSoftDevice {
-    /**
-     * 没有子设备类型，CTL_RT_X1存在子设备类型
-     */
-    static readonly NO_SUB_DEVICE_TYPE = -1;
     static readonly POWER_MEDIA_VALUE_NULL = -1;
     static readonly KEY_POINT_SYSTEM_STATUS = "o_system_status";
     static readonly KEY_POINT_POWER = "o_power";
@@ -38,10 +34,6 @@ export abstract class SdcSoftDevice {
 
     private fieldMap = new StringHashMap<DeviceFieldForUI[]>();
     private commandMap = new StringHashMap<Command[]>();
-    /**
-     * 子类型映射map
-     */
-    private subTypes = new StringHashMap<string>();
 
     constructor() {
         this.fieldMap.addItem(map.KEY_BASE, []);
@@ -59,7 +51,7 @@ export abstract class SdcSoftDevice {
     protected power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL;
     protected media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL;
     protected deviceNo: string = '';
-    protected warningMsg:string ='';
+    protected warningMsg: string = '';
 
 
 
@@ -142,7 +134,7 @@ export abstract class SdcSoftDevice {
     }
 
     private addUIField(field: DeviceFieldForUI) {
-       
+
         if (null == field)
             return;
         if (this.fieldMap.containsKey(field.getKey()))
@@ -154,7 +146,7 @@ export abstract class SdcSoftDevice {
     protected addField(field: DeviceFieldForUI): void;
 
     protected addField(field: ByteField | CommandField | DeviceFieldForUI): void {
-        
+
         if (field instanceof ByteField) {
             //需要剔除纯控制程序点位
             let ui = field.getDeviceFieldForUI();
@@ -205,6 +197,13 @@ export abstract class SdcSoftDevice {
         });
         return this.commandMap;
     }
+    /*
+    设备类型由用户确认时执行的逻辑
+     子类型映射map
+  
+    private subTypes = new StringHashMap<string>();
+
+
     getDeviceType(): string {
         return '';
     }
@@ -213,31 +212,47 @@ export abstract class SdcSoftDevice {
         this.subTypes = map;
     }
     
-    /**
+    /
      * 根据子类型展示名称获取子类型名称
      * @param key 子类型展示名称
-     */
+     
     getSubDeviceType(key: string): string {
         return this.subTypes.getItem(key);
     }
-    /**
+    
      * 获取子类型展示名称列表
-     */
+     
     getSubTypesNameArray() {
         return this.subTypes.Keys;
     }
-    /**
+    
      * 获取设备的警告信息
-     */
+     
     getWarningMsg(){
         return this.warningMsg;
     }
-    /**
+    
      * 设置设备的警告信息
-     */
+     
     setWarningMsg(msg:string){
         this.warningMsg = msg;
     }
+    */
+    
+    /**
+     * 自动确认设备类型的逻辑
+     */
+    /**
+     * 无子类型的标识
+     */
+    static readonly NO_SUB_DEVICE_TYPE = '-1';
+    /**
+     * 获取设备的子类型命令
+     */
+    getSubDeviceType():string{
+        return SdcSoftDevice.NO_SUB_DEVICE_TYPE;
+    }
+    
     abstract handleDeviceNo(bytes: number[]): void;
 
     protected abstract getPowerInfo(): number;
@@ -253,4 +268,5 @@ export abstract class SdcSoftDevice {
 
     abstract handleByteField(field: ByteField, bytes: Uint8Array): void;
     abstract getDeviceFocusFields(): DeviceFieldForUI[];
+
 }

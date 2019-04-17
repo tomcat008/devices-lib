@@ -35,10 +35,12 @@ class DeviceAdapter {
         if (device.validateFalse(data.byteLength)) {
             return null;
         }
+        /**用户确认设备类型时的逻辑
         //设置设备警告信息
-        device.setWarningMsg(map.getwarningMsg());
+        //device.setWarningMsg(map.getwarningMsg());
         //设置子类设备信息
-        device.setSubTypes(map.getSubTypes());
+        //device.setSubTypes(map.getSubTypes());
+         */
         map.getPointMap().each((key, value) => {
             /*
             if (key == SdcSoftDevice.KEY_POINT_RUN_DAYS) {
@@ -46,15 +48,14 @@ class DeviceAdapter {
             }*/
             device.handleByteField(value, data);
         });
-        //需要进行子类型确认
-        /* 将子类型确认的任务移交由用户决定
+        //自动进行子类型确认
         if (device.getSubDeviceType() > SdcSoftDevice.NO_SUB_DEVICE_TYPE) {
             let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType.toString(), data, lang);
             if (null == subDevice)
                 return null;
             device = subDevice;
         }
-         */
+         
         let powerUI = device.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_POWER);
         let mediaUI = device.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_MEDIA);
         if (powerUI && mediaUI) {

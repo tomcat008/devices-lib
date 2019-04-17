@@ -1,6 +1,6 @@
-import { CTL_RT_RY } from "./RY";
+import { CTL_RT } from "./RT";
 
 
-export = class CTL_RT_T3 extends CTL_RT_RY {
+export = class CTL_RT_T3 extends CTL_RT {
 
 }

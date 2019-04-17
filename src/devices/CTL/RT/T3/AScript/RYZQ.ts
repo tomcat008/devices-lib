@@ -1,9 +1,9 @@
 
-import { CTL_RT_RY } from "../../RY";
+import { CTL_RT } from "../../RT";
 import { List } from "../../../../../entities/Collections";
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI";
 
-export class CTL_RT_T3_RYZQ_Ts extends CTL_RT_RY {
+export class CTL_RT_T3_RYZQ_Ts extends CTL_RT {
     constructor(){
         super();
         this.BYTE_ARRAY_LENGTH=89;

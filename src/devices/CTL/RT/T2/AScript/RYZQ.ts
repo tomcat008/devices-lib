@@ -1,8 +1,8 @@
-import { CTL_RT_RY } from "../../RY";
+import { CTL_RT } from "../../RT";
 import { List } from "../../../../../entities/Collections";
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI";
 
-export class CTL_RT_T2_RYZQ_Ts extends CTL_RT_RY {
+export class CTL_RT_T2_RYZQ_Ts extends CTL_RT {
     
     protected addFocusFields(list:List<DeviceFieldForUI>){
         let map = this.getMockFields();

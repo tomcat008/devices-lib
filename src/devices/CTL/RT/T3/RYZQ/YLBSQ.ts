@@ -1,5 +1,5 @@
 
-import { CTL_RT_RY } from '../../RY'
+import { CTL_RT } from '../../RT'
 import { List } from '../../../../../entities/Collections';
 import { DeviceFieldForUI } from '../../../../../meta/DeviceFieldForUI';
 import { CTL_RT_T3_RYZQ_Ts } from '../AScript/RYZQ';
@@ -20,7 +20,7 @@ export = class CTL_RT_T3_RYZQ_YLBSQ extends CTL_RT_T3_RYZQ_Ts {
     
     protected getPowerInfo() {
         let map = this.getOpenCloseFields();
-        let i = map.getItem(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue();
+        let i = map.getItem(CTL_RT.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue();
         if (i > 0) {
             return map.getItem(CTL_RT_T3_RYZQ_YLBSQ.KEY_POINT_RAN_SHAO_QI_STATUS).getValue() > 0 ? 1 : 0;
         }

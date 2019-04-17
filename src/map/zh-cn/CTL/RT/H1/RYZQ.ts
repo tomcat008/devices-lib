@@ -3,7 +3,7 @@ import { CountField } from "../../../../../meta/CountField";
 import { BaseInfoField, OpenCloseField, ExceptionField, MockField, DeviceField, SettingField } from "../../../../../meta/RT/meta";
 import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice";
 import { FixedValueField } from "../../../../../meta/FixedValueField";
-import { CTL_RT_RY } from "../../../../../devices/CTL/RT/RY";
+import { CTL_RT } from "../../../../../devices/CTL/RT/RT";
 import { CountShowField } from "../../../../../meta/CountShowField";
 import { ZH_CN } from "../../../ZH_CN";
 import { CTL_RT_H1_Ts } from "../AScript/H1";
@@ -18,8 +18,8 @@ export = class CTL_RT_H1_RYRS extends CTL_RT_H1_Ts {
     constructor() {
         super();
         this.warningMsg='';
-        this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG,  "给水泵"));
-        this.addPoint(new CountField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI,   "燃烧器"));
+        this.addPoint(new CountField(CTL_RT.KEY_POINT_Add_SHUI_BENG,  "给水泵"));
+        this.addPoint(new CountField(CTL_RT.KEY_POINT_RAN_SHAO_QI,   "燃烧器"));
 
 
 
@@ -30,9 +30,9 @@ export = class CTL_RT_H1_RYRS extends CTL_RT_H1_Ts {
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 0, ZH_CN.coms_power));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 1, ZH_CN.coms_media));
         this.addPoint(new DeviceField("de_bushuibengzhubei", 49, 2, "给水泵", 0, CTL_RT_H1_RYRS.coms_master));
-        this.addPoint(new DeviceField("de_bushuibengshoudongzidong", 49, 2, "给水泵", 1, CTL_RT_H1_RYRS.coms_atuo));
-        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_1, 9, 2, "补水泵主控制", 3, ZH_CN.coms_open_close));
-        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_2, 9, 2, "补水泵备控制", 4, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField("de_bushuibengshoudongzidong", 49, 2, "给水泵", 1, CTL_RT_H1_RYRS.coms_auto));
+        this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_1, 9, 2, "补水泵主控制", 3, ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_2, 9, 2, "补水泵备控制", 4, ZH_CN.coms_open_close));
         this.addPoint(new ExceptionField("ex_jixiandishuiweibaojing", 45, 2, "极限低水位报警",0));
         this.addPoint(new ExceptionField("ex_zhengqiyalibiansongqiduanlu", 45, 2, "蒸汽压力变送器断路",1));
         this.addPoint(new ExceptionField("ex_zhengqiyalibiansongqiduanlu", 45, 2, "蒸汽压力变送器短路",2));
@@ -66,7 +66,7 @@ export = class CTL_RT_H1_RYRS extends CTL_RT_H1_Ts {
         this.addPoint(new OpenCloseField("oc_ranqiyaliyichangbaojingxinhao", 5, 2, "燃气压力异常报警信号",11,ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_ranqixieloubaojingxinhao", 5, 2, "燃气泄漏报警信号",12,ZH_CN.coms_open_close));
 
-        this.addPoint(new DeviceField(CTL_RT_RY.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, "燃烧器启停控制",0,ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField(CTL_RT.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, "燃烧器启停控制",0,ZH_CN.coms_open_close));
 
         this.addPoint(new OpenCloseField("oc_ranshaoqifuhediaojie/zengdadiaojie", 9, 2, "燃烧器负荷调节/增大调节",1,ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_jianxiaodiaojie", 9, 2, "减小调节",2,ZH_CN.coms_open_close));

@@ -4,7 +4,7 @@ import { Element as AElement } from "../../../entities/Element";
 import { DeviceFieldForUI } from "../../../meta/DeviceFieldForUI";
 import { List } from "../../../entities/Collections";
 
-export  class CTL_RT_RY extends SdcSoftDevice {
+export class CTL_RT extends SdcSoftDevice {
 
     static readonly KEY_POINT_RAN_SHAO_QI = "_ranshaoqi";
     static readonly KEY_POINT_RAN_SHAO_QI_KONGZHI = "oc_ranshaoqiqitingkongzhi";
@@ -14,12 +14,12 @@ export  class CTL_RT_RY extends SdcSoftDevice {
     static readonly KEY_POINT_LENG_NING_BENG = "_lengningbeng";
     static readonly KEY_POINT_LENG_NING_BENG_1 = "oc_1_lengningxunhuanbeng_start_stop"
     static readonly KEY_POINT_LENG_NING_BENG_2 = "oc_2_lengningxunhuanbeng_start_stop"
+    
     constructor(){
         super();
         this.BYTE_ARRAY_LENGTH=54;
     }
     protected getPowerInfo() {
-       
         return 0;
     }
     public handleByteField(field: ByteField, bytes: Uint8Array) {
@@ -39,14 +39,15 @@ export  class CTL_RT_RY extends SdcSoftDevice {
 
     protected addFocusFields(list:List<DeviceFieldForUI>){
     }
+    handleCountShowFields(){
+        let map = this.getBaseInfoFields();
+    }
     
     public getDeviceFocusFields(): DeviceFieldForUI[] {
         let map = this.getBaseInfoFields();
 
         let list = new List<DeviceFieldForUI>();
-        map.each((k,v)=>{
-            console.log(k)
-        });
+        
         let i = map.getItem(SdcSoftDevice.KEY_POINT_RUN_LIFE).getValue();
         let field = map.getItem(SdcSoftDevice.KEY_POINT_RUN_DAYS);
         field.setValue(i / 24);
@@ -64,8 +65,8 @@ export  class CTL_RT_RY extends SdcSoftDevice {
         let list: AElement[] = [];
         let map = this.getCountFields();
         let map2 = this.getDeviceFields();
-        if (map.containsKey(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG)) {
-            let deviceFieldForUI = map.getItem(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG);
+        if (map.containsKey(CTL_RT.KEY_POINT_Add_SHUI_BENG)) {
+            let deviceFieldForUI = map.getItem(CTL_RT.KEY_POINT_Add_SHUI_BENG);
             let element = new AElement();
             element.setTitle(deviceFieldForUI.getTitle());
             element.setPrefix(AElement.Prefix_Beng);
@@ -74,12 +75,12 @@ export  class CTL_RT_RY extends SdcSoftDevice {
             let d2 = d1;
             let count = 0;
 
-            if (map2.containsKey(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_1)) {
-                d1 = map2.getItem(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_1);
+            if (map2.containsKey(CTL_RT.KEY_POINT_Add_SHUI_BENG_1)) {
+                d1 = map2.getItem(CTL_RT.KEY_POINT_Add_SHUI_BENG_1);
                 count = 1;
             }
-            if (map2.containsKey(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_2)) {
-                d2 = map2.getItem(CTL_RT_RY.KEY_POINT_Add_SHUI_BENG_2);
+            if (map2.containsKey(CTL_RT.KEY_POINT_Add_SHUI_BENG_2)) {
+                d2 = map2.getItem(CTL_RT.KEY_POINT_Add_SHUI_BENG_2);
                 count += 2;
             }
             let v1 = 0, v2 = 0;
@@ -102,20 +103,20 @@ export  class CTL_RT_RY extends SdcSoftDevice {
                     break;
             }
         }
-        if (map.containsKey(CTL_RT_RY.KEY_POINT_LENG_NING_BENG)) {
-            let deviceFieldForUI = map.getItem(CTL_RT_RY.KEY_POINT_LENG_NING_BENG);
+        if (map.containsKey(CTL_RT.KEY_POINT_LENG_NING_BENG)) {
+            let deviceFieldForUI = map.getItem(CTL_RT.KEY_POINT_LENG_NING_BENG);
             let element = new AElement();
             element.setTitle(deviceFieldForUI.getTitle());
             element.setPrefix(AElement.Prefix_Beng);
 
             let d1 = deviceFieldForUI, d2 = deviceFieldForUI;
             let count = 0;
-            if (map2.containsKey(CTL_RT_RY.KEY_POINT_LENG_NING_BENG_1)) {
-                d1 = map2.getItem(CTL_RT_RY.KEY_POINT_LENG_NING_BENG_1);
+            if (map2.containsKey(CTL_RT.KEY_POINT_LENG_NING_BENG_1)) {
+                d1 = map2.getItem(CTL_RT.KEY_POINT_LENG_NING_BENG_1);
                 count = 1;
             }
-            if (map2.containsKey(CTL_RT_RY.KEY_POINT_LENG_NING_BENG_2)) {
-                d2 = map2.getItem(CTL_RT_RY.KEY_POINT_LENG_NING_BENG_2);
+            if (map2.containsKey(CTL_RT.KEY_POINT_LENG_NING_BENG_2)) {
+                d2 = map2.getItem(CTL_RT.KEY_POINT_LENG_NING_BENG_2);
                 count += 2;
             }
             let v1 = 0, v2 = 0;
