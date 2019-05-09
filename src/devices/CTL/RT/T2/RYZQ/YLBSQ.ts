@@ -1,4 +1,4 @@
-import { CTL_RT_T2_RYZQ_YLBSQ_Ts } from "./AScropt/YLBSQ";
+import { CTL_RT_T2_RYZQ_YLBSQ_Ts } from "./YLBSQ/AScropt/YLBSQ";
 
 export = class CTL_RT_T2_RYZQ_YLBSQ_CK extends CTL_RT_T2_RYZQ_YLBSQ_Ts {
     constructor(){

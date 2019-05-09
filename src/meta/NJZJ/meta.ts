@@ -109,6 +109,9 @@ export class MockField extends DParentClass {
         if (0x7FFF == i)
             return false;
 
+        let dv = new DataView(new ArrayBuffer(2));
+        dv.setInt16(0, i);
+        i = dv.getInt16(0);
         this.value = i;
         if (this.getBaseNumber()) {
             this.value = i / this.getBaseNumber();
@@ -190,7 +193,7 @@ export class StartStopField extends EParentClass {
     }
 
     haveValue(...bytes: number[]): boolean {
-        this.value = bytes[1]  | (bytes[0] << 8)
+        this.value = bytes[1] | (bytes[0] << 8)
         return 0x7FFF != this.value;
     }
 

@@ -1,11 +1,11 @@
 declare function require(moduleName: string): any;
 
-import { Wx_DeviceAdapterUtil, SdcSoftDevice } from '../src';
+import { DeviceAdapterUtil, SdcSoftDevice } from '../src';
 import { map as PointMap } from '../src/map/map'
 import * as Request from 'supertest'
 import { Command } from '../src/command/Command';
 
-Wx_DeviceAdapterUtil.InjectFunc(function(type:string):SdcSoftDevice{
+DeviceAdapterUtil.InjectFunc(function(type:string):SdcSoftDevice{
     let strs = type.split('_')
     console.log(strs.join('/'));
     let path = '../src/devices/' + strs.join('/');
@@ -111,8 +111,8 @@ function getSubTypes(device:SdcSoftDevice){
 function getWarningMsg(device:SdcSoftDevice){
     // console.log('waring msg:='+device.getWarningMsg());
 }
-//let request = Request('http://output.sdcsoft.com.cn/device2').post('/get2');
-let request = Request('http://localhost:8080');//.get('/home/output');
+let request = Request('http://output.sdcsoft.com.cn/device2');//.post('/get2');
+//let request = Request('http://localhost:8080');//.get('/home/output');
 
 function checkDeviceByGet(deviceNo:string,type:string,done:any)
 {
@@ -120,7 +120,7 @@ function checkDeviceByGet(deviceNo:string,type:string,done:any)
         .expect(200).then(response => {
             let data = new Uint8Array(response.body);
             console.log(type+' data:'+data.length)
-            let device: SdcSoftDevice | null = Wx_DeviceAdapterUtil.getSdcSoftDevice(type, data);
+            let device: SdcSoftDevice | null = DeviceAdapterUtil.getSdcSoftDevice(type, data);
             if (device) {
                 printDevice(device);
                 getCommands(device);
@@ -133,10 +133,10 @@ function checkDeviceByGet(deviceNo:string,type:string,done:any)
 }
 function checkDeviceByPost(deviceNo:string,type:string,done:any)
 {
-    request.post('/home/output').send('id='+deviceNo)
+    request.post('/get2').send('id='+deviceNo)
         .expect(200).then(response => {
             let data = new Uint8Array(response.body);
-            let device: SdcSoftDevice | null = Wx_DeviceAdapterUtil.getSdcSoftDevice(type, data);
+            let device: SdcSoftDevice | null = DeviceAdapterUtil.getSdcSoftDevice(type, data);
             if (device) {
                 printDevice(device);
                 getCommands(device);
@@ -154,7 +154,7 @@ function checkDeviceSubInfo(deviceNo:string,type:string,done:any)
         .expect(200).then(response => {
             //let data = new Uint8Array(500);
             let data = new Uint8Array(response.body);
-            let device: SdcSoftDevice | null = Wx_DeviceAdapterUtil.getSdcSoftDevice(type, data);
+            let device: SdcSoftDevice | null = DeviceAdapterUtil.getSdcSoftDevice(type, data);
             if (device) {
                 getWarningMsg(device);
                 getSubTypes(device);
@@ -167,4 +167,4 @@ function checkDeviceSubInfo(deviceNo:string,type:string,done:any)
         });
 }*/
 
-export {Wx_DeviceAdapterUtil,checkDeviceByGet,checkDeviceByPost,request as request};
+export {DeviceAdapterUtil,checkDeviceByGet,checkDeviceByPost,request as request};

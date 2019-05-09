@@ -6,16 +6,16 @@ import { Element as AElement } from "../../../entities/Element";
 
 export = class CTL_HNWE_485 extends SdcSoftDevice {
 
-    public handleByteField(field: ByteField, bytes: ArrayBuffer) {
-        let view = new DataView(bytes);
+    public handleByteField(field: ByteField, bytes: Uint8Array) {
+        //let view = new DataView(bytes);
         switch (field.getBytesLength()) {
             case 2:
-                if (field.haveValue(view.getUint8(field.getStartIndex()), view.getUint8(field.getStartIndex() + 1))) {
+                if (field.haveValue(bytes[field.getStartIndex()], bytes[field.getStartIndex() + 1])) {
                     this.addField(field);
                 }
                 break;
             default:
-                if (field.haveValue(view.getUint8(field.getStartIndex()))) {
+                if (field.haveValue(bytes[field.getStartIndex()])) {
                     this.addField(field);
                 }
                 break;

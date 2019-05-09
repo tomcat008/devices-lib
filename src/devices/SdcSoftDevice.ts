@@ -181,7 +181,7 @@ export abstract class SdcSoftDevice {
         let element = new AElement();
         element.setPrefix(AElement.Prefix_Stove);
         element.setTitle("锅炉");
-        element.SetValues(AElement.Index_A_Power, this.power, this.media, SdcSoftDevice.Style_Horizontal, this.getPowerInfo());
+        element.SetValues(AElement.Index_A_Power, this.power, this.media, this.getPowerInfo(), SdcSoftDevice.Style_Horizontal);
         return element;
     }
 
@@ -238,7 +238,7 @@ export abstract class SdcSoftDevice {
         this.warningMsg = msg;
     }
     */
-    
+
     /**
      * 自动确认设备类型的逻辑
      */
@@ -249,10 +249,10 @@ export abstract class SdcSoftDevice {
     /**
      * 获取设备的子类型命令
      */
-    getSubDeviceType():string{
+    getSubDeviceType(): string {
         return SdcSoftDevice.NO_SUB_DEVICE_TYPE;
     }
-    
+
     abstract handleDeviceNo(bytes: number[]): void;
 
     protected abstract getPowerInfo(): number;

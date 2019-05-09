@@ -1,6 +1,6 @@
 declare function require(moduleName: string): any;
 
-import { Js_DeviceAdapterUtil } from '../utils/DeviceAdapterUtil';
+import { Wx_DeviceAdapterUtil as Js_DeviceAdapterUtil } from '../utils/DeviceAdapterUtil';
 import { SdcSoftDevice } from '../devices/SdcSoftDevice'
 import { map as PointMap } from '../map/map'
 import * as Request from 'supertest'

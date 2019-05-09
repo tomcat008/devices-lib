@@ -85,6 +85,7 @@ class DeviceAdapter {
         return device;
     }
 }
+/*
 export class Web_DeviceAdapterUtil {
     private static adapter: DeviceAdapter = new DeviceAdapter((type) => {
         let strs = type.split('_')
@@ -105,7 +106,7 @@ export class Web_DeviceAdapterUtil {
         return this.adapter.getSdcSoftDevice(type, data, power, media, lang);
     }
 }
-
+*/
 export class Wx_DeviceAdapterUtil {
     private static adapter: DeviceAdapter | null;
 

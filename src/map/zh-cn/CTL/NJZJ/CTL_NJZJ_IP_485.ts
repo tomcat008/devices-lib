@@ -1,6 +1,6 @@
 import { CTL_NJZJ } from "./CTL_NJZJ";
 import { SdcSoftDevice } from "../../../../devices/SdcSoftDevice";
-import { SystemStatusField, BaseInfoField, RunDaysField, ExceptionField, DeviceField, MockField, RanShaoQiField, SettingField, StartStopField, } from "../../../../meta/NJZJ/485";
+import { SystemStatusField, BaseInfoField, ExceptionField, DeviceField, MockField, SettingField, StartStopField, } from "../../../../meta/NJZJ/485";
 import { ZH_CN } from "../../ZH_CN";
 
 export class CTL_NJZJ_IP_485 extends CTL_NJZJ {
@@ -227,7 +227,7 @@ export class CTL_NJZJ_IP_485 extends CTL_NJZJ {
 
         this.addPoint(new ExceptionField("ex_jinchukouyachagaobaojing", 276, 2, "进出口压差高报警"));
 
-        this.addPoint(new ExceptionField("ex_zhenkongyalibuzubaojing,", 278, 2, "真空压力不足报警,"));
+        this.addPoint(new ExceptionField("ex_zhenkongyalibuzubaojing", 278, 2, "真空压力不足报警,"));
 
         this.addPoint(new ExceptionField("ex_jinchukouwenchadibaojing", 280, 2, "进出口温差低报警"));
 

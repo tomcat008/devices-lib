@@ -12,8 +12,7 @@ export abstract class IP extends SdcSoftDevice {
     protected static readonly KEY_POINT_RAN_SHAO_QI = "de_ranshaoqi";
     protected static readonly KEY_POINT_JIA_RE_ZU = "se_jiarezushu";
     protected static readonly KEY_POINT_YIN_FENG_JI = "de_yinfengji_fan";
-
-
+   
     public handleByteField(field: ByteField, bytes: ArrayBuffer) {
         let view = new DataView(bytes);
         switch (field.getBytesLength()) {

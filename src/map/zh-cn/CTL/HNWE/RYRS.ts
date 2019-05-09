@@ -2,7 +2,8 @@ import { ZH_CN as ParentClass, ZH_CN } from '../../ZH_CN'
 import { INumberIndex } from '../../../../entities/IIndex';
 import { FixedValueField } from '../../../../meta/FixedValueField';
 import { BaseInfoField, OpenCloseField, ExceptionField, DemandField, SettingField, MockField, DeviceField } from '../../../../meta/HNWE/meta';
-import { SdcSoftDevice } from '../../../..';
+import { CountShowField } from '../../../../meta/CountShowField';
+import { SdcSoftDevice } from '../../../../devices/SdcSoftDevice';
 
 export = class CTL_HNWR_485 extends ParentClass {
 
@@ -89,6 +90,8 @@ export = class CTL_HNWR_485 extends ParentClass {
     }
     constructor() {
         super();
+        this.addPoint(new CountShowField(CTL_HNWR_485.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"));
+        this.addPoint(new CountShowField(CTL_HNWR_485.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"));
 
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 0, ZH_CN.coms_power));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 0, ZH_CN.coms_media));
@@ -109,7 +112,7 @@ export = class CTL_HNWR_485 extends ParentClass {
         this.addPoint(new OpenCloseField("oc_shuibeng", 4, 1, "水泵", 5, ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_suoding", 5, 1, "错误标志", 1, CTL_HNWR_485.coms_biaozhi));
         //
-        this.addPoint(new ExceptionField("oc_OEMcuowuhao", 6, 1, "报警", CTL_HNWR_485.coms_ExceptionField));
+        this.addPoint(new ExceptionField("ex_OEMcuowuhao", 6, 1, "报警", CTL_HNWR_485.coms_ExceptionField));
         //
         this.addPoint(new DemandField("mo_jiarexuqiu", 19, 1, "加热需求", '', CTL_HNWR_485.coms_xuqiu));
 

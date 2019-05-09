@@ -45,6 +45,7 @@ export class OpenCloseField extends EParentClass {
     haveValue(...bytes: number[]): boolean {
         this.value = bytes[0]<<8|bytes[1];
         let i = 1 << this.bit;
+        //console.log(this.title+' i:='+i.toString()+' value:='+this.value.toString() )
         if ((i & this.value) == i) {
             this.value = 1;
         } else {
@@ -73,6 +74,19 @@ export class ExceptionField extends OpenCloseField {
     constructor(name: string, startIndex: number, bytesLength: number, title: string,bit:number) {
         super(name,startIndex,bytesLength,title,bit,null);
     }
+    haveValue(...bytes: number[]): boolean {
+        this.value = bytes[0]<<8|bytes[1];
+        let i = 1 << this.bit;
+        //console.log(this.title+' i:='+i.toString()+' value:='+this.value.toString() )
+        if ((i & this.value) == i) {
+            this.value = 1;
+            return true;
+        } else {
+            this.value = 0;
+            return false;
+        }
+        
+    }
     setDeviceFieldForUIKey(fieldForUI:DeviceFieldForUI) {
         fieldForUI.setKey(map.KEY_EXCEPTION);
     }
@@ -96,7 +110,7 @@ export class MockField extends DParentClass {
     }
     haveValue(...bytes: number[]): boolean {
         let i = bytes[0] << 8 | bytes[1];
-        //console.log(this.title+' basenumber:='+this.getBaseNumber() )
+        //console.log(this.title+' basenumber:='+this.getBaseNumber()+' value:='+i.toString() )
         this.value = i;
         if (this.getBaseNumber()) {
             this.value = i / this.getBaseNumber();

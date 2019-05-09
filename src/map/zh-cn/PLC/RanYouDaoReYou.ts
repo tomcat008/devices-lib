@@ -73,9 +73,9 @@ export = class PLC_RanYouDaoReYou extends PLC_Map {
         this.addPoint(new ExceptionField("ex_ranqixielou", 229, 2, "燃气泄漏", 9));
         this.addPoint(new ExceptionField("ex_ranqiyaliyichang", 229, 2, "燃气压力异常", 10));
         this.addPoint(new ExceptionField("ex_fengjiguzhang", 229, 2, "风机故障", 11));
-        this.addPoint(new ExceptionField("xunhuanbengguzhang", 229, 2, "1#循环泵故障", 12));
-        this.addPoint(new ExceptionField("xunhuanbengguzhang", 229, 2, "2#循环泵故障", 13));
-        this.addPoint(new ExceptionField("xunhuanbengguzhang", 229, 2, "3#循环泵故障", 14));
+        this.addPoint(new ExceptionField("ex_1_xunhuanbengguzhang", 229, 2, "1#循环泵故障", 12));
+        this.addPoint(new ExceptionField("ex_2_xunhuanbengguzhang", 229, 2, "2#循环泵故障", 13));
+        this.addPoint(new ExceptionField("ex_3_xunhuanbengguzhang", 229, 2, "3#循环泵故障", 14));
         this.addPoint(new ExceptionField("ex_zhuyoubengguzhang", 229, 2, "注油泵故障", 15));
         this.addPoint(new ExceptionField("ex_jinchukouyachachaogao", 229, 2, "进出口压差超高", 0));
         this.addPoint(new ExceptionField("ex_jinchukouyachachaodi", 229, 2, "进出口压差超低", 1));

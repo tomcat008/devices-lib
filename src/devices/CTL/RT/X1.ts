@@ -8,7 +8,7 @@ export = class CTL_RT_X1 extends CTL_RT {
     }
     getSubDeviceType():string{
         let t = this.getSettingFields().getItem('se_dangqianmoshi').getValue().toString();
-        console.log('sub:='+t)
+        //console.log('sub:='+t)
         return t;
     }
 }

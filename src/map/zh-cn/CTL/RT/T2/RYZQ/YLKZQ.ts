@@ -1,17 +1,24 @@
-import { ExceptionField, SettingField,OpenCloseField } from "../../../../../../../meta/RT/meta";
-import { CTL_RT_T2_RYZQ_Ts } from "../../AScript/RYZQ";
-import { ZH_CN } from "../../../../../ZH_CN";
+import { ExceptionField, SettingField,OpenCloseField,MockField } from "../../../../../../meta/RT/meta";
+import { CTL_RT_T2_RYZQ_Ts } from "../AScript/RYZQ";
+import { ZH_CN } from "../../../../ZH_CN";
 
 export = class CTL_RT_T2_RYZQ_YLKZQ_CK extends CTL_RT_T2_RYZQ_Ts{
     constructor(){
         super();
         // this.warningMsg='';
-        this.addPoint(new OpenCloseField("oc_ranshaoqifuhetiaojie", 9, 2, "燃烧器负荷增大调节", 1, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_fuhetiaojie", 5, 2, "负荷调节", 7, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_qitingkongzhi", 5, 2, "启停控制", 8, ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_ranshaoqifuhe", 9, 2, "燃烧器负荷调节", 1, ZH_CN.coms_open_close));
+
         
+        this.addPoint(new MockField("mo_lengningqiyanwen", 13, 2, "冷凝器烟温", "℃"));
+        this.addPoint(new MockField("mo_jishuiwendu", 15, 2, "给水温度", "℃"));
+        this.addPoint(new MockField("mo_jienengqiyanwen", 23, 2, "节能器烟温", "℃"));
+        
+        this.addPoint(new ExceptionField("ex_chaoyabaojing", 45, 2, "超压报警", 2));
         this.addPoint(new ExceptionField("ex_ranqiyaligaobaojing", 45, 2, "燃气压力高报警", 15));
         this.addPoint(new ExceptionField("ex_ranqixieloubaojing", 47, 2, "燃气泄漏报警", 0));
         this.addPoint(new ExceptionField("ex_ranshaoqiguzhang", 47, 2, "燃烧器故障", 1));
-
         this.addPoint(new ExceptionField("ex_jixiandishuiweibaojing2", 47, 2, "极限低水位报警2",4));
 
         this.addPoint(new SettingField("se_paiyanchaowen", 107, 2, "排烟超温","℃"));
@@ -22,9 +29,9 @@ export = class CTL_RT_T2_RYZQ_YLKZQ_CK extends CTL_RT_T2_RYZQ_Ts{
         this.addPoint(new SettingField("se_shuchushangxian", 117, 2, "输出上限","%"));
         this.addPoint(new SettingField("se_shuchuxiaxian", 119, 2, "输出下限","%"));
         this.addPoint(new SettingField("se_ranshaozhouqi", 121, 2, "燃烧  周期"));
-        this.addPoint(new SettingField("se_ranshaoP", 123, 2, "燃烧  P",""));
-        this.addPoint(new SettingField("se_ranshaoI", 125, 2, "燃烧  I"));
-        this.addPoint(new SettingField("se_ranshaoD", 127, 2, "燃烧  D"));
+        this.addPoint(new SettingField("se_ranshaoP", 123, 2, "燃烧P",""));
+        this.addPoint(new SettingField("se_ranshaoI", 125, 2, "燃烧I"));
+        this.addPoint(new SettingField("se_ranshaoD", 127, 2, "燃烧D"));
         this.addPoint(new SettingField("se_xingcheng", 129, 2, "行程"));
         this.addPoint(new SettingField("se_gaobaojing", 131, 2, "高报警","%"));
         this.addPoint(new SettingField("se_gaoshuiwei", 133, 2, "高水位","%"));
@@ -32,9 +39,9 @@ export = class CTL_RT_T2_RYZQ_YLKZQ_CK extends CTL_RT_T2_RYZQ_Ts{
         this.addPoint(new SettingField("se_mubiaoshuiwei", 137, 2, "目标水位","%"));
         this.addPoint(new SettingField("se_queshuishuiwei", 139, 2, "缺水水位","%"));
         this.addPoint(new SettingField("se_shuiweizhouqi", 141, 2, "水位  周期"));
-        this.addPoint(new SettingField("se_shuiweip", 143, 2, "水位  p"));
-        this.addPoint(new SettingField("se_shuiweiI", 145, 2, "水位  I"));
-        this.addPoint(new SettingField("se_shuiweiD", 147, 2, "水位  D"));
+        this.addPoint(new SettingField("se_shuiweip", 143, 2, "水位P"));
+        this.addPoint(new SettingField("se_shuiweiI", 145, 2, "水位I"));
+        this.addPoint(new SettingField("se_shuiweiD", 147, 2, "水位D"));
         this.addPoint(new SettingField("se_chongxiyanshi", 157, 2, "冲洗延时","S"));
         this.addPoint(new SettingField("se_zhuanhuohuicha", 159, 2, "转火回差","Mpa",100));
    

@@ -1,4 +1,4 @@
-import { CTL_RT_T2_RYZQ_Ts } from "../../AScript/RYZQ";
+import { CTL_RT_T2_RYZQ_Ts } from "../AScript/RYZQ";
 
 export = class CTL_RT_T2_RYZQ_YLKZQ_CK extends CTL_RT_T2_RYZQ_Ts {
 

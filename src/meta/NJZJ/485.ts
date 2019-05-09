@@ -124,7 +124,9 @@ export class MockField extends DParentClass {
         // for(let i =0;i< bytes.length;i++){
         //     view[i]=bytes[i];
         // }
-
+        let dv = new DataView(new ArrayBuffer(2));
+        dv.setInt16(0, i);
+        i = dv.getInt16(0);
         this.value = i;
         if (this.getBaseNumber()) {
             this.value = i / this.getBaseNumber();

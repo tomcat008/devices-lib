@@ -6,7 +6,7 @@ import { CTL_RT } from "../../../../../devices/CTL/RT/RT";
 import { ZH_CN } from "../../../ZH_CN";
 import { CountShowField } from "../../../../../meta/CountShowField";
 import { FixedValueField } from "../../../../../meta/FixedValueField";
-import { INumberIndex } from "../../../../../entities/IIndex";
+
 
 export = class CTL_RT_X1_RYZQDJD extends CTL_RT_X1_Ts {
 

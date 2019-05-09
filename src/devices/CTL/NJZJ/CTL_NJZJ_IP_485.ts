@@ -1,4 +1,4 @@
-import { IP } from "./CTL_NJZJ_IP";
+import { IP } from "./CTL_NJZJ";
 import { ByteField } from "../../../meta/ByteField";
 import { DeviceFieldForUI } from "../../../meta/DeviceFieldForUI";
 

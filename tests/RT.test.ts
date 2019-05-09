@@ -20,7 +20,7 @@ mocha.describe('RT 设备测试',function(){
     // it('CTL_RT_T2_RYZQ_YLBSQ_18',function(done){
     //     checkDeviceSubInfo('0233333333','CTL_RT_T2_RYZQ_YLBSQ_18',done)
     // });
-    it('CTL_RT_X1',function(done){
-        checkDeviceByGet('0233333333','CTL_RT_X1',done)
+     it('CTL_RT_T2_RYZQ_YLBSQ',function(done){
+         checkDeviceByPost('0222222222','CTL_RT_T2_RYZQ_YLKZQ_180839008',done)
     });
 });
