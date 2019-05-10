@@ -10,7 +10,6 @@ export abstract class IP extends SdcSoftDevice {
     protected static readonly Device_Suffix_Fan = "_fan";
 
     protected static readonly KEY_POINT_RAN_SHAO_QI = "de_ranshaoqi";
-    protected static readonly KEY_POINT_JIA_RE_ZU = "se_jiarezushu";
     protected static readonly KEY_POINT_YIN_FENG_JI = "de_yinfengji_fan";
    
     public handleByteField(field: ByteField, bytes: ArrayBuffer) {
@@ -38,7 +37,7 @@ export abstract class IP extends SdcSoftDevice {
         list.push(map.getItem(SdcSoftDevice.KEY_POINT_RUN_HOURS));
 
         if (this.power == Power.Dian) {
-            list.push(this.getDeviceFields().getItem("de_jiarezu"));
+            list.push(this.getDeviceFields().getItem(SdcSoftDevice.KEY_POINT_JIA_RE_ZU));
             if (this.media == Media.ReShui) {
                 let map2 = this.getMockFields();
                 list.push(map2.getItem("mo_chukouwendu"));

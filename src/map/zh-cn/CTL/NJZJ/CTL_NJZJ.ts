@@ -1,5 +1,5 @@
-import { ZH_CN as ParentClass } from '../../ZH_CN'
-export abstract class CTL_NJZJ extends ParentClass {
+import { Map_ZH_CN as ParentClass } from '../../ZH_CN'
+export abstract class Map_CTL_NJZJ extends ParentClass {
     static coms_status = {
         0: "关机",
         1: "待机",

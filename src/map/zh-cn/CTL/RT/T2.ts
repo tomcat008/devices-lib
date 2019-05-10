@@ -1,5 +1,5 @@
-import { CTL_RT_T2_Ts } from "./AScript/T2";
+import { Map_CTL_RT_T2_Ts } from "./AScript/T2";
 
-export = class CTL_RT_T2 extends CTL_RT_T2_Ts {
+export = class Map_CTL_RT_T2 extends Map_CTL_RT_T2_Ts {
 
 }

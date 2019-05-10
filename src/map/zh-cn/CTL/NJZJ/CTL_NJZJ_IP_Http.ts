@@ -1,28 +1,28 @@
-import { ZH_CN } from "../../ZH_CN";
+import { Map_ZH_CN } from "../../ZH_CN";
 import { SdcSoftDevice } from "../../../../devices/SdcSoftDevice";
 import { BaseInfoField, ExceptionField, MockField, SettingField, RanShaoQiField, RunDaysField, DeviceField, StartStopField } from "../../../../meta/NJZJ/meta";
-import { CTL_NJZJ } from "./CTL_NJZJ";
+import { Map_CTL_NJZJ } from "./CTL_NJZJ";
 
-export class CTL_NJZJ_IP_Http extends CTL_NJZJ {
+export class Map_CTL_NJZJ_IP_Http extends Map_CTL_NJZJ {
     constructor() {
         super();
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 20, 1, "系统状态", '', CTL_NJZJ_IP_Http.coms_status));
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 20, 1, "系统状态", '', Map_CTL_NJZJ_IP_Http.coms_status));
 
         this.addPoint(new RunDaysField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 21, 2, "运行天数", "天"));
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 23, 1, "运行小时数", "时"));
 
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_POWER, 24, 1, "燃料类型", '', ZH_CN.coms_power));
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_POWER, 24, 1, "燃料类型", '', Map_ZH_CN.coms_power));
 
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_MEDIA, 25, 1, "介质类型", '', ZH_CN.coms_media));
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_MEDIA, 25, 1, "介质类型", '', Map_ZH_CN.coms_media));
 
-        this.addPoint(new BaseInfoField("ba_guolushuiweizhuangtai", 26, 1, "锅炉液位状态", '', ZH_CN.coms_level));
+        this.addPoint(new BaseInfoField("ba_guolushuiweizhuangtai", 26, 1, "锅炉液位状态", '', Map_ZH_CN.coms_level));
 
-        this.addPoint(new BaseInfoField("ba_shuixiangshuiweizhuangtai", 27, 1, "水箱液位状态", '', ZH_CN.coms_level));
+        this.addPoint(new BaseInfoField("ba_shuixiangshuiweizhuangtai", 27, 1, "水箱液位状态", '', Map_ZH_CN.coms_level));
 
-        this.addPoint(new BaseInfoField("ba_guoluyalizhuangtai", 28, 1, "锅炉压力状态", '', CTL_NJZJ_IP_Http.coms_yalistatus));
+        this.addPoint(new BaseInfoField("ba_guoluyalizhuangtai", 28, 1, "锅炉压力状态", '', Map_CTL_NJZJ_IP_Http.coms_yalistatus));
         this.addPoint(new BaseInfoField("ba_moshibianhao", 29, 1, "模式编号", ''));
-        this.addPoint(new BaseInfoField("ba_fangdongkaiguan", 30, 1, "防冻开关", '', ZH_CN.coms_open_close));
+        this.addPoint(new BaseInfoField("ba_fangdongkaiguan", 30, 1, "防冻开关", '', Map_ZH_CN.coms_open_close));
         this.addPoint(new ExceptionField("ex_paiyanwendugaobaojing", 32, 1, "排烟温度高报警"));
         this.addPoint(new ExceptionField("ex_lushuiwendugaobaojing", 33, 1, "炉水温度高报警"));
 
@@ -668,55 +668,55 @@ export class CTL_NJZJ_IP_Http extends CTL_NJZJ {
 
         this.addPoint(new StartStopField("st_tingzhishijian6", 629, 2, "停止时间6"));
 
-        this.addPoint(new RanShaoQiField("de_ranshaoqi", 681, 2, "燃烧器", CTL_NJZJ_IP_Http.coms_ranshaoqi_status));
+        this.addPoint(new RanShaoQiField("de_ranshaoqi", 681, 2, "燃烧器", Map_CTL_NJZJ_IP_Http.coms_ranshaoqi_status));
 
-        this.addPoint(new DeviceField("de_jiarezu", 683, 2, "加热组", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField(SdcSoftDevice.KEY_POINT_JIA_RE_ZU, 683, 2, "加热组", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_bushui_beng", 685, 2, "补水泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_bushui_beng", 685, 2, "补水泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_jishui_beng", 687, 2, "给水泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_jishui_beng", 687, 2, "给水泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_buyou_beng", 689, 2, "补油泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_buyou_beng", 689, 2, "补油泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_xunhuan_beng", 691, 2, "循环泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_xunhuan_beng", 691, 2, "循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_lengning_beng", 693, 2, "冷凝泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_lengning_beng", 693, 2, "冷凝泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_reshui_beng", 695, 2, "热水泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_reshui_beng", 695, 2, "热水泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_zhenkong_beng", 697, 2, "真空泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_zhenkong_beng", 697, 2, "真空泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_ecixunhuan_beng", 699, 2, "二次循环泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_ecixunhuan_beng", 699, 2, "二次循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_yinfengji_fan", 701, 2, "引风机", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_yinfengji_fan", 701, 2, "引风机", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_gufengji_fan", 703, 2, "鼓风机", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_gufengji_fan", 703, 2, "鼓风机", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_lupai_fan", 705, 2, "炉排", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_lupai_fan", 705, 2, "炉排", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_chuzhaji_fan", 707, 2, "出渣机", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_chuzhaji_fan", 707, 2, "出渣机", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_ecigufengji_fan", 709, 2, "二次鼓风机", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_ecigufengji_fan", 709, 2, "二次鼓风机", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_dianhuoqi", 711, 2, "点火器", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_dianhuoqi", 711, 2, "点火器", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_shangmeiji", 713, 2, "上煤机", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_shangmeiji", 713, 2, "上煤机", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_songliaoji", 715, 2, "送料机", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_songliaoji", 715, 2, "送料机", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_jiayao_beng", 717, 2, "加药泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_jiayao_beng", 717, 2, "加药泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_paiwufa", 719, 2, "排污阀", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_paiwufa", 719, 2, "排污阀", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_huilu1xunhuan_beng", 721, 2, "回路1循环泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_huilu1xunhuan_beng", 721, 2, "回路1循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_huilu2xunhuan_beng", 723, 2, "回路2循环泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_huilu2xunhuan_beng", 723, 2, "回路2循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_huilu3xunhuan_beng", 725, 2, "回路3循环泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_huilu3xunhuan_beng", 725, 2, "回路3循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_huilu4xunhuan_beng", 727, 2, "回路4循环泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_huilu4xunhuan_beng", 727, 2, "回路4循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
-        this.addPoint(new DeviceField("de_huilu5xunhuan_beng", 729, 2, "回路5循环泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_huilu5xunhuan_beng", 729, 2, "回路5循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
 
     }
 }

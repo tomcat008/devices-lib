@@ -1,4 +1,4 @@
-import { CTL_RT_T2_RYZQ_Ts } from "./AScript/RYZQ";
+import { Map_CTL_RT_T2_RYZQ_Ts } from "./RYZQ_Base";
 
-export = class CTL_RT_T2_RYZQ extends CTL_RT_T2_RYZQ_Ts {
+export = class Map_CTL_RT_T2_RYZQ extends Map_CTL_RT_T2_RYZQ_Ts {
 }

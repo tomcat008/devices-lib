@@ -1,14 +1,15 @@
-import { PLC as PLC_Map } from "./BaseMap";
+import { Map_PLC as PLC_Map } from "./BaseMap";
 import { PLC } from "../../../devices/PLC/BaseDevice";
 import { CountField } from "../../../meta/CountField";
 import { MockField, SettingField, DeviceField, ExceptionField, OpenCloseField } from "../../../meta/PLC/meta";
-import { ZH_CN } from "../ZH_CN";
+import { Map_ZH_CN } from "../ZH_CN";
 import { BaseInfoField } from "../../../meta/NJZJ/485";
 import { FixedValueField } from "../../../meta/FixedValueField";
 import { SdcSoftDevice } from "../../../devices/SdcSoftDevice";
+import { CountShowField } from "../../../meta/CountShowField";
 
 
-export = class PLC_DianZhengQi extends PLC_Map {
+export = class Map_PLC_DianZhengQi extends PLC_Map {
     //static readonly Key = "PLC_DianReShui";
 
 
@@ -23,9 +24,10 @@ export = class PLC_DianZhengQi extends PLC_Map {
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 9, 2, "运行小时数", "时"));
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 11, 2, "运行天数", "天"));
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 13, 2, "系统状态", '', PLC_Map.coms_status));
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料", 1, ZH_CN.coms_power));
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质", 1, ZH_CN.coms_media));
-        this.addPoint(new BaseInfoField("ba_shuiweizhuangtai", 19, 2, "水位状态", '', ZH_CN.coms_level));
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料", 1, Map_ZH_CN.coms_power));
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质", 1, Map_ZH_CN.coms_media));
+        this.addPoint(new CountShowField(Map_PLC_DianZhengQi.KEY_BASE,SdcSoftDevice.KEY_POINT_JIA_RE_ZU, "投入加热组", ''));
+        this.addPoint(new BaseInfoField("ba_shuiweizhuangtai", 19, 2, "水位状态", '', Map_ZH_CN.coms_level));
         this.addPoint(new BaseInfoField("ba_ranshaoqizhuangtai", 21, 2, "燃烧器状态", '', PLC_Map.coms_ranshaoqi_status));
 
 
@@ -63,7 +65,7 @@ export = class PLC_DianZhengQi extends PLC_Map {
         this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_1, 201, 2, "1#给水泵", PLC_Map.coms_start_stop));
         this.addPoint(new DeviceField("de_2_addshuibeng_auto", 203, 2, "2#给水泵", PLC_Map.coms_atuo));
         this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_2, 205, 2, "2#给水泵", PLC_Map.coms_start_stop));
-        this.addPoint(new DeviceField("de_baojingshuchuzhishi", 207, 2, "报警输出指示", ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField("de_baojingshuchuzhishi", 207, 2, "报警输出指示", Map_ZH_CN.coms_open_close));
 
 
         this.addPoint(new ExceptionField("ex_shuidianjiluojicuobaojing", 233, 2, "水电极逻辑错报警", 0));

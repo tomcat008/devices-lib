@@ -1,6 +1,6 @@
-import { CTL_RT } from "../RT";
+import { Map_CTL_RT } from "../RT";
 
-export class CTL_RT_H1_Ts extends CTL_RT {
+export class Map_CTL_RT_H1_Ts extends Map_CTL_RT {
 
     
     constructor() {

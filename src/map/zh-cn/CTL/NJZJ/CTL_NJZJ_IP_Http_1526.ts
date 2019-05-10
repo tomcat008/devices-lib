@@ -1,9 +1,9 @@
-import { ZH_CN } from "../../ZH_CN";
+import { Map_ZH_CN } from "../../ZH_CN";
 import { SdcSoftDevice } from "../../../../devices/SdcSoftDevice";
 import { BaseInfoField, ExceptionField, MockField, SettingField, RanShaoQiField, RunDaysField, DeviceField, StartStopField } from "../../../../meta/NJZJ/meta";
-import { CTL_NJZJ_IP_Http } from "./CTL_NJZJ_IP_Http";
+import { Map_CTL_NJZJ_IP_Http } from "./CTL_NJZJ_IP_Http";
 
-export class CTL_NJZJ_IP_Http_1526 extends CTL_NJZJ_IP_Http {
+export class Map_CTL_NJZJ_IP_Http_1526 extends Map_CTL_NJZJ_IP_Http {
     constructor() {
         super();
 
@@ -355,28 +355,28 @@ export class CTL_NJZJ_IP_Http_1526 extends CTL_NJZJ_IP_Http {
 
         this.addPoint(new SettingField("se_jiezhichaoyahuifu", 1280, 2, "介质超压恢复"));
         //控制设备
-        this.addPoint(new DeviceField("de_cainuanxunhuanbeng", 731, 2, "采暖循环泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_reshuixunhuanbeng", 733, 2, "热水循环泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_paiqifa", 735, 2, "排汽阀", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_xieyafa", 737, 2, "泄压阀", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_zhenkongfa", 739, 2, "真空阀", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_pangtongfa", 741, 2, "旁通阀", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_churexunhuanbeng", 743, 2, "储热循环泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_huanrexunhuanbeng", 745, 2, "换热循环泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_xitongxunhuanbeng", 747, 2, "系统循环泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_churebushuibeng", 749, 2, "储热补水泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_yandaodiefa", 751, 2, "烟道蝶阀", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_huishuibeng", 753, 2, "回水泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_santongfa", 755, 2, "三通阀", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_xiyuxunhuanbeng", 757, 2, "洗浴循环泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_reshuidiaojiefa", 759, 2, "热水调节阀", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_cainuanxunhuanbeng", 731, 2, "采暖循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_reshuixunhuanbeng", 733, 2, "热水循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_paiqifa", 735, 2, "排汽阀", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_xieyafa", 737, 2, "泄压阀", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_zhenkongfa", 739, 2, "真空阀", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_pangtongfa", 741, 2, "旁通阀", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_churexunhuanbeng", 743, 2, "储热循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_huanrexunhuanbeng", 745, 2, "换热循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_xitongxunhuanbeng", 747, 2, "系统循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_churebushuibeng", 749, 2, "储热补水泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_yandaodiefa", 751, 2, "烟道蝶阀", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_huishuibeng", 753, 2, "回水泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_santongfa", 755, 2, "三通阀", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_xiyuxunhuanbeng", 757, 2, "洗浴循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_reshuidiaojiefa", 759, 2, "热水调节阀", Map_CTL_NJZJ_IP_Http.coms_device));
 
         //1.6.5扩展内容
         //设备信息
-        this.addPoint(new DeviceField("de_jieneng_beng", 761, 2, "节能泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_kongtiaoxunhuan_beng", 763, 2, "空调循环泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_dinuanxunhuan_beng", 765, 2, "地暖循环泵", CTL_NJZJ_IP_Http.coms_device));
-        this.addPoint(new DeviceField("de_yongchixunhuan_beng", 767, 2, "泳池循环泵", CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_jieneng_beng", 761, 2, "节能泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_kongtiaoxunhuan_beng", 763, 2, "空调循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_dinuanxunhuan_beng", 765, 2, "地暖循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
+        this.addPoint(new DeviceField("de_yongchixunhuan_beng", 767, 2, "泳池循环泵", Map_CTL_NJZJ_IP_Http.coms_device));
         //故障
         this.addPoint(new ExceptionField("ex_huilu1jinkouwenduchuanganqiguzhang", 990, 1, "回路1进口温度传感器故障"));
         this.addPoint(new ExceptionField("ex_huilu2jinkouwenduchuanganqiguzhang", 991, 1, "回路2进口温度传感器故障"));

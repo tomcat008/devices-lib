@@ -1,31 +1,31 @@
-import { CTL_NJZJ } from "./CTL_NJZJ";
+import { Map_CTL_NJZJ } from "./CTL_NJZJ";
 import { SdcSoftDevice } from "../../../../devices/SdcSoftDevice";
 import { SystemStatusField, BaseInfoField, ExceptionField, DeviceField, MockField, SettingField, StartStopField, } from "../../../../meta/NJZJ/485";
-import { ZH_CN } from "../../ZH_CN";
+import { Map_ZH_CN } from "../../ZH_CN";
 
-export class CTL_NJZJ_IP_485 extends CTL_NJZJ {
+export class Map_CTL_NJZJ_IP_485 extends Map_CTL_NJZJ {
     static readonly Commands_Key_Parameters_Setting = "参数设置";
     static readonly Commands_Key_System_Ctl = "系统控制";
     
     constructor() {
         super();
-        this.addCommandGroup(CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting);
-        this.addCommandGroup(CTL_NJZJ_IP_485.Commands_Key_System_Ctl);
+        this.addCommandGroup(Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting);
+        this.addCommandGroup(Map_CTL_NJZJ_IP_485.Commands_Key_System_Ctl);
 
-        this.addPoint(new SystemStatusField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 7, 2, "系统状态", CTL_NJZJ.coms_status, CTL_NJZJ_IP_485.Commands_Key_System_Ctl, "0602", 1, 2))
+        this.addPoint(new SystemStatusField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 7, 2, "系统状态", Map_CTL_NJZJ.coms_status, Map_CTL_NJZJ_IP_485.Commands_Key_System_Ctl, "0602", 1, 2))
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 51, 2, "工作天数", "天"));
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 53, 2, "工作小时数", "时"));
 
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_POWER, 3, 2, "燃料类型", "", ZH_CN.coms_power));
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_POWER, 3, 2, "燃料类型", "", Map_ZH_CN.coms_power));
 
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_MEDIA, 5, 2, "介质类型", "", ZH_CN.coms_media));
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_MEDIA, 5, 2, "介质类型", "", Map_ZH_CN.coms_media));
 
-        this.addPoint(new BaseInfoField("ba_guolushuiweizhuangtai", 25, 2, "锅炉液位状态", "", ZH_CN.coms_level));
+        this.addPoint(new BaseInfoField("ba_guolushuiweizhuangtai", 25, 2, "锅炉液位状态", "", Map_ZH_CN.coms_level));
 
-        this.addPoint(new BaseInfoField("ba_shuixiangshuiweizhuangtai", 27, 2, "水箱液位状态", "", ZH_CN.coms_level));
+        this.addPoint(new BaseInfoField("ba_shuixiangshuiweizhuangtai", 27, 2, "水箱液位状态", "", Map_ZH_CN.coms_level));
 
-        this.addPoint(new BaseInfoField("ba_guoluyalizhuangtai", 29, 2, "锅炉压力状态", "", CTL_NJZJ.coms_yalistatus));
+        this.addPoint(new BaseInfoField("ba_guoluyalizhuangtai", 29, 2, "锅炉压力状态", "", Map_CTL_NJZJ.coms_yalistatus));
 
         //this.addPoint(new BaseInfoField("ba_leijijiaretianshu", 51, 2, "累计加热", "天"));
 
@@ -35,7 +35,7 @@ export class CTL_NJZJ_IP_485 extends CTL_NJZJ {
 
         this.addPoint(new BaseInfoField("ba_xiaohuoshijian", 57, 2, "小火工作时间", "时"));
 
-        this.addPoint(new BaseInfoField("ba_fangdongkaiguan", 61, 2, "防冻开关", "", ZH_CN.coms_open_close));
+        this.addPoint(new BaseInfoField("ba_fangdongkaiguan", 61, 2, "防冻开关", "", Map_ZH_CN.coms_open_close));
         //
         this.addPoint(new ExceptionField("ex_paiyanwendugaobaojing", 88, 2, "排烟温度高报警"));
 
@@ -593,15 +593,15 @@ export class CTL_NJZJ_IP_485 extends CTL_NJZJ {
         this.addPoint(new MockField("mo_huanjingwendu", 1027, 2, "环境温度", "℃"));
         this.addPoint(new MockField("mo_jiezhiyali", 1029, 2, "介质压力", "KPa"));
         //
-        this.addPoint(new SettingField("se_paiyanbaojingwendu", 1068, 2, "排烟报警温度", "℃", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0500", 50, 300));
-        this.addPoint(new SettingField("se_baojingwendu", 1070, 2, "报警温度", "℃", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0501", 0, 200));
-        this.addPoint(new SettingField("se_tingluwendu", 1072, 2, "停炉温度", "℃", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0502", 30, 200));
-        this.addPoint(new SettingField("se_mubiaowendu", 1074, 2, "目标温度", "℃", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0503", 30, 200));
-        this.addPoint(new SettingField("se_qiluwendu", 1076, 2, "启炉温度", "℃", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0504", 0, 200));
+        this.addPoint(new SettingField("se_paiyanbaojingwendu", 1068, 2, "排烟报警温度", "℃", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0500", 50, 300));
+        this.addPoint(new SettingField("se_baojingwendu", 1070, 2, "报警温度", "℃", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0501", 0, 200));
+        this.addPoint(new SettingField("se_tingluwendu", 1072, 2, "停炉温度", "℃", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0502", 30, 200));
+        this.addPoint(new SettingField("se_mubiaowendu", 1074, 2, "目标温度", "℃", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0503", 30, 200));
+        this.addPoint(new SettingField("se_qiluwendu", 1076, 2, "启炉温度", "℃", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0504", 0, 200));
         this.addPoint(new SettingField("se_zhuanhuohuicha", 1078, 2, "转火回差", "℃"));
-        this.addPoint(new SettingField("se_qiluhuicha", 1080, 2, "启炉回差", "℃", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0506", 1, 100));
-        this.addPoint(new SettingField("se_kaibengwendu", 1082, 2, "开泵温度", "℃", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0507", 0, 200));
-        this.addPoint(new SettingField("se_guanbengwendu", 1084, 2, "关泵温度", "℃", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0508", 0, 200));
+        this.addPoint(new SettingField("se_qiluhuicha", 1080, 2, "启炉回差", "℃", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0506", 1, 100));
+        this.addPoint(new SettingField("se_kaibengwendu", 1082, 2, "开泵温度", "℃", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0507", 0, 200));
+        this.addPoint(new SettingField("se_guanbengwendu", 1084, 2, "关泵温度", "℃", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0508", 0, 200));
         this.addPoint(new SettingField("se_baojingyali", 1086, 2, "报警压力", "MPa", 100));
         this.addPoint(new SettingField("se_tingluyali", 1088, 2, "停炉压力", "MPa", 100));
         this.addPoint(new SettingField("se_mubiaoyali", 1090, 2, "目标压力", "MPa", 100));
@@ -616,7 +616,7 @@ export class CTL_NJZJ_IP_485 extends CTL_NJZJ {
         this.addPoint(new SettingField("se_lutangchukouwendu", 1108, 2, "炉膛出口温度", "℃"));
         this.addPoint(new SettingField("se_baohuwendu", 1110, 2, "保护温度", "℃"));
         this.addPoint(new SettingField("se_bentipaiyanwendu", 1112, 2, "本体排烟温度", "℃"));
-        this.addPoint(new SettingField("se_jiarezushu", 1114, 2, "加热组数", "组", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0517", 1, 100));
+        this.addPoint(new SettingField("se_jiarezushu", 1114, 2, "加热组数", "组", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0517", 1, 100));
         this.addPoint(new SettingField("se_jianceyalishijian", 1116, 2, "检测压力时间", "s"));
         this.addPoint(new SettingField("se_houyanshi", 1118, 2, "后延时", "m"));
         this.addPoint(new SettingField("se_shedingwendu", 1120, 2, "设定温度", "℃"));
@@ -664,8 +664,8 @@ export class CTL_NJZJ_IP_485 extends CTL_NJZJ {
         this.addPoint(new SettingField("se_huilu5baojingwendu", 1204, 2, "回路5报警温度", "℃"));
         this.addPoint(new SettingField("se_huilu5kaibengwendu", 1206, 2, "回路5开泵温度", "℃"));
         this.addPoint(new SettingField("se_huilu5guanbengwendu", 1208, 2, "回路5关泵温度", "℃"));
-        this.addPoint(new SettingField("se_touqieshijian_jiarezuyong_", 1210, 2, "投切时间（加热组用）", "s", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0547", 1, 10));
-        this.addPoint(new SettingField("se_diaojieshijian_jiarezuyong_", 1212, 2, "调节时间（加热组用）", "m", 0, CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0548", 1, 10));
+        this.addPoint(new SettingField("se_touqieshijian_jiarezuyong_", 1210, 2, "投切时间（加热组用）", "s", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0547", 1, 10));
+        this.addPoint(new SettingField("se_diaojieshijian_jiarezuyong_", 1212, 2, "调节时间（加热组用）", "m", 0, Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting, "0548", 1, 10));
         this.addPoint(new SettingField("se_chukouchaoyabaojing", 1214, 2, "出口超压报警", "MPa", 100));
         this.addPoint(new SettingField("se_jinkouchaoyabaojing", 1216, 2, "进口超压报警", "MPa", 100));
         this.addPoint(new SettingField("se_cainuanbaojingwendu", 1218, 2, "采暖报警温度", "℃"));
@@ -733,44 +733,44 @@ export class CTL_NJZJ_IP_485 extends CTL_NJZJ {
         this.addPoint(new StartStopField("st_qidongshijian6_shifen_", 1578, 2, "启动时间6（时 分）"));
         this.addPoint(new StartStopField("st_tingzhishijian6_shifen_", 1580, 2, "停止时间6（时 分）"));
         //
-        this.addPoint(new DeviceField("de_ranshaoqi", 1587, 2, "燃烧器", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_jiarezu", 1589, 2, "加热组", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_bushui_beng", 1591, 2, "补水泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_jishui_beng", 1593, 2, "给水泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_buyou_beng", 1595, 2, "补油泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_xunhuan_beng", 1597, 2, "循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_lengning_beng", 1599, 2, "冷凝泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_reshui_beng", 1601, 2, "热水泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_zhenkong_beng", 1603, 2, "真空泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_ecixunhuan_beng", 1605, 2, "二次循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_yinfengji_fan", 1607, 2, "引风机", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_gufengji_fan", 1609, 2, "鼓风机", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_lupai_fan", 1611, 2, "炉排", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_chuzhaji_fan", 1613, 2, "出渣机", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_ecigufengji_fan", 1615, 2, "二次鼓风机", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_dianhuoqi", 1617, 2, "点火器", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_shangmeiji_fan", 1619, 2, "上煤机", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_songliaoji", 1621, 2, "送料机", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_jiayao_beng", 1623, 2, "加药泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_paiwufa", 1625, 2, "排污阀", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_huilu1xunhuan_beng", 1627, 2, "回路1循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_huilu2xunhuan_beng", 1629, 2, "回路2循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_huilu3xunhuan_beng", 1631, 2, "回路3循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_huilu4xunhuan_beng", 1633, 2, "回路4循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_huilu5xunhuan_beng", 1635, 2, "回路5循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_cainuanxunhuan_beng", 1637, 2, "采暖循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_reshuixunhuan_beng", 1639, 2, "热水循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_paiqifa", 1641, 2, "排汽阀", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_xieyafa", 1643, 2, "泄压阀", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_zhenkongfa", 1645, 2, "真空阀", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_pangtongfa", 1647, 2, "旁通阀", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_churexunhuan_beng", 1649, 2, "储热循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_huanrexunhuan_beng", 1651, 2, "换热循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_xitongxunhuan_beng", 1653, 2, "系统循环泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_churebushui_beng", 1655, 2, "储热补水泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_yandaodiefa", 1657, 2, "烟道蝶阀", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_huishui_beng", 1659, 2, "回水泵", CTL_NJZJ.coms_device));
-        this.addPoint(new DeviceField("de_santongfa", 1661, 2, "三通阀", CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_ranshaoqi", 1587, 2, "燃烧器", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField(SdcSoftDevice.KEY_POINT_JIA_RE_ZU, 1589, 2, "加热组", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_bushui_beng", 1591, 2, "补水泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_jishui_beng", 1593, 2, "给水泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_buyou_beng", 1595, 2, "补油泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_xunhuan_beng", 1597, 2, "循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_lengning_beng", 1599, 2, "冷凝泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_reshui_beng", 1601, 2, "热水泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_zhenkong_beng", 1603, 2, "真空泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_ecixunhuan_beng", 1605, 2, "二次循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_yinfengji_fan", 1607, 2, "引风机", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_gufengji_fan", 1609, 2, "鼓风机", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_lupai_fan", 1611, 2, "炉排", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_chuzhaji_fan", 1613, 2, "出渣机", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_ecigufengji_fan", 1615, 2, "二次鼓风机", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_dianhuoqi", 1617, 2, "点火器", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_shangmeiji_fan", 1619, 2, "上煤机", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_songliaoji", 1621, 2, "送料机", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_jiayao_beng", 1623, 2, "加药泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_paiwufa", 1625, 2, "排污阀", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_huilu1xunhuan_beng", 1627, 2, "回路1循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_huilu2xunhuan_beng", 1629, 2, "回路2循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_huilu3xunhuan_beng", 1631, 2, "回路3循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_huilu4xunhuan_beng", 1633, 2, "回路4循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_huilu5xunhuan_beng", 1635, 2, "回路5循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_cainuanxunhuan_beng", 1637, 2, "采暖循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_reshuixunhuan_beng", 1639, 2, "热水循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_paiqifa", 1641, 2, "排汽阀", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_xieyafa", 1643, 2, "泄压阀", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_zhenkongfa", 1645, 2, "真空阀", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_pangtongfa", 1647, 2, "旁通阀", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_churexunhuan_beng", 1649, 2, "储热循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_huanrexunhuan_beng", 1651, 2, "换热循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_xitongxunhuan_beng", 1653, 2, "系统循环泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_churebushui_beng", 1655, 2, "储热补水泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_yandaodiefa", 1657, 2, "烟道蝶阀", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_huishui_beng", 1659, 2, "回水泵", Map_CTL_NJZJ.coms_device));
+        this.addPoint(new DeviceField("de_santongfa", 1661, 2, "三通阀", Map_CTL_NJZJ.coms_device));
 
     }
 }

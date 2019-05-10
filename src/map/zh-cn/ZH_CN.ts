@@ -1,7 +1,7 @@
 import {map as ParentClass } from '../map'
 import { INumberIndex } from '../../entities/IIndex';
 
-export abstract class ZH_CN extends ParentClass{
+export abstract class Map_ZH_CN extends ParentClass{
     
     static coms_media:INumberIndex= {
         0:"热水",
@@ -36,9 +36,9 @@ export abstract class ZH_CN extends ParentClass{
     }
 
     getPowerString(key:number):string{
-        return ZH_CN.coms_power[key];
+        return Map_ZH_CN.coms_power[key];
     }
     getMediaString(key:number):string{
-        return ZH_CN.coms_media[key];
+        return Map_ZH_CN.coms_media[key];
     }
 }

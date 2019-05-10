@@ -1,11 +1,10 @@
-import { CTL_RT_T2_RYZQ_Ts } from "../AScript/RYZQ";
+import { Map_CTL_RT_T2_RYZQ_Ts } from "../RYZQ_Base";
 import { ExceptionField,MockField, OpenCloseField, SettingField } from "../../../../../../meta/RT/meta";
-import { ZH_CN } from "../../../../ZH_CN";
-import { CTL_RT_T2_RYZQ_YLBSQ_Ts } from "../../../../../../devices/CTL/RT/T2/RYZQ/YLBSQ/AScropt/YLBSQ";
+import { Map_ZH_CN } from "../../../../ZH_CN";
 
 
 
-export = class CTL_RT_T2_RYZQ_YLBSQ_CK extends CTL_RT_T2_RYZQ_Ts{
+export = class Map_CTL_RT_T2_RYZQ_YLBSQ_CK extends Map_CTL_RT_T2_RYZQ_Ts{
     constructor(){
         super();
         // this.warningMsg='';
@@ -14,9 +13,9 @@ export = class CTL_RT_T2_RYZQ_YLBSQ_CK extends CTL_RT_T2_RYZQ_Ts{
         
         
         
-        this.addPoint(new OpenCloseField("oc_ranshaoqifuhe_zengda", 9, 2, "燃烧器负荷增大调节", 1, ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField("oc_ranshaoqifuhe_jianxiao", 9, 2, "燃烧器负荷减小调节", 2, ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField("oc_queshuidianji2", 5, 2, "缺水电极2",7,ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_ranshaoqifuhe_zengda", 9, 2, "燃烧器负荷增大调节", 1, Map_ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_ranshaoqifuhe_jianxiao", 9, 2, "燃烧器负荷减小调节", 2, Map_ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_queshuidianji2", 5, 2, "缺水电极2",7,Map_ZH_CN.coms_open_close));
 
         this.addPoint(new MockField("mo_lengningqiyanwen", 13, 2, "冷凝器烟温", "℃"));
         this.addPoint(new MockField("mo_jishuiwendu", 15, 2, "给水温度", "℃"));
@@ -55,9 +54,6 @@ export = class CTL_RT_T2_RYZQ_YLBSQ_CK extends CTL_RT_T2_RYZQ_Ts{
         this.addPoint(new SettingField("se_chongxiyanshi", 157, 2, "冲洗延时","S"));
         this.addPoint(new SettingField("se_zhuanhuohuicha", 159, 2, "转火回差","Mpa",100));
    
-        //缺少
-        //压力控制器/压力变送器选择信息
-        //2段火/内置比调
-        //
+        
     }
 }

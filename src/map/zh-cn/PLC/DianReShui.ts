@@ -1,13 +1,14 @@
-import { PLC as PLC_Map} from "./BaseMap";
+import { Map_PLC as PLC_Map} from "./BaseMap";
 import { PLC } from "../../../devices/PLC/BaseDevice";
 import { CountField } from "../../../meta/CountField";
 import { MockField, SettingField, DeviceField, ExceptionField, OpenCloseField, BaseInfoField } from "../../../meta/PLC/meta";
-import { ZH_CN } from "../ZH_CN";
+import { Map_ZH_CN } from "../ZH_CN";
 import { SdcSoftDevice } from "../../../devices/SdcSoftDevice";
 import { FixedValueField } from "../../../meta/FixedValueField";
+import { CountShowField } from "../../../meta/CountShowField";
 
 
-export = class PLC_DianReShui extends PLC_Map {
+export = class Map_PLC_DianReShui extends PLC_Map {
     //static readonly Key = "PLC_DianReShui";
     //static readonly Commands_Key_Parameters_Setting = "参数设置";
     //static readonly Commands_Key_System_Ctl = "系统控制";
@@ -25,9 +26,10 @@ export = class PLC_DianReShui extends PLC_Map {
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 9, 2, "运行小时数", "时"));
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 11, 2, "运行天数", "天"));
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 13, 2, "系统状态", '', PLC_Map.coms_status));
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料", 1, ZH_CN.coms_power));
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质", 0, ZH_CN.coms_media));
-        this.addPoint(new BaseInfoField("ba_shuiweizhuangtai", 19, 2, "水位状态", '', ZH_CN.coms_level));
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料", 1, Map_ZH_CN.coms_power));
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质", 0, Map_ZH_CN.coms_media));
+        this.addPoint(new CountShowField(Map_PLC_DianReShui.KEY_BASE,SdcSoftDevice.KEY_POINT_JIA_RE_ZU, "投入加热组", ''));
+        this.addPoint(new BaseInfoField("ba_shuiweizhuangtai", 19, 2, "水位状态", '', Map_ZH_CN.coms_level));
         this.addPoint(new BaseInfoField("ba_ranshaoqizhuangtai", 21, 2, "燃烧器状态", '', PLC_Map.coms_ranshaoqi_status));
 
         this.addPoint(new MockField("mo_chushuiwendu", 35, 4, "出水温度", "℃"));
@@ -37,7 +39,7 @@ export = class PLC_DianReShui extends PLC_Map {
         this.addPoint(new MockField("mo_qidongjiarezushu", 79, 4, "启动加热组数", "组"));
         this.addPoint(new MockField("mo_qidongjiarezushubaifenbi", 83, 4, "启动加热组数百分比", "%"));
 
-        this.addPoint(new SettingField("se_chaowenbaojingsheding", 127, 4, "超温报警设定", "℃", 0, PLC_DianReShui.Commands_Key_Parameters_Setting, "003E", 10, 200));
+        this.addPoint(new SettingField("se_chaowenbaojingsheding", 127, 4, "超温报警设定", "℃", 0, Map_PLC_DianReShui.Commands_Key_Parameters_Setting, "003E", 10, 200));
         this.addPoint(new SettingField("se_shiyongjiarezushusheding", 131, 4, "使用加热组数设定", "组"));
         this.addPoint(new SettingField("se_touqiejiangeshijiansheding", 135, 4, "投切间隔时间设定", "S"));
         this.addPoint(new SettingField("se_kuaiqiejiangeshijiansheding", 139, 4, "快切间隔时间设定", "S"));
@@ -53,10 +55,10 @@ export = class PLC_DianReShui extends PLC_Map {
 
 
         this.addPoint(new DeviceField("de_1_addshuibeng_auto", 199, 2, "1#补水泵", PLC_Map.coms_atuo));
-        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_1, 201, 2, "1#补水泵", ZH_CN.coms_start_stop));
+        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_1, 201, 2, "1#补水泵", Map_ZH_CN.coms_start_stop));
         this.addPoint(new DeviceField("de_2_addshuibeng_auto", 203, 2, "2#补水泵", PLC_Map.coms_atuo));
         this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_2, 205, 2, "2#补水泵", PLC_Map.coms_start_stop));
-        this.addPoint(new DeviceField("de_baojingshuchuzhishi", 207, 2, "报警输出指示", ZH_CN.coms_open_close));
+        this.addPoint(new DeviceField("de_baojingshuchuzhishi", 207, 2, "报警输出指示", Map_ZH_CN.coms_open_close));
         this.addPoint(new DeviceField("de_1_xunhuanbeng_auto", 209, 2, "1#循环泵", PLC_Map.coms_atuo));
         this.addPoint(new DeviceField(PLC.KEY_POINT_XUN_HUAN_BENG_1, 211, 2, "1#循环泵", PLC_Map.coms_start_stop));
         this.addPoint(new DeviceField("de_2_xunhuanbeng_auto", 213, 2, "2#循环泵", PLC_Map.coms_atuo));

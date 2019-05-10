@@ -1,8 +1,8 @@
-import { CTL_RT } from "../RT";
+import { Map_CTL_RT } from "../RT";
 import { INumberIndex } from "../../../../../entities/IIndex";
 import { SettingField } from "../../../../../meta/RT/meta";
 
-export class CTL_RT_X1_Ts extends CTL_RT {
+export class Map_CTL_RT_X1_Ts extends Map_CTL_RT {
 
     static coms_status: INumberIndex = {
         0: "待命",

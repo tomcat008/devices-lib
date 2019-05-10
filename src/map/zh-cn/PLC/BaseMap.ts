@@ -1,6 +1,6 @@
-import { ZH_CN as ParentClass } from '../ZH_CN'
+import { Map_ZH_CN as ParentClass } from '../ZH_CN'
 
-export abstract class PLC extends ParentClass {
+export abstract class Map_PLC extends ParentClass {
     static readonly Commands_Key_Parameters_Setting = "参数设置";
     static readonly Commands_Key_System_Ctl = "系统控制";
 
@@ -20,8 +20,8 @@ export abstract class PLC extends ParentClass {
     };
     constructor() {
         super();
-        this.addCommandGroup(PLC.Commands_Key_Parameters_Setting);
-        this.addCommandGroup(PLC.Commands_Key_System_Ctl);
+        this.addCommandGroup(Map_PLC.Commands_Key_Parameters_Setting);
+        this.addCommandGroup(Map_PLC.Commands_Key_System_Ctl);
         /*
                 this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 9, 2, "运行小时数", "时"));
                 this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 11, 2, "运行天数", "天"));

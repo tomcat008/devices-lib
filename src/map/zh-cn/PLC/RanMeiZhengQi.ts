@@ -1,13 +1,13 @@
-import { PLC as PLC_Map } from "./BaseMap";
+import { Map_PLC as PLC_Map } from "./BaseMap";
 import { PLC } from "../../../devices/PLC/BaseDevice";
 import { CountField } from "../../../meta/CountField";
 import { MockField, SettingField, DeviceField, ExceptionField } from "../../../meta/PLC/meta";
-import { ZH_CN } from "../ZH_CN";
+import { Map_ZH_CN } from "../ZH_CN";
 import { BaseInfoField } from "../../../meta/NJZJ/485";
 import { SdcSoftDevice } from "../../../devices/SdcSoftDevice";
 import { FixedValueField } from "../../../meta/FixedValueField";
 
-export = class PLC_RanMeiZhengQi extends PLC_Map {
+export = class Map_PLC_RanMeiZhengQi extends PLC_Map {
 
     constructor(){
         super();
@@ -22,9 +22,9 @@ export = class PLC_RanMeiZhengQi extends PLC_Map {
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 9, 2, "运行小时数", "时"));
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 11, 2, "运行天数", "天"));
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 13, 2, "系统状态", '', PLC_Map.coms_status));
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料", 2, ZH_CN.coms_power));
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质", 1, ZH_CN.coms_media));
-        this.addPoint(new BaseInfoField("ba_shuiweizhuangtai", 19, 2, "水位状态", '', ZH_CN.coms_level));
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料", 2, Map_ZH_CN.coms_power));
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质", 1, Map_ZH_CN.coms_media));
+        this.addPoint(new BaseInfoField("ba_shuiweizhuangtai", 19, 2, "水位状态", '', Map_ZH_CN.coms_level));
         this.addPoint(new BaseInfoField("ba_ranshaoqizhuangtai", 21, 2, "燃烧器状态", '', PLC_Map.coms_ranshaoqi_status));
 
 
@@ -79,21 +79,21 @@ export = class PLC_RanMeiZhengQi extends PLC_Map {
         this.addPoint(new SettingField("se_guolushuiweishoudonggeisu", 288, 4, "锅炉水位手动给速", "%"));
 
         this.addPoint(new DeviceField("de_yinfeng_auto", 368, 2, "引风",PLC_Map.coms_atuo));
-        this.addPoint(new DeviceField(PLC.KEY_POINT_YIN_FENG_FAN_1, 370, 2, "引风", ZH_CN.coms_start_stop));
+        this.addPoint(new DeviceField(PLC.KEY_POINT_YIN_FENG_FAN_1, 370, 2, "引风", Map_ZH_CN.coms_start_stop));
         this.addPoint(new DeviceField("de_gufeng_auto", 372, 2, "鼓风",PLC_Map.coms_atuo));
-        this.addPoint(new DeviceField(PLC.KEY_POINT_GU_FENG_FAN_1, 374, 2, "鼓风", ZH_CN.coms_start_stop));
+        this.addPoint(new DeviceField(PLC.KEY_POINT_GU_FENG_FAN_1, 374, 2, "鼓风", Map_ZH_CN.coms_start_stop));
         this.addPoint(new DeviceField("de_lupai_auto", 376, 2, "炉排",PLC_Map.coms_atuo));
-        this.addPoint(new DeviceField(PLC.KEY_POINT_LU_PAI_FAN_1, 378, 2, "炉排", ZH_CN.coms_start_stop));
+        this.addPoint(new DeviceField(PLC.KEY_POINT_LU_PAI_FAN_1, 378, 2, "炉排", Map_ZH_CN.coms_start_stop));
         this.addPoint(new DeviceField("de_chuzha_auto", 380, 2, "除渣",PLC_Map.coms_atuo));
-        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_ZHA_FAN_1, 382, 2, "除渣", ZH_CN.coms_start_stop));
+        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_ZHA_FAN_1, 382, 2, "除渣", Map_ZH_CN.coms_start_stop));
         this.addPoint(new DeviceField("de_1_addshuibeng_auto", 384, 2, "1#给水泵",PLC_Map.coms_atuo));
-        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_1, 386, 2, "1#给水泵", ZH_CN.coms_start_stop));
+        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_1, 386, 2, "1#给水泵", Map_ZH_CN.coms_start_stop));
         this.addPoint(new DeviceField("de_2_addshuibeng_auto", 388, 2, "2#给水泵",PLC_Map.coms_atuo));
-        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_2, 390, 2, "2#给水泵", ZH_CN.coms_start_stop));
+        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_2, 390, 2, "2#给水泵", Map_ZH_CN.coms_start_stop));
         this.addPoint(new DeviceField("de_1_chuyangbeng_auto", 392, 2, "1#除氧泵",PLC_Map.coms_atuo));
-        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_YANG_BENG_1, 394, 2, "1#除氧泵", ZH_CN.coms_start_stop));
+        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_YANG_BENG_1, 394, 2, "1#除氧泵", Map_ZH_CN.coms_start_stop));
         this.addPoint(new DeviceField("de_2_chuyangbeng_auto", 396, 2, "2#除氧泵",PLC_Map.coms_atuo));
-        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_YANG_BENG_2, 398, 2, "2#除氧泵", ZH_CN.coms_start_stop));
+        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_YANG_BENG_2, 398, 2, "2#除氧泵", Map_ZH_CN.coms_start_stop));
 
         this.addPoint(new ExceptionField("ex_shuiweijidibaojing_shedingzhi", 448, 2, "水位极低报警（设定值）", 0));
         this.addPoint(new ExceptionField("ex_shuiweijigaobaojing_shedingzhi", 448, 2, "水位极高报警（设定值）", 1));

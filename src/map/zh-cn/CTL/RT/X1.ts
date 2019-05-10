@@ -1,4 +1,4 @@
-import { CTL_RT_X1_Ts } from "./AScript/X1";
+import { Map_CTL_RT_X1_Ts } from "./AScript/X1";
 
-export = class CTL_RT_X1 extends CTL_RT_X1_Ts {
+export = class Map_CTL_RT_X1 extends Map_CTL_RT_X1_Ts {
 }

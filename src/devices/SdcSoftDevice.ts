@@ -28,6 +28,7 @@ export abstract class SdcSoftDevice {
     static readonly KEY_POINT_RUN_LIFE = "ba_yunxingshijian";
     static readonly KEY_POINT_RUN_DAYS = "ba_yunxingtianshu";
     static readonly KEY_POINT_RUN_HOURS = "ba_yunxingxiaoshishu";
+    static readonly KEY_POINT_JIA_RE_ZU = "jia_re_zu_count";
 
     static readonly Style_Horizontal = 0;
     static readonly Style_Vertical = 1;
@@ -238,7 +239,6 @@ export abstract class SdcSoftDevice {
         this.warningMsg = msg;
     }
     */
-
     /**
      * 自动确认设备类型的逻辑
      */

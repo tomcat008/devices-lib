@@ -1,9 +1,9 @@
 import { CTL_RT } from "../RT";
 import { List } from "../../../../entities/Collections";
 import { DeviceFieldForUI } from "../../../../meta/DeviceFieldForUI";
-import { CTL_RT_X1_Ts } from "../../../../map/zh-cn/CTL/RT/AScript/X1";
+import { Map_CTL_RT_X1_Ts } from "../../../../map/zh-cn/CTL/RT/AScript/X1";
 
-export =class CTL_RT_X1_RYZQDJD extends CTL_RT {
+export =class Map_CTL_RT_X1_5 extends CTL_RT {
     constructor() {
         super();
         this.BYTE_ARRAY_LENGTH = 111;
@@ -26,7 +26,7 @@ export =class CTL_RT_X1_RYZQDJD extends CTL_RT {
         let map2 = this.getOpenCloseFields();
         let n1 = map2.getItem('oc_dianjiedianyalibiaodizhen').getValue()==1?2:0;
         let n2 = map2.getItem('oc_dianjiedianyalibiaogaozhen').getValue()==1?1:0;
-        field.setValueString(CTL_RT_X1_Ts.coms_djd_yl_status[n1+n2]);
+        field.setValueString(Map_CTL_RT_X1_Ts.coms_djd_yl_status[n1+n2]);
 
         let map3 = this.getMockFields();
         list.push(map3.getItem('mo_paiyanwendu'));

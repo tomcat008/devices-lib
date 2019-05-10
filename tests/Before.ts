@@ -23,8 +23,8 @@ DeviceAdapterUtil.InjectFunc(function(type:string):SdcSoftDevice{
 function printDevice(device:SdcSoftDevice){
     let fields = device.getDeviceFocusFields();
     console.log('--------------------关注信息--------------------');
-    for(let i in fields){
-        console.log('title:='+fields[i].getTitle()+' value:='+fields[i].getValueString());
+    for (let i in fields) {
+        console.log('title:=' + fields[i].getTitle() + ' value:=' + fields[i].getValue()+' string:='+fields[i].getValueString());
     }
     console.log('--------------------基本信息--------------------');
     device.getBaseInfoFields().each((key,value)=>{
