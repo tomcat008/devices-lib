@@ -1,4 +1,3 @@
-import { Map_CTL_RT_T2_Ts } from "../AScript/T2";
 import { BaseInfoField, OpenCloseField, DeviceField, MockField, ExceptionField } from "../../../../../meta/RT/meta";
 import { CountShowField } from "../../../../../meta/CountShowField";
 import { FixedValueField } from "../../../../../meta/FixedValueField";
@@ -6,11 +5,27 @@ import { CountField } from "../../../../../meta/CountField";
 import { CTL_RT } from "../../../../../devices/CTL/RT/RT";
 import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice";
 import { Map_ZH_CN } from "../../../ZH_CN";
+import { INumberIndex } from "../../../../../entities/IIndex";
+import { Map_CTL_RT_T2_Ts } from "../AScript/T2";
 
 
 export class Map_CTL_RT_T2_RYZQ_Ts extends Map_CTL_RT_T2_Ts {
 
-    
+    static coms_shuiwei: INumberIndex = {
+        0: "4电极",
+        1: "6电极",
+        2: "4-20mA"
+    }
+
+    static coms_kongzhi: INumberIndex = {
+        0: "压力变送器",
+        1: "压力控制器"
+    }
+
+    static coms_gongzuo: INumberIndex = {
+        0: "内置比调",
+        1: "两段火"
+    }
 
     constructor() {
         super();
@@ -39,12 +54,12 @@ export class Map_CTL_RT_T2_RYZQ_Ts extends Map_CTL_RT_T2_Ts {
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 0, Map_ZH_CN.coms_power));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 1, Map_ZH_CN.coms_media));
 
-        this.addPoint(new OpenCloseField("oc_queshuidianji", 5, 2, "缺水电极", 0, Map_ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField("oc_dishuiweibaojingdianji_6dianjiteyou_", 5, 2, "低水位报警电极（6电极特有）", 1, Map_ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField("oc_dishuiweidianji", 5, 2, "低水位电极", 2, Map_ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField("oc_zhongshuiweidianji_6dianjiteyou_", 5, 2, "中水位电极（6 电极特有）", 3, Map_ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField("oc_gaoshuiweidianji", 5, 2, "高水位电极", 4, Map_ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField("oc_gaoshuiweibaojingdianji", 5, 2, "高水位报警电极", 5, Map_ZH_CN.coms_open_close));
+        // this.addPoint(new OpenCloseField("oc_queshuidianji", 5, 2, "缺水电极", 0, Map_ZH_CN.coms_open_close));
+        //this.addPoint(new OpenCloseField("oc_dishuiweibaojingdianji_6dianjiteyou_", 5, 2, "低水位报警电极（6电极特有）", 1, Map_ZH_CN.coms_open_close));
+        // this.addPoint(new OpenCloseField("oc_dishuiweidianji", 5, 2, "低水位电极", 2, Map_ZH_CN.coms_open_close));
+        //this.addPoint(new OpenCloseField("oc_zhongshuiweidianji_6dianjiteyou_", 5, 2, "中水位电极（6 电极特有）", 3, Map_ZH_CN.coms_open_close));
+        // this.addPoint(new OpenCloseField("oc_gaoshuiweidianji", 5, 2, "高水位电极", 4, Map_ZH_CN.coms_open_close));
+        // this.addPoint(new OpenCloseField("oc_gaoshuiweibaojingdianji", 5, 2, "高水位报警电极", 5, Map_ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField("oc_bianpinqiguzhangbaojing", 5, 2, "变频器故障报警", 6, Map_ZH_CN.coms_open_close));
 
 
@@ -62,7 +77,7 @@ export class Map_CTL_RT_T2_RYZQ_Ts extends Map_CTL_RT_T2_Ts {
 
         //this.addPoint(new MockField("mo_lengningqiyanwen", 13, 2, "冷凝器烟温", "℃"));
         //this.addPoint(new MockField("mo_jishuiwendu", 15, 2, "给水温度", "℃"));
-        this.addPoint(new MockField("mo_shuiweixinhao", 19, 2, "水位信号", "%"));
+        //this.addPoint(new MockField("mo_shuiweixinhao", 19, 2, "水位信号", "%"));
         this.addPoint(new MockField("mo_paiyanwendu", 21, 2, "排烟温度", "℃"));
         //this.addPoint(new MockField("mo_jienengqiyanwen", 23, 2, "节能器烟温", "℃"));
 
@@ -87,5 +102,9 @@ export class Map_CTL_RT_T2_RYZQ_Ts extends Map_CTL_RT_T2_Ts {
         //水位测试 4电极/6电极/4-20mA 
         //燃烧器控制方式 压力控制器/压力变送器选择信息
         //燃烧器工作方式 2段火/内置比调
+
+        this.addPoint(new BaseInfoField("de_shuiweiceliangfangshi", 149, 2, "水位测量方式 ", '', Map_CTL_RT_T2_RYZQ_Ts.coms_shuiwei));
+        this.addPoint(new BaseInfoField("de_ranshaoqikongzhifangshi", 151, 2, "燃烧器控制方式", '', Map_CTL_RT_T2_RYZQ_Ts.coms_kongzhi));
+        this.addPoint(new BaseInfoField("de_ranshaoqigongzuofangshi", 153, 2, "燃烧器工作方式", '', Map_CTL_RT_T2_RYZQ_Ts.coms_gongzuo));
     }
 }

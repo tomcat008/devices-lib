@@ -1,3 +1,5 @@
+import { INumberIndex } from "../entities/IIndex";
+
 //namespace DevicesLib.meta {
 export class DeviceFieldForUI {
     private name: string='';
@@ -43,8 +45,13 @@ export class DeviceFieldForUI {
         return this.value;
     }
 
-    setValue(value: number) {
+    setValue(value: number):void 
+    setValue(value: number,map?:INumberIndex):void;
+    setValue(value: number,map?:INumberIndex) {
         this.value = value;
+        if(map){
+            this.valueString = map[value];
+        }
     }
 
     getTitle(): string {
@@ -64,6 +71,5 @@ export class DeviceFieldForUI {
     setValueString(valueString: string) {
         this.valueString = valueString;
     }
-
 }
 //}

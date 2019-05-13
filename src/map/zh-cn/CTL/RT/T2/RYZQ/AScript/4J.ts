@@ -1,29 +1,44 @@
-import { Map_CTL_RT_T2_RYZQ_Ts } from "../RYZQ_Base";
-import { ExceptionField,MockField, OpenCloseField, SettingField } from "../../../../../../meta/RT/meta";
-import { Map_ZH_CN } from "../../../../ZH_CN";
+import { Map_CTL_RT_T2_RYZQ_Ts } from "../../RYZQ_Base";
+import { ExceptionField,OpenCloseField,SettingField } from "../../../../../../../meta/RT/meta";
+import { Map_ZH_CN } from "../../../../../ZH_CN";
+import { CountShowField } from "../../../../../../../meta/CountShowField";
+import { CTL_RT_T2_RYZQ_Ts } from "../../../../../../../devices/CTL/RT/T2/AScript/RYZQ";
+import { INumberIndex } from "../../../../../../../entities/IIndex";
 
+export class Map_CTL_RT_T2_RYZQ_4J extends Map_CTL_RT_T2_RYZQ_Ts{
 
+    static ShuiWeiStatus: INumberIndex = {
+        0: '故障',
+        1: '缺水',
+        2: '低位',
+        3: '高位',
+        4: '超高报警'
+    }
 
-export = class Map_CTL_RT_T2_RYZQ_YLBSQ_CK extends Map_CTL_RT_T2_RYZQ_Ts{
+    static KG_YaLiStatus: INumberIndex = {        
+        0: '高压',
+        1: '中压',
+        3: '低压'
+    }
+
+    //4电极压力变送器内置比调
     constructor(){
         super();
-        // this.warningMsg='';
-        //this.addPoint(new OpenCloseField(CTL_RT_T2_RYZQ_YLBSQ_Ts.KEY_POINT_RAN_SHAO_QI_STATUS, 9, 2, "燃烧器负荷增大调节", 1, ZH_CN.coms_open_close));
-        //this.addPoint(new OpenCloseField("oc_jianxiaodiaojie", 9, 2, "减小调节", 2, ZH_CN.coms_open_close));
+       
+        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYZQ_4J.KEY_BASE,CTL_RT_T2_RYZQ_Ts.KEY_POINT_SHUI_WEI_STATUS, "水位状态",''));
+
+        this.addPoint(new OpenCloseField("oc_queshuidianji", 5, 2, "缺水电极", 0, Map_ZH_CN.coms_open_close));
+        //this.addPoint(new OpenCloseField("oc_dishuiweibaojingdianji_6dianjiteyou_", 5, 2, "低水位报警电极（6电极特有）", 1, Map_ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_dishuiweidianji", 5, 2, "低水位电极", 2, Map_ZH_CN.coms_open_close));
+        //this.addPoint(new OpenCloseField("oc_zhongshuiweidianji_6dianjiteyou_", 5, 2, "中水位电极（6 电极特有）", 3, Map_ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_gaoshuiweidianji", 5, 2, "高水位电极", 4, Map_ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField("oc_gaoshuiweibaojingdianji", 5, 2, "高水位报警电极", 5, Map_ZH_CN.coms_open_close));
         
-        
-        
-        this.addPoint(new OpenCloseField("oc_ranshaoqifuhe_zengda", 9, 2, "燃烧器负荷增大调节", 1, Map_ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField("oc_ranshaoqifuhe_jianxiao", 9, 2, "燃烧器负荷减小调节", 2, Map_ZH_CN.coms_open_close));
+
         this.addPoint(new OpenCloseField("oc_queshuidianji2", 5, 2, "缺水电极2",7,Map_ZH_CN.coms_open_close));
 
-        this.addPoint(new MockField("mo_lengningqiyanwen", 13, 2, "冷凝器烟温", "℃"));
-        this.addPoint(new MockField("mo_jishuiwendu", 15, 2, "给水温度", "℃"));
-        this.addPoint(new MockField("mo_zhengqiyali", 17, 2, "蒸汽压力", "MPa",100));
-        this.addPoint(new MockField("mo_jienengqiyanwen", 23, 2, "节能器烟温", "℃"));
+      
 
-        this.addPoint(new ExceptionField("ex_yalibiansongqiduanlu", 45, 2, "压力变送器断路", 0));
-        this.addPoint(new ExceptionField("ex_yalibiansongqiduanlu1", 45, 2, "压力变送器短路", 1));
         this.addPoint(new ExceptionField("ex_chaoyabaojing", 45, 2, "超压报警", 2));
         this.addPoint(new ExceptionField("ex_ranqiyaligaobaojing", 45, 2, "燃气压力高报警", 15));
         this.addPoint(new ExceptionField("ex_ranqixieloubaojing", 47, 2, "燃气泄漏报警", 0));
@@ -53,7 +68,6 @@ export = class Map_CTL_RT_T2_RYZQ_YLBSQ_CK extends Map_CTL_RT_T2_RYZQ_Ts{
         this.addPoint(new SettingField("se_shuiweiD", 147, 2, "水位D"));
         this.addPoint(new SettingField("se_chongxiyanshi", 157, 2, "冲洗延时","S"));
         this.addPoint(new SettingField("se_zhuanhuohuicha", 159, 2, "转火回差","Mpa",100));
-   
-        
     }
+    
 }
