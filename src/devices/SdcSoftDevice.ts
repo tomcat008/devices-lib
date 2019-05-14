@@ -136,8 +136,17 @@ export abstract class SdcSoftDevice {
 
         if (null == field)
             return;
-        if (this.fieldMap.containsKey(field.getKey()))
+        let key = field.getKey()
+        if (this.fieldMap.containsKey(key)){
+            console.log('key='+field.getKey()+' filed='+field.getTitle());
+        
+            this.fieldMap.each((k,v)=>{
+                console.log(k+' count='+v.count)
+            })
+
             this.fieldMap.getItem(field.getKey()).addItem(field.getName(),field);
+        }
+            
     }
 
     protected addField(field: ByteField): void;

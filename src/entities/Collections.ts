@@ -52,7 +52,7 @@ export class StringHashMap<TValue>{
         return delete this.map[key]
     }
     remove(key: string): void {
-        this.map[key]
+        delete this.map[key]
     }
     clear(): void {
         this.map = {};
