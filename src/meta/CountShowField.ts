@@ -1,16 +1,16 @@
 import { ByteField } from './ByteField'
 import { DeviceFieldForUI } from './DeviceFieldForUI'
-import { NumberHashMap } from '../entities/Collections';
 //namespace DevicesLib.meta {
 export class CountShowField extends ByteField {
 
    //protected valueMap: NumberHashMap<string>|null=null;
-    constructor(groupKey:string,name:string,title:string,unit:string){
+    constructor(groupKey:string,name:string,title:string,unit:string,needFormat:boolean=false){
         super();
         this.groupKey = groupKey;
         this.name = name;
         this.title = title;
         this.unit = unit;
+        this.needFormat = needFormat;
         // if(valueMap){
         //     this.valueMap = new NumberHashMap(valueMap);
         // }

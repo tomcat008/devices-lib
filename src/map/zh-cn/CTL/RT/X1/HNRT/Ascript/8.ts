@@ -29,8 +29,8 @@ export class Map_CTL_RT_X1_HNRT_RYRS_8 extends Map_CTL_RT_X1_ReShui {
         this.addPoint(new ExceptionField('ex_ranshaoqiguzhangbaojing', 45, 2, '燃烧器故障报警', 5));
 
         this.addPoint(new OpenCloseField('oc_jixiandishuiweidianji', 5, 2, '极限低水位电极', 0, Map_ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField('oc_didianji/dianjiedianyalibiaodizhen', 5, 2, '低位电极', 1, Map_ZH_CN.coms_open_close));
-        this.addPoint(new OpenCloseField('oc_gaodianji/dianjiedianyalibiaogaozhen', 5, 2, '高位电极', 2, Map_ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField('oc_didianji', 5, 2, '低位电极', 1, Map_ZH_CN.coms_open_close));
+        this.addPoint(new OpenCloseField('oc_gaodianji', 5, 2, '高位电极', 2, Map_ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField('oc_lubiwendukaiguan', 5, 2, '炉壁温度开关', 4, Map_ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField('oc_shuixiangdiweidianji', 5, 2, '水箱低位电极', 5, Map_ZH_CN.coms_open_close));
         this.addPoint(new OpenCloseField('oc_shuixianggaoweidianji', 5, 2, '水箱高位电极', 6, Map_ZH_CN.coms_open_close));

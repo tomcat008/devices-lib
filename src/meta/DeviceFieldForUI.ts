@@ -63,8 +63,9 @@ export class DeviceFieldForUI {
     }
 
     getValueString(): string {
-        if (this.needFormat)
+        if (this.needFormat){
             return this.valueString.replace("%s", this.value.toString());
+        }
         return this.valueString;
     }
 

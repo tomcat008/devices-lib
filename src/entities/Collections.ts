@@ -49,7 +49,7 @@ export class StringHashMap<TValue>{
         }
     }
     containsKey(key: string): boolean {
-        return delete this.map[key]
+        return this.map[key] ? true : false;
     }
     remove(key: string): void {
         delete this.map[key]

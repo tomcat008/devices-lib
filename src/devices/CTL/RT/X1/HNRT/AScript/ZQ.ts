@@ -17,7 +17,7 @@ export class CTL_RT_X1_ZhengQi extends CTL_RT_X1_Ts {
         let c = map2.getItem('oc_gaodianji').getValue();
         let d = map2.getItem('oc_gaobaojingdianji').getValue();
 
-        f.setValue(a | b | c | d, Map_CTL_RT_X1_ZhengQi.ShuiWeiStatus_4)
+        f.setValue(a + b + c + d, Map_CTL_RT_X1_ZhengQi.ShuiWeiStatus_4)
         list.push(f);
     }
 

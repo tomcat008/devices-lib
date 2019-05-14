@@ -81,12 +81,12 @@ import { NumberHashMap } from '../entities/Collections';
         abstract haveValue(...bytes:number[]): boolean;
 
         public getValueString(): string {
-            if (this.bytesLength > 0) {//bytesLength>0表示点位在数据中真实存储
-                return this.getValueBitString() + this.getUnit();
-            }
-            //点位并不真实存在，而又其他点位计算而来。如NJRT_T2的运行天数和小时数 由运行总时间计算得出
-            this.needFormat = true;
-            return this.getUnit();
+            // if (this.bytesLength > 0) {//bytesLength>0表示点位在数据中真实存储
+            //     return this.getValueBitString() + this.getUnit();
+            // }
+            
+            // return this.getUnit();
+            return this.value+this.getUnit();
         }
 
         getDeviceFieldForUI(value?: number): DeviceFieldForUI|null {

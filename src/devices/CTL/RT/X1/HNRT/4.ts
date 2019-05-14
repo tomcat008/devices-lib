@@ -8,7 +8,7 @@ export = class CTL_RT_X1_HNRT_4 extends CTL_RT_X1_RS3JDJD {
         super.addFocusFields(list);
 
         let map = this.getCountFields();
-        let map2 = this.getOpenCloseFields();
+        let map2 = this.getDeviceFields();
 
         let field = map.getItem(CTL_RT_X1_HNRT_4.KEY_POINT_RAN_SHAO_QI);
         let count = 0;

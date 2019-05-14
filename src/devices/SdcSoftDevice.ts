@@ -137,14 +137,8 @@ export abstract class SdcSoftDevice {
         if (null == field)
             return;
         let key = field.getKey()
-        if (this.fieldMap.containsKey(key)){
-            console.log('key='+field.getKey()+' filed='+field.getTitle());
-        
-            this.fieldMap.each((k,v)=>{
-                console.log(k+' count='+v.count)
-            })
-
-            this.fieldMap.getItem(field.getKey()).addItem(field.getName(),field);
+        if (this.fieldMap.containsKey(key)){           
+            this.fieldMap.getItem(key).addItem(field.getName(),field);
         }
             
     }
