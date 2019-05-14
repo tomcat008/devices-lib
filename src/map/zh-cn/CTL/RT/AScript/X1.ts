@@ -11,29 +11,6 @@ export class Map_CTL_RT_X1_Ts extends Map_CTL_RT {
         3: "关机"
     }
 
-    static coms_djd_yl_status: INumberIndex = {
-        0: "中压",
-        1: "高压",
-        2: "低压",
-        3: "错误"
-    }
-
-    static coms_fhtj_yl_status: INumberIndex = {
-        0: "高压",
-        1: "中压",
-        2: '错误',
-        3: "低压"
-    }
-
-    static coms_lv_yl_sw_status: INumberIndex = {
-        0: "低位",
-        2: "正常",
-        3: "高位",
-        4: '中压',
-        5: '高压',
-        6: "低压"
-    }
-
     constructor() {
         super();
         this.addPoint(new SettingField("se_dangqianmoshi", 55, 2, "当前模式"));

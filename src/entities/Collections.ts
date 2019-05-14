@@ -36,9 +36,9 @@ export class StringHashMap<TValue>{
     get count(): number {
         return map.length;
     }
-    get Keys(): string[]{
-        let keys:string[] = [];
-        this.each((k,v)=>{
+    get Keys(): string[] {
+        let keys: string[] = [];
+        this.each((k, v) => {
             keys.push(k)
         });
         return keys;
@@ -49,30 +49,36 @@ export class StringHashMap<TValue>{
         }
     }
     containsKey(key: string): boolean {
-        return this.map[key] ? true : false;
+        return delete this.map[key]
     }
-    clear():void{
-        this.map={};
+    remove(key: string): void {
+        this.map[key]
+    }
+    clear(): void {
+        this.map = {};
     }
 }
 
 export class List<T>{
-    private list:T[] = [];
-    push(item:T):void{
-        if(item){
+    private list: T[] = [];
+    push(item: T): void {
+        if (item) {
             this.list.push(item);
         }
     }
-    each(func:(item:T)=>void):void{
-        for(let i in this.list){
+    insert(index: number, item: T): void {
+        this.list.splice(index, 0, item)
+    }
+    each(func: (item: T) => void): void {
+        for (let i in this.list) {
             func(this.list[i]);
         }
     }
 
-    item(index:number){
+    item(index: number) {
         return this.list[index];
     }
-    toArray():T[]{
+    toArray(): T[] {
         return this.list;
     }
 }

@@ -6,10 +6,10 @@ import { Map_CTL_RT_T2_RYZQ_4J } from "./4J";
 export class Map_CTL_RT_T2_RYZQ_6J extends Map_CTL_RT_T2_RYZQ_4J{
 
     static ShuiWeiStatus: INumberIndex = {
-        0: '故障',
-        1: '缺水',
-        2: '缺水报警',
-        3: '低位',
+        0: '缺水',
+        1: '低位报警',
+        2: '低位',
+        3: '中低位',
         4: '中位',
         5: '高位',
         6: '超高报警'

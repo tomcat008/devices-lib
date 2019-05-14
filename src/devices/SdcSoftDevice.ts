@@ -33,18 +33,18 @@ export abstract class SdcSoftDevice {
     static readonly Style_Horizontal = 0;
     static readonly Style_Vertical = 1;
 
-    private fieldMap = new StringHashMap<DeviceFieldForUI[]>();
+    private fieldMap = new StringHashMap<StringHashMap<DeviceFieldForUI>>();
     private commandMap = new StringHashMap<Command[]>();
 
     constructor() {
-        this.fieldMap.addItem(map.KEY_BASE, []);
-        this.fieldMap.addItem(map.KEY_EXCEPTION, []);
-        this.fieldMap.addItem(map.KEY_MOCK, []);
-        this.fieldMap.addItem(map.KEY_SETTING, []);
-        this.fieldMap.addItem(map.KEY_DEVICE, []);
-        this.fieldMap.addItem(map.KEY_START_STOP, []);
-        this.fieldMap.addItem(map.KEY_OPEN_CLOSE, []);
-        this.fieldMap.addItem(map.KEY_Count_Fields, []);
+        this.fieldMap.addItem(map.KEY_BASE, new StringHashMap<DeviceFieldForUI>());
+        this.fieldMap.addItem(map.KEY_EXCEPTION, new StringHashMap<DeviceFieldForUI>());
+        this.fieldMap.addItem(map.KEY_MOCK, new StringHashMap<DeviceFieldForUI>());
+        this.fieldMap.addItem(map.KEY_SETTING, new StringHashMap<DeviceFieldForUI>());
+        this.fieldMap.addItem(map.KEY_DEVICE, new StringHashMap<DeviceFieldForUI>());
+        this.fieldMap.addItem(map.KEY_START_STOP, new StringHashMap<DeviceFieldForUI>());
+        this.fieldMap.addItem(map.KEY_OPEN_CLOSE, new StringHashMap<DeviceFieldForUI>());
+        this.fieldMap.addItem(map.KEY_Count_Fields, new StringHashMap<DeviceFieldForUI>());
 
     }
     private modbusNo: number = 1;
@@ -71,13 +71,14 @@ export abstract class SdcSoftDevice {
         this.deviceNo = deviceNo;
     }
 
-    private getFieldsMap(fieldsGroupKey: string): StringHashMap<DeviceFieldForUI> {
-        let map = new StringHashMap<DeviceFieldForUI>();
-        let list = this.fieldMap.getItem(fieldsGroupKey);
-        for (let e in list) {
-            map.addItem(list[e].getName(), list[e]);
-        }
-        return map;
+    private getFieldsMap(groupKey: string): StringHashMap<DeviceFieldForUI> {
+        // let map = new StringHashMap<DeviceFieldForUI>();
+        // let list = this.fieldMap.getItem(fieldsGroupKey);
+        // for (let e in list) {
+        //     map.addItem(list[e].getName(), list[e]);
+        // }
+        // return map;
+        return this.fieldMap.getItem(groupKey)
     }
 
     getBaseInfoFields() {
@@ -111,10 +112,7 @@ export abstract class SdcSoftDevice {
         return this.getFieldsMap(map.KEY_Count_Fields);
     }
 
-    getFieldsByGroupKey(key: string): DeviceFieldForUI[] {
-        return this.fieldMap.getItem(key);
-    }
-
+ 
     getExceptionCount(): number {
         return this.getExceptionFields().count;
     }
@@ -139,13 +137,12 @@ export abstract class SdcSoftDevice {
         if (null == field)
             return;
         if (this.fieldMap.containsKey(field.getKey()))
-            this.fieldMap.getItem(field.getKey()).push(field);
+            this.fieldMap.getItem(field.getKey()).addItem(field.getName(),field);
     }
 
     protected addField(field: ByteField): void;
     protected addField(field: CommandField): void;
     protected addField(field: DeviceFieldForUI): void;
-
     protected addField(field: ByteField | CommandField | DeviceFieldForUI): void {
 
         if (field instanceof ByteField) {
@@ -173,6 +170,9 @@ export abstract class SdcSoftDevice {
         }
     }
 
+    public removeField(groupKey: string, fieldName: string): void {
+        this.fieldMap.getItem(groupKey).remove(fieldName)
+    }
 
     /**
      * 获取炉子元素信息

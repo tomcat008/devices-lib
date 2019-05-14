@@ -8,11 +8,11 @@ import { INumberIndex } from "../../../../../../../entities/IIndex";
 export class Map_CTL_RT_T2_RYZQ_4J extends Map_CTL_RT_T2_RYZQ_Ts{
 
     static ShuiWeiStatus: INumberIndex = {
-        0: '故障',
-        1: '缺水',
-        2: '低位',
+        0: '缺水',
+        1: '低位',
+        2: '中位',
         3: '高位',
-        4: '超高报警'
+        4: '超高'
     }
 
     static KG_YaLiStatus: INumberIndex = {        
