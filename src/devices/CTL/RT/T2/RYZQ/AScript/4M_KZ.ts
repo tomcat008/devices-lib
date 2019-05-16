@@ -5,7 +5,7 @@ import { Map_CTL_RT_T2_RYZQ_4JKZ } from "../../../../../../map/zh-cn/CTL/RT/T2/R
 
 export class CTL_RT_T2_RYZQ_4MKZ extends CTL_RT_T2_RYZQ_4M{
     //4-20mA压力控制器2段火
-    
+    static readonly KEY_POINT_YA_LI_STATUS='ba_yali_status'
     protected addFocusFields(list: List<DeviceFieldForUI>) {
         super.addFocusFields(list);
         let f = this.getBaseInfoFields().getItem(CTL_RT_T2_RYZQ_4MKZ.KEY_POINT_YA_LI_STATUS);
