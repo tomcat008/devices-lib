@@ -1,18 +1,13 @@
 import { CTL_RT_T2_RYZQ_4J } from "./4J";
 import { List } from "../../../../../../entities/Collections";
 import { DeviceFieldForUI } from "../../../../../../meta/DeviceFieldForUI";
-import { Map_CTL_RT_T2_RYZQ_4J } from "../../../../../../map/zh-cn/CTL/RT/T2/RYZQ/AScript/4J";
+import { Map_CTL_RT_T2_RYZQ_4JKZ } from "../../../../../../map/zh-cn/CTL/RT/T2/RYZQ/AScript/4J_KZ";
 
 export class CTL_RT_T2_RYZQ_4JKZ extends CTL_RT_T2_RYZQ_4J {
     //4电极压力控制器2端火
-
+    static readonly KEY_POINT_YA_LI_STATUS='ba_yali_status'
     protected addFocusFields(list: List<DeviceFieldForUI>) {
-        // this.addPoint(new CountShowField(Map_CTL_RT_T2_RYZQ_4J.KEY_BASE,CTL_RT_T2_RYZQ_Ts.KEY_POINT_YA_LI_STATUS, "压力状态",''));
-
-        // this.addPoint(new OpenCloseField("oc_ranshaoqifuhe_zengda", 9, 2, "燃烧器负荷增大调节", 1, Map_ZH_CN.coms_open_close));
-
-        // this.addPoint(new OpenCloseField("oc_fuhetiaojie", 5, 2, "负荷调节", 7, Map_ZH_CN.coms_open_close));
-        // this.addPoint(new OpenCloseField("oc_qitingkongzhi", 5, 2, "启停控制", 8, Map_ZH_CN.coms_open_close));
+        super.addFocusFields(list);
 
         let f = this.getBaseInfoFields().getItem(CTL_RT_T2_RYZQ_4JKZ.KEY_POINT_YA_LI_STATUS);
         let map = this.getOpenCloseFields();
@@ -22,15 +17,8 @@ export class CTL_RT_T2_RYZQ_4JKZ extends CTL_RT_T2_RYZQ_4J {
 
         let c = a | b
 
-        f.setValue(c,Map_CTL_RT_T2_RYZQ_4J.KG_YaLiStatus)
-        list.push(map.getItem('mo_zhengqiyali'));
-        super.addFocusFields(list);
-
-        // list.push(map.getItem("mo_lengningqiyanwen"));
-        // list.push(map.getItem("mo_jishuiwendu"));
-        // list.push(map.getItem("mo_shuiweixinhao"));
-        // list.push(map.getItem("mo_paiyanwendu"));
-        // list.push(map.getItem("mo_jienengqiyanwen"));
+        f.setValue(c,Map_CTL_RT_T2_RYZQ_4JKZ.KZQ_YaLiStatus)
+        list.push(f);
     }
 
     getPowerInfo():number{

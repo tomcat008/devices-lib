@@ -4,6 +4,7 @@ import { List } from "../../../../../../entities/Collections";
 import { Map_CTL_RT_T2_RYZQ_4J } from "../../../../../../map/zh-cn/CTL/RT/T2/RYZQ/AScript/4J";
 
 export class CTL_RT_T2_RYZQ_4J extends CTL_RT_T2_RYZQ_Ts {
+    static readonly KEY_POINT_SHUI_WEI_STATUS='ba_shuiwei_status'
     //4电极
     protected addFocusFields(list: List<DeviceFieldForUI>) {
         let f = this.getBaseInfoFields().getItem(CTL_RT_T2_RYZQ_4J.KEY_POINT_SHUI_WEI_STATUS)
@@ -18,11 +19,5 @@ export class CTL_RT_T2_RYZQ_4J extends CTL_RT_T2_RYZQ_Ts {
         f.setValue(x,Map_CTL_RT_T2_RYZQ_4J.ShuiWeiStatus);
 
         list.push(f);
-
-        // list.push(map.getItem("mo_lengningqiyanwen"));
-        // list.push(map.getItem("mo_jishuiwendu"));
-        // list.push(map.getItem("mo_shuiweixinhao"));
-        // list.push(map.getItem("mo_paiyanwendu"));
-        // list.push(map.getItem("mo_jienengqiyanwen"));
     }
 }

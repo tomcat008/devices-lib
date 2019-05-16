@@ -71,14 +71,8 @@ export abstract class SdcSoftDevice {
         this.deviceNo = deviceNo;
     }
 
-    private getFieldsMap(groupKey: string): StringHashMap<DeviceFieldForUI> {
-        // let map = new StringHashMap<DeviceFieldForUI>();
-        // let list = this.fieldMap.getItem(fieldsGroupKey);
-        // for (let e in list) {
-        //     map.addItem(list[e].getName(), list[e]);
-        // }
-        // return map;
-        return this.fieldMap.getItem(groupKey)
+    private getFieldsMap(groupKey: string): StringHashMap<DeviceFieldForUI>{
+        return this.fieldMap.getItem(groupKey)        
     }
 
     getBaseInfoFields() {

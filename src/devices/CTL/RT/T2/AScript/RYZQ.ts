@@ -1,8 +1,7 @@
 import { CTL_RT } from "../../RT";
 
 export class CTL_RT_T2_RYZQ_Ts extends CTL_RT {
-    static readonly KEY_POINT_SHUI_WEI_STATUS='ba_shuiwei_status'
-    static readonly KEY_POINT_YA_LI_STATUS='ba_yali_status'
+    
     constructor(){
         super();
         this.BYTE_ARRAY_LENGTH=163;

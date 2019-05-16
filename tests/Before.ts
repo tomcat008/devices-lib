@@ -1,7 +1,7 @@
 declare function require(moduleName: string): any;
 
 import { DeviceAdapterUtil, SdcSoftDevice } from '../src';
-import { map as PointMap } from '../src/map/map'
+import { map as PointMap, map } from '../src/map/map'
 import * as Request from 'supertest'
 import { Command } from '../src/command/Command';
 
@@ -19,16 +19,16 @@ DeviceAdapterUtil.InjectFunc(function(type:string):SdcSoftDevice{
     let d = new mapType();
     return d;
 });
-
 function printDevice(device:SdcSoftDevice){
     let fields = device.getDeviceFocusFields();
     console.log('--------------------关注信息--------------------');
     for (let i in fields) {
         console.log('title:=' + fields[i].getTitle() + ' value:=' + fields[i].getValue()+' string:='+fields[i].getValueString());
     }
+    console.log('异常总数='+device.getExceptionCount())
     console.log('--------------------基本信息--------------------');
     device.getBaseInfoFields().each((key,value)=>{
-        console.log('title:='+value.getTitle()+' value:='+value.getValueString());
+        console.log('title:='+value.getTitle()+ ' value:=' + value.getValue() +' string:='+value.getValueString());
     });
     console.log('--------------------模拟信息--------------------');
     device.getMockFields().each((key,value)=>{

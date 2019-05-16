@@ -4,6 +4,7 @@ import { List } from "../../../../../../entities/Collections";
 import { Map_CTL_RT_T2_RYZQ_6J } from "../../../../../../map/zh-cn/CTL/RT/T2/RYZQ/AScript/6J";
 
 export class CTL_RT_T2_RYZQ_6J extends CTL_RT_T2_RYZQ_Ts {
+    static readonly KEY_POINT_SHUI_WEI_STATUS='ba_shuiwei_status'
     //6电极
     protected addFocusFields(list: List<DeviceFieldForUI>) {
         let f = this.getBaseInfoFields().getItem(CTL_RT_T2_RYZQ_6J.KEY_POINT_SHUI_WEI_STATUS)

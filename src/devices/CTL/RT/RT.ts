@@ -14,6 +14,23 @@ export class CTL_RT extends SdcSoftDevice {
     static readonly KEY_POINT_LENG_NING_BENG = "_lengningbeng";
     static readonly KEY_POINT_LENG_NING_BENG_1 = "oc_1_lengningxunhuanbeng_start_stop"
     static readonly KEY_POINT_LENG_NING_BENG_2 = "oc_2_lengningxunhuanbeng_start_stop"
+
+    static readonly KEY_POINT_GU_FENG_FAN = "_gufengfan";
+    static readonly KEY_POINT_GU_FENG_FAN_1 = "de_1_gufengji_start_stop";
+
+    static readonly KEY_POINT_YIN_FENG_FAN = "_yinfengfan";
+    static readonly KEY_POINT_YIN_FENG_FAN_1 = "de_1_yinfengji_start_stop";
+
+    static readonly KEY_POINT_LU_PAI_FAN = "_lupaifan";
+    static readonly KEY_POINT_LU_PAI_FAN_1 = "de_lupai_start_stop";
+
+    static readonly KEY_POINT_ZHAO_QI_FAN = "_zhaoqifan";
+    static readonly KEY_POINT_ZHAO_QI_FAN_1 = "de_1_zhaoqifengji_start_stop";
+    static readonly KEY_POINT_ZHAO_QI_FAN_2 = "de_2_zhaoqifengji_start_stop";
+
+    static readonly KEY_POINT_CHU_ZHA_FAN = "_chuzhafan";
+    static readonly KEY_POINT_CHU_ZHA_FAN_1 = "de_chuzha_start_stop";
+
     
     constructor(){
         super();
@@ -50,12 +67,15 @@ export class CTL_RT extends SdcSoftDevice {
         
         let i = map.getItem(SdcSoftDevice.KEY_POINT_RUN_LIFE).getValue();
         let field = map.getItem(SdcSoftDevice.KEY_POINT_RUN_DAYS);
-        field.setValue(i / 24);
+        field.setValue(Math.floor(i / 24));
+        field.setValueString(field.getValue()+field.getUnit())
         list.push(field);
+
         field = map.getItem(SdcSoftDevice.KEY_POINT_RUN_HOURS);
         field.setValue(i % 24);
+        field.setValueString(field.getValue()+field.getUnit())
         list.push(field);
-        //list.push(map2.getItem("mo_zhengqiyali"));
+        
         this.addFocusFields(list);
         return list.toArray();
     }
@@ -143,6 +163,127 @@ export class CTL_RT extends SdcSoftDevice {
     }
 
     public getFan(): AElement[] {
-        return [];
+        let list: AElement[] = [];
+
+        if (this.getCountFields().containsKey(CTL_RT.KEY_POINT_GU_FENG_FAN)) {
+            let deviceFieldForUI = this.getCountFields().getItem(CTL_RT.KEY_POINT_GU_FENG_FAN);
+            let element = new AElement();
+            element.setTitle(deviceFieldForUI.getTitle());
+            element.setPrefix(AElement.Prefix_Fan);
+
+            let d1: DeviceFieldForUI = new DeviceFieldForUI();
+            let count = 0;
+            if (this.getDeviceFields().containsKey(CTL_RT.KEY_POINT_GU_FENG_FAN_1)) {
+                d1 = this.getDeviceFields().getItem(CTL_RT.KEY_POINT_GU_FENG_FAN_1);
+                count = 1;
+            }
+            let v1 = 0;
+            switch (count) {
+                case 1:
+                    v1 = d1.getValue() > 0 ? 1 : 0;
+                    element.SetValues(AElement.Index_Fan_Count, 1, v1);
+                    list.push(element);
+                    break;
+            }
+        }
+
+        if (this.getCountFields().containsKey(CTL_RT.KEY_POINT_YIN_FENG_FAN)) {
+            let deviceFieldForUI = this.getCountFields().getItem(CTL_RT.KEY_POINT_YIN_FENG_FAN);
+            let element = new AElement();
+            element.setTitle(deviceFieldForUI.getTitle());
+            element.setPrefix(AElement.Prefix_Fan);
+            let d1: DeviceFieldForUI = new DeviceFieldForUI();
+            let count = 0;
+            if (this.getDeviceFields().containsKey(CTL_RT.KEY_POINT_YIN_FENG_FAN_1)) {
+                d1 = this.getDeviceFields().getItem(CTL_RT.KEY_POINT_YIN_FENG_FAN_1);
+                count = 1;
+            }
+            let v1 = 0;
+            switch (count) {
+                case 1:
+                    v1 = d1.getValue() > 0 ? 1 : 0;
+                    element.SetValues(AElement.Index_Fan_Count, 1, v1);
+                    list.push(element);
+                    break;
+            }
+        }
+        if (this.getCountFields().containsKey(CTL_RT.KEY_POINT_ZHAO_QI_FAN)) {
+            let deviceFieldForUI = this.getCountFields().getItem(CTL_RT.KEY_POINT_ZHAO_QI_FAN);
+            let element = new AElement();
+            element.setTitle(deviceFieldForUI.getTitle());
+            element.setPrefix(AElement.Prefix_Fan);
+            let d1: DeviceFieldForUI = new DeviceFieldForUI(); let d2 = d1;
+            let count = 0;
+            if (this.getDeviceFields().containsKey(CTL_RT.KEY_POINT_ZHAO_QI_FAN_1)) {
+                d1 = this.getDeviceFields().getItem(CTL_RT.KEY_POINT_ZHAO_QI_FAN_1);
+                count = 1;
+            }
+            if (this.getDeviceFields().containsKey(CTL_RT.KEY_POINT_ZHAO_QI_FAN_2)) {
+                d2 = this.getDeviceFields().getItem(CTL_RT.KEY_POINT_ZHAO_QI_FAN_2);
+                count += 2;
+            }
+            let v1 = 0, v2 = 0;
+            switch (count) {
+                case 1:
+                    v1 = d1.getValue() > 0 ? 1 : 0;
+                    element.SetValues(AElement.Index_Fan_Count, 1, v1);
+                    list.push(element);
+                    break;
+                case 2:
+                    v2 = d2.getValue() > 0 ? 1 : 0;
+                    element.SetValues(AElement.Index_Fan_Count, 1, v2);
+                    list.push(element);
+                    break;
+                case 3:
+                    v1 = d1.getValue() > 0 ? 1 : 0;
+                    v2 = d2.getValue() > 0 ? 2 : 0;
+                    element.SetValues(AElement.Index_Fan_Count, 2, v1 + v2);
+                    list.push(element);
+                    break;
+            }
+        }
+        if (this.getCountFields().containsKey(CTL_RT.KEY_POINT_LU_PAI_FAN)) {
+            let deviceFieldForUI = this.getCountFields().getItem(CTL_RT.KEY_POINT_LU_PAI_FAN);
+            let element = new AElement();
+            element.setTitle(deviceFieldForUI.getTitle());
+            element.setPrefix(AElement.Prefix_Fan);
+            let d1: DeviceFieldForUI = new DeviceFieldForUI();
+            let count = 0;
+            if (this.getDeviceFields().containsKey(CTL_RT.KEY_POINT_LU_PAI_FAN_1)) {
+                d1 = this.getDeviceFields().getItem(CTL_RT.KEY_POINT_LU_PAI_FAN_1);
+                count = 1;
+            }
+            let v1 = 0;
+            switch (count) {
+                case 1:
+                    v1 = d1.getValue() > 0 ? 1 : 0;
+                    element.SetValues(AElement.Index_Fan_Count, 1, v1);
+                    list.push(element);
+                    break;
+            }
+        }
+
+        if (this.getCountFields().containsKey(CTL_RT.KEY_POINT_CHU_ZHA_FAN)) {
+            let deviceFieldForUI = this.getCountFields().getItem(CTL_RT.KEY_POINT_CHU_ZHA_FAN);
+            let element = new AElement();
+            element.setTitle(deviceFieldForUI.getTitle());
+            element.setPrefix(AElement.Prefix_Fan);
+
+            let d1: DeviceFieldForUI = new DeviceFieldForUI();
+            let count = 0;
+            if (this.getDeviceFields().containsKey(CTL_RT.KEY_POINT_CHU_ZHA_FAN_1)) {
+                d1 = this.getDeviceFields().getItem(CTL_RT.KEY_POINT_CHU_ZHA_FAN_1);
+                count = 1;
+            }
+            let v1 = 0;
+            switch (count) {
+                case 1:
+                    v1 = d1.getValue() > 0 ? 1 : 0;
+                    element.SetValues(AElement.Index_Fan_Count, 1, v1);
+                    list.push(element);
+                    break;
+            }
+        }
+        return list;
     }
 }

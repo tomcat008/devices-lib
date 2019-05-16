@@ -1,11 +1,13 @@
 import { map } from "../map/map";
 
 export class NumberHashMap<TValue>{
+
     constructor(map?: { [key: number]: TValue }) {
         if (map) {
             this.map = map;
         }
     }
+
     private map: { [key: number]: TValue } = {};
     addItem(key: number, value: TValue) {
         this.map[key] = value;
@@ -27,22 +29,28 @@ export class NumberHashMap<TValue>{
 }
 export class StringHashMap<TValue>{
     private map: { [key: string]: TValue } = {};
+    private map2 = new Map<string, TValue>();
     addItem(key: string, value: TValue) {
         this.map[key] = value;
     }
     getItem(key: string) {
-        return this.map[key];
+        return this.map[key]
     }
     get count(): number {
-        return map.length;
-    }
-    get Keys(): string[] {
-        let keys: string[] = [];
-        this.each((k, v) => {
-            keys.push(k)
+        let i = 0;
+        this.each(function(){
+            i++
         });
-        return keys;
+        return i
     }
+    // get Keys(): string[] {
+    //     // let keys: string[] = [];
+    //     // this.each((k, v) => {
+    //     //     keys.push(k)
+    //     // });
+    //     //return keys;
+    //     return this.map2.keys();
+    // }
     each(func: (key: string, value: TValue) => void) {
         for (const key in this.map) {
             func(key, this.map[key]);
@@ -61,7 +69,7 @@ export class StringHashMap<TValue>{
 
 export class List<T>{
     private list: T[] = [];
-    push(item: T): void {
+    push(item: T | undefined): void {
         if (item) {
             this.list.push(item);
         }

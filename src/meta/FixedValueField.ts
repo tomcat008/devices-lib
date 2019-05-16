@@ -1,5 +1,4 @@
 import { BaseInfoField } from './BaseInfoField'
-import { DeviceFieldForUI } from './DeviceFieldForUI'
 import { NumberHashMap } from '../entities/Collections';
 //namespace DevicesLib.meta {
 export class FixedValueField extends BaseInfoField {
