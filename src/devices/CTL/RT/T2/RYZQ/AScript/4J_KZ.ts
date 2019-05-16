@@ -5,7 +5,7 @@ import { Map_CTL_RT_T2_RYZQ_4JKZ } from "../../../../../../map/zh-cn/CTL/RT/T2/R
 
 export class CTL_RT_T2_RYZQ_4JKZ extends CTL_RT_T2_RYZQ_4J {
     //4电极压力控制器2端火
-    static readonly KEY_POINT_YA_LI_STATUS='ba_yali_status'
+    static readonly KEY_POINT_YA_LI_STATUS = 'ba_yali_status'
     protected addFocusFields(list: List<DeviceFieldForUI>) {
         super.addFocusFields(list);
 
@@ -17,14 +17,14 @@ export class CTL_RT_T2_RYZQ_4JKZ extends CTL_RT_T2_RYZQ_4J {
 
         let c = a | b
 
-        f.setValue(c,Map_CTL_RT_T2_RYZQ_4JKZ.KZQ_YaLiStatus)
+        f.setValue(c, Map_CTL_RT_T2_RYZQ_4JKZ.KZQ_YaLiStatus)
         list.push(f);
     }
 
-    getPowerInfo():number{
-        let map = this.getOpenCloseFields();
-        if(map.getItem(CTL_RT_T2_RYZQ_4JKZ.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue() > 0){
-            return map.getItem('oc_ranshaoqifuhe_zengda').getValue();
+    getPowerInfo(): number {
+        let map = this.getDeviceFields();
+        if (map.getItem(CTL_RT_T2_RYZQ_4JKZ.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue() > 0) {
+            return this.getOpenCloseFields().getItem('oc_ranshaoqifuhe_zengda').getValue() ? 2 : 1;
         }
         return 0;
     }
