@@ -1,6 +1,4 @@
-import { Map_ZH_CN } from "../../ZH_CN";
-import { SdcSoftDevice } from "../../../../devices/SdcSoftDevice";
-import { BaseInfoField, ExceptionField, MockField, SettingField, RanShaoQiField, RunDaysField, DeviceField, StartStopField } from "../../../../meta/NJZJ/meta";
+import { ExceptionField, MockField, SettingField, DeviceField } from "../../../../meta/NJZJ/meta";
 import { Map_CTL_NJZJ_IP_Http } from "./CTL_NJZJ_IP_Http";
 
 export class Map_CTL_NJZJ_IP_Http_1526 extends Map_CTL_NJZJ_IP_Http {
@@ -394,46 +392,46 @@ export class Map_CTL_NJZJ_IP_Http_1526 extends Map_CTL_NJZJ_IP_Http {
         this.addPoint(new ExceptionField("ex_jiezhi5wenduchuanganqiguzhang", 1003, 1, "介质5温度传感器故障"));
         this.addPoint(new ExceptionField("ex_jiezhi6wenduchuanganqiguzhang", 1004, 1, "介质6温度传感器故障"));
         //模拟量
-        this.addPoint(new MockField("mo_huilu1jinkouwendu", 1066, 1, "回路1进口温度",'℃'));
-        this.addPoint(new MockField("mo_huilu2jinkouwendu", 1068, 1, "回路2进口温度",'℃'));
-        this.addPoint(new MockField("mo_huilu3jinkouwendu", 1070, 1, "回路3进口温度",'℃'));
-        this.addPoint(new MockField("mo_huilu4jinkouwendu", 1072, 1, "回路4进口温度",'℃'));
-        this.addPoint(new MockField("mo_huilu5jinkouwendu", 1074, 1, "回路5进口温度",'℃'));
-        this.addPoint(new MockField("mo_kongtiaowendu", 1076, 1, "空调系统温度",'℃'));
-        this.addPoint(new MockField("mo_kongtiaowendu", 1078, 1, "空调系统温度",'℃'));
-        this.addPoint(new MockField("mo_yongchiwendu", 1080, 1, "泳池系统温度",'℃'));
-        this.addPoint(new MockField("mo_ph", 1082, 1, "PH值",'PH',10));
-        this.addPoint(new MockField("mo_jiezhi1wendu", 1084, 1, "介质1温度",'℃'));
-        this.addPoint(new MockField("mo_jiezhi2wendu", 1086, 1, "介质2温度",'℃'));
-        this.addPoint(new MockField("mo_jiezhi3wendu", 1088, 1, "介质3温度",'℃'));
-        this.addPoint(new MockField("mo_jiezhi4wendu", 1090, 1, "介质4温度",'℃'));
-        this.addPoint(new MockField("mo_jiezhi5wendu", 1092, 1, "介质5温度",'℃'));
-        this.addPoint(new MockField("mo_jiezhi6wendu", 1094, 1, "介质6温度",'℃'));
+        this.addPoint(new MockField("mo_huilu1jinkouwendu", 1066, 1, "回路1进口温度", '℃'));
+        this.addPoint(new MockField("mo_huilu2jinkouwendu", 1068, 1, "回路2进口温度", '℃'));
+        this.addPoint(new MockField("mo_huilu3jinkouwendu", 1070, 1, "回路3进口温度", '℃'));
+        this.addPoint(new MockField("mo_huilu4jinkouwendu", 1072, 1, "回路4进口温度", '℃'));
+        this.addPoint(new MockField("mo_huilu5jinkouwendu", 1074, 1, "回路5进口温度", '℃'));
+        this.addPoint(new MockField("mo_kongtiaowendu", 1076, 1, "空调系统温度", '℃'));
+        this.addPoint(new MockField("mo_kongtiaowendu", 1078, 1, "空调系统温度", '℃'));
+        this.addPoint(new MockField("mo_yongchiwendu", 1080, 1, "泳池系统温度", '℃'));
+        this.addPoint(new MockField("mo_ph", 1082, 1, "PH值", 'PH', 10));
+        this.addPoint(new MockField("mo_jiezhi1wendu", 1084, 1, "介质1温度", '℃'));
+        this.addPoint(new MockField("mo_jiezhi2wendu", 1086, 1, "介质2温度", '℃'));
+        this.addPoint(new MockField("mo_jiezhi3wendu", 1088, 1, "介质3温度", '℃'));
+        this.addPoint(new MockField("mo_jiezhi4wendu", 1090, 1, "介质4温度", '℃'));
+        this.addPoint(new MockField("mo_jiezhi5wendu", 1092, 1, "介质5温度", '℃'));
+        this.addPoint(new MockField("mo_jiezhi6wendu", 1094, 1, "介质6温度", '℃'));
         //设定参数
-        this.addPoint(new SettingField("se_xunhuanbaojingliuliang1", 1282, 2, "循环报警流量1",'m3/h',10));
-        this.addPoint(new SettingField("se_kongtiaobaojingwendu", 1284, 2, "空调报警温度",'℃'));
-        this.addPoint(new SettingField("se_dinuanbaojingwendu", 1286, 2, "地暖报警温度",'℃'));
-        this.addPoint(new SettingField("se_yongchibaojingwendu", 1288, 2, "泳池报警温度",'℃'));
-        this.addPoint(new SettingField("se_xunhuanbaojingliuliang2", 1290, 2, "循环报警流量2",'m3/h'));
-        this.addPoint(new SettingField("se_qidongjiangeshijian", 1292, 2, "启动间隔时间",'s'));
-        this.addPoint(new SettingField("se_tingzhijiangeshijian", 1294, 2, "停止间隔时间",'s'));
-        this.addPoint(new SettingField("se_phshangxian", 1296, 2, "PH值上限",'ph',10));
-        this.addPoint(new SettingField("se_phxiaxian", 1298, 2, "PH值下限",'ph',10));
-        this.addPoint(new SettingField("se_baojingwendu1", 1300, 2, "报警温度1",'℃'));
-        this.addPoint(new SettingField("se_tingluwendu1", 1302, 2, "停炉温度1",'℃'));
-        this.addPoint(new SettingField("se_qiluwendu1", 1304, 2, "启炉温度1",'℃'));
-        this.addPoint(new SettingField("se_baojingwendu2", 1306, 2, "报警温度2",'℃'));
-        this.addPoint(new SettingField("se_tingluwendu2", 1308, 2, "停炉温度2",'℃'));
-        this.addPoint(new SettingField("se_qiluwendu2", 1310, 2, "启炉温度2",'℃'));
-        this.addPoint(new SettingField("se_baojingwendu3", 1312, 2, "报警温度3",'℃'));
-        this.addPoint(new SettingField("se_tingluwendu3", 1314, 2, "停炉温度3",'℃'));
-        this.addPoint(new SettingField("se_qiluwendu3", 1316, 2, "启炉温度3",'℃'));
-        this.addPoint(new SettingField("se_jienengqijinyanwendu", 1318, 2, "节能器进烟超温",'℃'));
-        this.addPoint(new SettingField("se_mubiaoliuliang1", 1320, 2, "目标流量1",'m3/h',10));
-        this.addPoint(new SettingField("se_mubiaoliangliang2", 1322, 2, "目标流量2",'m3/h'));
-        this.addPoint(new SettingField("se_guyinqidongjiange", 1324, 2, "鼓引启动间隔",'s'));
-        this.addPoint(new SettingField("se_guyintingzhijiange", 1326, 2, "鼓引停止间隔",'s'));
-        this.addPoint(new SettingField("se_shuixiangbaojingwendu", 1328, 2, "水箱报警温度",'℃'));
+        this.addPoint(new SettingField("se_xunhuanbaojingliuliang1", 1282, 2, "循环报警流量1", 'm3/h', 10));
+        this.addPoint(new SettingField("se_kongtiaobaojingwendu", 1284, 2, "空调报警温度", '℃'));
+        this.addPoint(new SettingField("se_dinuanbaojingwendu", 1286, 2, "地暖报警温度", '℃'));
+        this.addPoint(new SettingField("se_yongchibaojingwendu", 1288, 2, "泳池报警温度", '℃'));
+        this.addPoint(new SettingField("se_xunhuanbaojingliuliang2", 1290, 2, "循环报警流量2", 'm3/h'));
+        this.addPoint(new SettingField("se_qidongjiangeshijian", 1292, 2, "启动间隔时间", 's'));
+        this.addPoint(new SettingField("se_tingzhijiangeshijian", 1294, 2, "停止间隔时间", 's'));
+        this.addPoint(new SettingField("se_phshangxian", 1296, 2, "PH值上限", 'ph', 10));
+        this.addPoint(new SettingField("se_phxiaxian", 1298, 2, "PH值下限", 'ph', 10));
+        this.addPoint(new SettingField("se_baojingwendu1", 1300, 2, "报警温度1", '℃'));
+        this.addPoint(new SettingField("se_tingluwendu1", 1302, 2, "停炉温度1", '℃'));
+        this.addPoint(new SettingField("se_qiluwendu1", 1304, 2, "启炉温度1", '℃'));
+        this.addPoint(new SettingField("se_baojingwendu2", 1306, 2, "报警温度2", '℃'));
+        this.addPoint(new SettingField("se_tingluwendu2", 1308, 2, "停炉温度2", '℃'));
+        this.addPoint(new SettingField("se_qiluwendu2", 1310, 2, "启炉温度2", '℃'));
+        this.addPoint(new SettingField("se_baojingwendu3", 1312, 2, "报警温度3", '℃'));
+        this.addPoint(new SettingField("se_tingluwendu3", 1314, 2, "停炉温度3", '℃'));
+        this.addPoint(new SettingField("se_qiluwendu3", 1316, 2, "启炉温度3", '℃'));
+        this.addPoint(new SettingField("se_jienengqijinyanwendu", 1318, 2, "节能器进烟超温", '℃'));
+        this.addPoint(new SettingField("se_mubiaoliuliang1", 1320, 2, "目标流量1", 'm3/h', 10));
+        this.addPoint(new SettingField("se_mubiaoliangliang2", 1322, 2, "目标流量2", 'm3/h'));
+        this.addPoint(new SettingField("se_guyinqidongjiange", 1324, 2, "鼓引启动间隔", 's'));
+        this.addPoint(new SettingField("se_guyintingzhijiange", 1326, 2, "鼓引停止间隔", 's'));
+        this.addPoint(new SettingField("se_shuixiangbaojingwendu", 1328, 2, "水箱报警温度", '℃'));
 
     }
 }

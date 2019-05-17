@@ -84,7 +84,7 @@ export class ExceptionField extends CParentClass {
     }
     haveValue(...bytes: number[]): boolean {
         this.value = bytes[1];
-        return this.value > 0;
+        return this.value == 0xff ? false : (this.value > 0)
     }
 }
 

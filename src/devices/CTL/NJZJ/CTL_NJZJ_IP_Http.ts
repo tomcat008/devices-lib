@@ -3,10 +3,9 @@ import { SdcSoftDevice } from "../../SdcSoftDevice";
 
 export abstract class IP_Http extends IP {
 
-
     constructor(){
         super();
-        this.BYTE_ARRAY_LENGTH = 800;
+        this.BYTE_ARRAY_LENGTH = 1024;
     }
 
     handleDeviceNo():void{

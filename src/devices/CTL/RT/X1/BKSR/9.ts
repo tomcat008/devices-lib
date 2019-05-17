@@ -1,7 +1,7 @@
 import { List } from "../../../../../entities/Collections";
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI";
 import { CTL_RT_X1_ZhengQi } from "../AScript/ZQ";
-import { Map_CTL_RT_X1_ZhengQi } from "../../../../../map/zh-cn/CTL/RT/X1/Ascript/ZQ";
+import { Map_CTL_RT_X1_ZhengQi } from "../../../../../map/zh-cn/CTL/RT/X1/AScript/ZQ";
 
 export = class CTL_RT_X1_BKSR_9 extends CTL_RT_X1_ZhengQi {
 

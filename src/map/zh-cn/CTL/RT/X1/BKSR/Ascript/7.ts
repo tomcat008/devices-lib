@@ -1,5 +1,5 @@
 import { ExceptionField } from '../../../../../../../meta/RT/meta';
-import { Map_CTL_RT_X1_HNRT_RYZQ_6 } from '../../HNRT/Ascript/6';
+import { Map_CTL_RT_X1_HNRT_RYZQ_6 } from '../../HNRT/AScript/6';
 
 //电蒸汽
 export class Map_CTL_RT_X1_BKSR_RYZQ_7 extends Map_CTL_RT_X1_HNRT_RYZQ_6 {

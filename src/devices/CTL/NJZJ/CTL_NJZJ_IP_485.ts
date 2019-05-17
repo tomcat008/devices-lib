@@ -4,6 +4,14 @@ import { DeviceFieldForUI } from "../../../meta/DeviceFieldForUI";
 
 export abstract class IP_485 extends IP {
 
+    /**
+     * 485数据读取指令
+     */
+    constructor(){
+        super();
+        this.BYTE_ARRAY_LENGTH = 1749;
+    }
+    
     public handleDeviceNo(bytes: number[]): string {
         return '';
     }

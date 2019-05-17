@@ -11,19 +11,19 @@ export abstract class IP extends SdcSoftDevice {
 
     protected static readonly KEY_POINT_RAN_SHAO_QI = "de_ranshaoqi";
     protected static readonly KEY_POINT_YIN_FENG_JI = "de_yinfengji_fan";
-   
-    public handleByteField(field: ByteField, bytes: ArrayBuffer) {
-        let view = new DataView(bytes);
+
+    public handleByteField(field: ByteField, bytes: Uint8Array) {
+
         switch (field.getBytesLength()) {
             case 0:
             case 2:
                 //if (field.haveValue(bytes[field.getStartIndex() + 1], bytes[field.getStartIndex()])) {
-                if (field.haveValue(view.getUint8(field.getStartIndex() + 1), view.getUint8(field.getStartIndex()))) {
+                if (field.haveValue(bytes[field.getStartIndex() + 1], bytes[field.getStartIndex()])) {
                     this.addField(field);
                 }
                 break;
             default:
-                if (field.haveValue(view.getUint8(field.getStartIndex() + 1), view.getUint8(field.getStartIndex()))) {
+                if (field.haveValue(bytes[field.getStartIndex() + 1], bytes[field.getStartIndex()])) {
                     this.addField(field);
                 }
                 break;

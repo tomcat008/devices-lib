@@ -1,4 +1,4 @@
-import { Map_CTL_RT_X1_HNRT_RYZQ_5 } from '../../HNRT/Ascript/5';
+import { Map_CTL_RT_X1_HNRT_RYZQ_5 } from '../../HNRT/AScript/5';
 import { ExceptionField } from '../../../../../../../meta/RT/meta';
 
 //燃油蒸汽2段火压力控制器
