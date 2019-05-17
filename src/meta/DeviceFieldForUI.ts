@@ -1,13 +1,23 @@
-import { INumberIndex } from "../entities/IIndex";
+import { NumberHashMap } from "../entities/Collections";
 
 //namespace DevicesLib.meta {
 export class DeviceFieldForUI {
+    constructor(valueMap?:NumberHashMap<string>){
+        if(valueMap){
+            this.valueMap = valueMap
+        }
+    }
     private name: string='';
     private value: number=0;
     private key: string='';
     private title: string='';
     private valueString: string='';
+    private valueMap: NumberHashMap<string> | null = null;
 
+    getValueMap(){
+        return this.valueMap;
+    }
+    
     getUnit(): string {
         return this.unit;
     }
@@ -18,11 +28,11 @@ export class DeviceFieldForUI {
 
     private unit: string='';
 
-    setNeedFormat(needFormat: boolean) {
-        this.needFormat = needFormat;
-    }
+    // setNeedFormat(needFormat: boolean) {
+    //     this.needFormat = needFormat;
+    // }
 
-    private needFormat: boolean =false;
+    //private needFormat: boolean =false;
 
 
     getKey(): string {
@@ -45,12 +55,10 @@ export class DeviceFieldForUI {
         return this.value;
     }
 
-    setValue(value: number):void 
-    setValue(value: number,map?:INumberIndex):void;
-    setValue(value: number,map?:INumberIndex) {
+    setValue(value: number) {
         this.value = value;
-        if(map){
-            this.valueString = map[value];
+        if(this.valueMap){
+            this.valueString = this.valueMap.getItem(value);
         }
     }
 
@@ -63,9 +71,9 @@ export class DeviceFieldForUI {
     }
 
     getValueString(): string {
-        if (this.needFormat){
-            return this.valueString.replace("%s", this.value.toString());
-        }
+        // if (this.needFormat){
+        //     return this.valueString.replace("%s", this.value.toString());
+        // }
         return this.valueString;
     }
 

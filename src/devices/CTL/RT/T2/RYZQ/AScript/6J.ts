@@ -1,7 +1,6 @@
 import { CTL_RT_T2_RYZQ_Ts } from "../../AScript/RYZQ";
 import { DeviceFieldForUI } from "../../../../../../meta/DeviceFieldForUI";
 import { List } from "../../../../../../entities/Collections";
-import { Map_CTL_RT_T2_RYZQ_6J } from "../../../../../../map/zh-cn/CTL/RT/T2/RYZQ/AScript/6J";
 
 export class CTL_RT_T2_RYZQ_6J extends CTL_RT_T2_RYZQ_Ts {
     static readonly KEY_POINT_SHUI_WEI_STATUS='ba_shuiwei_status'
@@ -18,7 +17,7 @@ export class CTL_RT_T2_RYZQ_6J extends CTL_RT_T2_RYZQ_Ts {
         let d = map.getItem('oc_gaoshuiweibaojingdianji').getValue()
 
         let x = a | a1 | b | b1 | c | d
-        f.setValue(x,Map_CTL_RT_T2_RYZQ_6J.ShuiWeiStatus);
+        f.setValue(x);
 
         list.push(f);
     }

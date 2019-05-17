@@ -1,10 +1,11 @@
-import { Map_CTL_RT_X1_Base } from './Base';
+
 import { MockField, SettingField, ExceptionField } from "../../../../../../meta/RT/meta";
 import { FixedValueField } from '../../../../../../meta/FixedValueField';
 import { SdcSoftDevice } from '../../../../../../devices/SdcSoftDevice';
 import { Map_ZH_CN } from '../../../../ZH_CN';
+import { Map_CTL_RT_X1_Base } from "./X1";
 
-export class Map_CTL_RT_X1_ReShui extends Map_CTL_RT_X1_Base {
+export class Map_CTL_RT_X1_ReShui extends Map_CTL_RT_X1_Base{
     
 
     constructor() {

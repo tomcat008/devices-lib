@@ -1,7 +1,6 @@
 import { CTL_RT_T2_RYZQ_4J } from "./4J";
 import { List } from "../../../../../../entities/Collections";
 import { DeviceFieldForUI } from "../../../../../../meta/DeviceFieldForUI";
-import { Map_CTL_RT_T2_RYZQ_4JKZ } from "../../../../../../map/zh-cn/CTL/RT/T2/RYZQ/AScript/4J_KZ";
 
 export class CTL_RT_T2_RYZQ_4JKZ extends CTL_RT_T2_RYZQ_4J {
     //4电极压力控制器2端火
@@ -17,7 +16,7 @@ export class CTL_RT_T2_RYZQ_4JKZ extends CTL_RT_T2_RYZQ_4J {
 
         let c = a | b
 
-        f.setValue(c, Map_CTL_RT_T2_RYZQ_4JKZ.KZQ_YaLiStatus)
+        f.setValue(c)
         list.push(f);
     }
 

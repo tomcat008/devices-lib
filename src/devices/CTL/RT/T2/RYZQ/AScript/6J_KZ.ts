@@ -1,7 +1,6 @@
 import { List } from "../../../../../../entities/Collections";
 import { DeviceFieldForUI } from "../../../../../../meta/DeviceFieldForUI";
 import { CTL_RT_T2_RYZQ_6J } from "./6J";
-import { Map_CTL_RT_T2_RYZQ_6JKZ } from "../../../../../../map/zh-cn/CTL/RT/T2/RYZQ/AScript/6J_KZ";
 
 export class CTL_RT_T2_RYZQ_6JKZ extends CTL_RT_T2_RYZQ_6J {
     static readonly KEY_POINT_YA_LI_STATUS = 'ba_yali_status'
@@ -15,7 +14,7 @@ export class CTL_RT_T2_RYZQ_6JKZ extends CTL_RT_T2_RYZQ_6J {
 
         let c = a | b
 
-        f.setValue(c, Map_CTL_RT_T2_RYZQ_6JKZ.KZQ_YaLiStatus)
+        f.setValue(c)
         list.push(f);
 
     }

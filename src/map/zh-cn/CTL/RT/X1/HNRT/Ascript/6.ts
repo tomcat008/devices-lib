@@ -3,6 +3,7 @@ import { DeviceField, MockField, ExceptionField, OpenCloseField, SettingField } 
 import { CTL_RT } from '../../../../../../../devices/CTL/RT/RT';
 import { Map_ZH_CN } from '../../../../../ZH_CN';
 import { Map_CTL_RT_X1_ZhengQi } from '../../AScript/ZQ';
+import { CountShowField } from '../../../../../../../meta/CountShowField';
 
 //燃油蒸汽2段火压力控制器
 export class Map_CTL_RT_X1_HNRT_RYZQ_6 extends Map_CTL_RT_X1_ZhengQi {
@@ -12,7 +13,8 @@ export class Map_CTL_RT_X1_HNRT_RYZQ_6 extends Map_CTL_RT_X1_ZhengQi {
         //this.addPoint(new CountField(CTL_RT.KEY_POINT_RAN_SHAO_QI, '燃烧器'));
         this.addPoint(new CountField(CTL_RT.KEY_POINT_Add_SHUI_BENG, '给水泵'));
 
-        
+        this.addPoint(new CountShowField(Map_CTL_RT_X1_HNRT_RYZQ_6.KEY_BASE, 'ba_yalizhuangtai', '压力状态', '',false,Map_CTL_RT_X1_HNRT_RYZQ_6.KZQ_YaLiStatus));
+
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, '燃烧器', 0, Map_ZH_CN.coms_open_close));
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_1, 9, 2, '给水泵', 2, Map_ZH_CN.coms_open_close));
         this.addPoint(new DeviceField('de_bushuibeng_shoudong/zidong_', 49, 2, '给水泵 手/自', 1, Map_CTL_RT_X1_HNRT_RYZQ_6.coms_auto));

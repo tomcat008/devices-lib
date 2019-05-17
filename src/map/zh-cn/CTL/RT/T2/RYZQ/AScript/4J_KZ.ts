@@ -16,7 +16,7 @@ export class Map_CTL_RT_T2_RYZQ_4JKZ extends Map_CTL_RT_T2_RYZQ_4J{
     }
     constructor(){
         super();
-        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYZQ_4J.KEY_BASE,Map_CTL_RT_T2_RYZQ_4JKZ.KEY_POINT_YA_LI_STATUS, "压力状态",''));
+        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYZQ_4J.KEY_BASE,Map_CTL_RT_T2_RYZQ_4JKZ.KEY_POINT_YA_LI_STATUS, "压力状态",'',false,Map_CTL_RT_T2_RYZQ_4JKZ.KZQ_YaLiStatus));
         
         this.addPoint(new OpenCloseField("oc_ranshaoqifuhe_zengda", 9, 2, "燃烧器负荷增大调节", 1, Map_ZH_CN.coms_open_close));
 

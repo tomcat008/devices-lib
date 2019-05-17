@@ -22,7 +22,7 @@ export class Map_CTL_RT_T2_RYZQ_4J extends Map_CTL_RT_T2_RYZQ_Ts{
     constructor(){
         super();
        
-        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYZQ_4J.KEY_BASE,CTL_RT_T2_RYZQ_4J.KEY_POINT_SHUI_WEI_STATUS, "水位状态",''));
+        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYZQ_4J.KEY_BASE,CTL_RT_T2_RYZQ_4J.KEY_POINT_SHUI_WEI_STATUS, "水位",'',false,Map_CTL_RT_T2_RYZQ_4J.ShuiWeiStatus));
 
         this.addPoint(new OpenCloseField("oc_queshuidianji", 5, 2, "缺水电极", 0, Map_ZH_CN.coms_open_close));
         //this.addPoint(new OpenCloseField("oc_dishuiweibaojingdianji_6dianjiteyou_", 5, 2, "低水位报警电极（6电极特有）", 1, Map_ZH_CN.coms_open_close));

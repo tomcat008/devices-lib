@@ -15,7 +15,7 @@ export class CTL_RT_X1_RY_ZhengQi_KZQ extends CTL_RT_X1_RY_ZhengQi {
         let a = map2.getItem('oc_fuhetiaojie').getValue() == 1 ? 2 : 0;
         let b = map2.getItem('oc_qitingkongzhi').getValue() == 1 ? 1 : 0;
 
-        f.setValue(a | b, Map_CTL_RT_X1_ZhengQi.KZQ_YaLiStatus);
+        f.setValue(a | b);
 
         list.push(f)
 

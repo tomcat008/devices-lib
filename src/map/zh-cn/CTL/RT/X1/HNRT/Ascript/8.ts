@@ -5,7 +5,7 @@ import { Map_ZH_CN } from '../../../../../ZH_CN';
 import { CountShowField } from '../../../../../../../meta/CountShowField';
 import { Map_CTL_RT_X1_ReShui } from '../../AScript/RS';
 
-//燃油开水
+//燃油开水3电极
 export class Map_CTL_RT_X1_HNRT_RYRS_8 extends Map_CTL_RT_X1_ReShui {
     constructor() {
         super();
@@ -13,7 +13,7 @@ export class Map_CTL_RT_X1_HNRT_RYRS_8 extends Map_CTL_RT_X1_ReShui {
         this.addPoint(new CountField(CTL_RT.KEY_POINT_LENG_NING_BENG, '出水泵'));
         this.addPoint(new CountField(CTL_RT.KEY_POINT_Add_SHUI_BENG, '补水泵'));
 
-        this.addPoint(new CountShowField(Map_CTL_RT_X1_HNRT_RYRS_8.KEY_BASE, 'ba_yalizhuangtai', '压力状态', ''));
+        // this.addPoint(new CountShowField(Map_CTL_RT_X1_HNRT_RYRS_8.KEY_BASE, 'ba_yalizhuangtai', '压力状态', ''));
 
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_RAN_SHAO_QI_KONGZHI, 9, 2, '燃烧器', 0, Map_ZH_CN.coms_open_close));
 

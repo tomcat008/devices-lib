@@ -1,7 +1,6 @@
 import { CTL_RT_X1_ZhengQi } from "./ZQ";
 import { List } from "../../../../../entities/Collections";
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI";
-import { Map_CTL_RT_X1_ZhengQi } from "../../../../../map/zh-cn/CTL/RT/X1/AScript/ZQ";
 
 export class CTL_RT_X1_Dian_ZhengQi_DJD extends CTL_RT_X1_ZhengQi {
     
@@ -26,8 +25,7 @@ export class CTL_RT_X1_Dian_ZhengQi_DJD extends CTL_RT_X1_ZhengQi {
         map2 = this.getOpenCloseFields()
         let a = map2.getItem('oc_dianjiedianyalibiaodizhen').getValue() == 1 ? 2 : 0;
         let b = map2.getItem('oc_dianjiedianyalibiaogaozhen').getValue() == 1 ? 1 : 0;
-
-        f.setValue(a | b, Map_CTL_RT_X1_ZhengQi.DJD_YaLiStatus)
+        f.setValue(a | b)
         list.push(f)
 
     }

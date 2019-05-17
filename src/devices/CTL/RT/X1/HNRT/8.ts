@@ -1,7 +1,6 @@
 import { List } from "../../../../../entities/Collections";
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI";
 import { CTL_RT_X1_Ts } from "../../AScript/X1";
-import { Map_CTL_RT_X1_HNRT_RYRS_8 } from "../../../../../map/zh-cn/CTL/RT/X1/HNRT/Ascript/8";
 
 export = class CTL_RT_X1_HNRT_8 extends CTL_RT_X1_Ts {
 
@@ -13,14 +12,17 @@ export = class CTL_RT_X1_HNRT_8 extends CTL_RT_X1_Ts {
         super.addFocusFields(list)
         let map = this.getBaseInfoFields()
         let f = map.getItem('ba_shuiweizhuangtai')
+        let values = f.getValueMap()
+        if (values) {
+            let map2 = this.getOpenCloseFields()
+            let a = map2.getItem('oc_jixiandishuiweidianji').getValue();
+            let b = map2.getItem('oc_didianji').getValue()
+            let c = map2.getItem('oc_gaodianji').getValue();
+            f.setValueString(values.getItem(1 << 2 | (a + b + c)))
 
-        let map2 = this.getOpenCloseFields()
-        let a = map2.getItem('oc_jixiandishuiweidianji').getValue();
-        let b = map2.getItem('oc_didianji').getValue()
-        let c = map2.getItem('oc_gaodianji').getValue();
-        f.setValue(a + b + c, Map_CTL_RT_X1_HNRT_RYRS_8.ShuiWeiStatus_3)
+            list.push(f)
+        }
 
-        list.push(f)
         map = this.getMockFields();
         list.push(map.getItem('mo_chushuiwendu'));
     }

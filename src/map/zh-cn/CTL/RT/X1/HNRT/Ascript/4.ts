@@ -11,7 +11,7 @@ export class Map_CTL_RT_X1_HNRT_DRS_4 extends Map_CTL_RT_X1_3JDJD {
     constructor() {
         super();
         this.addPoint(new CountField(CTL_RT.KEY_POINT_RAN_SHAO_QI, "加热组"));
-        this.addPoint(new CountField(CTL_RT.KEY_POINT_Add_SHUI_BENG, "热水泵"));
+        this.addPoint(new CountField(CTL_RT.KEY_POINT_LENG_NING_BENG, "热水泵"));
 
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 1, Map_ZH_CN.coms_power));
 
