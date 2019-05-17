@@ -1,4 +1,4 @@
-import { NumberHashMap } from "../entities/Collections";
+import { NumberHashMap } from '../entities/Collections'
 
 //namespace DevicesLib.meta {
 export class DeviceFieldForUI {
@@ -7,78 +7,78 @@ export class DeviceFieldForUI {
             this.valueMap = valueMap
         }
     }
-    private name: string='';
-    private value: number=0;
-    private key: string='';
-    private title: string='';
-    private valueString: string='';
-    private valueMap: NumberHashMap<string> | null = null;
+    private name: string=''
+    private value: number=0
+    private key: string=''
+    private title: string=''
+    private valueString: string=''
+    private valueMap: NumberHashMap<string> | null = null
 
     getValueMap(){
-        return this.valueMap;
+        return this.valueMap
     }
     
     getUnit(): string {
-        return this.unit;
+        return this.unit
     }
 
     setUnit(unit: string) {
-        this.unit = unit;
+        this.unit = unit
     }
 
-    private unit: string='';
+    private unit: string=''
 
     // setNeedFormat(needFormat: boolean) {
-    //     this.needFormat = needFormat;
+    //     this.needFormat = needFormat
     // }
 
-    //private needFormat: boolean =false;
+    //private needFormat: boolean =false
 
 
     getKey(): string {
-        return this.key;
+        return this.key
     }
 
     setKey(key: string) {
-        this.key = key;
+        this.key = key
     }
 
     public getName(): string {
-        return this.name;
+        return this.name
     }
 
     setName(name: string) {
-        this.name = name;
+        this.name = name
     }
 
     getValue(): number {
-        return this.value;
+        return this.value
     }
 
     setValue(value: number) {
-        this.value = value;
+        this.value = value
         if(this.valueMap){
-            this.valueString = this.valueMap.getItem(value);
+            this.valueString = this.valueMap.getItem(value)
         }
     }
 
     getTitle(): string {
-        return this.title;
+        return this.title
     }
 
     setTitle(title: string) {
-        this.title = title;
+        this.title = title
     }
 
     getValueString(): string {
         // if (this.needFormat){
-        //     return this.valueString.replace("%s", this.value.toString());
+        //     return this.valueString.replace('%s', this.value.toString())
         // }
-        return this.valueString;
+        return this.valueString
     }
 
     setValueString(valueString: string) {
-        this.valueString = valueString;
+        this.valueString = valueString
     }
 }
 //}

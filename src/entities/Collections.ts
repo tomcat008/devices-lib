@@ -1,77 +1,77 @@
-import { map } from "../map/map";
+import { map } from '../map/map'
 
 export class NumberHashMap<TValue>{
 
     constructor(map?: { [key: number]: TValue }) {
         if (map) {
-            this.map = map;
+            this.map = map
         }
     }
 
-    private map: { [key: number]: TValue } = {};
+    private map: { [key: number]: TValue } = {}
     addItem(key: number, value: TValue) {
-        this.map[key] = value;
+        this.map[key] = value
     }
     getItem(key: number) {
-        return this.map[key];
+        return this.map[key]
     }
     get count(): number {
-        return map.length;
+        return map.length
     }
     each(func: (key: number, value: TValue) => void) {
         for (const k in this.map) {
-            func(new Number(k).valueOf(), this.map[k]);
+            func(new Number(k).valueOf(), this.map[k])
         }
     }
     containsKey(key: number): boolean {
-        return this.map[key] ? true : false;
+        return this.map[key] ? true : false
     }
 }
 export class StringHashMap<TValue>{
-    private map: { [key: string]: TValue } = {};
-    private map2 = new Map<string, TValue>();
+    private map: { [key: string]: TValue } = {}
+    private map2 = new Map<string, TValue>()
     addItem(key: string, value: TValue) {
-        this.map[key] = value;
+        this.map[key] = value
     }
     getItem(key: string) {
         return this.map[key]
     }
     get count(): number {
-        let i = 0;
+        let i = 0
         this.each(function(){
             i++
-        });
+        })
         return i
     }
     // get Keys(): string[] {
-    //     // let keys: string[] = [];
+    //     // let keys: string[] = []
     //     // this.each((k, v) => {
     //     //     keys.push(k)
-    //     // });
-    //     //return keys;
-    //     return this.map2.keys();
+    //     // })
+    //     //return keys
+    //     return this.map2.keys()
     // }
     each(func: (key: string, value: TValue) => void) {
         for (const key in this.map) {
-            func(key, this.map[key]);
+            func(key, this.map[key])
         }
     }
     containsKey(key: string): boolean {
-        return this.map[key] ? true : false;
+        return this.map[key] ? true : false
     }
     remove(key: string): void {
         delete this.map[key]
     }
     clear(): void {
-        this.map = {};
+        this.map = {}
     }
 }
 
 export class List<T>{
-    private list: T[] = [];
+    private list: T[] = []
     push(item: T | undefined): void {
         if (item) {
-            this.list.push(item);
+            this.list.push(item)
         }
     }
     insert(index: number, item: T): void {
@@ -79,15 +79,15 @@ export class List<T>{
     }
     each(func: (item: T) => void): void {
         for (let i in this.list) {
-            func(this.list[i]);
+            func(this.list[i])
         }
     }
 
     item(index: number) {
-        return this.list[index];
+        return this.list[index]
     }
     toArray(): T[] {
-        return this.list;
+        return this.list
     }
 }
 //}

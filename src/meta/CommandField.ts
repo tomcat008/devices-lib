@@ -6,41 +6,41 @@ export abstract class CommandField extends PointField {
     /**
      * 485内存地址
      */
-    protected address: string = '';
-    protected maxValue: number = 100;
-    protected minValue: number = 0;
-    protected commandGroupKey: string = '';
+    protected address: string = ''
+    protected maxValue: number = 100
+    protected minValue: number = 0
+    protected commandGroupKey: string = ''
 
     getAddress() {
-        return this.address;
+        return this.address
     }
 
     setAddress(address: string) {
-        this.address = address;
+        this.address = address
     }
 
     getMaxValue() {
-        return this.maxValue;
+        return this.maxValue
     }
 
     setMaxValue(maxValue: number) {
-        this.maxValue = maxValue;
+        this.maxValue = maxValue
     }
 
     getMinValue() {
-        return this.minValue;
+        return this.minValue
     }
 
     setMinValue(minValue: number) {
-        this.minValue = minValue;
+        this.minValue = minValue
     }
 
     getCommandGroupKey() {
-        return this.commandGroupKey;
+        return this.commandGroupKey
     }
 
     setCommandGroupKey(commandGroupKey: string) {
-        this.commandGroupKey = commandGroupKey;
+        this.commandGroupKey = commandGroupKey
     }
 
     /**
@@ -49,21 +49,21 @@ export abstract class CommandField extends PointField {
      */
     getCommand(): Command | null {
         if (null == this.getAddress() || this.getAddress().length < 4)
-            return null;
+            return null
 
-        let cmd = this.createCommandAndInitValue();
+        let cmd = this.createCommandAndInitValue()
         if (cmd) {
-            cmd.setAddress(this.getAddress());
-            cmd.setUnit(this.getUnit());
-            cmd.setTitle(this.getTitle());
-            cmd.setMinValue(this.getMinValue());
-            cmd.setMaxValue(this.getMaxValue());
+            cmd.setAddress(this.getAddress())
+            cmd.setUnit(this.getUnit())
+            cmd.setTitle(this.getTitle())
+            cmd.setMinValue(this.getMinValue())
+            cmd.setMaxValue(this.getMaxValue())
         }
 
-        return cmd;
+        return cmd
     }
 
-    protected abstract createCommandAndInitValue(): Command | null;
+    protected abstract createCommandAndInitValue(): Command | null
 
 }
 //}

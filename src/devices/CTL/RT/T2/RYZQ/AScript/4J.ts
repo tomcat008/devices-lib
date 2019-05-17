@@ -1,6 +1,6 @@
-import { CTL_RT_T2_RYZQ_Ts } from "../../AScript/RYZQ";
-import { DeviceFieldForUI } from "../../../../../../meta/DeviceFieldForUI";
-import { List } from "../../../../../../entities/Collections";
+import { CTL_RT_T2_RYZQ_Ts } from "../../AScript/RYZQ"
+import { DeviceFieldForUI } from "../../../../../../meta/DeviceFieldForUI"
+import { List } from "../../../../../../entities/Collections"
 
 export class CTL_RT_T2_RYZQ_4J extends CTL_RT_T2_RYZQ_Ts {
     static readonly KEY_POINT_SHUI_WEI_STATUS = 'ba_shuiwei_status'
@@ -10,16 +10,16 @@ export class CTL_RT_T2_RYZQ_4J extends CTL_RT_T2_RYZQ_Ts {
         let values = f.getValueMap()
         //console.log(values)
         if (values) {
-            let map = this.getOpenCloseFields();
+            let map = this.getOpenCloseFields()
 
             let a = map.getItem('oc_queshuidianji').getValue()
             let b = map.getItem('oc_dishuiweidianji').getValue()
             let c = map.getItem('oc_gaoshuiweidianji').getValue()
             let d = map.getItem('oc_gaoshuiweibaojingdianji').getValue()
 
-            f.setValueString(values.getItem(a+b+c+d));
+            f.setValueString(values.getItem(a+b+c+d))
 
-            list.push(f);
+            list.push(f)
         }
     }
 }

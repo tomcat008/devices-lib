@@ -1,4 +1,4 @@
-import { Map_CTL_RT_X1_HNRT_DZQ_7 } from "./AScript/7";
+import { Map_CTL_RT_X1_HNRT_DZQ_7 } from "./AScript/7"
 
 export = class Map_CTL_RT_X1_7 extends Map_CTL_RT_X1_HNRT_DZQ_7 {
     

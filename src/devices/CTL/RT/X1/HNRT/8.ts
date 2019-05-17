@@ -1,11 +1,11 @@
-import { List } from "../../../../../entities/Collections";
-import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI";
-import { CTL_RT_X1_Ts } from "../../AScript/X1";
+import { List } from "../../../../../entities/Collections"
+import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI"
+import { CTL_RT_X1_Ts } from "../../AScript/X1"
 
 export = class CTL_RT_X1_HNRT_8 extends CTL_RT_X1_Ts {
 
     protected getPowerInfo() {
-        return this.getDeviceFields().getItem(CTL_RT_X1_HNRT_8.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue();
+        return this.getDeviceFields().getItem(CTL_RT_X1_HNRT_8.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue()
     }
 
     protected addFocusFields(list: List<DeviceFieldForUI>) {
@@ -15,15 +15,15 @@ export = class CTL_RT_X1_HNRT_8 extends CTL_RT_X1_Ts {
         let values = f.getValueMap()
         if (values) {
             let map2 = this.getOpenCloseFields()
-            let a = map2.getItem('oc_jixiandishuiweidianji').getValue();
+            let a = map2.getItem('oc_jixiandishuiweidianji').getValue()
             let b = map2.getItem('oc_didianji').getValue()
-            let c = map2.getItem('oc_gaodianji').getValue();
+            let c = map2.getItem('oc_gaodianji').getValue()
             f.setValueString(values.getItem(1 << 2 | (a + b + c)))
 
             list.push(f)
         }
 
-        map = this.getMockFields();
-        list.push(map.getItem('mo_chushuiwendu'));
+        map = this.getMockFields()
+        list.push(map.getItem('mo_chushuiwendu'))
     }
 }

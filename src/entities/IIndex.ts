@@ -1,7 +1,7 @@
 export interface INumberIndex{
-    [key:number]:any;
+    [key:number]:any
 }
 
 export interface IStringIndex{
-    [key:string]:any;
+    [key:string]:any
 }

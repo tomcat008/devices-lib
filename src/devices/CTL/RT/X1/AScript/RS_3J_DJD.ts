@@ -1,6 +1,6 @@
-import { List } from "../../../../../entities/Collections";
-import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI";
-import { CTL_RT_X1_Ts } from "../../AScript/X1";
+import { List } from "../../../../../entities/Collections"
+import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI"
+import { CTL_RT_X1_Ts } from "../../AScript/X1"
 
 export class CTL_RT_X1_RS3JDJD extends CTL_RT_X1_Ts {
 
@@ -12,13 +12,13 @@ export class CTL_RT_X1_RS3JDJD extends CTL_RT_X1_Ts {
         if (values) {
             let map2 = this.getOpenCloseFields()
             let x = map2.getItem('oc_bushuibengkongzhixinhao').getValue()
-            let a = map2.getItem('oc_jixiandishuiweidianji').getValue();
+            let a = map2.getItem('oc_jixiandishuiweidianji').getValue()
             let b = map2.getItem('oc_didianji/dianjiedianyalibiaodizhen').getValue()
-            let c = map2.getItem('oc_gaodianji/dianjiedianyalibiaogaozhen').getValue();
+            let c = map2.getItem('oc_gaodianji/dianjiedianyalibiaogaozhen').getValue()
             if (x) {
                 f.setValueString(values.getItem(a))
                 list.push(f)
-                f = map.getItem('ba_yalizhuangtai');
+                f = map.getItem('ba_yalizhuangtai')
                 let y = (b ? 2 : 0) | c
                 f.setValue(y)
             }
@@ -30,7 +30,7 @@ export class CTL_RT_X1_RS3JDJD extends CTL_RT_X1_Ts {
         }
 
         let map3 = this.getMockFields()
-        list.push(map3.getItem('mo_chushuiwendu'));
+        list.push(map3.getItem('mo_chushuiwendu'))
     }
 
 }

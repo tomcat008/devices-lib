@@ -8,15 +8,15 @@ export abstract class WriteField extends ByteField {
     }
     getDeviceFieldForUI():DeviceFieldForUI|null
     {
-        return null;
+        return null
     }
 
     getValue():number {
-        return 0;
+        return 0
     }
 
     haveValue(...bytes:number[]) :boolean{
-        return true;
+        return true
     }
 }
 //}
