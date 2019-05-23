@@ -1,11 +1,11 @@
-import { Map_ZH_CN as ParentClass, Map_ZH_CN } from '../../ZH_CN'
+import { Map_ZH_CN } from '../../ZH_CN'
 import { INumberIndex } from '../../../../entities/IIndex'
 import { FixedValueField } from '../../../../meta/FixedValueField'
 import { BaseInfoField, OpenCloseField, ExceptionField, DemandField, SettingField, MockField, DeviceField } from '../../../../meta/HNWE/meta'
 import { CountShowField } from '../../../../meta/CountShowField'
 import { SdcSoftDevice } from '../../../../devices/SdcSoftDevice'
 
-export = class Map_CTL_HNWR_485 extends ParentClass {
+export = class Map_CTL_HNWR_485 extends Map_ZH_CN {
 
     static coms_status: INumberIndex = {
         0: '待机',
@@ -93,23 +93,23 @@ export = class Map_CTL_HNWR_485 extends ParentClass {
         this.addPoint(new CountShowField(Map_CTL_HNWR_485.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_DAYS, '运行天数', '天'))
         this.addPoint(new CountShowField(Map_CTL_HNWR_485.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_HOURS, '运行小时数', '时'))
 
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, '燃料类型', 0, Map_ZH_CN.coms_power))
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, '介质类型', 0, Map_ZH_CN.coms_media))
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, '燃料类型', 0, Map_CTL_HNWR_485.coms_power))
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, '介质类型', 0, Map_CTL_HNWR_485.coms_media))
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 9, 2, '工作状态', '', Map_CTL_HNWR_485.coms_status))
 
         this.addPoint(new BaseInfoField('mo_cuowuyuan', 7, 2, '错误源', '', Map_CTL_HNWR_485.coms_error))
 
-        this.addPoint(new OpenCloseField('oc_CHmoshi1', 3, 1, 'CH模式', 0, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_DHWmoshi1', 3, 1, 'DHW模式', 1, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_ceshimoshi1', 3, 1, '测试模式', 2, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_huoyan1', 3, 1, '火焰', 3, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_cuowu', 4, 1, '错误', 0, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_fa1', 4, 1, '阀1', 1, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_fa2', 4, 1, '阀2', 2, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_APS', 4, 1, 'APS', 3, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_fengji', 4, 1, '风机', 4, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_shuibeng', 4, 1, '水泵', 5, Map_ZH_CN.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_CHmoshi1', 3, 1, 'CH模式', 0, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_DHWmoshi1', 3, 1, 'DHW模式', 1, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_ceshimoshi1', 3, 1, '测试模式', 2, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_huoyan1', 3, 1, '火焰', 3, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_cuowu', 4, 1, '错误', 0, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_fa1', 4, 1, '阀1', 1, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_fa2', 4, 1, '阀2', 2, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_APS', 4, 1, 'APS', 3, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_fengji', 4, 1, '风机', 4, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_shuibeng', 4, 1, '水泵', 5, Map_CTL_HNWR_485.coms_open_close))
         this.addPoint(new OpenCloseField('oc_suoding', 5, 1, '错误标志', 1, Map_CTL_HNWR_485.coms_biaozhi))
         //
         this.addPoint(new ExceptionField('ex_OEMcuowuhao', 6, 1, '报警', Map_CTL_HNWR_485.coms_ExceptionField))
@@ -120,19 +120,19 @@ export = class Map_CTL_HNWR_485 extends ParentClass {
         this.addPoint(new MockField('mo_CHgongshuiwendu', 29, 2, 'CH供水温度', '℃', 10))
         this.addPoint(new MockField('mo_CHhuishuiwendu', 31, 2, 'CH回水温度', '℃'))
         this.addPoint(new MockField('de_yanwen', 35, 2, '烟温', '℃'))
-        this.addPoint(new DeviceField('de_yanwenchuanganqi', 35, 2, '烟温传感器', Map_ZH_CN.coms_open_close))
+        this.addPoint(new DeviceField('de_yanwenchuanganqi', 35, 2, '烟温传感器', Map_CTL_HNWR_485.coms_open_close))
         this.addPoint(new MockField('mo_OTCwendu', 37, 2, 'OTC温度', '℃'))
         this.addPoint(new MockField('mo_huoyandianliu', 41, 2, '火焰电流', 'uA'))
         this.addPoint(new MockField('mo_diaojieshuiping', 43, 2, '调节水平'))
         this.addPoint(new MockField('mo_jisuanhoudeshedingzhi', 45, 2, '计算后的设定值'))
         this.addPoint(new SettingField('mo_CHzuidashedingzhi', 52, 2, 'CH最大设定值'))
 
-        this.addPoint(new OpenCloseField('oc_ceshimoshi', 12, 1, '测试模式', 0, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_CHmoshi', 12, 1, 'CH模式', 2, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_fangdongmoshi', 12, 1, '防冻模式', 3, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_huoyan', 12, 1, '火焰', 4, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_CHbeng', 12, 1, 'CH泵', 5, Map_ZH_CN.coms_open_close))
-        this.addPoint(new OpenCloseField('oc_jilianbeng', 12, 1, '级联泵', 7, Map_ZH_CN.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_ceshimoshi', 12, 1, '测试模式', 0, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_CHmoshi', 12, 1, 'CH模式', 2, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_fangdongmoshi', 12, 1, '防冻模式', 3, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_huoyan', 12, 1, '火焰', 4, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_CHbeng', 12, 1, 'CH泵', 5, Map_CTL_HNWR_485.coms_open_close))
+        this.addPoint(new OpenCloseField('oc_jilianbeng', 12, 1, '级联泵', 7, Map_CTL_HNWR_485.coms_open_close))
 
     }
 }

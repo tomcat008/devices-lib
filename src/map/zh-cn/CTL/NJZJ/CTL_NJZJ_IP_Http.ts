@@ -1,4 +1,3 @@
-import { Map_ZH_CN } from '../../ZH_CN'
 import { SdcSoftDevice } from '../../../../devices/SdcSoftDevice'
 import { BaseInfoField, ExceptionField, MockField, SettingField, RanShaoQiField, RunDaysField, DeviceField, StartStopField } from '../../../../meta/NJZJ/meta'
 import { Map_CTL_NJZJ } from './CTL_NJZJ'
@@ -12,17 +11,17 @@ export class Map_CTL_NJZJ_IP_Http extends Map_CTL_NJZJ {
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 23, 1, '运行小时数', '时'))
 
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_POWER, 24, 1, '燃料类型', '', Map_ZH_CN.coms_power))
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_POWER, 24, 1, '燃料类型', '', Map_CTL_NJZJ_IP_Http.coms_power))
 
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_MEDIA, 25, 1, '介质类型', '', Map_ZH_CN.coms_media))
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_MEDIA, 25, 1, '介质类型', '', Map_CTL_NJZJ_IP_Http.coms_media))
 
-        this.addPoint(new BaseInfoField('ba_guolushuiweizhuangtai', 26, 1, '锅炉液位状态', '', Map_ZH_CN.coms_level))
+        this.addPoint(new BaseInfoField('ba_guolushuiweizhuangtai', 26, 1, '锅炉液位状态', '', Map_CTL_NJZJ_IP_Http.coms_level))
 
-        this.addPoint(new BaseInfoField('ba_shuixiangshuiweizhuangtai', 27, 1, '水箱液位状态', '', Map_ZH_CN.coms_level))
+        this.addPoint(new BaseInfoField('ba_shuixiangshuiweizhuangtai', 27, 1, '水箱液位状态', '', Map_CTL_NJZJ_IP_Http.coms_level))
 
         this.addPoint(new BaseInfoField('ba_guoluyalizhuangtai', 28, 1, '锅炉压力状态', '', Map_CTL_NJZJ_IP_Http.coms_yalistatus))
         this.addPoint(new BaseInfoField('ba_moshibianhao', 29, 1, '模式编号', ''))
-        this.addPoint(new BaseInfoField('ba_fangdongkaiguan', 30, 1, '防冻开关', '', Map_ZH_CN.coms_open_close))
+        this.addPoint(new BaseInfoField('ba_fangdongkaiguan', 30, 1, '防冻开关', '', Map_CTL_NJZJ_IP_Http.coms_open_close))
         this.addPoint(new ExceptionField('ex_paiyanwendugaobaojing', 32, 1, '排烟温度高报警'))
         this.addPoint(new ExceptionField('ex_lushuiwendugaobaojing', 33, 1, '炉水温度高报警'))
 

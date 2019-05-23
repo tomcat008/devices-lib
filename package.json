@@ -21,7 +21,9 @@
     "url": "https://github.com/tomcat008/devices-lib/issues"
   },
   "homepage": "https://github.com/tomcat008/devices-lib#readme",
-  "dependencies": {},
+  "dependencies": {
+    "grunt": "^1.0.4"
+  },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
     "@types/should": "^13.0.0",

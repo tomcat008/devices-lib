@@ -1,7 +1,7 @@
 import { Map_CTL_NJZJ } from './CTL_NJZJ'
 import { SdcSoftDevice } from '../../../../devices/SdcSoftDevice'
 import { SystemStatusField, BaseInfoField, ExceptionField, DeviceField, MockField, SettingField, StartStopField, } from '../../../../meta/NJZJ/485'
-import { Map_ZH_CN } from '../../ZH_CN'
+
 
 export class Map_CTL_NJZJ_IP_485 extends Map_CTL_NJZJ {
     static readonly Commands_Key_Parameters_Setting = '参数设置'
@@ -17,13 +17,13 @@ export class Map_CTL_NJZJ_IP_485 extends Map_CTL_NJZJ {
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 53, 2, '工作小时数', '时'))
 
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_POWER, 3, 2, '燃料类型', '', Map_ZH_CN.coms_power))
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_POWER, 3, 2, '燃料类型', '', Map_CTL_NJZJ_IP_485.coms_power))
 
-        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_MEDIA, 5, 2, '介质类型', '', Map_ZH_CN.coms_media))
+        this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_MEDIA, 5, 2, '介质类型', '', Map_CTL_NJZJ_IP_485.coms_media))
 
-        this.addPoint(new BaseInfoField('ba_guolushuiweizhuangtai', 25, 2, '锅炉液位状态', '', Map_ZH_CN.coms_level))
+        this.addPoint(new BaseInfoField('ba_guolushuiweizhuangtai', 25, 2, '锅炉液位状态', '', Map_CTL_NJZJ_IP_485.coms_level))
 
-        this.addPoint(new BaseInfoField('ba_shuixiangshuiweizhuangtai', 27, 2, '水箱液位状态', '', Map_ZH_CN.coms_level))
+        this.addPoint(new BaseInfoField('ba_shuixiangshuiweizhuangtai', 27, 2, '水箱液位状态', '', Map_CTL_NJZJ_IP_485.coms_level))
 
         this.addPoint(new BaseInfoField('ba_guoluyalizhuangtai', 29, 2, '锅炉压力状态', '', Map_CTL_NJZJ.coms_yalistatus))
 
@@ -35,7 +35,7 @@ export class Map_CTL_NJZJ_IP_485 extends Map_CTL_NJZJ {
 
         this.addPoint(new BaseInfoField('ba_xiaohuoshijian', 57, 2, '小火工作时间', '时'))
 
-        this.addPoint(new BaseInfoField('ba_fangdongkaiguan', 61, 2, '防冻开关', '', Map_ZH_CN.coms_open_close))
+        this.addPoint(new BaseInfoField('ba_fangdongkaiguan', 61, 2, '防冻开关', '', Map_CTL_NJZJ_IP_485.coms_open_close))
         //
         this.addPoint(new ExceptionField('ex_paiyanwendugaobaojing', 88, 2, '排烟温度高报警'))
 

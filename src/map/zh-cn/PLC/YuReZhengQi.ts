@@ -2,7 +2,6 @@ import { Map_PLC as PLC_Map } from './BaseMap'
 import { PLC } from '../../../devices/PLC/BaseDevice'
 import { CountField } from '../../../meta/CountField'
 import { MockField, SettingField, DeviceField, ExceptionField } from '../../../meta/PLC/meta'
-import { Map_ZH_CN } from '../ZH_CN'
 import { BaseInfoField } from '../../../meta/NJZJ/485'
 import { SdcSoftDevice } from '../../../devices/SdcSoftDevice'
 import { FixedValueField } from '../../../meta/FixedValueField'
@@ -16,9 +15,9 @@ export = class Map_PLC_YuReZhengQi extends PLC_Map {
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 9, 2, '运行小时数', '时'))
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 11, 2, '运行天数', '天'))
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 13, 2, '系统状态', '', PLC_Map.coms_status))
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, '燃料', 30, Map_ZH_CN.coms_power))
-        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, '介质', 1, Map_ZH_CN.coms_media))
-        this.addPoint(new BaseInfoField('ba_shuiweizhuangtai', 19, 2, '水位状态', '', Map_ZH_CN.coms_level))
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, '燃料', 30, Map_PLC_YuReZhengQi.coms_power))
+        this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, '介质', 1, Map_PLC_YuReZhengQi.coms_media))
+        this.addPoint(new BaseInfoField('ba_shuiweizhuangtai', 19, 2, '水位状态', '', Map_PLC_YuReZhengQi.coms_level))
         this.addPoint(new BaseInfoField('ba_ranshaoqizhuangtai', 21, 2, '燃烧器状态', '', PLC_Map.coms_ranshaoqi_status))
 
 
@@ -71,15 +70,15 @@ export = class Map_PLC_YuReZhengQi extends PLC_Map {
         this.addPoint(new SettingField('se_ruanshuixiangqueshuibaojingsheding', 316, 4, '软水箱缺水报警设定', '%'))
         this.addPoint(new SettingField('se_paiyanchaowenbaojingsheding', 320, 4, '排烟超温报警设定', '℃'))
 
-        this.addPoint(new DeviceField('de_1_addshuibeng_auto', 368, 2, '1#给水泵',PLC_Map.coms_atuo))
-        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_1, 370, 2, '1#给水泵', Map_ZH_CN.coms_start_stop))
-        this.addPoint(new DeviceField('de_2_addshuibeng_auto', 372, 2, '2#给水泵',PLC_Map.coms_atuo))
-        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_2, 374, 2, '2#给水泵', Map_ZH_CN.coms_start_stop))
-        this.addPoint(new DeviceField('de_1_chuyangbeng_auto', 376, 2, '1#除氧泵',PLC_Map.coms_atuo))
-        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_YANG_BENG_1, 378, 2, '1#除氧泵', Map_ZH_CN.coms_start_stop))
-        this.addPoint(new DeviceField('de_2_chuyangbeng_auto', 380, 2, '2#除氧泵',PLC_Map.coms_atuo))
-        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_YANG_BENG_2, 382, 2, '2#除氧泵', Map_ZH_CN.coms_start_stop))
-        this.addPoint(new DeviceField('de_baojingshuchuzhishi', 384, 2, '报警输出指示', Map_ZH_CN.coms_open_close))
+        this.addPoint(new DeviceField('de_1_addshuibeng_auto', 368, 2, '1#给水泵', PLC_Map.coms_atuo))
+        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_1, 370, 2, '1#给水泵', Map_PLC_YuReZhengQi.coms_start_stop))
+        this.addPoint(new DeviceField('de_2_addshuibeng_auto', 372, 2, '2#给水泵', PLC_Map.coms_atuo))
+        this.addPoint(new DeviceField(PLC.KEY_POINT_Add_SHUI_BENG_2, 374, 2, '2#给水泵', Map_PLC_YuReZhengQi.coms_start_stop))
+        this.addPoint(new DeviceField('de_1_chuyangbeng_auto', 376, 2, '1#除氧泵', PLC_Map.coms_atuo))
+        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_YANG_BENG_1, 378, 2, '1#除氧泵', Map_PLC_YuReZhengQi.coms_start_stop))
+        this.addPoint(new DeviceField('de_2_chuyangbeng_auto', 380, 2, '2#除氧泵', PLC_Map.coms_atuo))
+        this.addPoint(new DeviceField(PLC.KEY_POINT_CHU_YANG_BENG_2, 382, 2, '2#除氧泵', Map_PLC_YuReZhengQi.coms_start_stop))
+        this.addPoint(new DeviceField('de_baojingshuchuzhishi', 384, 2, '报警输出指示', Map_PLC_YuReZhengQi.coms_open_close))
 
         this.addPoint(new ExceptionField('ex_shuiweiweidibaojingdianji', 448, 2, '水位危低报警（电极）', 8))
         this.addPoint(new ExceptionField('ex_shuiweijidibaojingdianji', 448, 2, '水位极低报警（电极）', 9))
@@ -104,6 +103,6 @@ export = class Map_PLC_YuReZhengQi extends PLC_Map {
         this.addPoint(new ExceptionField('ex_bushuibeng2guzhang', 450, 2, '补水泵2故障', 9))
         this.addPoint(new ExceptionField('ex_chuyangbeng1guzhang', 450, 2, '除氧泵1故障', 10))
         this.addPoint(new ExceptionField('ex_chuyangbeng2guzhang', 450, 2, '除氧泵2故障', 11))
-   
+
     }
 }

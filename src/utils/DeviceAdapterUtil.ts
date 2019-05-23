@@ -4,10 +4,11 @@ import { SdcSoftDevice } from '../devices/SdcSoftDevice'
 import { map as PointMap } from '../map/map'
 
 class DeviceAdapter {
+    private lang: Language = 'zh-cn'
     private createDeviceFunc: (type: string) => SdcSoftDevice
-    private createMapFunc: (type: string, lang: Language) => PointMap
+    private createMapFunc: (lang: Language, type: string) => PointMap
 
-    constructor(createDeviceFunc: (type: string) => SdcSoftDevice, createMapFunc: (type: string, lang: Language) => PointMap) {
+    constructor(createDeviceFunc: (type: string) => SdcSoftDevice, createMapFunc: (lang: Language, type: string) => PointMap) {
         this.createDeviceFunc = createDeviceFunc
         this.createMapFunc = createMapFunc
     }
@@ -15,11 +16,11 @@ class DeviceAdapter {
     /**
      * 获取子类别设备对象
      */
-    private getSubDevice(type: string, sub: string, data: Uint8Array, lang: Language = 'zh-cn'): SdcSoftDevice | null {
+    private getSubDevice(type: string, sub: string, data: Uint8Array): SdcSoftDevice | null {
         let t: string = type + '_' + sub
-        console.log('t:='+t)
+        console.log('t:=' + t)
         let device = this.createDeviceFunc(t)
-        let map = this.createMapFunc(t, lang)
+        let map = this.createMapFunc(this.lang, t)
         if (device.validateFalse(data.byteLength)) {
             return null
         }
@@ -31,9 +32,10 @@ class DeviceAdapter {
 
     }
 
-    getSdcSoftDevice(type: string, data: Uint8Array, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, lang: Language = 'zh-cn'): SdcSoftDevice | null {
+    getSdcSoftDevice(lang: Language, type: string, data: Uint8Array, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL): SdcSoftDevice | null {
+        this.lang = lang
         let device = this.createDeviceFunc(type)
-        let map = this.createMapFunc(type, lang)
+        let map = this.createMapFunc(lang, type)
 
         if (device.validateFalse(data.byteLength)) {
             return null
@@ -53,7 +55,7 @@ class DeviceAdapter {
         })
         //自动进行子类型确认
         if (device.getSubDeviceType() != SdcSoftDevice.NO_SUB_DEVICE_TYPE) {
-            let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType(), data, lang)
+            let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType(), data)
             if (null == subDevice)
                 return null
             device = subDevice
@@ -110,14 +112,14 @@ export class Web_DeviceAdapterUtil {
 export class Wx_DeviceAdapterUtil {
     private static adapter: DeviceAdapter | null
 
-    static InjectFunc(createDeviceFunc: (type: string) => SdcSoftDevice, createMapFunc: (type: string, lang: Language) => PointMap) {
+    static InjectFunc(createDeviceFunc: (type: string) => SdcSoftDevice, createMapFunc: (lang:string,type: string) => PointMap) {
         this.adapter = new DeviceAdapter(createDeviceFunc, createMapFunc)
     }
 
 
-    static getSdcSoftDevice(type: string, data: Uint8Array, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, lang: Language = 'zh-cn'): SdcSoftDevice | null {
+    static getSdcSoftDevice(lang: Language, type: string, data: Uint8Array, power: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL, media: number = SdcSoftDevice.POWER_MEDIA_VALUE_NULL): SdcSoftDevice | null {
         if (null != this.adapter) {
-            return this.adapter.getSdcSoftDevice(type, data, power, media, lang)
+            return this.adapter.getSdcSoftDevice(lang, type, data, power, media)
         }
         return null
     }

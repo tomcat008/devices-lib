@@ -20,8 +20,8 @@ export class Map_CTL_RT_X1_Base extends Map_CTL_RT_X1_Ts {
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_LIFE, 53, 2, "运行时间", "时"))
         this.addPoint(new CountShowField(Map_CTL_RT_X1_Ts.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"))
         this.addPoint(new CountShowField(Map_CTL_RT_X1_Ts.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"))
-        //this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 0, Map_ZH_CN.coms_media))
-        //this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 0, Map_ZH_CN.coms_power))
+        //this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 0, xyxy.coms_media))
+        //this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 0, xyxy.coms_power))
 
         this.addPoint(new CountShowField(Map_CTL_RT_X1_Ts.KEY_BASE, 'ba_shuiweizhuangtai', "水位", '', false, Map_CTL_RT_X1_Base.ShuiWeiStatus))
 
