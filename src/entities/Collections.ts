@@ -29,7 +29,6 @@ export class NumberHashMap<TValue>{
 }
 export class StringHashMap<TValue>{
     private map: { [key: string]: TValue } = {}
-    private map2 = new Map<string, TValue>()
     addItem(key: string, value: TValue) {
         this.map[key] = value
     }

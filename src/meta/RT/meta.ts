@@ -1,4 +1,5 @@
 import { BaseInfoField as AParentClass } from '../BaseInfoField'
+import { ExceptionField as CParentClass } from '../ExceptionField'
 import { NumberHashMap } from '../../entities/Collections'
 import { map } from '../../map/map'
 import { DeviceFieldForUI } from '../DeviceFieldForUI'
@@ -30,20 +31,20 @@ export class BaseInfoField extends AParentClass {
 import { OpenCloseField as EParentClass } from '../OpenCloseField'
 export class OpenCloseField extends EParentClass {
 
-    constructor(name: string, startIndex: number, bytesLength: number, title: string,bit:number,valueMap: { [key: number]: string }|null) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, bit: number, valueMap: { [key: number]: string } | null) {
         super()
         this.name = name
         this.startIndex = startIndex
         this.bytesLength = bytesLength
         this.title = title
         this.bit = bit
-        if(valueMap){
+        if (valueMap) {
             this.valueMap = new NumberHashMap<string>(valueMap)
         }
     }
 
     haveValue(...bytes: number[]): boolean {
-        this.value = bytes[0]<<8|bytes[1]
+        this.value = bytes[0] << 8 | bytes[1]
         let i = 1 << this.bit
         //console.log(this.title+' i:='+i.toString()+' value:='+this.value.toString() )
         if ((i & this.value) == i) {
@@ -61,15 +62,15 @@ export class OpenCloseField extends EParentClass {
     }
 }
 export class DeviceField extends OpenCloseField {
-    constructor(name: string, startIndex: number, bytesLength: number, title: string,bit:number, valueMap: { [key: number]: string }) {
-        super(name,startIndex,bytesLength,title,bit,valueMap)
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, bit: number, valueMap: { [key: number]: string }) {
+        super(name, startIndex, bytesLength, title, bit, valueMap)
     }
 
-    setDeviceFieldForUIKey(fieldForUI:DeviceFieldForUI) {
+    setDeviceFieldForUIKey(fieldForUI: DeviceFieldForUI) {
         fieldForUI.setKey(map.KEY_DEVICE)
     }
 }
-
+/*
 export class ExceptionField extends OpenCloseField {
     constructor(name: string, startIndex: number, bytesLength: number, title: string,bit:number) {
         super(name,startIndex,bytesLength,title,bit,null)
@@ -94,6 +95,31 @@ export class ExceptionField extends OpenCloseField {
         return ''
     }
 }
+*/
+export class ExceptionField extends CParentClass {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, bit: number, level: number = ExceptionField.Exception_Waring) {
+        super()
+        this.level = level
+        this.name = name
+        this.startIndex = startIndex
+        this.bytesLength = bytesLength
+        this.title = title
+        this.bit = bit
+    }
+    haveValue(...bytes: number[]): boolean {
+        this.value = bytes[0] << 8 | bytes[1]
+        let i = 1 << this.bit
+        //console.log(this.title+' i:='+i.toString()+' value:='+this.value.toString() )
+        if ((i & this.value) == i) {
+            this.value = 1
+            return true
+        } else {
+            this.value = 0
+            return false
+        }
+    }
+}
+
 import { MockField as DParentClass } from '../MockField'
 export class MockField extends DParentClass {
 
@@ -123,8 +149,8 @@ export class MockField extends DParentClass {
 }
 export class SettingField extends MockField {
 
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit?: string,baseNumber?: number){
-        super(name, startIndex, bytesLength, title, unit,baseNumber)
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit?: string, baseNumber?: number) {
+        super(name, startIndex, bytesLength, title, unit, baseNumber)
     }
     setDeviceFieldForUIKey(fieldForUI: DeviceFieldForUI) {
         fieldForUI.setKey(map.KEY_SETTING)

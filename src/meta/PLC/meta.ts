@@ -53,8 +53,9 @@ export class DeviceField extends BParentClass {
     }
 }
 export class ExceptionField extends CParentClass {
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, bit: number) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, bit: number, level:number = ExceptionField.Exception_Waring) {
         super()
+        this.level = level
         this.name = name
         this.startIndex = startIndex
         this.bytesLength = bytesLength
