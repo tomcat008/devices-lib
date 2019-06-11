@@ -4,6 +4,7 @@ import { map } from '../map/map'
 //namespace DevicesLib.meta {
 export abstract class ExceptionField extends ByteField {
 
+    static readonly Exception_NULL = -1
     static readonly Exception_Waring = 0
     static readonly Exception_Error = 1
 
@@ -11,12 +12,21 @@ export abstract class ExceptionField extends ByteField {
      * 异常等级
      */
     protected level = 0
-    setDeviceFieldForUIKey( fieldForUI:DeviceFieldForUI) {
+    setDeviceFieldForUIKey(fieldForUI: DeviceFieldForUI) {
         fieldForUI.setKey(map.KEY_EXCEPTION)
     }
 
-    getExceptionLevel(){
+    getExceptionLevel() {
         return this.level
+    }
+
+    getDeviceFieldForUI(value?: number): DeviceFieldForUI | null {
+        let fieldForUI: DeviceFieldForUI = new DeviceFieldForUI()
+        this.setDeviceFieldForUIKey(fieldForUI)
+        fieldForUI.setName(this.getName())
+        fieldForUI.setTitle(this.getTitle())
+        fieldForUI.setExcptionLevel(this.level)
+        return fieldForUI
     }
 }
 //}

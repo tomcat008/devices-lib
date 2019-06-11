@@ -6,11 +6,11 @@ import { SystemStatusField, BaseInfoField, ExceptionField, DeviceField, MockFiel
 export class Map_CTL_NJZJ_IP_485 extends Map_CTL_NJZJ {
     static readonly Commands_Key_Parameters_Setting = '参数设置'
     static readonly Commands_Key_System_Ctl = '系统控制'
-    
+
     constructor() {
         super()
-        this.addCommandGroup(Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting)
-        this.addCommandGroup(Map_CTL_NJZJ_IP_485.Commands_Key_System_Ctl)
+        // this.addCommandGroup(Map_CTL_NJZJ_IP_485.Commands_Key_Parameters_Setting)
+        // this.addCommandGroup(Map_CTL_NJZJ_IP_485.Commands_Key_System_Ctl)
 
         this.addPoint(new SystemStatusField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 7, 2, '系统状态', Map_CTL_NJZJ.coms_status, Map_CTL_NJZJ_IP_485.Commands_Key_System_Ctl, '0602', 1, 2))
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 51, 2, '工作天数', '天'))
@@ -41,7 +41,7 @@ export class Map_CTL_NJZJ_IP_485 extends Map_CTL_NJZJ {
 
         this.addPoint(new ExceptionField('ex_lushuiwendugaobaojing', 90, 2, '炉水温度高报警'))
 
-        this.addPoint(new ExceptionField('ex_chukouwendugaobaojing', 92, 2, '出口温度高报警'))
+        this.addPoint(new ExceptionField('ex_chukouwendugaobaojing', 92, 2, '出口温度高报警', ExceptionField.Exception_Error))
 
         this.addPoint(new ExceptionField('ex_chaoyabaojing', 94, 2, '超压报警'))
 
@@ -750,9 +750,9 @@ export class Map_CTL_NJZJ_IP_485 extends Map_CTL_NJZJ {
         this.addPoint(new DeviceField('de_ecigufengji_fan', 1615, 2, '二次鼓风机', Map_CTL_NJZJ.coms_device))
         this.addPoint(new DeviceField('de_dianhuoqi', 1617, 2, '点火器', Map_CTL_NJZJ.coms_device))
         this.addPoint(new DeviceField('de_shangmeiji_fan', 1619, 2, '上煤机', Map_CTL_NJZJ.coms_device))
-        this.addPoint(new DeviceField('de_songliaoji', 1621, 2, '送料机', Map_CTL_NJZJ.coms_device))
+        this.addPoint(new DeviceField('de_songliaoji_fan', 1621, 2, '送料机', Map_CTL_NJZJ.coms_device))
         this.addPoint(new DeviceField('de_jiayao_beng', 1623, 2, '加药泵', Map_CTL_NJZJ.coms_device))
-        this.addPoint(new DeviceField('de_paiwufa', 1625, 2, '排污阀', Map_CTL_NJZJ.coms_device))
+        this.addPoint(new DeviceField('de_paiwufa_fan', 1625, 2, '排污阀', Map_CTL_NJZJ.coms_device))
         this.addPoint(new DeviceField('de_huilu1xunhuan_beng', 1627, 2, '回路1循环泵', Map_CTL_NJZJ.coms_device))
         this.addPoint(new DeviceField('de_huilu2xunhuan_beng', 1629, 2, '回路2循环泵', Map_CTL_NJZJ.coms_device))
         this.addPoint(new DeviceField('de_huilu3xunhuan_beng', 1631, 2, '回路3循环泵', Map_CTL_NJZJ.coms_device))

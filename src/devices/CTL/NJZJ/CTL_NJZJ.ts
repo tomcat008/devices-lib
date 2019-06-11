@@ -167,9 +167,14 @@ export abstract class IP extends SdcSoftDevice {
 
 
     protected getPowerInfo(): number {
+        //console.log('xxxxxxxxxxxxxxxxxxxxxx'+this.power)
         if (this.power == Power.Dian) {
-            return this.getSettingFields().getItem(IP.KEY_POINT_JIA_RE_ZU).getValue() > 0 ? 1 : 0
-        } else if (this.power == Power.Mei) {
+            return this.getDeviceFields().getItem(IP.KEY_POINT_JIA_RE_ZU).getValue() > 0 ? 1 : 0
+        } 
+        else if (this.power == Power.Mei) {
+            return this.getDeviceFields().getItem(IP.KEY_POINT_YIN_FENG_JI).getValue() > 0x7F ? 1 : 0
+        }
+        else if(this.power == Power.ShengWuZhi){
             return this.getDeviceFields().getItem(IP.KEY_POINT_YIN_FENG_JI).getValue() > 0x7F ? 1 : 0
         }
         return this.getDeviceFields().getItem(IP.KEY_POINT_RAN_SHAO_QI).getValue() > 0x7F ? 1 : 0

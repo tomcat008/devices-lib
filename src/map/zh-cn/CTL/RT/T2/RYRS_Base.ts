@@ -6,6 +6,7 @@ import { CountShowField } from '../../../../../meta/CountShowField'
 import { FixedValueField } from '../../../../../meta/FixedValueField'
 import { CTL_RT } from '../../../../../devices/CTL/RT/RT'
 import { Map_CTL_RT_T2_Ts } from '../AScript/T2'
+import { OpenCloseCommand } from '../../../../../command/Command';
 
 export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
     static coms_guolu: INumberIndex = {
@@ -25,6 +26,7 @@ export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
         1: "回水温度",
         2: "燃烧器",
     }
+
     constructor() {
         super()
         this.addPoint(new CountField(CTL_RT.KEY_POINT_Add_SHUI_BENG, "补水泵"))
@@ -57,7 +59,7 @@ export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
         this.addPoint(new DeviceField("de_bushuibengshoudongzidong", 49, 2, "补水泵", 1, Map_CTL_RT_T2_RYRS_Ts.coms_auto))
         this.addPoint(new DeviceField("de_xunhuanbengzhubei", 49, 2, "循环泵", 2, Map_CTL_RT_T2_RYRS_Ts.coms_master))
         this.addPoint(new DeviceField("de_xunhuanbengshoudongzidong", 49, 2, "循环泵", 3, Map_CTL_RT_T2_RYRS_Ts.coms_auto))
-        
+
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_1, 9, 2, "补水泵主控制", 3, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_2, 9, 2, "补水泵备控制", 4, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_LENG_NING_BENG_1, 9, 2, "循环泵主控制", 5, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
@@ -67,7 +69,7 @@ export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
         this.addPoint(new MockField("mo_huishuiwendu", 15, 2, "回水温度", "℃"))
         this.addPoint(new MockField("mo_paiyanwendu", 21, 2, "排烟温度", "℃"))
 
-        
+
 
         this.addPoint(new ExceptionField("ex_chushuiwenduchuanganqiduanlu1", 45, 2, "出水温度传感器断路", 0))
         this.addPoint(new ExceptionField("ex_chushuiwenduchuanganqiduanlu", 45, 2, "出水温度传感器短路", 1))
@@ -97,6 +99,8 @@ export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
         this.addPoint(new BaseInfoField("o_ranshaoqigongzuofangshi", 89, 2, "燃烧器工作方式", '', Map_CTL_RT_T2_RYRS_Ts.coms_ranshaoqi))
         this.addPoint(new BaseInfoField("o_bushuibengkongzhifangshi", 91, 2, "补水泵控制方式", '', Map_CTL_RT_T2_RYRS_Ts.coms_bushuibeng))
         this.addPoint(new BaseInfoField("o_xunhuanbengkongzhifangshi", 93, 2, "循环泵控制方式", '', Map_CTL_RT_T2_RYRS_Ts.coms_xunhuanbeng))
+
+        this.addCommand('设备控制', new OpenCloseCommand('控制器 运行|待命', '00a0', 1, 2))
 
     }
 }

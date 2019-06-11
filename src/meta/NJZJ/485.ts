@@ -79,7 +79,7 @@ export class DeviceField extends BParentClass {
 import { ExceptionField as CParentClass } from '../ExceptionField'
 
 export class ExceptionField extends CParentClass {
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, level:number = ExceptionField.Exception_Waring) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, level: number = ExceptionField.Exception_Waring) {
         super()
         this.level = level
         this.name = name
@@ -102,7 +102,7 @@ import { MockField as DParentClass } from '../MockField'
 
 export class MockField extends DParentClass {
 
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string='', baseNumber?: number) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string = '', baseNumber?: number) {
         super()
         this.name = name
         this.startIndex = startIndex
@@ -115,6 +115,10 @@ export class MockField extends DParentClass {
     }
     haveValue(...bytes: number[]): boolean {
         let i = bytes[0] << 8 | bytes[1]
+
+        // if(this.title == '后延时'){
+        //     console.log(i)
+        // }
 
         if (0x7FFF == i)
             return false
@@ -172,20 +176,20 @@ export class SettingField extends MockField {
     constructor(name: string, startIndex: number, bytesLength: number, title: string, unit?: string)
     constructor(name: string, startIndex: number, bytesLength: number, title: string, unit?: string, baseNumber?: number)
     constructor(name: string, startIndex: number, bytesLength: number, title: string, unit?: string, baseNumber?: number, cmdGroupKey?: string, address?: string, minValue?: number, maxValue?: number)
-    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string='', baseNumber?: number, cmdGroupKey?: string, address?: string, minValue?: number, maxValue?: number) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string = '', baseNumber?: number, cmdGroupKey?: string, address?: string, minValue?: number, maxValue?: number) {
         super(name, startIndex, bytesLength, title, unit, 0)
         if (baseNumber) {
             this.baseNumber = baseNumber
         }
         if (cmdGroupKey) {
             this.commandGroupKey = cmdGroupKey
-            if(address){
+            if (address) {
                 this.address = address
             }
-            if(minValue){
+            if (minValue) {
                 this.minValue = minValue
             }
-            if(maxValue){
+            if (maxValue) {
                 this.maxValue = maxValue
             }
         }
@@ -198,13 +202,27 @@ import { StartStopField as EParentClass } from '../StartStopField'
 import { Command, TimeCommand, SystemCommand } from '../../command/Command'
 
 export class StartStopField extends EParentClass {
-
-    constructor(name: string, startIndex: number, bytesLength: number, title: string) {
+    constructor(name: string, startIndex: number, bytesLength: number, title: string)
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, cmdGroupKey?: string, address?: string, minValue?: number, maxValue?: number)
+    constructor(name: string, startIndex: number, bytesLength: number, title: string, cmdGroupKey?: string, address?: string, minValue?: number, maxValue?: number) {
         super()
         this.name = name
         this.startIndex = startIndex
         this.bytesLength = bytesLength
         this.title = title
+
+        if (cmdGroupKey) {
+            this.commandGroupKey = cmdGroupKey
+            if (address) {
+                this.address = address
+            }
+            if (minValue) {
+                this.minValue = minValue
+            }
+            if (maxValue) {
+                this.maxValue = maxValue
+            }
+        }
     }
 
     haveValue(...bytes: number[]): boolean {
@@ -223,14 +241,17 @@ export class StartStopField extends EParentClass {
         return h + ':' + m
     }
 
-    getCommand(): Command {
-        let cmd = new TimeCommand()
-        cmd.setAddress(this.address)
-        cmd.setMaxValue(this.maxValue)
-        cmd.setMinValue(this.minValue)
-        cmd.initValue(this.value / 60, this.value % 60)
-        cmd.setTitle(this.getTitle())
-        return cmd
+    getCommand(): Command | null {
+        if (this.address) {
+            let cmd = new TimeCommand(this.title,this.address)
+            cmd.setAddress(this.address)
+            cmd.setMaxValue(this.maxValue)
+            cmd.setMinValue(this.minValue)
+            cmd.initValue(this.value / 60, this.value % 60)
+            cmd.setTitle(this.getTitle())
+            return cmd
+        }
+        return null
     }
 
 }
@@ -247,10 +268,7 @@ export class SystemStatusField extends BaseInfoField {
         this.maxValue = maxValue
     }
     getCommand(): Command {
-        let cmd = new SystemCommand()
-        cmd.setAddress(this.address)
-        cmd.setMaxValue(this.maxValue)
-        cmd.setMinValue(this.minValue)
+        let cmd = new SystemCommand(this.title,this.address,this.maxValue,this.minValue)
         cmd.initValue(this.value)
         cmd.setTitle(this.getTitle())
         return cmd

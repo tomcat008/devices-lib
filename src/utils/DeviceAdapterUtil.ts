@@ -53,6 +53,7 @@ class DeviceAdapter {
             }*/
             device.handleByteField(value, data)
         })
+        device.handleCommandFields(map.getCommandsMap())
         //自动进行子类型确认
         if (device.getSubDeviceType() != SdcSoftDevice.NO_SUB_DEVICE_TYPE) {
             let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType(), data)
@@ -112,7 +113,7 @@ export class Web_DeviceAdapterUtil {
 export class Wx_DeviceAdapterUtil {
     private static adapter: DeviceAdapter | null
 
-    static InjectFunc(createDeviceFunc: (type: string) => SdcSoftDevice, createMapFunc: (lang:string,type: string) => PointMap) {
+    static InjectFunc(createDeviceFunc: (type: string) => SdcSoftDevice, createMapFunc: (lang: string, type: string) => PointMap) {
         this.adapter = new DeviceAdapter(createDeviceFunc, createMapFunc)
     }
 

@@ -27,14 +27,15 @@ export abstract class map {
 
 
     protected pointMap: StringHashMap<ByteField> = new StringHashMap<ByteField>()
-    protected commandMap: StringHashMap<Command[]|null> = new StringHashMap<Command[]|null>()
+    //protected commandMap: StringHashMap<Command[] | null> = new StringHashMap<Command[] | null>()
+    protected commandMap: StringHashMap<Command[]> = new StringHashMap<Command[]>()
     //protected subTypes: StringHashMap<string> = new StringHashMap<string>()
     //protected warningMsg:string = ''
 
     getPointMap(): StringHashMap<ByteField> {
         return this.pointMap
     }
-    getCommandsMap(): StringHashMap<Command[]|null> {
+    getCommandsMap(): StringHashMap<Command[]> {
         return this.commandMap
     }
     // getSubTypes(){
@@ -43,12 +44,23 @@ export abstract class map {
     // getwarningMsg(){
     //     return this.warningMsg
     // }
-    protected addCommandGroup(groupKey:string){
-        this.commandMap.addItem(groupKey, null)
-    }
+    // protected addCommandGroup(groupKey: string) {
+    //     this.commandMap.addItem(groupKey, null)
+    // }
     protected addPoint(byteField: ByteField) {
         this.pointMap.addItem(byteField.getName(), byteField)
     }
-    abstract getPowerString(key:number):string
-    abstract getMediaString(key:number):string
+
+    protected addCommand(groupKey: string, cmd: Command) {
+        if (this.commandMap.containsKey(groupKey)) {
+            let cmds = this.commandMap.getItem(groupKey)
+            cmds.push(cmd)
+        }
+        else {
+            let cmds: Command[] = [cmd]
+            this.commandMap.addItem(groupKey, cmds)
+        }
+    }
+    abstract getPowerString(key: number): string
+    abstract getMediaString(key: number): string
 }

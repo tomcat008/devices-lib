@@ -4,7 +4,6 @@ import { Command } from '../command/Command'
 import { Element as AElement } from '../entities/Element'
 import { map } from '../map/map'
 import { ByteField } from '../meta/ByteField'
-import { CommandField } from '../meta/CommandField'
 
 export enum Media {
     ReShui = 0,
@@ -71,8 +70,8 @@ export abstract class SdcSoftDevice {
         this.deviceNo = deviceNo
     }
 
-    private getFieldsMap(groupKey: string): StringHashMap<DeviceFieldForUI>{
-        return this.fieldMap.getItem(groupKey)        
+    private getFieldsMap(groupKey: string): StringHashMap<DeviceFieldForUI> {
+        return this.fieldMap.getItem(groupKey)
     }
 
     getBaseInfoFields() {
@@ -106,7 +105,7 @@ export abstract class SdcSoftDevice {
         return this.getFieldsMap(map.KEY_Count_Fields)
     }
 
- 
+
     getExceptionCount(): number {
         return this.getExceptionFields().count
     }
@@ -131,16 +130,15 @@ export abstract class SdcSoftDevice {
         if (null == field)
             return
         let key = field.getKey()
-        if (this.fieldMap.containsKey(key)){           
-            this.fieldMap.getItem(key).addItem(field.getName(),field)
+        if (this.fieldMap.containsKey(key)) {
+            this.fieldMap.getItem(key).addItem(field.getName(), field)
         }
-            
+
     }
 
     protected addField(field: ByteField): void
-    protected addField(field: CommandField): void
     protected addField(field: DeviceFieldForUI): void
-    protected addField(field: ByteField | CommandField | DeviceFieldForUI): void {
+    protected addField(field: ByteField | DeviceFieldForUI): void {
 
         if (field instanceof ByteField) {
             //需要剔除纯控制程序点位
@@ -149,13 +147,6 @@ export abstract class SdcSoftDevice {
                 this.addUIField(ui)
             }
             //处理保护执行命令的点位
-            let cmd = field.getCommand()
-            if (cmd) {
-                this.addCommand(field.getCommandGroupKey(), cmd)
-            }
-            return
-        }
-        if (field instanceof CommandField) {
             let cmd = field.getCommand()
             if (cmd) {
                 this.addCommand(field.getCommandGroupKey(), cmd)
@@ -250,6 +241,14 @@ export abstract class SdcSoftDevice {
         return SdcSoftDevice.NO_SUB_DEVICE_TYPE
     }
 
+    handleCommandFields(commandsGroup: StringHashMap<Command[]>): void {
+        commandsGroup.each((key, values) => {
+            values.forEach((v) => {
+                this.addCommand(key, v)
+            })
+        })
+        commandsGroup.clear()
+    }
     abstract handleDeviceNo(bytes: number[]): void
 
     protected abstract getPowerInfo(): number

@@ -24,7 +24,7 @@ mocha.describe('ZJ 设备测试',function(){
     // it('CTL_NJZJ_IPT2',function(done){
     //     checkDeviceByPost('0602000002','CTL_NJZJ_IPT2',done)
     // });
-    // it('CTL_NJZJ_IPK2',function(done){
-    //     checkDeviceByPost('0601000001','CTL_NJZJ_IPK2',done)
-    // });
+    it('CTL_NJZJ_IPK2',function(done){
+        checkDeviceByPost('0200400001','CTL_NJZJ_IPK2_485',done)
+    });
 });

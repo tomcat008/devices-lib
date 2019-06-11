@@ -177,7 +177,7 @@ export class SettingField extends MockField {
     }
 
     protected createCommandAndInitValue(): Command {
-        let cmd = new FloatCommand()
+        let cmd = new FloatCommand(this.title,this.address,this.maxValue,this.minValue)
         cmd.initValue(this.getValue())
         return cmd
     }

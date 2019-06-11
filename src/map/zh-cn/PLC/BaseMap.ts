@@ -20,8 +20,8 @@ export abstract class Map_PLC extends ParentClass {
     }
     constructor() {
         super()
-        this.addCommandGroup(Map_PLC.Commands_Key_Parameters_Setting)
-        this.addCommandGroup(Map_PLC.Commands_Key_System_Ctl)
+        // this.addCommandGroup(Map_PLC.Commands_Key_Parameters_Setting)
+        // this.addCommandGroup(Map_PLC.Commands_Key_System_Ctl)
         /*
                 this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 9, 2, '运行小时数', '时'))
                 this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 11, 2, '运行天数', '天'))

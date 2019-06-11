@@ -12,13 +12,19 @@ export abstract class Command {
     static readonly OPEN_CLOSE_VALUE = 5
     static readonly SYSTEM_VALUE = 6
 
-    protected name: string = ''
+    //protected name: string = ''
     protected address: string = ''
     protected valueString: string = ''
     protected value: string = ''
     private modbusNo: number = 1
     protected unit: string=''
 
+    constructor(title: string, address: string, maxValue: number, minValue: number) {
+        this.title = title
+        this.title = address
+        this.minValue  =minValue
+        this.maxValue = maxValue
+    }
     getValueString(): string {
         return this.valueString
     }
@@ -90,23 +96,30 @@ export abstract class Command {
         return this.minValue
     }
 
-    public getName() {
-        return this.name
-    }
+    // public getName() {
+    //     return this.name
+    // }
 
-    setName(name: string) {
-        this.name = name
-    }
-
+    // setName(name: string) {
+    //     this.name = name
+    // }
+    /**
+     * 用于呈现数据的初始化，数据初始化不影响命令设置状态
+     * @param values 
+     */
     initValue(...values: number[]) {
         this.handleValue(values)
     }
-
+    /**
+     * 用户设置命令值，影响命令设置状态
+     * @param values 
+     */
     setValue(...values: number[]) {
         if (null == values)
             return
         if (null == values[0])
             return
+
         this.handleValue(values)
         this.valueIsSet = true
     }
@@ -180,8 +193,8 @@ export abstract class Command {
 
 
 
-    initCommand(name: string, address: string, maxValue: number, minValue: number, value: number) {
-        this.setName(name)
+    initCommand(title: string, address: string, maxValue: number, minValue: number, value: number) {
+        this.setTitle(title)
         this.setAddress(address)
         this.setMinValue(minValue)
         this.setMaxValue(maxValue)
@@ -194,8 +207,8 @@ export abstract class Command {
 }
 export class IntCommand extends Command {
 
-    constructor() {
-        super()
+    constructor(title: string, address: string, maxValue: number, minValue: number) {
+        super(title,address,minValue,maxValue)
         this.valueType = Command.INT_VALUE
     }
 
@@ -212,8 +225,8 @@ export class IntCommand extends Command {
     }
 }
 export class TimeCommand extends IntCommand {
-    constructor() {
-        super()
+    constructor(title: string, address: string) {
+        super(title,address,0,0)
         this.valueType = Command.TIME_VALUE
         this.script = ''
     }
@@ -233,16 +246,16 @@ export class TimeCommand extends IntCommand {
     }
 }
 export class SystemCommand extends IntCommand {
-    constructor() {
-        super()
+    constructor(title: string, address: string, maxValue: number, minValue: number) {
+        super(title,address,minValue,maxValue)
         this.valueType = Command.SYSTEM_VALUE
         this.valueIsSet = false
     }
 }
 export class FloatCommand extends Command {
 
-    constructor() {
-        super()
+    constructor(title: string, address: string, maxValue: number, minValue: number) {
+        super(title,address,minValue,maxValue)
         this.action = '10'
         this.valueType = Command.FLOAT_VALUE
     }
@@ -262,6 +275,12 @@ export class FloatCommand extends Command {
     public convertToString(): string {
         let no = NumberUtil.NumberToString(this.getModbusNo(), 16, 4)
         return no + this.action + this.address + '000204' + this.value
+    }
+}
+export class OpenCloseCommand extends IntCommand{
+    constructor(title: string, address: string, maxValue: number, minValue: number) {
+        super(title,address,minValue,maxValue)
+        this.valueType = Command.OPEN_CLOSE_VALUE
     }
 }
 //}

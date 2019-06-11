@@ -210,8 +210,7 @@ export class StartStopField extends EParentClass {
     }
 
     getCommand(): Command {
-        let cmd = new TimeCommand()
-        cmd.setAddress(this.address)
+        let cmd = new TimeCommand(this.title,this.address)
         cmd.setMaxValue(this.maxValue)
         cmd.setMinValue(this.minValue)
         cmd.initValue(this.value / 60, this.value % 60)

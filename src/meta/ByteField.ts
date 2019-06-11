@@ -76,7 +76,7 @@ export abstract class ByteField extends CommandField {
 
 
     protected createCommandAndInitValue(): Command {
-        let cmd = new IntCommand()
+        let cmd = new IntCommand(this.title,this.address,this.maxValue,this.minValue)
         cmd.initValue(this.getValue())
         return cmd
     }

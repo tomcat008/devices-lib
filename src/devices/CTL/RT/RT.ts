@@ -43,6 +43,10 @@ export class CTL_RT extends SdcSoftDevice {
         //let view = new DataView(bytes)
         switch (field.getBytesLength()) {
             case 0:
+                if(field.haveValue()){
+                    this.addField(field)
+                }
+                break;
             case 2:
                 if (field.haveValue(bytes[field.getStartIndex()], bytes[field.getStartIndex() + 1])) {
                     this.addField(field)
