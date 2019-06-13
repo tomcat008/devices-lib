@@ -17,7 +17,6 @@ export = class CTL_RT_X1_BKSR_9 extends CTL_RT_X1_ZhengQi {
         let map2 = this.getOpenCloseFields()
         let a = map2.getItem('oc_dianjiedianyalibiaodizhen').getValue() == 1 ? 2 : 0
         let b = map2.getItem('oc_dianjiedianyalibiaogaozhen').getValue() == 1 ? 1 : 0
-        console.log('a='+a+' b='+b)
         f.setValue(a | b)
         list.push(f)
         let map3 = this.getMockFields()

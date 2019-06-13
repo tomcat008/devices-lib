@@ -18,7 +18,6 @@ class DeviceAdapter {
      */
     private getSubDevice(type: string, sub: string, data: Uint8Array): SdcSoftDevice | null {
         let t: string = type + '_' + sub
-        console.log('t:=' + t)
         let device = this.createDeviceFunc(t)
         let map = this.createMapFunc(this.lang, t)
         if (device.validateFalse(data.byteLength)) {
@@ -63,7 +62,6 @@ class DeviceAdapter {
             device = subDevice
         }
         else{
-            console.log(map.getCommandsMap())
             device.handleCommandFields(map.getCommandsMap())
         }
 

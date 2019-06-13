@@ -24,7 +24,6 @@ export abstract class IP_485 extends IP {
         ) {
             /*
             if(field.getName()=='se_baojingwendu'){
-                console.log('aaaaaaaa')
             }*/
             this.addField(field)
         }

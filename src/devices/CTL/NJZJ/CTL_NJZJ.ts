@@ -167,7 +167,6 @@ export abstract class IP extends SdcSoftDevice {
 
 
     protected getPowerInfo(): number {
-        //console.log('xxxxxxxxxxxxxxxxxxxxxx'+this.power)
         if (this.power == Power.Dian) {
             return this.getDeviceFields().getItem(IP.KEY_POINT_JIA_RE_ZU).getValue() > 0 ? 1 : 0
         } 
