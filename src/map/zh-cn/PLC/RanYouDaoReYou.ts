@@ -7,10 +7,10 @@ import { SdcSoftDevice } from '../../../devices/SdcSoftDevice'
 import { FixedValueField } from '../../../meta/FixedValueField'
 
 export = class Map_PLC_RanYouDaoReYou extends PLC_Map {
-    constructor(){
+    constructor() {
         super()
-        this.addPoint(new CountField(PLC.KEY_POINT_ZHU_YOU_BENG,  '注油泵'))
-        this.addPoint(new CountField(PLC.KEY_POINT_XUN_HUAN_BENG,   '循环泵'))
+        this.addPoint(new CountField(PLC.KEY_POINT_ZHU_YOU_BENG, '注油泵'))
+        this.addPoint(new CountField(PLC.KEY_POINT_XUN_HUAN_BENG, '循环泵'))
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_HOURS, 9, 2, '运行小时数', '时'))
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_DAYS, 11, 2, '运行天数', '天'))
@@ -40,24 +40,24 @@ export = class Map_PLC_RanYouDaoReYou extends PLC_Map {
         this.addPoint(new MockField('mo_diandongtiaojiefashuchu', 95, 4, '电动调节阀输出', '%'))
         this.addPoint(new MockField('mo_bianpinqipinlvshuchu', 99, 4, '变频器频率输出', 'Hz'))
 
-        this.addPoint(new SettingField('se_chukouwenduqiluwendusheding', 111, 4, '出口温度起炉温度设定', '℃'))
-        this.addPoint(new SettingField('se_chukouwendubitiaowendusheding', 115, 4, '出口温度比调温度设定', '℃'))
-        this.addPoint(new SettingField('se_chukouwendutingluwendusheding', 119, 4, '出口温度停炉温度设定', '℃'))
-        this.addPoint(new SettingField('se_chukouwenduchaogaobaojingwendusheding', 123, 4, '出口温度超高报警温度设定', '℃'))
-        this.addPoint(new SettingField('se_paiyanwenduchaogaobaojingsheding', 127, 4, '排烟温度超高报警设定', '℃'))
-        this.addPoint(new SettingField('se_gaoweicaoyouweidisheding', 131, 4, '高位槽油位低设定', '%'))
-        this.addPoint(new SettingField('se_gaoweicaoyouweigaosheding', 135, 4, '高位槽油位高设定', '%'))
-        this.addPoint(new SettingField('se_anquanyouwensheding', 139, 4, '安全油温设定', '℃'))
-        this.addPoint(new SettingField('se_fengjiqidongshijiansheding', 143, 4, '风机启动时间设定', 'S'))
-        this.addPoint(new SettingField('se_fengjiqidongpinlvsheding', 147, 4, '风机启动频率设定', 'Hz'))
-        this.addPoint(new SettingField('se_fengjiyunxingpinlvsheding', 151, 4, '风机运行频率设定', 'Hz'))
-        this.addPoint(new SettingField('se_jinchukouyachagaobaojingsheding', 155, 4, '进出口压差高报警设定', 'MPa'))
-        this.addPoint(new SettingField('se_jinchukouyachadibaojingsheding', 159, 4, '进出口压差低报警设定', 'MPa'))
-        this.addPoint(new SettingField('se_liuliangxiaxianbaojing', 163, 4, '流量下限报警', 'm³/h'))
-        this.addPoint(new SettingField('se_liuliangjidibaojing', 167, 4, '流量极低报警', 'm³/h'))
-        this.addPoint(new SettingField('se_danqiyalidisheding', 171, 4, '氮气压力低设定', 'kPa'))
-        this.addPoint(new SettingField('se_danqiyaligaosheding', 175, 4, '氮气压力高设定', 'kPa'))
-        this.addPoint(new SettingField('se_diandongfashoudongkaidusheding', 179, 4, '电动阀手动开度设定', '%'))
+        this.addPoint(new SettingField('se_chukouwenduqiluwendusheding', 111, 4, '出口温度起炉温度设定', '℃', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0036', 0, 400))
+        this.addPoint(new SettingField('se_chukouwendubitiaowendusheding', 115, 4, '出口温度比调温度设定', '℃', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0038', 0, 400))
+        this.addPoint(new SettingField('se_chukouwendutingluwendusheding', 119, 4, '出口温度停炉温度设定', '℃', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '003A', 0, 400))
+        this.addPoint(new SettingField('se_chukouwenduchaogaobaojingwendusheding', 123, 4, '出口温度超高报警温度设定', '℃', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '003C', 0, 400))
+        this.addPoint(new SettingField('se_paiyanwenduchaogaobaojingsheding', 127, 4, '排烟温度超高报警设定', '℃', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '003E', 0, 400))
+        this.addPoint(new SettingField('se_gaoweicaoyouweidisheding', 131, 4, '高位槽油位低设定', '%', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0040', 0, 100))
+        this.addPoint(new SettingField('se_gaoweicaoyouweigaosheding', 135, 4, '高位槽油位高设定', '%', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0042', 0, 100))
+        this.addPoint(new SettingField('se_anquanyouwensheding', 139, 4, '安全油温设定', '℃', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0044', 0, 400))
+        this.addPoint(new SettingField('se_fengjiqidongshijiansheding', 143, 4, '风机启动时间设定', 'S', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0046', 0, 60))
+        this.addPoint(new SettingField('se_fengjiqidongpinlvsheding', 147, 4, '风机启动频率设定', 'Hz', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0048', 0, 50))
+        this.addPoint(new SettingField('se_fengjiyunxingpinlvsheding', 151, 4, '风机运行频率设定', 'Hz', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '004A', 0, 50))
+        this.addPoint(new SettingField('se_jinchukouyachagaobaojingsheding', 155, 4, '进出口压差高报警设定', 'MPa', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '004C', 0, 2.5))
+        this.addPoint(new SettingField('se_jinchukouyachadibaojingsheding', 159, 4, '进出口压差低报警设定', 'MPa', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '004E', 0, 2.5))
+        this.addPoint(new SettingField('se_liuliangxiaxianbaojing', 163, 4, '流量下限报警', 'm³/h', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0050', 0, 100))
+        this.addPoint(new SettingField('se_liuliangjidibaojing', 167, 4, '流量极低报警', 'm³/h', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0052', 0, 100))
+        this.addPoint(new SettingField('se_danqiyalidisheding', 171, 4, '氮气压力低设定', 'kPa', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0054', 0, 160))
+        this.addPoint(new SettingField('se_danqiyaligaosheding', 175, 4, '氮气压力高设定', 'kPa', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0056', 0, 160))
+        this.addPoint(new SettingField('se_diandongfashoudongkaidusheding', 179, 4, '电动阀手动开度设定', '%', 0, Map_PLC_RanYouDaoReYou.Commands_Key_Parameters_Setting, '0058', 0, 100))
 
         this.addPoint(new DeviceField('de_1_xunhuanbeng_auto', 203, 2, '1#循环泵', PLC_Map.coms_atuo))
         this.addPoint(new DeviceField(PLC.KEY_POINT_XUN_HUAN_BENG_1, 205, 2, '1#循环泵', Map_PLC_RanYouDaoReYou.coms_start_stop))
@@ -102,7 +102,7 @@ export = class Map_PLC_RanYouDaoReYou extends PLC_Map {
         this.addPoint(new ExceptionField('ex_9_zhiguanchaowenbaojing', 231, 2, '9#支管超温报警', 6))
         this.addPoint(new ExceptionField('ex_10_zhiguanchaowenbaojing', 231, 2, '10#支管超温报警', 7))
         this.addPoint(new ExceptionField('ex_plcguzhangbaojing', 233, 2, 'PLC故障报警', 8))
-    
+
     }
 
 }

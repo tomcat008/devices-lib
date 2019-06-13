@@ -71,12 +71,19 @@ function printDevice(device: SdcSoftDevice) {
     });
 }
 function getCommands(device: SdcSoftDevice) {
-    console.log('commands:');
+
     let cmds = device.getCommands();
     cmds.each((k, v) => {
+        console.log(k)
         v.forEach(element => {
-            if (element.getTitle() == '系统控制')
-                element.setValue(10);
+            if (element.getTitle() == '超温报警设定')
+                element.setValue(80.5);
+            // else if (element.getTitle() == '使用温度设定')
+            //     element.setValue(50)
+            // else if (element.getTitle() == '循环泵上限温度设定')
+            //     element.setValue(60)
+            // else if (element.getTitle() == '循环泵下限温度设定')
+            //     element.setValue(40)
         });
     });
     let str: string = '';
@@ -140,7 +147,7 @@ function checkDeviceByPost(deviceNo: string, type: string, done: any) {
             let data = new Uint8Array(response.body);
             let device: SdcSoftDevice | null = DeviceAdapterUtil.getSdcSoftDevice('zh-cn', type, data);
             if (device) {
-                printDevice(device);
+                //printDevice(device);
                 getCommands(device);
 
             } else {

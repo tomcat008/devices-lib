@@ -273,8 +273,11 @@ export class FloatCommand extends Command {
     }
 
     public convertToString(): string {
-        let no = NumberUtil.NumberToString(this.getModbusNo(), 16, 4)
-        return no + this.action + this.address + '000204' + this.value
+        let no = NumberUtil.NumberToString(this.getModbusNo(), 16, 2)
+        let baseStr = no + this.action + this.address + '000204' + this.value
+        let data = Command.toNumbers(baseStr)
+        return baseStr + CRC16Util.getCrc(CRC16Util.calcCrc16(data, 0, data.length))
+
     }
 }
 export class OpenCloseCommand extends IntCommand{

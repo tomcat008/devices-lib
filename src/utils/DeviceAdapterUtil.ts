@@ -28,6 +28,7 @@ class DeviceAdapter {
         map.getPointMap().each((key, value) => {
             device.handleByteField(value, data)
         })
+        device.handleCommandFields(map.getCommandsMap())
         return device
 
     }
@@ -53,13 +54,17 @@ class DeviceAdapter {
             }*/
             device.handleByteField(value, data)
         })
-        device.handleCommandFields(map.getCommandsMap())
+        
         //自动进行子类型确认
         if (device.getSubDeviceType() != SdcSoftDevice.NO_SUB_DEVICE_TYPE) {
             let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType(), data)
             if (null == subDevice)
                 return null
             device = subDevice
+        }
+        else{
+            console.log(map.getCommandsMap())
+            device.handleCommandFields(map.getCommandsMap())
         }
 
         let powerUI = device.getBaseInfoFields().getItem(SdcSoftDevice.KEY_POINT_POWER)

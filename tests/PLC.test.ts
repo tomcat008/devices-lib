@@ -14,7 +14,7 @@ mocha.describe('PLC 设备测试',function(){
     // it('PLC_RanYouZhengQi',function(done){
     //     checkDeviceByGet('0100200011','PLC_RanYouZhengQi',done);
     // });
-    // it('PLC_DianReShui',function(done){
-    //     checkDeviceByPost('0500000102','PLC_RanYouReShui',done);
-    // });
+    it('PLC_DianReShui',function(done){
+        checkDeviceByPost('0222222222','PLC_DianReShui',done);
+    });
 });
