@@ -1,6 +1,10 @@
 import { CTL_RT } from "../../RT"
 
-export class CTL_RT_T2_RYZQ_Ts extends CTL_RT {
+/**
+ * 明确类型的T2设备的基类
+ * 如 CTL_RT_T2_211,这种类型设备在处理上无需进行二次解析来明确具体类型
+ */
+export class CTL_RT_T2_RYZQ_NoSub_Ts extends CTL_RT {
     
     constructor(){
         super()
@@ -19,13 +23,4 @@ export class CTL_RT_T2_RYZQ_Ts extends CTL_RT {
     // protected getPowerInfo() {
     //     return 0
     // }
-
-    getSubDeviceType():string{
-        let map = this.getBaseInfoFields()
-        let a = map.getItem('de_shuiweiceliangfangshi').getValue().toString()
-        let b = map.getItem('de_ranshaoqikongzhifangshi').getValue().toString()
-        let c = map.getItem('de_ranshaoqigongzuofangshi').getValue().toString()
-        
-        return a+b+c
-    }
 }

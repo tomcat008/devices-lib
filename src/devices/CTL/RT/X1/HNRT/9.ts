@@ -1,9 +1,9 @@
 import { List } from "../../../../../entities/Collections"
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI"
-import { CTL_RT_X1_Ts } from "../../AScript/X1"
+import { CTL_RT_X1_NoSub_Ts } from "../../AScript/X1_NoSub"
+import { SdcSoftDevice } from "../../../../SdcSoftDevice";
 
-export = class CTL_RT_X1_HNRT_9 extends CTL_RT_X1_Ts {
-
+export = class CTL_RT_X1_HNRT_9 extends CTL_RT_X1_NoSub_Ts {
     protected getPowerInfo() {
         let map = this.getDeviceFields()
         if (map.getItem(CTL_RT_X1_HNRT_9.KEY_POINT_RAN_SHAO_QI_KONGZHI).getValue() > 0) {

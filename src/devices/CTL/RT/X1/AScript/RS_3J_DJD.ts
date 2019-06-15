@@ -1,8 +1,8 @@
 import { List } from "../../../../../entities/Collections"
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI"
-import { CTL_RT_X1_Ts } from "../../AScript/X1"
+import { CTL_RT_X1_NoSub_Ts } from "../../AScript/X1_NoSub"
 
-export class CTL_RT_X1_RS3JDJD extends CTL_RT_X1_Ts {
+export class CTL_RT_X1_RS3JDJD extends CTL_RT_X1_NoSub_Ts {
 
     protected addFocusFields(list: List<DeviceFieldForUI>) {
         super.addFocusFields(list)
@@ -32,5 +32,4 @@ export class CTL_RT_X1_RS3JDJD extends CTL_RT_X1_Ts {
         let map3 = this.getMockFields()
         list.push(map3.getItem('mo_chushuiwendu'))
     }
-
 }

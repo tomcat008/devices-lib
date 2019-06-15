@@ -1,6 +1,5 @@
 import { List } from "../../../../../entities/Collections"
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI"
-import { Map_CTL_RT_X1_ZhengQi } from "../../../../../map/zh-cn/CTL/RT/X1/AScript/ZQ"
 import { CTL_RT_X1_RY_ZhengQi } from "./RY_ZQ"
 
 //燃油蒸汽电接点压力表

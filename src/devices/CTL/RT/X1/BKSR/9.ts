@@ -1,9 +1,9 @@
 import { List } from "../../../../../entities/Collections"
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI"
 import { CTL_RT_X1_ZhengQi } from "../AScript/ZQ"
-import { Map_CTL_RT_X1_ZhengQi } from "../../../../../map/zh-cn/CTL/RT/X1/AScript/ZQ"
 
 export = class CTL_RT_X1_BKSR_9 extends CTL_RT_X1_ZhengQi {
+
 
     protected getPowerInfo() {
         return this.getDeviceFields().getItem(CTL_RT_X1_BKSR_9.KEY_POINT_YIN_FENG_FAN_1).getValue()

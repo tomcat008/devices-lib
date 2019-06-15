@@ -23,7 +23,7 @@ class DeviceAdapter {
         if (device.validateFalse(data.byteLength)) {
             return null
         }
-
+        device.setTypeName(t)
         map.getPointMap().each((key, value) => {
             device.handleByteField(value, data)
         })
@@ -56,12 +56,15 @@ class DeviceAdapter {
         
         //自动进行子类型确认
         if (device.getSubDeviceType() != SdcSoftDevice.NO_SUB_DEVICE_TYPE) {
+            console.log('has sub')
             let subDevice: SdcSoftDevice | null = this.getSubDevice(type, device.getSubDeviceType(), data)
             if (null == subDevice)
                 return null
             device = subDevice
         }
         else{
+            console.log('no sub')
+            device.setTypeName(type)
             device.handleCommandFields(map.getCommandsMap())
         }
 

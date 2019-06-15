@@ -6,24 +6,22 @@ import * as Request from 'supertest'
 import { Command } from '../src/command/Command';
 let a = function (type: string): SdcSoftDevice {
     let strs = type.split('_')
-    console.log(strs.join('/'));
     let path = '../src/devices/' + strs.join('/');
     let deviceType = require(path);
     let d = new deviceType();
     return d;
 }
 let b = function (lang: string, type: string): PointMap {
-    console.log(type)
     let strs = type.split('_')
-    let path = '../src/map/' + lang + '/' + strs.join('/');
-    console.log(path)
-    let mapType = require(path);
-    let d = new mapType();
+    let path = '../src/map/' + lang + '/' + strs.join('/')
+    let mapType = require(path)
+    let d = new mapType()
     return d;
 }
 
 DeviceAdapterUtil.InjectFunc(a, b);
 function printDevice(device: SdcSoftDevice) {
+    console.log('type='+device.getTypeName())
     let fields = device.getDeviceFocusFields();
     console.log('--------------------关注信息--------------------');
     for (let i in fields) {
@@ -104,6 +102,7 @@ function getCommands(device: SdcSoftDevice) {
     console.log(str);
 }
 function getDeviceInfo(device: SdcSoftDevice) {
+    
     let fields = device.getDeviceFocusFields();
     console.log('--------------------关注信息--------------------');
     for (let i in fields) {
@@ -147,7 +146,7 @@ function checkDeviceByPost(deviceNo: string, type: string, done: any) {
             let data = new Uint8Array(response.body);
             let device: SdcSoftDevice | null = DeviceAdapterUtil.getSdcSoftDevice('zh-cn', type, data);
             if (device) {
-                //printDevice(device);
+                printDevice(device);
                 getCommands(device);
 
             } else {

@@ -1,5 +1,5 @@
-import { CTL_RT_T2_RYZQ_Ts } from "./AScript/RYZQ"
+import { CTL_RT_T2_RYZQ_Sub_Ts } from "./AScript/RYZQ_Sub";
 
-export = class CTL_RT_T2_RYZQ extends CTL_RT_T2_RYZQ_Ts {
+export = class CTL_RT_T2_RYZQ extends CTL_RT_T2_RYZQ_Sub_Ts {
    
 }

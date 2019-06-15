@@ -1,5 +1,6 @@
-import { CTL_RT_X1_Ts } from "../AScript/X1"
+import { CTL_RT_X1_Sub_Ts } from "../AScript/X1_Sub";
 
-export = class CTL_RT_X1_BKSR extends CTL_RT_X1_Ts {
+
+export = class CTL_RT_X1_BKSR extends CTL_RT_X1_Sub_Ts {
 
 }

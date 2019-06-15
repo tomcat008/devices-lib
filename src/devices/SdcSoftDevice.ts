@@ -240,6 +240,19 @@ export abstract class SdcSoftDevice {
     getSubDeviceType(): string {
         return SdcSoftDevice.NO_SUB_DEVICE_TYPE
     }
+    /**
+     * 设置设备类型信息
+     */
+    private typeName: string = ''
+    setTypeName(typeName: string) {
+        this.typeName = typeName
+    }
+    /**
+     * 获取设备类型信息
+     */
+    getTypeName(): string {
+        return this.typeName
+    }
 
     handleCommandFields(commandsGroup: StringHashMap<Command[]>): void {
         commandsGroup.each((key, values) => {

@@ -17,11 +17,11 @@ mocha.describe('RT 设备测试',function(){
     //     checkDeviceByPost('0233333333','CTL_RT_X1_HNRT',done)
     // });
 
-    // it('CTL_RT_X1_BKSR',function(done){
-    //     checkDeviceByPost('0203100025','CTL_RT_X1_BKSR',done)
-    // });
+    it('CTL_RT_X1_BKSR',function(done){
+        checkDeviceByPost('0203100025','CTL_RT_X1_BKSR',done)
+    });
     
-    // it('CTL_RT_T2',function(done){
-    //     checkDeviceByPost('0233333333','CTL_RT_X1',done)
-    // });
+    it('CTL_RT_T2',function(done){
+        checkDeviceByPost('0203100026','CTL_RT_T2_RYZQ',done)
+    });
 });

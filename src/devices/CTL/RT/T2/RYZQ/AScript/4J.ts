@@ -1,8 +1,8 @@
-import { CTL_RT_T2_RYZQ_Ts } from "../../AScript/RYZQ"
+import { CTL_RT_T2_RYZQ_NoSub_Ts } from "../../AScript/RYZQ_NoSub"
 import { DeviceFieldForUI } from "../../../../../../meta/DeviceFieldForUI"
 import { List } from "../../../../../../entities/Collections"
 
-export class CTL_RT_T2_RYZQ_4J extends CTL_RT_T2_RYZQ_Ts {
+export class CTL_RT_T2_RYZQ_4J extends CTL_RT_T2_RYZQ_NoSub_Ts {
     static readonly KEY_POINT_SHUI_WEI_STATUS = 'ba_shuiwei_status'
     //4电极
     protected addFocusFields(list: List<DeviceFieldForUI>) {

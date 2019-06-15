@@ -1,9 +1,9 @@
 import { List } from "../../../../../entities/Collections"
 import { DeviceFieldForUI } from "../../../../../meta/DeviceFieldForUI"
-import { CTL_RT_X1_Ts } from "../../AScript/X1"
+import { CTL_RT_X1_NoSub_Ts } from "../../AScript/X1_NoSub"
 
-export class CTL_RT_X1_ZhengQi extends CTL_RT_X1_Ts {
-
+export class CTL_RT_X1_ZhengQi extends CTL_RT_X1_NoSub_Ts {
+    
     protected addFocusFields(list: List<DeviceFieldForUI>) {
         super.addFocusFields(list)
         let map = this.getBaseInfoFields()
