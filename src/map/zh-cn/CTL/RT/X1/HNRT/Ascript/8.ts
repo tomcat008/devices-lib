@@ -2,6 +2,7 @@ import { CountField } from '../../../../../../../meta/CountField'
 import { DeviceField, ExceptionField, OpenCloseField } from '../../../../../../../meta/RT/meta'
 import { CTL_RT } from '../../../../../../../devices/CTL/RT/RT'
 import { Map_CTL_RT_X1_ReShui } from '../../AScript/RS'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 //燃油开水3电极
 export class Map_CTL_RT_X1_HNRT_RYRS_8 extends Map_CTL_RT_X1_ReShui {
@@ -23,7 +24,7 @@ export class Map_CTL_RT_X1_HNRT_RYRS_8 extends Map_CTL_RT_X1_ReShui {
         this.addPoint(new ExceptionField('ex_shuiweichuanganqiguzhang', 45, 2, '水位传感器故障', 1))
         this.addPoint(new ExceptionField('ex_chushuiwenduchuanganqiguzhang', 45, 2, '出水温度传感器故障', 2))
         this.addPoint(new ExceptionField('ex_chushuiwendugaobaojing', 45, 2, '出水温度高报警', 3))
-        this.addPoint(new ExceptionField('ex_lubichaowenbaojing', 45, 2, '炉壁超温报警', 4))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_LuBiChaoWen, 45, 2, '炉壁超温报警', 4))
         this.addPoint(new ExceptionField('ex_ranshaoqiguzhangbaojing', 45, 2, '燃烧器故障报警', 5))
 
         this.addPoint(new OpenCloseField('oc_jixiandishuiweidianji', 5, 2, '极限低水位电极', 0, Map_CTL_RT_X1_HNRT_RYRS_8.coms_open_close))

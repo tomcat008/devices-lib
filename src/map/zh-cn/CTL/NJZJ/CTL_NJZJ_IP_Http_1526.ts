@@ -1,5 +1,6 @@
 import { ExceptionField, MockField, SettingField, DeviceField } from '../../../../meta/NJZJ/meta'
 import { Map_CTL_NJZJ_IP_Http } from './CTL_NJZJ_IP_Http'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export class Map_CTL_NJZJ_IP_Http_1526 extends Map_CTL_NJZJ_IP_Http {
     constructor() {
@@ -158,7 +159,7 @@ export class Map_CTL_NJZJ_IP_Http_1526 extends Map_CTL_NJZJ_IP_Http {
 
         this.addPoint(new MockField('mo_kongzhixiangwendu', 441, 2, '控制箱温度'))
 
-        this.addPoint(new MockField('mo_zhenkongyali', 443, 2, '真空压力'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_ReShuiYaLi, 443, 2, '真空压力'))
 
         this.addPoint(new MockField('mo_chushuiwendu', 445, 2, '出水温度'))
 
@@ -168,9 +169,9 @@ export class Map_CTL_NJZJ_IP_Http_1526 extends Map_CTL_NJZJ_IP_Http {
 
         this.addPoint(new MockField('mo_gaowenbaohu', 451, 2, '高温保护'))
 
-        this.addPoint(new MockField('mo_chukouyouwen', 453, 2, '出口油温'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_ChuKouWenDu, 453, 2, '出口油温'),'mo_chukouyouwen')
 
-        this.addPoint(new MockField('mo_jinkouyouwen', 455, 2, '进口油温'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_HuiLiuWenDu, 455, 2, '进口油温'),'mo_jinkouyouwen')
 
         this.addPoint(new MockField('mo_huanrewendu', 457, 2, '换热温度'))
 

@@ -3,6 +3,8 @@ import { DeviceField, ExceptionField, OpenCloseField } from '../../../../../../.
 import { CTL_RT } from '../../../../../../../devices/CTL/RT/RT'
 import { Map_CTL_RT_X1_ZhengQi } from '../../AScript/ZQ'
 import { CountShowField } from '../../../../../../../meta/CountShowField'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
+
 //电蒸汽电接点压力表
 export class Map_CTL_RT_X1_HNRT_DZQ_7 extends Map_CTL_RT_X1_ZhengQi {
     constructor() {
@@ -16,7 +18,7 @@ export class Map_CTL_RT_X1_HNRT_DZQ_7 extends Map_CTL_RT_X1_ZhengQi {
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_1, 9, 2, '给水泵', 2, Map_CTL_RT_X1_HNRT_DZQ_7.coms_open_close))
         this.addPoint(new DeviceField('de_bushuibeng_shoudong/zidong_', 49, 2, '给水泵 手/自', 1, Map_CTL_RT_X1_HNRT_DZQ_7.coms_auto))
 
-        this.addPoint(new ExceptionField('ex_chaoyabaojing', 45, 2, '超压报警', 3))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_ChaoYa, 45, 2, '超压报警', 3))
 
         this.addPoint(new OpenCloseField('oc_dianjiedianyalibiaodizhen', 5, 2, '电接点压力低针', 4, Map_CTL_RT_X1_HNRT_DZQ_7.coms_open_close))
         this.addPoint(new OpenCloseField('oc_dianjiedianyalibiaogaozhen', 5, 2, '电接点压力高针', 5, Map_CTL_RT_X1_HNRT_DZQ_7.coms_open_close))

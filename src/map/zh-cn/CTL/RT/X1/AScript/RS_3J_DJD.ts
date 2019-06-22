@@ -3,6 +3,7 @@ import { OpenCloseField, ExceptionField } from "../../../../../../meta/RT/meta"
 import { Map_CTL_RT_X1_ReShui } from './RS'
 import { INumberIndex } from "../../../../../../entities/IIndex"
 import { CountShowField } from "../../../../../../meta/CountShowField"
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 //3电极或电接点
 export class Map_CTL_RT_X1_3JDJD extends Map_CTL_RT_X1_ReShui {
@@ -28,8 +29,8 @@ export class Map_CTL_RT_X1_3JDJD extends Map_CTL_RT_X1_ReShui {
         this.addPoint(new OpenCloseField('oc_chaoyabaojing', 5, 2, '超压报警', 6, Map_CTL_RT_X1_3JDJD.coms_open_close))
 
         this.addPoint(new ExceptionField('ex_shuiweichuanganqiguzhang', 45, 2, '水位传感器故障', 3))
-        this.addPoint(new ExceptionField('ex_chaoyabaojing', 45, 2, '超压报警', 4))
-        this.addPoint(new ExceptionField('ex_lubichaowenbaojing', 45, 2, '炉壁超温报警', 5))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_ChaoYa, 45, 2, '超压报警', 4))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_LuBiChaoWen, 45, 2, '炉壁超温报警', 5))
 
     }
 }

@@ -3,6 +3,7 @@ import { ExceptionField, OpenCloseField, SettingField } from "../../../../../../
 import { CountShowField } from "../../../../../../../meta/CountShowField"
 import { INumberIndex } from "../../../../../../../entities/IIndex"
 import { CTL_RT_T2_RYZQ_4J } from "../../../../../../../devices/CTL/RT/T2/RYZQ/AScript/4J"
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export class Map_CTL_RT_T2_RYZQ_4J extends Map_CTL_RT_T2_RYZQ_Ts {
 
@@ -35,7 +36,7 @@ export class Map_CTL_RT_T2_RYZQ_4J extends Map_CTL_RT_T2_RYZQ_Ts {
 
 
 
-        this.addPoint(new ExceptionField("ex_chaoyabaojing", 45, 2, "超压报警", 2))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_ChaoYa, 45, 2, "超压报警", 2),"ex_chaoyabaojing")
         this.addPoint(new ExceptionField("ex_ranqiyaligaobaojing", 45, 2, "燃气压力高报警", 15))
         this.addPoint(new ExceptionField("ex_ranqixieloubaojing", 47, 2, "燃气泄漏报警", 0))
         this.addPoint(new ExceptionField("ex_ranshaoqiguzhang", 47, 2, "燃烧器故障", 1))

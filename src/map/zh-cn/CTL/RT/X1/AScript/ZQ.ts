@@ -3,6 +3,7 @@ import { INumberIndex } from '../../../../../../entities/IIndex'
 import { FixedValueField } from '../../../../../../meta/FixedValueField'
 import { SdcSoftDevice } from '../../../../../../devices/SdcSoftDevice'
 import { Map_CTL_RT_X1_Base } from './X1'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export class Map_CTL_RT_X1_ZhengQi extends Map_CTL_RT_X1_Base {
 
@@ -28,8 +29,8 @@ export class Map_CTL_RT_X1_ZhengQi extends Map_CTL_RT_X1_Base {
 
 
 
-        this.addPoint(new ExceptionField('ex_jixiandishuiweibaojing', 45, 2, '极限低水位报警', 0))
-        this.addPoint(new ExceptionField('ex_gaoshuiweibaojing', 45, 2, '高水位报警', 1))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianDiShuiWei, 45, 2, '极限低水位报警', 0))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianGaoShuiWei, 45, 2, '高水位报警', 1))
         this.addPoint(new ExceptionField('ex_shuiweichuanganqiguzhang', 45, 2, '水位传感器故障', 2))
 
         this.addPoint(new OpenCloseField('oc_jixiandishuiweidianji', 5, 2, '极限低水位电极', 0, Map_CTL_RT_X1_ZhengQi.coms_open_close))

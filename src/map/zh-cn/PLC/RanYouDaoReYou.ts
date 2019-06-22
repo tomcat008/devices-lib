@@ -5,6 +5,7 @@ import { MockField, SettingField, DeviceField, ExceptionField } from '../../../m
 import { BaseInfoField } from '../../../meta/NJZJ/485'
 import { SdcSoftDevice } from '../../../devices/SdcSoftDevice'
 import { FixedValueField } from '../../../meta/FixedValueField'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export = class Map_PLC_RanYouDaoReYou extends PLC_Map {
     constructor() {
@@ -22,10 +23,10 @@ export = class Map_PLC_RanYouDaoReYou extends PLC_Map {
 
 
 
-        this.addPoint(new MockField('mo_jinkouwendu', 35, 4, '进口温度', '℃'))
-        this.addPoint(new MockField('mo_chukouwendu', 39, 4, '出口温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_HuiLiuWenDu, 35, 4, '进口温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_ChuKouWenDu, 39, 4, '出口温度', '℃'))
         this.addPoint(new MockField('mo_gaoweiyoucaowendu', 43, 4, '高位油槽温度', '℃'))
-        this.addPoint(new MockField('mo_paiyanwendu', 47, 4, '排烟温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_PaiYanWenDu, 47, 4, '排烟温度', '℃'))
         this.addPoint(new MockField('mo_lutangwendu', 51, 4, '炉膛温度', '℃'))
         this.addPoint(new MockField('mo_lutangchukouwendu', 55, 4, '炉膛出口温度', '℃'))
         this.addPoint(new MockField('mo_kongyuqianwendu', 59, 4, '空预前温度', '℃'))
@@ -69,7 +70,7 @@ export = class Map_PLC_RanYouDaoReYou extends PLC_Map {
         this.addPoint(new DeviceField(PLC.KEY_POINT_ZHU_YOU_BENG_1, 217, 2, '注油泵', Map_PLC_RanYouDaoReYou.coms_start_stop))
 
         this.addPoint(new ExceptionField('ex_ranshaoqiguzhang', 229, 2, '燃烧器故障', 8))
-        this.addPoint(new ExceptionField('ex_ranqixielou', 229, 2, '燃气泄漏', 9))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_RanQiXieLou, 229, 2, '燃气泄漏', 9))
         this.addPoint(new ExceptionField('ex_ranqiyaliyichang', 229, 2, '燃气压力异常', 10))
         this.addPoint(new ExceptionField('ex_fengjiguzhang', 229, 2, '风机故障', 11))
         this.addPoint(new ExceptionField('ex_1_xunhuanbengguzhang', 229, 2, '1#循环泵故障', 12))
@@ -78,11 +79,11 @@ export = class Map_PLC_RanYouDaoReYou extends PLC_Map {
         this.addPoint(new ExceptionField('ex_zhuyoubengguzhang', 229, 2, '注油泵故障', 15))
         this.addPoint(new ExceptionField('ex_jinchukouyachachaogao', 229, 2, '进出口压差超高', 0))
         this.addPoint(new ExceptionField('ex_jinchukouyachachaodi', 229, 2, '进出口压差超低', 1))
-        this.addPoint(new ExceptionField('ex_paiyanwenduchaogao', 229, 2, '排烟温度超高', 2))
-        this.addPoint(new ExceptionField('ex_chukouwenduchaogao', 229, 2, '出口温度超高', 3))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_PaiYanWenDuChaoGao, 229, 2, '排烟温度超高', 2))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_ChuKouWenDuChaoGao, 229, 2, '出口温度超高', 3))
         this.addPoint(new ExceptionField('ex_liuliangxiaxianbaojing', 229, 2, '流量下限报警', 4))
         this.addPoint(new ExceptionField('ex_liuliangjidibaojing', 229, 2, '流量极低报警', 5))
-        this.addPoint(new ExceptionField('ex_queyoubaojingfuqiu', 229, 2, '缺油报警（浮球）', 6))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_QueYou, 229, 2, '缺油报警（浮球）', 6),'ex_queyoubaojingfuqiu')
         this.addPoint(new ExceptionField('ex_chuyouwenduchuanganqibaojing', 229, 2, '出油温度传感器故障', 7))
 
         this.addPoint(new ExceptionField('ex_huiyouwenduchuanganqibaojing', 231, 2, '回油温度传感器故障', 8))

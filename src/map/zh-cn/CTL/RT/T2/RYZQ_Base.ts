@@ -6,6 +6,7 @@ import { CTL_RT } from "../../../../../devices/CTL/RT/RT"
 import { SdcSoftDevice } from "../../../../../devices/SdcSoftDevice"
 import { INumberIndex } from "../../../../../entities/IIndex"
 import { Map_CTL_RT_T2_Ts } from "../AScript/T2"
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 
 export class Map_CTL_RT_T2_RYZQ_Ts extends Map_CTL_RT_T2_Ts {
@@ -62,9 +63,9 @@ export class Map_CTL_RT_T2_RYZQ_Ts extends Map_CTL_RT_T2_Ts {
         this.addPoint(new OpenCloseField("oc_bianpinqiguzhangbaojing", 5, 2, "变频器故障报警", 6, Map_CTL_RT_T2_RYZQ_Ts.coms_open_close))
 
 
-        this.addPoint(new OpenCloseField("oc_chaoyabaojing", 5, 2, "超压报警", 9, Map_CTL_RT_T2_RYZQ_Ts.coms_open_close))
+        this.addPoint(new OpenCloseField(FixFieldNames.KEY_Expt_ChaoYa, 5, 2, "超压报警", 9, Map_CTL_RT_T2_RYZQ_Ts.coms_open_close), "oc_chaoyabaojing")
         this.addPoint(new OpenCloseField("oc_ranshaoqiguzhang", 5, 2, "燃烧器故障", 10, Map_CTL_RT_T2_RYZQ_Ts.coms_open_close))
-        this.addPoint(new OpenCloseField("oc_ranqixieloubaojing", 5, 2, "燃气泄漏报警", 11, Map_CTL_RT_T2_RYZQ_Ts.coms_open_close))
+        this.addPoint(new OpenCloseField(FixFieldNames.KEY_Expt_RanQiXieLou, 5, 2, "燃气泄漏报警", 11, Map_CTL_RT_T2_RYZQ_Ts.coms_open_close), "oc_ranqixieloubaojing")
         this.addPoint(new OpenCloseField("oc_ranqiyalidibaojing", 5, 2, "燃气压力低报警", 12, Map_CTL_RT_T2_RYZQ_Ts.coms_open_close))
         this.addPoint(new OpenCloseField("oc_ranqiyaligaobaojing", 5, 2, "燃气压力高报警", 13, Map_CTL_RT_T2_RYZQ_Ts.coms_open_close))
 
@@ -76,7 +77,7 @@ export class Map_CTL_RT_T2_RYZQ_Ts extends Map_CTL_RT_T2_Ts {
         //this.addPoint(new MockField("mo_lengningqiyanwen", 13, 2, "冷凝器烟温", "℃"))
         //this.addPoint(new MockField("mo_jishuiwendu", 15, 2, "给水温度", "℃"))
         //this.addPoint(new MockField("mo_shuiweixinhao", 19, 2, "水位信号", "%"))
-        this.addPoint(new MockField("mo_paiyanwendu", 21, 2, "排烟温度", "℃"))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_PaiYanWenDu, 21, 2, "排烟温度", "℃"), "mo_paiyanwendu")
         //this.addPoint(new MockField("mo_jienengqiyanwen", 23, 2, "节能器烟温", "℃"))
 
         this.addPoint(new DeviceField("de_jishuibeng_zhu/bei_", 49, 2, "给水泵", 0, Map_CTL_RT_T2_RYZQ_Ts.coms_master))
@@ -88,11 +89,11 @@ export class Map_CTL_RT_T2_RYZQ_Ts extends Map_CTL_RT_T2_Ts {
         this.addPoint(new ExceptionField("ex_shuiweichuanganqiduanlu", 45, 2, "水位传感器短路", 4))
         this.addPoint(new ExceptionField("ex_jixiandishuiweibaojing_dianliu_", 45, 2, "极限低水位报警（电流）", 5))
         this.addPoint(new ExceptionField("ex_gaoshuiweibaojing_dianliu_", 45, 2, "高水位报警（电流）", 6))
-        this.addPoint(new ExceptionField("ex_paiyanwendugaobaojing", 45, 2, "排烟温度高报警", 7))
-        this.addPoint(new ExceptionField("ex_jixiandishuiweibaojing", 45, 2, "极限低水位报警", 8))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_PaiYanWenDuChaoGao, 45, 2, "排烟温度高报警", 7), "ex_paiyanwendugaobaojing")
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianDiShuiWei, 45, 2, "极限低水位报警", 8), "ex_jixiandishuiweibaojing")
         this.addPoint(new ExceptionField("ex_shuiweidianjiluojicuo", 45, 2, "水位电极逻辑错", 9))
         this.addPoint(new ExceptionField("ex_dishuiweibaojing", 45, 2, "低水位报警", 10))
-        this.addPoint(new ExceptionField("ex_gaoshuiweibaojing", 45, 2, "高水位报警", 11))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianGaoShuiWei, 45, 2, "高水位报警", 11), "ex_gaoshuiweibaojing")
         this.addPoint(new ExceptionField("ex_bianpinqiguzhang", 45, 2, "变频器故障", 12))
         this.addPoint(new ExceptionField("ex_ranqiyalidibaojing", 45, 2, "燃气压力低报警", 14))
 

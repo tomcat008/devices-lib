@@ -3,6 +3,7 @@ import { ByteField } from '../../../meta/ByteField'
 import { DeviceFieldForUI } from '../../../meta/DeviceFieldForUI'
 import { Element as AElement } from '../../../entities/Element'
 import { List } from '../../../entities/Collections'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export abstract class IP extends SdcSoftDevice {
 
@@ -40,8 +41,17 @@ export abstract class IP extends SdcSoftDevice {
             list.push(this.getDeviceFields().getItem(SdcSoftDevice.KEY_POINT_JIA_RE_ZU))
             if (this.media == Media.ReShui) {
                 let map2 = this.getMockFields()
-                list.push(map2.getItem('mo_chukouwendu'))
-                list.push(map2.getItem('mo_rukouwendu'))
+                map2.each((k,v)=>{
+                    if(v.getName() == FixFieldNames.KEY_MOCK_ChuKouWenDu){
+                        list.push(v)
+                        return
+                    }
+                    if(v.getName() == FixFieldNames.KEY_MOCK_HuiLiuWenDu){
+                        list.push(v)
+                        return
+                    }
+                })
+                
                 list.push(map.getItem('ba_shuixiangshuiweizhuangtai'))
                 list.push(map.getItem('ba_guolushuiweizhuangtai'))
             } else if (this.media == Media.DaoReYou) {
@@ -56,7 +66,7 @@ export abstract class IP extends SdcSoftDevice {
                 }
                 else {
                     let map2 = this.getMockFields()
-                    list.push(map2.getItem('mo_zhengqiyali'))
+                    list.push(map2.getItem(FixFieldNames.KEY_MOCK_ZhengQiYaLi))
                 }
             } else if (this.media == Media.ZhenKong) {
 
@@ -64,28 +74,46 @@ export abstract class IP extends SdcSoftDevice {
         } else if (this.power == Power.Mei) {
             if (this.media == Media.ReShui) {
                 let map2 = this.getMockFields()
-                list.push(map2.getItem('mo_paiyanwendu'))
-                list.push(map2.getItem('mo_chukouwendu'))
-                list.push(map2.getItem('mo_rukouwendu'))
+                list.push(map2.getItem(FixFieldNames.KEY_MOCK_PaiYanWenDu))
+                map2.each((k,v)=>{
+                    if(v.getName() == FixFieldNames.KEY_MOCK_ChuKouWenDu){
+                        list.push(v)
+                        return
+                    }
+                    if(v.getName() == FixFieldNames.KEY_MOCK_HuiLiuWenDu){
+                        list.push(v)
+                        return
+                    }
+                })
+                // list.push(map2.getItem('mo_chukouwendu'))
+                // list.push(map2.getItem('mo_rukouwendu'))
                 let item = map.getItem('ba_guoluyalizhuangtai')
                 if (item) {
                     list.push(item)
                 }
                 else {
-                    list.push(map2.getItem('mo_zhengqiyali'))
+                    list.push(map2.getItem(FixFieldNames.KEY_MOCK_ZhengQiYaLi))
                 }
 
             } else if (this.media == Media.DaoReYou) {
                 let map2 = this.getMockFields()
-                list.push(map2.getItem('mo_paiyanwendu'))
-                list.push(map2.getItem('mo_chukouwendu'))
-                list.push(map2.getItem('mo_rukouwendu'))
+                list.push(map2.getItem(FixFieldNames.KEY_MOCK_PaiYanWenDu))
+                map2.each((k,v)=>{
+                    if(v.getName() == FixFieldNames.KEY_MOCK_ChuKouWenDu){
+                        list.push(v)
+                        return
+                    }
+                    if(v.getName() == FixFieldNames.KEY_MOCK_HuiLiuWenDu){
+                        list.push(v)
+                        return
+                    }
+                })
                 let item = map.getItem('ba_guoluyalizhuangtai')
                 if (item) {
                     list.push(item)
                 }
                 else {
-                    list.push(map2.getItem('mo_zhengqiyali'))
+                    list.push(map2.getItem(FixFieldNames.KEY_MOCK_ZhengQiYaLi))
                 }
             } else if (this.media == Media.ReFeng) {
 
@@ -97,9 +125,9 @@ export abstract class IP extends SdcSoftDevice {
                 }
                 else {
 
-                    list.push(map2.getItem('mo_zhengqiyali'))
+                    list.push(map2.getItem(FixFieldNames.KEY_MOCK_ZhengQiYaLi))
                 }
-                list.push(map2.getItem('mo_paiyanwendu'))
+                list.push(map2.getItem(FixFieldNames.KEY_MOCK_PaiYanWenDu))
                 list.push(map.getItem('ba_guolushuiweizhuangtai'))
 
             } else if (this.media == Media.ZhenKong) {
@@ -120,24 +148,50 @@ export abstract class IP extends SdcSoftDevice {
         } else if (this.power == Power.YouQi) {
             let map2 = this.getMockFields()
             if (this.media == Media.ReShui) {
-                list.push(map2.getItem('mo_paiyanwendu'))
-                list.push(map2.getItem('mo_chukouwendu'))
-                list.push(map2.getItem('mo_jinkouwendu'))
+                list.push(map2.getItem(FixFieldNames.KEY_MOCK_PaiYanWenDu))
+                map2.each((k,v)=>{
+                    if(v.getName() == FixFieldNames.KEY_MOCK_ChuKouWenDu){
+                        list.push(v)
+                        return
+                    }
+                    if(v.getName() == FixFieldNames.KEY_MOCK_HuiLiuWenDu){
+                        list.push(v)
+                        return
+                    }
+                })
                 list.push(map.getItem('ba_guolushuiweizhuangtai'))
 
                 list.push(map.getItem('ba_shuixiangshuiweizhuangtai'))
             } else if (this.media == Media.DaoReYou) {
-                list.push(map2.getItem('mo_paiyanwendu'))
-                list.push(map2.getItem('mo_chukouwendu'))
-                list.push(map2.getItem('mo_rukouwendu'))
+                list.push(map2.getItem(FixFieldNames.KEY_MOCK_PaiYanWenDu))
+                map2.each((k,v)=>{
+                    if(v.getName() == FixFieldNames.KEY_MOCK_ChuKouWenDu){
+                        list.push(v)
+                        return
+                    }
+                    if(v.getName() == FixFieldNames.KEY_MOCK_HuiLiuWenDu){
+                        list.push(v)
+                        return
+                    }
+                })
             } else if (this.media == Media.ReFeng) {
                 let map3 = this.getDeviceFields()
-                list.push(map2.getItem('mo_chukouwendu'))
+                list.push(map2.getItem(FixFieldNames.KEY_MOCK_PaiYanWenDu))
+                map2.each((k,v)=>{
+                    if(v.getName() == FixFieldNames.KEY_MOCK_ChuKouWenDu){
+                        list.push(v)
+                        return
+                    }
+                    if(v.getName() == FixFieldNames.KEY_MOCK_HuiLiuWenDu){
+                        list.push(v)
+                        return
+                    }
+                })
                 list.push(map3.getItem('de_ranshaoqi'))
                 list.push(map3.getItem('de_yinfengji'))
             } else if (this.media == Media.ZhengQi) {
                 list.push(map.getItem('ba_guolushuiweizhuangtai'))
-                list.push(map2.getItem('mo_paiyanwendu'))
+                list.push(map2.getItem(FixFieldNames.KEY_MOCK_PaiYanWenDu))
 
                 let item = map.getItem('ba_guoluyalizhuangtai')
                 if (item) {
@@ -148,16 +202,24 @@ export abstract class IP extends SdcSoftDevice {
                 }
 
             } else if (this.media == Media.ZhenKong) {
-                list.push(map2.getItem('mo_paiyanwendu'))
-                list.push(map2.getItem('mo_chukouwendu'))
-                list.push(map2.getItem('mo_meishuiwendu'))
+                list.push(map2.getItem(FixFieldNames.KEY_MOCK_PaiYanWenDu))
+                map2.each((k,v)=>{
+                    if(v.getName() == FixFieldNames.KEY_MOCK_ChuKouWenDu){
+                        list.push(v)
+                        return
+                    }
+                    if(v.getName() == FixFieldNames.KEY_MOCK_HuiLiuWenDu){
+                        list.push(v)
+                        return
+                    }
+                })
                 list.push(map.getItem('ba_guolushuiweizhuangtai'))
                 let item = map.getItem('ba_guoluyalizhuangtai')
                 if (item) {
                     list.push(item)
                 }
                 else {
-                    list.push(map2.getItem('mo_zhengqiyali'))
+                    list.push(map2.getItem(FixFieldNames.KEY_MOCK_ZhengQiYaLi))
                 }
 
             }

@@ -2,6 +2,7 @@ import { PLC_Dian } from './Dian'
 import { DeviceFieldForUI } from '../../meta/DeviceFieldForUI'
 import { SdcSoftDevice } from '../SdcSoftDevice'
 import { List } from '../../entities/Collections'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export = class PLC_DianZhengQi extends PLC_Dian{
     constructor() {
@@ -33,7 +34,7 @@ export = class PLC_DianZhengQi extends PLC_Dian{
             list.push(map.getItem('ba_guoluyalizhuangtai'))
         }
         else {
-            list.push(map2.getItem('mo_zhengqiyali'))
+            list.push(map2.getItem(FixFieldNames.KEY_MOCK_ZhengQiYaLi))
         }
         return list.toArray()
     }

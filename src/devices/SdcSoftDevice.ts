@@ -1,4 +1,4 @@
-import { StringHashMap } from '../entities/Collections'
+import { StringHashMap } from '@sdcsoft/comms'
 import { DeviceFieldForUI } from '../meta/DeviceFieldForUI'
 import { Command } from '../command/Command'
 import { Element as AElement } from '../entities/Element'
@@ -19,6 +19,8 @@ export enum Power {
     ShengWuZhi = 3,
     YuRe = 30,
 }
+
+
 export abstract class SdcSoftDevice {
     static readonly POWER_MEDIA_VALUE_NULL = -1
     static readonly KEY_POINT_SYSTEM_STATUS = 'o_system_status'

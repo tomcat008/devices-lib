@@ -5,6 +5,7 @@ import { MockField, SettingField, DeviceField, ExceptionField } from '../../../m
 import { BaseInfoField } from '../../../meta/NJZJ/485'
 import { SdcSoftDevice } from '../../../devices/SdcSoftDevice'
 import { FixedValueField } from '../../../meta/FixedValueField'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export = class Map_PLC_RanYouReShui extends PLC_Map {
     constructor() {
@@ -22,9 +23,9 @@ export = class Map_PLC_RanYouReShui extends PLC_Map {
 
 
 
-        this.addPoint(new MockField('mo_chushuiwendu', 35, 4, '出水温度', '℃'))
-        this.addPoint(new MockField('mo_huishuiwendu', 39, 4, '回水温度', '℃'))
-        this.addPoint(new MockField('mo_paiyanwendu', 43, 4, '排烟温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_ChuKouWenDu, 35, 4, '出水温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_HuiLiuWenDu, 39, 4, '回水温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_PaiYanWenDu, 43, 4, '排烟温度', '℃'))
         this.addPoint(new MockField('mo_chushuiyali', 47, 4, '出水压力', 'Mpa'))
         this.addPoint(new MockField('mo_huishuiyali', 51, 4, '回水压力', 'Mpa'))
         this.addPoint(new MockField('mo_yacha', 55, 4, '压差', 'Mpa'))
@@ -68,22 +69,22 @@ export = class Map_PLC_RanYouReShui extends PLC_Map {
         this.addPoint(new DeviceField(PLC.KEY_POINT_XUN_HUAN_BENG_2, 384, 2, '2#循环泵', Map_PLC_RanYouReShui.coms_start_stop))
 
 
-        this.addPoint(new ExceptionField('ex_lubichaowenbaojing', 448, 2, '炉壁超温报警', 0))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_LuBiChaoWen, 448, 2, '炉壁超温报警', 0))
         this.addPoint(new ExceptionField('ex_chushuiwenduchuanganqiguzhang', 448, 2, '出水温度传感器故障', 1))
         this.addPoint(new ExceptionField('ex_huishuiwenduchuanganqiguzhang', 448, 2, '回水温度传感器故障', 2))
         this.addPoint(new ExceptionField('ex_paiyanwenduchuanganqiguzhang', 448, 2, '排烟温度传感器故障', 3))
         this.addPoint(new ExceptionField('ex_wendushedingcuowubaojing', 448, 2, '温度设定错误报警', 4))
         this.addPoint(new ExceptionField('ex_xunhuanbengliansuoduankaibaojing', 448, 2, '循环泵连锁断开报警', 5))
-        this.addPoint(new ExceptionField('ex_waibuliansuoduankaibaojing', 448, 2, '外部连锁断开报警', 6))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_WaiBuLianSuoDuanKai, 448, 2, '外部连锁断开报警', 6))
         this.addPoint(new ExceptionField('ex_chushuiyalibiansongqiguzhang', 448, 2, '出水压力变送器故障', 7))
 
         this.addPoint(new ExceptionField('ex_ranshaojiguzhang', 448, 2, '燃烧器故障', 8))
-        this.addPoint(new ExceptionField('ex_ranqixielou', 448, 2, '燃气泄漏', 9))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_RanQiXieLou, 448, 2, '燃气泄漏', 9))
         this.addPoint(new ExceptionField('ex_ranqiyaliyichang', 448, 2, '燃气压力异常', 10))
-        this.addPoint(new ExceptionField('ex_yalichaogaobaojing', 448, 2, '压力超高报警', 11))
-        this.addPoint(new ExceptionField('ex_yalichaodibaojing', 448, 2, '压力超低报警', 12))
-        this.addPoint(new ExceptionField('ex_paiyanwenduchaogaobaojing', 448, 2, '排烟温度超高报警', 13))
-        this.addPoint(new ExceptionField('ex_chushuiwenduchaogaobaojing', 448, 2, '出水温度超高报警', 14))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_ChaoYa, 448, 2, '压力超高报警', 11))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_DiYa, 448, 2, '压力超低报警', 12))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_PaiYanWenDuChaoGao, 448, 2, '排烟温度超高报警', 13))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_ChuKouWenDuChaoGao, 448, 2, '出水温度超高报警', 14))
         this.addPoint(new ExceptionField('ex_queshuibaohubaojing', 448, 2, '缺水保护报警', 15))
 
         this.addPoint(new ExceptionField('ex_huishuiyalibiansongqiguzhang', 450, 2, '回水压力变送器故障', 8))

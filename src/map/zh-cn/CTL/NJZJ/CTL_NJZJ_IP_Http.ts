@@ -1,6 +1,7 @@
 import { SdcSoftDevice } from '../../../../devices/SdcSoftDevice'
 import { BaseInfoField, ExceptionField, MockField, SettingField, RanShaoQiField, RunDaysField, DeviceField, StartStopField } from '../../../../meta/NJZJ/meta'
 import { Map_CTL_NJZJ } from './CTL_NJZJ'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export class Map_CTL_NJZJ_IP_Http extends Map_CTL_NJZJ {
     constructor() {
@@ -27,23 +28,23 @@ export class Map_CTL_NJZJ_IP_Http extends Map_CTL_NJZJ {
 
         this.addPoint(new ExceptionField('ex_chukouwendugaobaojing', 34, 1, '出口温度高报警'))
 
-        this.addPoint(new ExceptionField('ex_chaoyabaojing', 35, 1, '超压报警'))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_ChaoYa, 35, 1, '超压报警'))
 
-        this.addPoint(new ExceptionField('ex_jixiandishuiweibaojing', 36, 1, '极限低水位报警'))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianDiShuiWei, 36, 1, '极限低水位报警'))
 
         this.addPoint(new ExceptionField('ex_dishuiweibaojing', 37, 1, '低水位报警'))
 
-        this.addPoint(new ExceptionField('ex_gaoshuiweibaojing', 38, 1, '高水位报警'))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianGaoShuiWei, 38, 1, '高水位报警'))
 
         this.addPoint(new ExceptionField('ex_shuiweixinhaoluojicuobaojing', 39, 1, '水位信号逻辑错报警'))
 
-        this.addPoint(new ExceptionField('ex_lubiwendugaobaojing', 40, 1, '炉壁温度高报警'))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_LuBiChaoWen, 40, 1, '炉壁温度高报警'))
 
         this.addPoint(new ExceptionField('ex_fuyazhengqiwendugaobaojing', 41, 1, '负压蒸汽温度高报警'))
 
         this.addPoint(new ExceptionField('ex_ranshaoqiguzhangbaojing', 42, 1, '燃烧器故障报警'))
 
-        this.addPoint(new ExceptionField('ex_ranqixieloubaojing', 43, 1, '燃气泄漏报警'))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_RanQiXieLou, 43, 1, '燃气泄漏报警'))
 
         this.addPoint(new ExceptionField('ex_ranqiyalidibaojing', 44, 1, '燃气压力低报警'))
 
@@ -67,7 +68,7 @@ export class Map_CTL_NJZJ_IP_Http extends Map_CTL_NJZJ {
 
         this.addPoint(new ExceptionField('ex_xunhuanbengguzhangbaojing', 54, 1, '循环泵故障报警'))
 
-        this.addPoint(new ExceptionField('ex_qianyabaojing', 55, 1, '欠压报警'))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_QianYa, 55, 1, '欠压报警'))
 
         this.addPoint(new ExceptionField('ex_didianyabaojing', 56, 1, '低电压报警'))
 
@@ -89,7 +90,7 @@ export class Map_CTL_NJZJ_IP_Http extends Map_CTL_NJZJ {
 
         this.addPoint(new ExceptionField('ex_waibuliansuobaojing', 65, 1, '外部连锁报警'))
 
-        this.addPoint(new ExceptionField('ex_queyoubaojing', 66, 1, '缺油报警'))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianDiShuiWei, 66, 1, '缺油报警'),'ex_queyoubaojing')
 
         this.addPoint(new ExceptionField('ex_diyouweibaojing', 67, 1, '低油位报警'))
 
@@ -365,13 +366,13 @@ export class Map_CTL_NJZJ_IP_Http extends Map_CTL_NJZJ {
 
         this.addPoint(new MockField('mo_bentipaiyanwendu', 277, 2, '本体排烟温度', '℃'))
 
-        this.addPoint(new MockField('mo_paiyanwendu', 279, 2, '排烟温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_PaiYanWenDu, 279, 2, '排烟温度', '℃'))
 
         this.addPoint(new MockField('mo_lushuiwendu', 281, 2, '炉水温度', '℃'))
 
-        this.addPoint(new MockField('mo_chukouwendu', 283, 2, '出口温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_ChuKouWenDu, 283, 2, '出口温度', '℃'))
 
-        this.addPoint(new MockField('mo_rukouwendu', 285, 2, '入口温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_HuiLiuWenDu, 285, 2, '入口温度', '℃'))
 
         this.addPoint(new MockField('mo_jienengqichukouwendu', 287, 2, '节能器出口温度', '℃'))
 
@@ -405,7 +406,7 @@ export class Map_CTL_NJZJ_IP_Http extends Map_CTL_NJZJ {
 
         this.addPoint(new MockField('mo_shiwaiwendu', 317, 2, '室外温度', '℃'))
 
-        this.addPoint(new MockField('mo_zhengqiyali', 319, 2, '蒸汽压力', 'MPa', 100))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_ZhengQiYaLi, 319, 2, '蒸汽压力', 'MPa', 100))
 
         this.addPoint(new MockField('mo_jishuiyali', 321, 2, '给水压力', 'MPa', 100))
 
@@ -467,7 +468,7 @@ export class Map_CTL_NJZJ_IP_Http extends Map_CTL_NJZJ {
 
         this.addPoint(new MockField('mo_chuguanwendu', 379, 2, '储罐温度', '℃'))
 
-        this.addPoint(new MockField('mo_guoluyali', 381, 2, '锅炉压力', 'MPa', 100))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_ReShuiYaLi, 381, 2, '系统压力（用于承压热水锅炉）', 'MPa', 100),'mo_xitongyali_yongyuchengyareshuiguolu_')
 
         this.addPoint(new MockField('mo_guorezhengqiyali', 383, 2, '过热蒸汽压力', 'MPa', 100))
 

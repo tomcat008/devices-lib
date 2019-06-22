@@ -7,6 +7,7 @@ import { FixedValueField } from '../../../../../meta/FixedValueField'
 import { CTL_RT } from '../../../../../devices/CTL/RT/RT'
 import { Map_CTL_RT_T2_Ts } from '../AScript/T2'
 import { OpenCloseCommand } from '../../../../../command/Command';
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
     static coms_guolu: INumberIndex = {
@@ -46,7 +47,7 @@ export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
         this.addPoint(new OpenCloseField("oc_gaoshuiweibaojingdianji", 5, 2, "高水位报警电极", 3, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
         this.addPoint(new OpenCloseField("oc_dianjiedianyalibiaodizhen", 5, 2, "电接点压力表低针", 4, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
         this.addPoint(new OpenCloseField("oc_dianjiedianyalibiaogaozhen", 5, 2, "电接点压力表高针", 5, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
-        this.addPoint(new OpenCloseField("oc_chaoyabaojingxinhao", 5, 2, "超压报警", 9, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
+        this.addPoint(new OpenCloseField(FixFieldNames.KEY_Expt_ChaoYa, 5, 2, "超压报警", 9, Map_CTL_RT_T2_RYRS_Ts.coms_open_close),"oc_chaoyabaojingxinhao")
         this.addPoint(new OpenCloseField("oc_ranshaoqiguzhangxinhao", 5, 2, "燃烧器故障信号", 10, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
         this.addPoint(new OpenCloseField("oc_ranqiyalidibaojingxinhao", 5, 2, "燃气压力低报警信号", 12, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
         this.addPoint(new OpenCloseField("oc_ranqixieloubaojingxinhao", 5, 2, "燃气泄漏报警信号", 11, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
@@ -65,24 +66,22 @@ export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_LENG_NING_BENG_1, 9, 2, "循环泵主控制", 5, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_LENG_NING_BENG_2, 9, 2, "循环泵备控制", 6, Map_CTL_RT_T2_RYRS_Ts.coms_open_close))
 
-        this.addPoint(new MockField("mo_chushuiwendu", 13, 2, "出水温度", "℃"))
-        this.addPoint(new MockField("mo_huishuiwendu", 15, 2, "回水温度", "℃"))
-        this.addPoint(new MockField("mo_paiyanwendu", 21, 2, "排烟温度", "℃"))
-
-
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_ChuKouWenDu, 13, 2, "出水温度", "℃"),"mo_chushuiwendu")
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_HuiLiuWenDu, 15, 2, "回水温度", "℃"),"mo_huishuiwendu")
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_PaiYanWenDu, 21, 2, "排烟温度", "℃") ,"mo_paiyanwendu")
 
         this.addPoint(new ExceptionField("ex_chushuiwenduchuanganqiduanlu1", 45, 2, "出水温度传感器断路", 0))
         this.addPoint(new ExceptionField("ex_chushuiwenduchuanganqiduanlu", 45, 2, "出水温度传感器短路", 1))
         this.addPoint(new ExceptionField("ex_chushuiwendugaobaojing_", 45, 2, "出水温度高报警", 2))
         this.addPoint(new ExceptionField("ex_huishuiwenduchuanganqiduanlu1", 45, 2, "回水温度传感器断路", 3))
-        this.addPoint(new ExceptionField("ex_paiyanwendugaobaojing", 45, 2, "排烟温度高报警", 4))
-        this.addPoint(new ExceptionField("ex_jixiandishuiweibaojing", 45, 2, "极限低水位报警", 5))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_PaiYanWenDuChaoGao, 45, 2, "排烟温度高报警", 4),"ex_paiyanwendugaobaojing")
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianDiShuiWei, 45, 2, "极限低水位报警", 5),"ex_jixiandishuiweibaojing")
         this.addPoint(new ExceptionField("ex_shuiweidianjiluojicuo", 45, 2, "水位电极逻辑错", 6))
-        this.addPoint(new ExceptionField("ex_gaoshuiweibaojing", 45, 2, "高水位报警", 7))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianGaoShuiWei, 45, 2, "高水位报警", 7),"ex_gaoshuiweibaojing")
         this.addPoint(new ExceptionField("ex_dianjiedianyalibiaoduanlu", 45, 2, "电接点压力表短路", 8))
-        this.addPoint(new ExceptionField("ex_chaoyabaojing_kongzhiqi_", 45, 2, "超压报警（控制器）", 9))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_ChaoYa, 45, 2, "超压报警（控制器）", 9),"ex_chaoyabaojing_kongzhiqi_")
         this.addPoint(new ExceptionField("ex_ranqiyalidibaojing", 45, 2, "燃气压力低报警", 10))
-        this.addPoint(new ExceptionField("ex_ranqixieloubaojing", 47, 2, "燃气泄漏报警", 11))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_RanQiXieLou, 47, 2, "燃气泄漏报警", 11),"ex_ranqixieloubaojing")
         this.addPoint(new ExceptionField("ex_ranshaoqiguzhang", 47, 2, "燃烧器故障", 12))
 
         this.addPoint(new SettingField("se_paiyanchaowen", 67, 2, "排烟超温", "℃"))

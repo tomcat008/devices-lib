@@ -2,6 +2,7 @@ import { PLC_YuRe } from './YuRe'
 import { DeviceFieldForUI } from '../../meta/DeviceFieldForUI'
 import { SdcSoftDevice } from '../SdcSoftDevice'
 import { List } from '../../entities/Collections'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export = class PLC_YuReZhengQi extends PLC_YuRe {
     constructor() {
@@ -25,7 +26,7 @@ export = class PLC_YuReZhengQi extends PLC_YuRe {
             list.push(map.getItem('ba_guoluyalizhuangtai'))
         }
         else {
-            list.push(map2.getItem('mo_zhengqiyali'))
+            list.push(map2.getItem(FixFieldNames.KEY_MOCK_ZhengQiYaLi))
         }
 
         return list.toArray()

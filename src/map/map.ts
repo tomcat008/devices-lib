@@ -1,4 +1,4 @@
-import { StringHashMap } from '../entities/Collections'
+import { StringHashMap } from '@sdcsoft/comms'
 import { Command } from '../command/Command'
 import { ByteField } from '../meta/ByteField'
 
@@ -47,7 +47,13 @@ export abstract class map {
     // protected addCommandGroup(groupKey: string) {
     //     this.commandMap.addItem(groupKey, null)
     // }
-    protected addPoint(byteField: ByteField) {
+    protected addPoint(byteField: ByteField):void
+    protected addPoint(byteField: ByteField,key?:string):void
+    protected addPoint(byteField: ByteField,key?:string): void {
+        if(key){
+            this.pointMap.addItem(key,byteField)
+            return
+        }
         this.pointMap.addItem(byteField.getName(), byteField)
     }
 

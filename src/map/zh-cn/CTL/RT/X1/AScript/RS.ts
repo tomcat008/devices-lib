@@ -3,6 +3,7 @@ import { MockField, SettingField, ExceptionField } from "../../../../../../meta/
 import { FixedValueField } from '../../../../../../meta/FixedValueField'
 import { SdcSoftDevice } from '../../../../../../devices/SdcSoftDevice'
 import { Map_CTL_RT_X1_Base } from "./X1"
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export class Map_CTL_RT_X1_ReShui extends Map_CTL_RT_X1_Base {
 
@@ -13,7 +14,7 @@ export class Map_CTL_RT_X1_ReShui extends Map_CTL_RT_X1_Base {
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 0, Map_CTL_RT_X1_ReShui.coms_media))
 
 
-        this.addPoint(new ExceptionField('ex_jixiandishuiweibaojing', 45, 2, '极限低水位报警', 0))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianDiShuiWei, 45, 2, '极限低水位报警', 0))
         this.addPoint(new ExceptionField('ex_chushuiwenduchuanganqiguzhang', 45, 2, '出水温度传感器故障', 1))
         this.addPoint(new ExceptionField('ex_chushuiwendugaobaojing', 45, 2, '出水温度高报警', 2))
 

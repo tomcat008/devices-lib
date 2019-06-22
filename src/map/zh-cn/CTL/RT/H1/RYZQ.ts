@@ -6,6 +6,7 @@ import { FixedValueField } from '../../../../../meta/FixedValueField'
 import { CTL_RT } from '../../../../../devices/CTL/RT/RT'
 import { CountShowField } from '../../../../../meta/CountShowField'
 import { Map_CTL_RT_H1_Ts } from '../AScript/H1'
+import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
 
 export = class Map_CTL_RT_H1_RYRS extends Map_CTL_RT_H1_Ts {
 
@@ -32,7 +33,7 @@ export = class Map_CTL_RT_H1_RYRS extends Map_CTL_RT_H1_Ts {
         this.addPoint(new DeviceField('de_bushuibengshoudongzidong', 49, 2, '给水泵', 1, Map_CTL_RT_H1_RYRS.coms_auto))
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_1, 9, 2, '补水泵主控制', 3, Map_CTL_RT_H1_RYRS.coms_open_close))
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_Add_SHUI_BENG_2, 9, 2, '补水泵备控制', 4, Map_CTL_RT_H1_RYRS.coms_open_close))
-        this.addPoint(new ExceptionField('ex_jixiandishuiweibaojing', 45, 2, '极限低水位报警',0))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianDiShuiWei, 45, 2, '极限低水位报警',0))
         this.addPoint(new ExceptionField('ex_zhengqiyalibiansongqiduanlu', 45, 2, '蒸汽压力变送器断路',1))
         this.addPoint(new ExceptionField('ex_zhengqiyalibiansongqiduanlu', 45, 2, '蒸汽压力变送器短路',2))
         this.addPoint(new ExceptionField('ex_chaoyabaojing_biansongqi_', 45, 2, '超压报警（变送器）',3))
@@ -40,9 +41,9 @@ export = class Map_CTL_RT_H1_RYRS extends Map_CTL_RT_H1_Ts {
         this.addPoint(new ExceptionField('ex_chaoyabaojing_kongzhiqi_', 45, 2, '超压报警（控制器）',5))
         this.addPoint(new ExceptionField('ex_ranshaoqiguzhang', 45, 2, '燃烧器故障',6))
         this.addPoint(new ExceptionField('ex_ranqiyalidi', 45, 2, '燃气压力低',7))
-        this.addPoint(new ExceptionField('ex_ranqixieloubaojing', 45, 2, '燃气泄漏报警',8))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_RanQiXieLou, 45, 2, '燃气泄漏报警',8))
         this.addPoint(new ExceptionField('ex_shuiweidianjiluojicuo', 45, 2, '水位电极逻辑错',9))
-        this.addPoint(new ExceptionField('ex_gaoshuiweibaojing', 45, 2, '高水位报警',10))
+        this.addPoint(new ExceptionField(FixFieldNames.KEY_Expt_JiXianGaoShuiWei, 45, 2, '高水位报警',10))
         this.addPoint(new ExceptionField('ex_paiyanwenduchuanganqiduanlu', 45, 2, '排烟温度传感器断路',11))
         this.addPoint(new ExceptionField('ex_dishuiweibaojing', 45, 2, '低水位报警',12))
         this.addPoint(new ExceptionField('ex_bianpinqiguzhangbaojing', 45, 2, '变频器故障报警',13))
@@ -97,8 +98,8 @@ export = class Map_CTL_RT_H1_RYRS extends Map_CTL_RT_H1_Ts {
         this.addPoint(new SettingField('se_gaobaojingshuiwei', 127, 2, '高报警水位','%'))
         this.addPoint(new SettingField('se_mubiaoshuiwei', 129, 2, '目标水位','%'))
 
-        this.addPoint(new MockField('mo_paiyanwendu', 19, 2, '排烟温度', '℃'))
-        this.addPoint(new MockField('mo_zhengqiyali', 21, 2, '蒸汽压力','Mpa',100))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_PaiYanWenDu, 19, 2, '排烟温度', '℃'))
+        this.addPoint(new MockField(FixFieldNames.KEY_MOCK_ZhengQiYaLi, 21, 2, '蒸汽压力','Mpa',100))
         this.addPoint(new MockField('mo_4-20mAxinhaolianxujishui', 23, 2, '4-20mA信号连续给水','%'))
     }
 }

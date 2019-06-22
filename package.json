@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/tomcat008/devices-lib#readme",
   "dependencies": {
-    "grunt": "^1.0.4"
+    "@sdcsoft/comms": "^1.0.1",
+    "@sdcsoft/gfrm": "^1.0.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
