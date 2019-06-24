@@ -1,4 +1,4 @@
-import { map } from '../map/map'
+import { GroupKeys } from '@sdcsoft/comms'
 
 export class NumberHashMap<TValue>{
 
@@ -15,9 +15,7 @@ export class NumberHashMap<TValue>{
     getItem(key: number) {
         return this.map[key]
     }
-    get count(): number {
-        return map.length
-    }
+    
     each(func: (key: number, value: TValue) => void) {
         for (const k in this.map) {
             func(new Number(k).valueOf(), this.map[k])

@@ -5,6 +5,7 @@ import { MockField, SettingField, DeviceField, ExceptionField, OpenCloseField, B
 import { SdcSoftDevice } from "../../../devices/SdcSoftDevice";
 import { FixedValueField } from "../../../meta/FixedValueField";
 import { CountShowField } from "../../../meta/CountShowField";
+import { GroupKeys } from "@sdcsoft/comms";
 
 
 export = class Map_PLC_DianReShui extends PLC_Map {
@@ -27,7 +28,7 @@ export = class Map_PLC_DianReShui extends PLC_Map {
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 13, 2, "System State", '', PLC_Map.coms_status));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "Fuel", 1, Map_PLC_DianReShui.coms_power));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "Medium", 0, Map_PLC_DianReShui.coms_media));
-        this.addPoint(new CountShowField(Map_PLC_DianReShui.KEY_BASE, SdcSoftDevice.KEY_POINT_JIA_RE_ZU, "Put into heating group", ''));
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE, SdcSoftDevice.KEY_POINT_JIA_RE_ZU, "Put into heating group", ''));
         this.addPoint(new BaseInfoField("ba_shuiweizhuangtai", 19, 2, "Water Level State", '', Map_PLC_DianReShui.coms_level));
         this.addPoint(new BaseInfoField("ba_ranshaoqizhuangtai", 21, 2, "Burner State", '', PLC_Map.coms_ranshaoqi_status));
 

@@ -144,13 +144,13 @@ export class OpenCloseField extends EParentClass {
     }
 }
 import { DeviceFieldForUI } from '../DeviceFieldForUI'
-import { map } from '../../map/map'
+import { GroupKeys } from '@sdcsoft/comms'
 export class SettingField extends MockField {
 
     constructor(name: string, startIndex: number, bytesLength: number, title: string, unit?: string){
         super(name, startIndex, bytesLength, title, unit, 0)
     }
     setDeviceFieldForUIKey(fieldForUI: DeviceFieldForUI) {
-        fieldForUI.setKey(map.KEY_SETTING)
+        fieldForUI.setKey(GroupKeys.KEY_SETTING)
     }
 }

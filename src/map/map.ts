@@ -4,14 +4,14 @@ import { ByteField } from '../meta/ByteField'
 
 export abstract class map {
 
-    static readonly KEY_BASE = 'baseInfo'
-    static readonly KEY_RUN = 'runInfo'
-    static readonly KEY_EXCEPTION = 'exceptionInfo'
-    static readonly KEY_MOCK = 'mockInfo'
-    static readonly KEY_SETTING = 'settingInfo'
-    static readonly KEY_START_STOP = 'startStopInfo'
-    static readonly KEY_DEVICE = 'deviceInfo'
-    static readonly KEY_OPEN_CLOSE = 'openclose'
+    // static readonly KEY_BASE = 'baseInfo'
+    // static readonly KEY_RUN = 'runInfo'
+    // static readonly KEY_EXCEPTION = 'exceptionInfo'
+    // static readonly KEY_MOCK = 'mockInfo'
+    // static readonly KEY_SETTING = 'settingInfo'
+    // static readonly KEY_START_STOP = 'startStopInfo'
+    // static readonly KEY_DEVICE = 'deviceInfo'
+    // static readonly KEY_OPEN_CLOSE = 'openclose'
     /**
      * 计算属性的KEY
      */

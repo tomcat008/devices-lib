@@ -4,7 +4,7 @@ import { ExceptionField as CParentClass } from '../ExceptionField'
 import { MockField as DParentClass } from '../MockField'
 import { OpenCloseField as EParentClass } from '../OpenCloseField'
 import { DeviceFieldForUI } from '../DeviceFieldForUI'
-import { map } from '../../map/map'
+import { GroupKeys } from '@sdcsoft/comms'
 import { Command, FloatCommand } from '../../command/Command'
 import { NumberHashMap } from '../../entities/Collections'
 
@@ -173,7 +173,7 @@ export class SettingField extends MockField {
     }
 
     public setDeviceFieldForUIKey(fieldForUI: DeviceFieldForUI) {
-        fieldForUI.setKey(map.KEY_SETTING)
+        fieldForUI.setKey(GroupKeys.KEY_SETTING)
     }
 
     protected createCommandAndInitValue(): Command {

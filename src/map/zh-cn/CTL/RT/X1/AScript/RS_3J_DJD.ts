@@ -4,6 +4,7 @@ import { Map_CTL_RT_X1_ReShui } from './RS'
 import { INumberIndex } from "../../../../../../entities/IIndex"
 import { CountShowField } from "../../../../../../meta/CountShowField"
 import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
+import { GroupKeys } from "@sdcsoft/comms";
 
 //3电极或电接点
 export class Map_CTL_RT_X1_3JDJD extends Map_CTL_RT_X1_ReShui {
@@ -17,7 +18,7 @@ export class Map_CTL_RT_X1_3JDJD extends Map_CTL_RT_X1_ReShui {
 
     constructor() {
         super()
-        this.addPoint(new CountShowField(Map_CTL_RT_X1_3JDJD.KEY_BASE, 'ba_yalizhuangtai', '压力状态', '', false, Map_CTL_RT_X1_3JDJD.DJD_YaLiStatus))
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE, 'ba_yalizhuangtai', '压力状态', '', false, Map_CTL_RT_X1_3JDJD.DJD_YaLiStatus))
 
         this.addPoint(new OpenCloseField('oc_jixiandishuiweidianji', 5, 2, '极限低水位电极', 0, Map_CTL_RT_X1_3JDJD.coms_open_close))
         this.addPoint(new OpenCloseField('oc_didianji/dianjiedianyalibiaodizhen', 5, 2, '低位电极/电接点压力表低针', 1, Map_CTL_RT_X1_3JDJD.coms_open_close))

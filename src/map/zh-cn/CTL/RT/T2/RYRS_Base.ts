@@ -8,6 +8,7 @@ import { CTL_RT } from '../../../../../devices/CTL/RT/RT'
 import { Map_CTL_RT_T2_Ts } from '../AScript/T2'
 import { OpenCloseCommand } from '../../../../../command/Command';
 import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
+import { GroupKeys } from '@sdcsoft/comms';
 
 export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
     static coms_guolu: INumberIndex = {
@@ -36,8 +37,8 @@ export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 3, 2, "工作状态", '', Map_CTL_RT_T2_RYRS_Ts.coms_status))
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_LIFE, 53, 2, "累计燃烧时间", "时"))
-        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYRS_Ts.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"))
-        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYRS_Ts.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"))
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_DAYS, "运行天数", "天"))
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_HOURS, "运行小时数", "时"))
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 0, Map_CTL_RT_T2_RYRS_Ts.coms_power))
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "介质类型", 0, Map_CTL_RT_T2_RYRS_Ts.coms_media))
 

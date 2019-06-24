@@ -6,6 +6,7 @@ import { CountShowField } from '../../../../../meta/CountShowField'
 import { FixedValueField } from '../../../../../meta/FixedValueField'
 import { CTL_RT } from '../../../../../devices/CTL/RT/RT'
 import { Map_CTL_RT_T2_Ts } from '../AScript/T2'
+import { GroupKeys } from '@sdcsoft/comms';
 
 export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
     static coms_guolu: INumberIndex = {
@@ -33,8 +34,8 @@ export class Map_CTL_RT_T2_RYRS_Ts extends Map_CTL_RT_T2_Ts {
 
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 3, 2, "System State", '', Map_CTL_RT_T2_RYRS_Ts.coms_status));
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_RUN_LIFE, 53, 2, "Running Time", "Hour"));
-        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYRS_Ts.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_DAYS, "Running Days", "Days"));
-        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYRS_Ts.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_HOURS, "Running Hours", "Hour"));
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_DAYS, "Running Days", "Days"));
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE, SdcSoftDevice.KEY_POINT_RUN_HOURS, "Running Hours", "Hour"));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "Fuel Type", 0, Map_CTL_RT_T2_RYRS_Ts.coms_power));
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, "Medium Type", 0, Map_CTL_RT_T2_RYRS_Ts.coms_media));
 

@@ -4,6 +4,7 @@ import { FixedValueField } from '../../../../meta/FixedValueField'
 import { BaseInfoField, OpenCloseField, ExceptionField, DemandField, SettingField, MockField, DeviceField } from '../../../../meta/HNWE/meta'
 import { CountShowField } from '../../../../meta/CountShowField'
 import { SdcSoftDevice } from '../../../../devices/SdcSoftDevice'
+import { GroupKeys } from '@sdcsoft/comms';
 
 export = class Map_CTL_HNWR_485 extends Map_ZH_CN {
 
@@ -90,8 +91,8 @@ export = class Map_CTL_HNWR_485 extends Map_ZH_CN {
     }
     constructor() {
         super()
-        this.addPoint(new CountShowField(Map_CTL_HNWR_485.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_DAYS, '运行天数', '天'))
-        this.addPoint(new CountShowField(Map_CTL_HNWR_485.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_HOURS, '运行小时数', '时'))
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_DAYS, '运行天数', '天'))
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE,SdcSoftDevice.KEY_POINT_RUN_HOURS, '运行小时数', '时'))
 
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, '燃料类型', 0, Map_CTL_HNWR_485.coms_power))
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, '介质类型', 0, Map_CTL_HNWR_485.coms_media))

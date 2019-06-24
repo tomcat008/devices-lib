@@ -5,6 +5,7 @@ import { Map_CTL_RT_X1_ZhengQi } from '../../AScript/ZQ'
 import { FixedValueField } from '../../../../../../../meta/FixedValueField'
 import { SdcSoftDevice } from '../../../../../../../devices/SdcSoftDevice'
 import { CountShowField } from '../../../../../../../meta/CountShowField'
+import { GroupKeys } from '@sdcsoft/comms';
 
 //燃煤蒸汽
 export class Map_CTL_RT_X1_BKSR_RMZQ_9 extends Map_CTL_RT_X1_ZhengQi {
@@ -19,7 +20,7 @@ export class Map_CTL_RT_X1_BKSR_RMZQ_9 extends Map_CTL_RT_X1_ZhengQi {
 
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, "燃料类型", 2, Map_CTL_RT_X1_BKSR_RMZQ_9.coms_power))
 
-        this.addPoint(new CountShowField(Map_CTL_RT_X1_BKSR_RMZQ_9.KEY_BASE, 'ba_yalizhuangtai', '压力状态', '', false, Map_CTL_RT_X1_BKSR_RMZQ_9.DJD_YaLiStatus))
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE, 'ba_yalizhuangtai', '压力状态', '', false, Map_CTL_RT_X1_BKSR_RMZQ_9.DJD_YaLiStatus))
 
 
         this.addPoint(new DeviceField(CTL_RT.KEY_POINT_LENG_NING_BENG_1, 9, 2, '给水泵', 2, Map_CTL_RT_X1_BKSR_RMZQ_9.coms_open_close))

@@ -4,6 +4,7 @@ import { Map_EN_US } from "../../../../../EN_US";
 import { CountShowField } from "../../../../../../../meta/CountShowField";
 import { INumberIndex } from "../../../../../../../entities/IIndex";
 import { CTL_RT_T2_RYZQ_4J } from "../../../../../../../devices/CTL/RT/T2/RYZQ/AScript/4J";
+import { GroupKeys } from "@sdcsoft/comms";
 
 export class Map_CTL_RT_T2_RYZQ_4J extends Map_CTL_RT_T2_RYZQ_Ts{
 
@@ -23,7 +24,7 @@ export class Map_CTL_RT_T2_RYZQ_4J extends Map_CTL_RT_T2_RYZQ_Ts{
     constructor(){
         super();
        
-        this.addPoint(new CountShowField(Map_CTL_RT_T2_RYZQ_4J.KEY_BASE,CTL_RT_T2_RYZQ_4J.KEY_POINT_SHUI_WEI_STATUS, "Water Leval",''));
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE,CTL_RT_T2_RYZQ_4J.KEY_POINT_SHUI_WEI_STATUS, "Water Leval",''));
 
         this.addPoint(new OpenCloseField("oc_queshuidianji", 5, 2, "Water deficient electrode", 0, Map_EN_US.coms_open_close));
         //this.addPoint(new OpenCloseField("oc_dishuiweibaojingdianji_6dianjiteyou_", 5, 2, "Low Water Level Alarm Electrode (6 Electrodes)", 1, Map_ZH_CN.coms_open_close));

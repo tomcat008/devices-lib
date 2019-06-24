@@ -7,6 +7,7 @@ import { FixedValueField } from '../../../meta/FixedValueField'
 import { SdcSoftDevice } from '../../../devices/SdcSoftDevice'
 import { CountShowField } from '../../../meta/CountShowField'
 import { GroupFieldsRelationalMapping as FixFieldNames } from '@sdcsoft/gfrm'
+import { GroupKeys } from '@sdcsoft/comms';
 
 
 export = class Map_PLC_DianZhengQi extends PLC_Map {
@@ -26,7 +27,7 @@ export = class Map_PLC_DianZhengQi extends PLC_Map {
         this.addPoint(new BaseInfoField(SdcSoftDevice.KEY_POINT_SYSTEM_STATUS, 13, 2, '系统状态', '', PLC_Map.coms_status))
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_POWER, '燃料', 1, Map_PLC_DianZhengQi.coms_power))
         this.addPoint(new FixedValueField(SdcSoftDevice.KEY_POINT_MEDIA, '介质', 1, Map_PLC_DianZhengQi.coms_media))
-        this.addPoint(new CountShowField(Map_PLC_DianZhengQi.KEY_BASE, SdcSoftDevice.KEY_POINT_JIA_RE_ZU, '投入加热组', ''))
+        this.addPoint(new CountShowField(GroupKeys.KEY_BASE, SdcSoftDevice.KEY_POINT_JIA_RE_ZU, '投入加热组', ''))
         this.addPoint(new BaseInfoField('ba_shuiweizhuangtai', 19, 2, '水位状态', '', Map_PLC_DianZhengQi.coms_level))
         this.addPoint(new BaseInfoField('ba_ranshaoqizhuangtai', 21, 2, '燃烧器状态', '', PLC_Map.coms_ranshaoqi_status))
 

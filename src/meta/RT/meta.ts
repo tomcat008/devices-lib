@@ -1,7 +1,7 @@
 import { BaseInfoField as AParentClass } from '../BaseInfoField'
 import { ExceptionField as CParentClass } from '../ExceptionField'
 import { NumberHashMap } from '../../entities/Collections'
-import { map } from '../../map/map'
+import { GroupKeys } from '@sdcsoft/comms'
 import { DeviceFieldForUI } from '../DeviceFieldForUI'
 
 export class BaseInfoField extends AParentClass {
@@ -67,7 +67,7 @@ export class DeviceField extends OpenCloseField {
     }
 
     setDeviceFieldForUIKey(fieldForUI: DeviceFieldForUI) {
-        fieldForUI.setKey(map.KEY_DEVICE)
+        fieldForUI.setKey(GroupKeys.KEY_DEVICE)
     }
 }
 /*
@@ -89,7 +89,7 @@ export class ExceptionField extends OpenCloseField {
         
     }
     setDeviceFieldForUIKey(fieldForUI:DeviceFieldForUI) {
-        fieldForUI.setKey(map.KEY_EXCEPTION)
+        fieldForUI.setKey(GroupKeys.KEY_EXCEPTION)
     }
     getValueString(): string {
         return ''
@@ -153,6 +153,6 @@ export class SettingField extends MockField {
         super(name, startIndex, bytesLength, title, unit, baseNumber)
     }
     setDeviceFieldForUIKey(fieldForUI: DeviceFieldForUI) {
-        fieldForUI.setKey(map.KEY_SETTING)
+        fieldForUI.setKey(GroupKeys.KEY_SETTING)
     }
 }

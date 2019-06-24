@@ -1,6 +1,8 @@
 import { BaseInfoField as AParentClass } from '../BaseInfoField'
 import { DeviceField as BParentClass } from '../DeviceField'
 import { NumberHashMap } from '../../entities/Collections'
+import {GroupKeys} from '@sdcsoft/comms'
+
 export class BaseInfoField extends AParentClass {
     constructor(name: string, startIndex: number, bytesLength: number, title: string, unit: string, valueMap?: { [key: number]: string }) {
         super()
@@ -177,7 +179,7 @@ export class SettingField extends MockField {
         }
     }
     setDeviceFieldForUIKey(fieldForUI: DeviceFieldForUI) {
-        fieldForUI.setKey(map.KEY_SETTING)
+        fieldForUI.setKey(GroupKeys.KEY_SETTING)
     }
 }
 import { StartStopField as EParentClass } from '../StartStopField'

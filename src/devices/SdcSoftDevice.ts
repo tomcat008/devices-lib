@@ -2,8 +2,9 @@ import { StringHashMap } from '@sdcsoft/comms'
 import { DeviceFieldForUI } from '../meta/DeviceFieldForUI'
 import { Command } from '../command/Command'
 import { Element as AElement } from '../entities/Element'
-import { map } from '../map/map'
+import { GroupKeys } from '@sdcsoft/comms'
 import { ByteField } from '../meta/ByteField'
+import { map } from '../map/map'
 
 export enum Media {
     ReShui = 0,
@@ -38,13 +39,13 @@ export abstract class SdcSoftDevice {
     private commandMap = new StringHashMap<Command[]>()
 
     constructor() {
-        this.fieldMap.addItem(map.KEY_BASE, new StringHashMap<DeviceFieldForUI>())
-        this.fieldMap.addItem(map.KEY_EXCEPTION, new StringHashMap<DeviceFieldForUI>())
-        this.fieldMap.addItem(map.KEY_MOCK, new StringHashMap<DeviceFieldForUI>())
-        this.fieldMap.addItem(map.KEY_SETTING, new StringHashMap<DeviceFieldForUI>())
-        this.fieldMap.addItem(map.KEY_DEVICE, new StringHashMap<DeviceFieldForUI>())
-        this.fieldMap.addItem(map.KEY_START_STOP, new StringHashMap<DeviceFieldForUI>())
-        this.fieldMap.addItem(map.KEY_OPEN_CLOSE, new StringHashMap<DeviceFieldForUI>())
+        this.fieldMap.addItem(GroupKeys.KEY_BASE, new StringHashMap<DeviceFieldForUI>())
+        this.fieldMap.addItem(GroupKeys.KEY_EXCEPTION, new StringHashMap<DeviceFieldForUI>())
+        this.fieldMap.addItem(GroupKeys.KEY_MOCK, new StringHashMap<DeviceFieldForUI>())
+        this.fieldMap.addItem(GroupKeys.KEY_SETTING, new StringHashMap<DeviceFieldForUI>())
+        this.fieldMap.addItem(GroupKeys.KEY_DEVICE, new StringHashMap<DeviceFieldForUI>())
+        this.fieldMap.addItem(GroupKeys.KEY_START_STOP, new StringHashMap<DeviceFieldForUI>())
+        this.fieldMap.addItem(GroupKeys.KEY_OPEN_CLOSE, new StringHashMap<DeviceFieldForUI>())
         this.fieldMap.addItem(map.KEY_Count_Fields, new StringHashMap<DeviceFieldForUI>())
 
     }
@@ -77,30 +78,30 @@ export abstract class SdcSoftDevice {
     }
 
     getBaseInfoFields() {
-        return this.getFieldsMap(map.KEY_BASE)
+        return this.getFieldsMap(GroupKeys.KEY_BASE)
     }
 
     getDeviceFields() {
-        return this.getFieldsMap(map.KEY_DEVICE)
+        return this.getFieldsMap(GroupKeys.KEY_DEVICE)
     }
 
     getExceptionFields() {
-        return this.getFieldsMap(map.KEY_EXCEPTION)
+        return this.getFieldsMap(GroupKeys.KEY_EXCEPTION)
     }
 
     getMockFields() {
-        return this.getFieldsMap(map.KEY_MOCK)
+        return this.getFieldsMap(GroupKeys.KEY_MOCK)
     }
     getSettingFields() {
-        return this.getFieldsMap(map.KEY_SETTING)
+        return this.getFieldsMap(GroupKeys.KEY_SETTING)
     }
 
     getStartStopFields() {
-        return this.getFieldsMap(map.KEY_START_STOP)
+        return this.getFieldsMap(GroupKeys.KEY_START_STOP)
     }
 
     getOpenCloseFields() {
-        return this.getFieldsMap(map.KEY_OPEN_CLOSE)
+        return this.getFieldsMap(GroupKeys.KEY_OPEN_CLOSE)
     }
 
     getCountFields() {
